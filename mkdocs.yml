@@ -1,0 +1,7 @@
+site_name: Suomea Site
+theme:
+  palette:
+    primary: red
+  font:
+    text: Monaco
+  name: material
