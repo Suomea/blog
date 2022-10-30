@@ -1,7 +1,16 @@
-site_name: Suomea Site
+site_name: Suomea Blog
 theme:
   palette:
     primary: red
   font:
     text: Monaco
   name: material
+  features:
+     - navigation.tabs
+     - navigation.tabs.sticky
+     - navigation.top
+nav:
+  - Reading:
+      - Reading/读书计划.md
+      - Reading/2022.md
+      - Reading/2021.md
