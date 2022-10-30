@@ -1,15 +1,26 @@
 site_name: Suomea Blog
 theme:
+  favicon: pictures/favicon.svg
+  logo: pictures/favicon.svg
   palette:
     primary: red
   font:
     text: Monaco
+    code: Monaco
   name: material
+
+  feature:
+#    - navigation.instant
+#    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
   features:
      - navigation.tabs
      - navigation.tabs.sticky
      - navigation.top
 nav:
+  - MySQL:
+      - MySQL/MySQL Tips.md
   - Reading:
       - Reading/读书计划.md
       - Reading/2022.md
