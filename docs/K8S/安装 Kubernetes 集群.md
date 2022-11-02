@@ -215,3 +215,17 @@ kubectl apply -f calico.yaml
 ```shell
 kubectl get pod --all-namespaces
 ```
+
+## 一些可能用到的命令
+
+### 重置集群
+集群初始化过程中可能出现错误导致失败，可以使用如下命令重置：
+```shell
+kubeadm reset
+```
+
+### 强制删除 Pod
+使用 kubectl delete 清除资源的使用，可能导致 Pod 一只处于 Terminating 状态，无法删除，使用如下命令强制删除 Pod：
+```shell
+kubectl -n ns_name delete pod pod_name --force --grace-period=0
+```
