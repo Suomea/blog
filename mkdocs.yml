@@ -23,6 +23,11 @@ nav:
       - MySQL/MySQL Tips.md
   - K8S:
       - K8S/安装 Kubernetes 集群.md
+  - Linux:
+      - Linux/Linux Tips.md
+      - Linux/定时任务.md
+      - Linux/定时备份 MySQL.md
+      - Linux/磁盘分区.md
   - Reading:
       - Reading/读书计划.md
       - Reading/2022.md
