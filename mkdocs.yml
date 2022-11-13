@@ -23,6 +23,7 @@ nav:
       - MySQL/MySQL Tips.md
   - K8S:
       - K8S/安装 Kubernetes 集群.md
+      - K8S/安装 Kuboard 集群管理界面.md
   - Linux:
       - Linux/Linux Tips.md
       - Linux/定时任务.md

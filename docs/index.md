@@ -13,6 +13,22 @@ ICANN 把端口号划分为三个范围段：
 - 注册端口 范围从 1024~49151
 - 动态端口 范围从 49125~65535
 
+## Linux 文件权限
+```text
+drwx------  8 root root      4096 Nov  9 22:18 .
+drwxr-xr-x 19 root root      4096 Nov  9 22:35 ..
+-rw-r--r--  1 root root  87473664 Nov  1 21:30 a.tar.gz
+```
+
+r: 代表可读  4  
+w: 代表可写  2  
+x: 代表可执行 1  
+ 
+chgrp: 改变文件所属的群组  
+chown: 改变文件拥有者  
+chmod: 改变文件的权限
+
+
 ## VIM
 ### VIM 全局替换
 
