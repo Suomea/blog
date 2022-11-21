@@ -99,20 +99,22 @@ kubeadm：用来初始化启动集群。
 kubelet：集群的组件，运行在所有的节点上面并负责 Pod 和容器的管理。  
 kubectl：和集群交互的命令行工具。  
 
-按顺序执行以下命令即可安装：
+[下载公钥](../files/apt-key.gpg)：
 ```shell
-apt-get update && apt-get install -y apt-transport-https
-
-curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | apt-key add - 
-
-cat <<EOF > /etc/apt/sources.list.d/kubernetes.list
-deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main
-EOF  
-
-apt-get update
-
-apt-get install -y kubelet kubeadm kubectl
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 ```
+
+配置镜像：
+```shell
+deb https://mirrors.tuna.tsinghua.edu.cn/kubernetes/apt kubernetes-xenial main
+```
+
+安装：
+```shell
+apt install kubeadm kubectl kubelet
+```
+
+
 
 编辑 ~/.bashrc，配置相关命令的自动补全，然后使用 `source ~/.bashrc` 使配置生效。
 ```text
