@@ -35,3 +35,5 @@ nav:
       - Reading/读书计划.md
       - Reading/2022.md
       - Reading/2021.md
+  - Algorithms:
+      - Algorithms/求解算数表达式的值.md
