@@ -37,3 +37,6 @@ nav:
       - Reading/2021.md
   - Algorithms:
       - Algorithms/求解算数表达式的值.md
+
+extra_css:
+  - stylesheets/extra.css
