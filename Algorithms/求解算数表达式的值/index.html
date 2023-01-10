@@ -1,0 +1,1201 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../Reading/2021/">
+      
+      
+      <link rel="icon" href="../../pictures/favicon.svg">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.3">
+    
+    
+      
+        <title>求解算数表达式的值 - Suomea Blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6b71719e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monaco:300,300i,400,400i,700,700i%7CMonaco:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Monaco";--md-code-font:"Monaco"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Suomea Blog" class="md-header__button md-logo" aria-label="Suomea Blog" data-md-component="logo">
+      
+  <img src="../../pictures/favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Suomea Blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              求解算数表达式的值
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../MySQL/MySQL%20Tips/" class="md-tabs__link">
+        MySQL
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../K8S/%E5%AE%89%E8%A3%85%20Kubernetes%20%E9%9B%86%E7%BE%A4/" class="md-tabs__link">
+        K8S
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Linux/Linux%20Tips/" class="md-tabs__link">
+        Linux
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Reading/%E8%AF%BB%E4%B9%A6%E8%AE%A1%E5%88%92/" class="md-tabs__link">
+        Reading
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Algorithms
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Suomea Blog" class="md-nav__button md-logo" aria-label="Suomea Blog" data-md-component="logo">
+      
+  <img src="../../pictures/favicon.svg" alt="logo">
+
+    </a>
+    Suomea Blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1" tabindex="0" aria-expanded="false">
+          MySQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="MySQL" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          MySQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MySQL/MySQL%20Tips/" class="md-nav__link">
+        MySQL Tips
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" tabindex="0" aria-expanded="false">
+          K8S
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="K8S" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          K8S
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../K8S/%E5%AE%89%E8%A3%85%20Kubernetes%20%E9%9B%86%E7%BE%A4/" class="md-nav__link">
+        安装 Kubernetes 集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../K8S/%E5%AE%89%E8%A3%85%20Kuboard%20%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2/" class="md-nav__link">
+        安装 Kuboard 集群管理界面
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../K8S/%E5%AE%89%E8%A3%85%20Nginx%20Ingress/" class="md-nav__link">
+        安装 Nginx Ingress
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" tabindex="0" aria-expanded="false">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Linux%20Tips/" class="md-nav__link">
+        Linux Tips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" class="md-nav__link">
+        定时任务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/%E5%AE%9A%E6%97%B6%E5%A4%87%E4%BB%BD%20MySQL/" class="md-nav__link">
+        定时备份 MySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        磁盘分区
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Nginx%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        Nginx 编译安装
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="false">
+          Reading
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reading" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Reading
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reading/%E8%AF%BB%E4%B9%A6%E8%AE%A1%E5%88%92/" class="md-nav__link">
+        读书计划
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reading/2022/" class="md-nav__link">
+        2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reading/2021/" class="md-nav__link">
+        2021
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" tabindex="0" aria-expanded="true">
+          Algorithms
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Algorithms" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Algorithms
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          求解算数表达式的值
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        求解算数表达式的值
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    解析算术表达式字符串的元素
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    后缀表达式求值
+  </a>
+  
+    <nav class="md-nav" aria-label="后缀表达式求值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    后缀表达式的求值逻辑
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abcd-" class="md-nav__link">
+    求后缀表达式 ABC*+D- 值
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    将中缀表达式转换为后缀表达式
+  </a>
+  
+    <nav class="md-nav" aria-label="将中缀表达式转换为后缀表达式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    转换规则
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abc-d" class="md-nav__link">
+    转换中缀表达式 A+B*C-D
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#java" class="md-nav__link">
+    Java 代码实现
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    解析算术表达式字符串的元素
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    后缀表达式求值
+  </a>
+  
+    <nav class="md-nav" aria-label="后缀表达式求值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    后缀表达式的求值逻辑
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abcd-" class="md-nav__link">
+    求后缀表达式 ABC*+D- 值
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    将中缀表达式转换为后缀表达式
+  </a>
+  
+    <nav class="md-nav" aria-label="将中缀表达式转换为后缀表达式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    转换规则
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abc-d" class="md-nav__link">
+    转换中缀表达式 A+B*C-D
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#java" class="md-nav__link">
+    Java 代码实现
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>求解算数表达式的值</h1>
+
+<p>求解算数表达式，如果直接求算数表达式的值是相当困难的，因此分三步实现：</p>
+<ol>
+<li>解析算术表达式字符串的元素。</li>
+<li>将算数表达式转换为另一种形式：后缀表达式。</li>
+<li>计算后缀表达式的值。</li>
+</ol>
+<h2 id="_1">解析算术表达式字符串的元素</h2>
+<p>将算术表达式字符串中的各个元素（数字、操作符、括号）解析出来。
+<img alt="元素" src="../../pictures/%E6%B1%82%E8%A7%A3%E7%AE%97%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%80%BC-1.jpg" /></p>
+<p>从左到右解析字符串，并且将算术表达式转换为后缀表达式的时候也要从左到右进行处理，所以这里采用队列存储算术表达式的各个元素。代码如下（暂不支持处理负数）：</p>
+<pre><code class="language-java">    // 存储算术表达式的元素：数字，运算符（包括括号）
+    Queue&lt;String&gt; elements = new LinkedList&lt;&gt;();
+
+    @Test
+    public void test() {
+
+//        String input = &quot;1+2&quot;;
+//        String input = &quot;2+3*4-5&quot;;
+        String input = &quot;(1+2*2.35-(23+3)*4)-(12)+(23/1)&quot;;
+
+        // 解析字符串中的各个元素
+        parseElements(input);
+        System.out.println(elements);
+    }
+
+    private void parseElements(String input) {
+        char[] charArray = input.toCharArray();
+        int start = 0, end;
+        for (int i = 0; i &lt; charArray.length; i++) {
+            end = i;
+            char ch = charArray[i];
+            if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '(' || ch == ')') {
+                if (start &lt; end) {
+                    char[] elementArray = Arrays.copyOfRange(charArray, start, end);
+                    elements.offer(new String(elementArray));
+                }
+                elements.offer(String.valueOf(ch));
+                start = i + 1;
+            } else if (i == charArray.length - 1) {
+                char[] elementArray = Arrays.copyOfRange(charArray, start, charArray.length);
+                elements.offer(new String(elementArray));
+            }
+        }
+    }
+</code></pre>
+<h2 id="_2">后缀表达式求值</h2>
+<p>日常的表达式将操作符放在两个操作数中间，因为操作符在操作数的中间，因此称为中缀表达式。  </p>
+<p>中缀表达式如：A+B*C-D，其对应的后缀表达式为：ABC*+D-。<br />
+中缀表达式和后缀表达式的数字顺序是一样的均为: A-&gt;B-&gt;C-&gt;D。  </p>
+<h3 id="_3">后缀表达式的求值逻辑</h3>
+<ul>
+<li>
+<p>由左向右逐个读取后缀表达式的元素。<br />
+-- 如果读取的元素为操作数则将操作数压入栈中。<br />
+-- 如果读取的元素为操作符，则取出栈顶的两个操作数，进行计算并将计算结果入栈。   </p>
+</li>
+<li>
+<p>读取完毕，获取栈中元素即为计算结果。</p>
+</li>
+</ul>
+<h3 id="abcd-">求后缀表达式 ABC*+D- 值</h3>
+<p>计算的后缀表达式为：ABC*+D-，从后缀表达式中逐个读取元素。</p>
+<ol>
+<li>
+<p>读取操作数 A 入栈。栈顶到栈底为 A。</p>
+</li>
+<li>
+<p>读取操作数 B 入栈。栈顶到栈底为 BA。</p>
+</li>
+<li>
+<p>读取操作数 C 入栈。栈顶到栈底为 CBA。  </p>
+</li>
+<li>
+<p>读取操作符 *，取出栈顶的两个操作数 C 和 B，计算 B * C 的值记为 Z，将 Z 压入栈中。栈顶到栈底为 ZA。  </p>
+</li>
+<li>
+<p>读取操作符 +，取出栈顶的两个操作数 Z 和 A，计算 A + Z 的值记为 Y，将 Y 压入栈中。栈顶到栈底为 Y。  </p>
+</li>
+<li>
+<p>读取操作数 D 入栈。栈顶到栈底为 DY。  </p>
+</li>
+<li>
+<p>读取操作符 -，取出栈顶的两个操作数 D 和 Y，计算 Y - D 的值记为 X，将 X 压入栈中。栈顶到栈底为 X。  </p>
+</li>
+<li>
+<p>读取完毕，弹出栈中的结果 X 即为计算结果：X-&gt;(Y - D)-&gt;(A + Z - D)-&gt;(A + B * C - D)</p>
+</li>
+</ol>
+<h2 id="_4">将中缀表达式转换为后缀表达式</h2>
+<h3 id="_5">转换规则</h3>
+<ul>
+<li>
+<p>由左向右逐个读取中缀表达式的元素。</p>
+</li>
+<li>
+<p>如果元素为操作数，直接写至输出。</p>
+</li>
+<li>
+<p>如果元素为左括号<code>(</code>，压入栈中。</p>
+</li>
+<li>
+<p>如果元素为右括号<code>)</code>，若栈非空则重复以下步骤：<br />
+--  取出栈顶元素。<br />
+--  若取出元素不为<code>(</code>，则将取出元素写至输出；否则退出循环。</p>
+</li>
+<li>
+<p>如果元素为操作符，记为 opThis。如果栈为空将 opThis 入栈；否则重复以下步骤直至栈为空，最后将 opThis 压入栈：<br />
+  -- 取出栈顶元素记为 opTop。<br />
+  -- 如果 opTop 为<code>(</code>，则重新将 opTop 入栈，退出循环。  <br />
+  -- 如果 opTop 为操作符，且 opTop 的优先级小于 opThis 的优先级，则重新将 opTop 入栈，退出循环。<br />
+  -- 如果 opTop 为操作符，且 opTop 的优先级大于等于 opThis 的优先级，则将 opTop 写至输出，继续循环。</p>
+</li>
+<li>
+<p>读取完毕，如果栈不为空，将栈中元素由栈顶至栈底逐个写入输出。</p>
+</li>
+</ul>
+<h3 id="abc-d">转换中缀表达式 A+B*C-D</h3>
+<p>转换的中缀表达式为：A+B*C-D，从中缀表达式中逐个读取元素。</p>
+<ol>
+<li>
+<p>读取操作数 A，直接写至输出。输出为 A，栈为空。</p>
+</li>
+<li>
+<p>读取操作符 +，此时栈为空，将操作符 + 入栈。输出为 A，栈顶到栈底为 +。</p>
+</li>
+<li>
+<p>读取操作数 B，直接写至输出。输出为 AB，栈顶到栈底为 +。</p>
+</li>
+<li>
+<p>读取操作符 *。<br />
+   -- 取出栈顶元素为操作符 +，操作符 + 的优先级小于操作符 *，则将操作 + 重新入栈。输出为 AB，栈顶到栈底为 +。
+   -- 将操作符 * 入栈。输出为 AB，栈顶到栈底为 *+。</p>
+</li>
+<li>
+<p>读取操作数 C，直接写至输出。输出为 ABC，栈顶到栈底为 +。</p>
+</li>
+<li>
+<p>读取操作符 -。<br />
+   -- 取出栈顶元素为操作符 *，操作符 * 的优先级大于操作符 -，则将操作符 * 写至输出。输出为 ABC*，栈顶到栈底为 +。<br />
+   -- 取出栈顶元素为操作符 +，操作符 + 的优先级等于操作符 -，则将操作符 + 写至输出。输出为 ABC*+，栈为空。<br />
+   -- 将操作符 - 入栈。输出为 ABC*+，栈顶到栈底为 -。</p>
+</li>
+<li>
+<p>读取操作数 D，直接写至输出。输出为 ABC*+D，栈顶到栈底为 -。</p>
+</li>
+<li>
+<p>读取完毕，将栈中元素 - 写至输出。输出为 ABC*+D-，完成中缀表达式到后缀表达式的转换。</p>
+</li>
+</ol>
+<h2 id="java">Java 代码实现</h2>
+<pre><code class="language-java">import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
+public class BaseTest {
+
+    // 存储算术表达式的元素：数字，运算符（包括括号）
+    Queue&lt;String&gt; elements = new LinkedList&lt;&gt;();
+
+    // 转换后缀表达式使用的栈
+    Stack&lt;String&gt; convertStack = new Stack&lt;&gt;();
+
+    // 存储后缀表达式
+    Queue&lt;String&gt; output = new LinkedList&lt;&gt;();
+
+    // 计算存储结果使用的的栈
+    Stack&lt;Double&gt; calcStack = new Stack&lt;&gt;();
+
+    @Test
+    public void test() {
+
+//        String input = &quot;1+2&quot;;
+//        String input = &quot;2+3*4-5&quot;;
+        String input = &quot;(1+2*2.35-(23+3)*4)-(12)+(23/1)&quot;;
+
+        // 解析字符串中的各个元素
+        parseElements(input);
+        System.out.println(elements);
+
+        // 将中缀表达式转换为后缀表达式
+        convertPostfix();
+        System.out.println(output);
+
+        // 计算后缀表达式的值
+        Double result = calculateResult();
+        System.out.println(result);
+    }
+
+    private void parseElements(String input) {
+        char[] charArray = input.toCharArray();
+        int start = 0, end;
+        for (int i = 0; i &lt; charArray.length; i++) {
+            end = i;
+            char ch = charArray[i];
+            if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '(' || ch == ')') {
+                if (start &lt; end) {
+                    char[] elementArray = Arrays.copyOfRange(charArray, start, end);
+                    elements.offer(new String(elementArray));
+                }
+                elements.offer(String.valueOf(ch));
+                start = i + 1;
+            } else if (i == charArray.length - 1) {
+                char[] elementArray = Arrays.copyOfRange(charArray, start, charArray.length);
+                elements.offer(new String(elementArray));
+            }
+        }
+    }
+
+    public void convertPostfix() {
+        while (!elements.isEmpty()) {
+            String element = elements.poll();
+
+            switch (element) {
+                case &quot;+&quot;:
+                case &quot;-&quot;:
+                    processOperator(element, 1);
+                    break;
+                case &quot;*&quot;:
+                case &quot;/&quot;:
+                    processOperator(element, 2);
+                    break;
+                case &quot;)&quot;:
+                    processRight();
+                    break;
+                case &quot;(&quot;:
+                    convertStack.push(element);
+                    break;
+                default:
+                    output.offer(element);
+                    break;
+            }
+        }
+
+        while (!convertStack.isEmpty()) {
+            output.offer(convertStack.pop());
+        }
+    }
+
+    public void processOperator(String opThis, int precThis) {
+        while (!convertStack.isEmpty()) {
+            String opTop = convertStack.pop();
+            if (opTop.equals(&quot;(&quot;)) {
+                convertStack.push(opTop);
+                break;
+            } else {
+                int precTop;
+                if (opTop.equals(&quot;+&quot;) || opTop.equals(&quot;-&quot;)) {
+                    precTop = 1;
+                } else {
+                    precTop = 2;
+                }
+
+                if (precTop &lt; precThis) {
+                    convertStack.push(opTop);
+                    break;
+                } else {
+                    output.offer(opTop);
+                }
+            }
+        }
+
+        convertStack.push(opThis);
+    }
+
+    public void processRight() {
+        while (!convertStack.isEmpty()) {
+            String opTop = convertStack.pop();
+            if (opTop.equals(&quot;(&quot;)) {
+                break;
+            } else {
+                output.offer(opTop);
+            }
+        }
+    }
+
+    private Double calculateResult() {
+        while (!output.isEmpty()) {
+            String element = output.poll();
+            if (element.charAt(0) &gt;= '0' &amp;&amp; element.charAt(0) &lt;= '9') {
+                calcStack.push(Double.parseDouble(element));
+            } else {
+                Double num2 = calcStack.pop();
+                Double num1 = calcStack.pop();
+
+                switch (element) {
+                    case &quot;+&quot;:
+                        calcStack.push(num1 + num2);
+                        break;
+                    case &quot;-&quot;:
+                        calcStack.push(num1 - num2);
+                        break;
+                    case &quot;*&quot;:
+                        calcStack.push(num1 * num2);
+                        break;
+                    case &quot;/&quot;:
+                        calcStack.push(num1 / num2);
+                        break;
+                    default:
+                        calcStack.push((double) 0);
+                        break;
+                }
+            }
+        }
+
+        return calcStack.pop();
+    }
+}
+</code></pre>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ba449ae6.min.js"></script>
+      
+    
+  </body>
+</html>
