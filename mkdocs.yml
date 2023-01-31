@@ -10,14 +10,14 @@ theme:
   name: material
 
   feature:
-#    - navigation.instant
-#    - navigation.tracking
+    #    - navigation.instant
+    #    - navigation.tracking
     - navigation.tabs
     - navigation.tabs.sticky
   features:
-     - navigation.tabs
-     - navigation.tabs.sticky
-     - navigation.top
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
 nav:
   - MySQL:
       - MySQL/MySQL Tips.md
@@ -31,12 +31,16 @@ nav:
       - Linux/定时备份 MySQL.md
       - Linux/磁盘分区.md
       - Linux/Nginx 编译安装.md
+  - Algorithms:
+      - Algorithms/求解算数表达式的值.md
+  - Architecture:
+      - Architecture/设备信息.md
+  - Arts:
+      - Arts/满江红-岳飞.md
   - Reading:
       - Reading/读书计划.md
       - Reading/2022.md
       - Reading/2021.md
-  - Algorithms:
-      - Algorithms/求解算数表达式的值.md
 
 extra_css:
   - stylesheets/extra.css
