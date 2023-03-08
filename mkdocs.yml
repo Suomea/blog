@@ -33,6 +33,7 @@ nav:
       - Linux/Nginx 编译安装.md
   - Algorithms:
       - Algorithms/求解算数表达式的值.md
+      - Algorithms/Base64 算法.md
   - Architecture:
       - Architecture/设备信息.md
   - Arts:
