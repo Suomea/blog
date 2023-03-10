@@ -18,6 +18,9 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.top
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
 nav:
   - MySQL:
       - MySQL/MySQL Tips.md
