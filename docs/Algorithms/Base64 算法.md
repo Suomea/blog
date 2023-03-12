@@ -74,16 +74,12 @@ public class Test {
         byte[] data  = "你好世界！@#￥%……&*（）".getBytes(StandardCharsets.UTF_8);
 
         Base64.getEncoder().encodeToString(data);
-        //5rWj54qy44K95raT5qCr5pmr6ZSb5LiCI+mUn++/vSXpiKXvuLnvv73vv70mKumUm+WgrOe0mg==
 
         Base64.getEncoder().withoutPadding().encodeToString(data);
-        //5rWj54qy44K95raT5qCr5pmr6ZSb5LiCI+mUn++/vSXpiKXvuLnvv73vv70mKumUm+WgrOe0mg
 
         Base64.getUrlEncoder().encodeToString(data);
-        //5rWj54qy44K95raT5qCr5pmr6ZSb5LiCI-mUn--_vSXpiKXvuLnvv73vv70mKumUm-WgrOe0mg==
 
         Base64.getUrlEncoder().withoutPadding().encodeToString(data);
-        //5rWj54qy44K95raT5qCr5pmr6ZSb5LiCI-mUn--_vSXpiKXvuLnvv73vv70mKumUm-WgrOe0mg
     }
 }
 ```
