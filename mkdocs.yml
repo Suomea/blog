@@ -58,9 +58,9 @@ nav:
   - OS:
       - OS/并发——多线程.md
       - OS/并发——锁.md
-      - OS/并发——条件变量.md
-      - OS/并发——信号量.md
-      - OS/并发——基于并发的数据结构.md
+#      - OS/并发——条件变量.md
+#      - OS/并发——信号量.md
+#      - OS/并发——基于并发的数据结构.md
   - Algorithms:
       - Algorithms/求解算数表达式的值.md
       - Algorithms/Base64 算法.md
@@ -69,10 +69,10 @@ nav:
   - Arts:
       - Arts/满江红-岳飞.md
       - Arts/侠客行-李白.md
-  - Reading:
-      - Reading/读书计划.md
-      - Reading/2022.md
-      - Reading/2021.md
+#  - Reading:
+#      - Reading/读书计划.md
+#      - Reading/2022.md
+#      - Reading/2021.md
 
 extra_css:
   - stylesheets/extra.css
