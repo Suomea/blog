@@ -1,14 +1,18 @@
 site_name: Suomea Blog
+repo_url: https://github.com/Suomea/blog
+repo_name: Suomea/blog
 theme:
   favicon: pictures/favicon.svg
   logo: pictures/favicon.svg
   palette:
-    primary: red
+    primary: orange
   font:
-    text: Monaco
+    text: STSong
     code: Monaco
   name: material
+  custom_dir: overrides
   icon:
+    repo: fontawesome/brands/git-alt
     admonition:
       note: octicons/tag-16
       abstract: octicons/checklist-16
