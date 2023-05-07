@@ -60,6 +60,7 @@ nav:
       - OS/OS Tips.md
       - OS/并发——多线程.md
       - OS/并发——锁.md
+      - OS/汇编——环境搭建.md
 #      - OS/并发——可视性的问题.md
 #      - OS/并发——条件变量.md
 #      - OS/并发——信号量.md
