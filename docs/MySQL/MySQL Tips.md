@@ -1,7 +1,4 @@
 
-
-记录 MySQL 的安装配置和查询相关的技巧，相关的概念不会深入进行解释。具体的详细介绍可以单独写一篇文章。
-
 ## How to install MySQL on Debian 11
 ### 添加 MySQL 软件仓库
 Debian 默认的仓库并不包含 MySQL，所以要先为 APT 添加 MySQL 的软件仓库。
@@ -36,4 +33,4 @@ update mysql.user set host = '192.168.31.%' where user = 'root';
 flush privileges;
 ```
 
-## 
+## 在 MySQL 中创建用户并赋予权限
