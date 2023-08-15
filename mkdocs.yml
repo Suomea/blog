@@ -7,8 +7,8 @@ theme:
   palette:
     primary: orange
   font:
-    text: STSong
-    code: Monaco
+    text: IntelOne Mono
+    code: IntelOne Mono
   name: material
   custom_dir: overrides
   icon:
@@ -60,6 +60,7 @@ nav:
       - OS/OS Tips.md
       - OS/并发——多线程.md
       - OS/并发——锁.md
+      - OS/汇编——介绍.md
       - OS/汇编——环境搭建.md
 #      - OS/并发——可视性的问题.md
 #      - OS/并发——条件变量.md
@@ -68,15 +69,16 @@ nav:
   - Algorithms:
       - Algorithms/求解算数表达式的值.md
       - Algorithms/Base64 算法.md
-  - Architecture:
-      - Architecture/设备信息.md
+#  - Architecture:
+#      - Architecture/设备信息.md
   - Arts:
       - Arts/满江红-岳飞.md
       - Arts/侠客行-李白.md
-#  - Reading:
-#      - Reading/读书计划.md
-#      - Reading/2022.md
-#      - Reading/2021.md
+  - Reading:
+      - Reading/读书计划.md
+      - Reading/2022.md
+      - Reading/2021.md
+      - Reading/2023.md
 
 extra_css:
   - stylesheets/extra.css
