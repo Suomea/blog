@@ -1,14 +1,14 @@
-site_name: Suomea Blog
+site_name: Suomea's Blog
 repo_url: https://github.com/Suomea/blog
 repo_name: Suomea/blog
 theme:
-  favicon: pictures/favicon.svg
-  logo: pictures/favicon.svg
+  favicon: LocalFile/favicon.svg
+  logo: LocalFile/favicon.svg
   palette:
     primary: orange
   font:
-    text: IntelOne Mono
-    code: IntelOne Mono
+    text: 等线
+    code: Console
   name: material
   custom_dir: overrides
   icon:
@@ -44,9 +44,11 @@ markdown_extensions:
 
 
 nav:
-  - MySQL:
+  - 数据库:
       - MySQL/MySQL Tips.md
       - MySQL/MySQL 配置主从.md
+      - MySQL/备份 MySQL.md
+      - DM/达梦安装.md
   - K8S:
       - K8S/安装 Kubernetes 集群.md
       - K8S/安装 Kuboard 集群管理界面.md
@@ -58,7 +60,7 @@ nav:
       - Linux/文件与文件系统.md
       - Linux/磁盘分区.md
       - Linux/Nginx 编译安装.md
-  - OS:
+  - 操作系统:
       - OS/OS Tips.md
       - OS/并发——多线程.md
       - OS/并发——锁.md
@@ -69,19 +71,20 @@ nav:
 #      - OS/并发——条件变量.md
 #      - OS/并发——信号量.md
 #      - OS/并发——基于并发的数据结构.md
-  - Algorithms:
+  - 数据结构和算法:
       - Algorithms/求解算数表达式的值.md
       - Algorithms/Base64 算法.md
+      - Algorithms/数据结构：图.md
 #  - Architecture:
 #      - Architecture/设备信息.md
-  - Arts:
+  - 文章:
       - Arts/满江红-岳飞.md
       - Arts/侠客行-李白.md
-  - Reading:
-      - Reading/读书计划.md
-      - Reading/2022.md
-      - Reading/2021.md
-      - Reading/2023.md
+  # - 读书:
+  #     - Reading/读书计划.md
+  #     - Reading/2022.md
+  #     - Reading/2021.md
+  #     - Reading/2023.md
 
 extra_css:
   - stylesheets/extra.css

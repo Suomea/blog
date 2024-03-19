@@ -101,7 +101,7 @@ kubeadm：用来初始化启动集群。
 kubelet：集群的组件，运行在所有的节点上面并负责 Pod 和容器的管理。  
 kubectl：和集群交互的命令行工具。  
 
-[下载](../files/apt-key.gpg)并添加公钥：
+[下载](apt-key.gpg)并添加公钥：
 ```shell
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 ```

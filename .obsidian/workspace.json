@@ -1,0 +1,186 @@
+{
+  "main": {
+    "id": "1a5bc59a35216286",
+    "type": "split",
+    "children": [
+      {
+        "id": "fec9dbdb51e0e8aa",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dde69bff130fcb1a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/Network/运输层：UDP.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "cba890c8c4ea353c",
+    "type": "split",
+    "children": [
+      {
+        "id": "bd0571b23cc2195a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5b3eca4009027d28",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "4fa63aab94a20f16",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "校验和",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "58636d755c99bf11",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "64d5a5772b68a5f2",
+    "type": "split",
+    "children": [
+      {
+        "id": "ee5b234960a65c41",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3a92b64b918850fb",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "docs/Network/运输层：UDP.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "1267a40faafda316",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "docs/Network/运输层：UDP.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "49ec574163f0aa5a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "2f67a952141e2790",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "docs/Network/运输层：UDP.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "vscode-editor:新建代码文件": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "dde69bff130fcb1a",
+  "lastOpenFiles": [
+    "docs/LocalFile/Picture/用户数据报的格式.png",
+    "docs/Network/运输层：介绍.md",
+    "docs/Network/运输层：UDP.md",
+    "docs/Network/网络层：IP.md",
+    "docs/Network/网络层：ICMP.md",
+    "docs/Tips/开发规范.md",
+    "docs/Tips/深度学习.md",
+    "docs/MySQL/安装 MySQL.md",
+    "docs/MySQL/备份 MySQL.md",
+    "docs/MySQL/MySQL Tips.md",
+    "docs/OS/并发——多线程.md",
+    "docs/MySQL/MySQL 配置主从.md",
+    "docs/Algorithms/数据结构：图.md",
+    "mkdocs.yml",
+    "template/博客-评论.md",
+    "docs/DM/达梦安装.md",
+    "docs/MySQL/忘记 root 用户密码.md",
+    "docs/stylesheets/extra.css",
+    "overrides/partials/comments.html",
+    "docs/Readme.md",
+    "docs/Linux/时间.md",
+    "docs/Linux/定时备份 MySQL.md",
+    "docs/Linux/磁盘分区挂载.md",
+    "docs/Linux/磁盘分区.md",
+    "docs/Linux/定时任务.md",
+    "docs/Linux/查找文件.md",
+    "docs/Kafka/Kafka 主题与分区.md",
+    "docs/Kafka/Kafka 集群搭建.md",
+    "docs/K8S/安装 Nginx Ingress.md",
+    "docs/LocalFile/favicon.svg",
+    "template",
+    "docs/LocalFile/Picture/OS Tips-1.png",
+    "docs/LocalFile/Picture/求解算数表达式的值-1.jpg"
+  ]
+}

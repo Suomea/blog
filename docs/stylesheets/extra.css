@@ -1,4 +1,8 @@
 .md-grid {
-    max-width: 1700px;
+    max-width: 1500px;
 }
 
+.md-typeset {
+    font-size: .7rem;
+    line-height: 1.5;
+}
