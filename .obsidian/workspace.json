@@ -4,31 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "fec9dbdb51e0e8aa",
+        "id": "af8d09cbdc33ecfe",
         "type": "tabs",
         "children": [
           {
-            "id": "dde69bff130fcb1a",
+            "id": "044546147249fa2a",
             "type": "leaf",
             "state": {
-              "type": "vscode-editor",
+              "type": "markdown",
               "state": {
-                "file": "overrides/partials/comments.html"
-              }
-            }
-          },
-          {
-            "id": "08a0417eb74a1212",
-            "type": "leaf",
-            "state": {
-              "type": "vscode-editor",
-              "state": {
-                "file": "overrides/partials/footer.html"
+                "file": "docs/Network/运输层：UDP.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -94,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "overrides/partials/footer.html",
+                "file": "docs/Network/运输层：UDP.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "overrides/partials/footer.html",
+                "file": "docs/Network/运输层：UDP.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "overrides/partials/footer.html"
+                "file": "docs/Network/运输层：UDP.md"
               }
             }
           }
@@ -156,42 +147,43 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "08a0417eb74a1212",
+  "active": "044546147249fa2a",
   "lastOpenFiles": [
-    "overrides/partials/comments.html",
+    "docs/Network/网络层：TCP.md",
+    "docs/Network/运输层：UDP.md",
+    "docs/OS/汇编——介绍.md",
+    "docs/OS/并发——锁.md",
+    "docs/OS/并发——多线程.md",
+    "docs/OS/OS Tips.md",
+    "docs/Algorithms/数据结构：图.md",
+    "docs/Algorithms/Base64 算法.md",
+    "docs/Algorithms/求解算数表达式的值.md",
+    "docs/Network/网络层：ICMP.md",
+    "docs/Network/运输层：介绍.md",
+    "docs/ML/Keras 入门.md",
+    "docs/DM/达梦安装.md",
+    "docs/Reading/读书计划.md",
+    "docs/Reading/2023.md",
+    "docs/Reading/2022.md",
+    "docs/Reading/2021.md",
+    "docs/Network/网络层：IP.md",
+    "docs/MySQL/MySQL Tips.md",
+    "docs/MySQL/MySQL 配置主从.md",
+    "docs/MySQL/备份 MySQL.md",
+    "docs/MySQL/安装 MySQL.md",
+    "docs/MySQL/忘记 root 用户密码.md",
     "mkdocs.yml",
-    "docs/index.md",
+    "docs/Docker/安装 Docker.md",
     "overrides/partials/footer.html",
+    "overrides/partials/comments.html",
+    "docs/index.md",
     "docs/index.html",
     "docs/stylesheets/extra.css",
     "docs/Java/Tips.md",
-    "docs/Java/微服务优雅停机.md",
-    "docs/Java/微服务架构.md",
-    "docs/Network/运输层：介绍.md",
-    "docs/Network/运输层：UDP.md",
-    "docs/Network/网络层：IP.md",
-    "docs/Network/网络层：ICMP.md",
-    "docs/Tips/开发规范.md",
-    "docs/Tips/深度学习.md",
-    "docs/Linux/Linux 清理 PG WAL 日志.md",
-    "docs/Kafka/Kafka ACL.md",
-    "template/博客-评论.md",
-    "docs/Kafka/Kafka 主题与分区.md",
-    "docs/Kafka/Kafka 集群搭建.md",
-    "docs/Linux/curl.md",
     "docs/LocalFile/Picture/用户数据报的格式.png",
-    "docs/MySQL/安装 MySQL.md",
-    "docs/MySQL/备份 MySQL.md",
-    "docs/MySQL/MySQL Tips.md",
-    "docs/OS/并发——多线程.md",
-    "docs/MySQL/MySQL 配置主从.md",
-    "docs/Algorithms/数据结构：图.md",
-    "docs/DM/达梦安装.md",
-    "docs/MySQL/忘记 root 用户密码.md",
-    "docs/index.html.md",
     "docs/LocalFile/favicon.svg",
     "template",
-    "docs/LocalFile/Picture/OS Tips-1.png",
+    "docs/LocalFile/Picture/OSTips.png",
     "docs/LocalFile/Picture/求解算数表达式的值-1.jpg"
   ]
 }

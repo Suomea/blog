@@ -1,7 +1,8 @@
 ---
 comments: true
+tags:
+  - MySQL
 ---
-#MySQL 
 ### `count` 函数的注意事项
 
 表结构定义如下：
@@ -55,3 +56,24 @@ Wrappers.<User>lambdaQuery()
 	.apply("find_in_set({0}, tag)", "中国人");
 ```
 
+### `root` 用户忘记密码
+
+停止 MySQL 服务，编辑配置文件增加选项 `skip-grant-tables` 启动 MySQL 服务。 
+
+直接进入 MySQL，命令 `mysql`。
+```sql
+update mysql.user set authentication_string = null where user = 'root';
+flush privileges;
+exit;
+```
+
+再次进入 MySQL，命令  `mysql -u root `。
+```
+alter user root@localhost identified  by 'new_password';
+flush privileges;
+exit;
+```
+
+去掉增加的配置，重启 MySQL 服务，完成。
+
+参考：https://stackoverflow.com/questions/50691977/how-to-reset-the-root-password-in-mysql-8-0-11

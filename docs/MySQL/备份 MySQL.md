@@ -1,9 +1,8 @@
 ---
 comments: true
+tags:
+  - MySQL
 ---
-#MySQL
-
-
 > 测试环境基于 MySQL 8.0.35，XtraBackup 8.0.35-30。
 
 演示环境

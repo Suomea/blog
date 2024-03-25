@@ -1,5 +1,8 @@
-#MySQL
-
+---
+comments: true
+tags:
+  - MySQL
+---
 参考：https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/
 ## Docker 安装
 ```shell
@@ -12,7 +15,7 @@ docker run --name mysql -v /my/own/datadir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD
 
 下载安装软件包
 
-```
+```shell
 wget https://dev.mysql.com/get/mysql-apt-config_0.8.26-1_all.deb 
 dpkg -i mysql-apt-config_0.8.26-1_all.deb 
 apt update
@@ -22,13 +25,13 @@ apt update
 
 安装 MySQL，下面命令将会安装 MySQL 服务器，客户端以及数据库通用的文件包。
 
-```
+```shell
 apt install mysql-server
 ```
 
 设置 root 用户允许所有主机远程连接（仅用于测试，生产环境不允许 root 用户的远程连接）
 
-```
+```sql
 update mysql.user set host = '%' where user = 'root'; flush privileges;
 ```
 
@@ -69,25 +72,25 @@ Environment=MYSQLD_PARENT_PID=1
 
 停止 MySQL 服务：
 
-```
+```shell
 systemctl stop mysql
 ```
 
 查看安装了哪些 MySQL 包，然后使用 apt remove 命令逐个卸载：
 
-```
+```shell
 apt list --installed
 ```
 
 删除数据目录：
 
-```
+```shell
 rm -rf /var/lib/mysql
 ```
 
 删除 Systemd 服务配置文件：
 
-```
+```shell
 rm -rf /lib/systemd/system/mysql.service 
 rm -rf /etc/systemd/system/mysql.service 
 systemctl daemon-reload
@@ -98,7 +101,7 @@ systemctl daemon-reload
 ### 准备
 
 安装必要的库。
-```
+```shell
 apt install libaio1
 apt install libnuma1
 apt install libncurses6
@@ -114,7 +117,6 @@ tar -zxvf mysql-8.0.33-linux-glibc2.28-x86_64.tar.gz -C /usr/local/
 ```
 
 安装包的文件夹：
-
 
 | 目录            | 目录内容                          |
 | ------------- | ----------------------------- |
@@ -145,7 +147,7 @@ useradd 命令解释
 
 配置环境变量
 
-```
+```shell
 export PATH=$PATH:/usr/local/mysql/bin
 ```
 
@@ -172,7 +174,7 @@ datadir=/usr/local/mysql/mysql-files
 
 初始化数据目录，其中 root 用户的密码会输出的控制台：
 
-```
+```shell
 mysqld --initialize --user=mysql
 ```
 
@@ -180,7 +182,7 @@ mysqld --initialize --user=mysql
 
 启动服务器：
 
-```
+```shell
 mysqld_safe --user=mysql &
 ```
 
@@ -195,7 +197,7 @@ flush privileges;
 
 ### 关闭 MySQL 服务器：
 
-```
+```shell
 ./bin/mysqladmin -u root -p shutdown
 ```
 
