@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Network/运输层：UDP.md",
+                "file": "docs/Network/Network Tips.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,8 +48,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "PG",
-                "matchingCase": false,
+                "query": "",
+                "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Network/运输层：UDP.md",
+                "file": "docs/Network/Network Tips.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Network/运输层：UDP.md",
+                "file": "docs/Network/Network Tips.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Network/运输层：UDP.md"
+                "file": "docs/Network/Network Tips.md"
               }
             }
           }
@@ -138,19 +138,29 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "vscode-editor:新建代码文件": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
-      "command-palette:打开命令面板": false
+      "command-palette:打开命令面板": false,
+      "vscode-editor:新建代码文件": false
     }
   },
   "active": "044546147249fa2a",
   "lastOpenFiles": [
+    "docs/Network/网络层：IP.md",
+    "docs/Network/Network Tips.md",
     "docs/Network/网络层：TCP.md",
+    "docs/Network/运输层：介绍.md",
     "docs/Network/运输层：UDP.md",
+    "docs/Network/网络层：ICMP.md",
+    "docs/MySQL/MySQL Tips.md",
+    "mkdocs.yml",
+    "docs/index.md",
+    "docs/Linux/网络.md",
+    "docs/Linux/curl.md",
+    "docs/Linux/磁盘分区挂载.md",
     "docs/OS/汇编——介绍.md",
     "docs/OS/并发——锁.md",
     "docs/OS/并发——多线程.md",
@@ -158,28 +168,18 @@
     "docs/Algorithms/数据结构：图.md",
     "docs/Algorithms/Base64 算法.md",
     "docs/Algorithms/求解算数表达式的值.md",
-    "docs/Network/网络层：ICMP.md",
-    "docs/Network/运输层：介绍.md",
     "docs/ML/Keras 入门.md",
     "docs/DM/达梦安装.md",
     "docs/Reading/读书计划.md",
     "docs/Reading/2023.md",
     "docs/Reading/2022.md",
     "docs/Reading/2021.md",
-    "docs/Network/网络层：IP.md",
-    "docs/MySQL/MySQL Tips.md",
     "docs/MySQL/MySQL 配置主从.md",
     "docs/MySQL/备份 MySQL.md",
-    "docs/MySQL/安装 MySQL.md",
-    "docs/MySQL/忘记 root 用户密码.md",
-    "mkdocs.yml",
-    "docs/Docker/安装 Docker.md",
     "overrides/partials/footer.html",
     "overrides/partials/comments.html",
-    "docs/index.md",
     "docs/index.html",
     "docs/stylesheets/extra.css",
-    "docs/Java/Tips.md",
     "docs/LocalFile/Picture/用户数据报的格式.png",
     "docs/LocalFile/favicon.svg",
     "template",
