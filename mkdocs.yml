@@ -4,8 +4,9 @@ repo_name: Suomea/blog
 theme:
   favicon: LocalFile/favicon.svg
   logo: LocalFile/favicon.svg
-  palette:
-    primary: orange
+  palette: 
+    - scheme: default
+      primary: white
   font:
     text: 等线
     code: Console
@@ -28,8 +29,9 @@ theme:
       quote: octicons/quote-16
 
   features:
-    - navigation.instant
-    - navigation.tracking
+    # - navigation.instant
+    # - navigation.tracking
+    # - navigation.footer
     - navigation.tabs
 #    - navigation.tabs.sticky
     - navigation.top

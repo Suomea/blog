@@ -6,3 +6,14 @@
     font-size: .7rem;
     line-height: 1.5;
 }
+
+:root {
+  --md-primary-fg-color:        #187733;
+  --md-primary-fg-color--light: #ECB7B7;
+  --md-primary-fg-color--dark:  #90030C;
+}
+
+.footer {
+    height: 60px; /* 设置页脚高度为100像素 */
+    /* 其他页脚样式属性 */
+}

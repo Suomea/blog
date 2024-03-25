@@ -11,15 +11,24 @@
             "id": "dde69bff130fcb1a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "vscode-editor",
               "state": {
-                "file": "docs/Network/运输层：UDP.md",
-                "mode": "source",
-                "source": false
+                "file": "overrides/partials/comments.html"
+              }
+            }
+          },
+          {
+            "id": "08a0417eb74a1212",
+            "type": "leaf",
+            "state": {
+              "type": "vscode-editor",
+              "state": {
+                "file": "overrides/partials/footer.html"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -48,7 +57,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "校验和",
+                "query": "PG",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -85,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Network/运输层：UDP.md",
+                "file": "overrides/partials/footer.html",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Network/运输层：UDP.md",
+                "file": "overrides/partials/footer.html",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Network/运输层：UDP.md"
+                "file": "overrides/partials/footer.html"
               }
             }
           }
@@ -147,37 +156,39 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "dde69bff130fcb1a",
+  "active": "08a0417eb74a1212",
   "lastOpenFiles": [
-    "docs/LocalFile/Picture/用户数据报的格式.png",
+    "overrides/partials/comments.html",
+    "mkdocs.yml",
+    "docs/index.md",
+    "overrides/partials/footer.html",
+    "docs/index.html",
+    "docs/stylesheets/extra.css",
+    "docs/Java/Tips.md",
+    "docs/Java/微服务优雅停机.md",
+    "docs/Java/微服务架构.md",
     "docs/Network/运输层：介绍.md",
     "docs/Network/运输层：UDP.md",
     "docs/Network/网络层：IP.md",
     "docs/Network/网络层：ICMP.md",
     "docs/Tips/开发规范.md",
     "docs/Tips/深度学习.md",
+    "docs/Linux/Linux 清理 PG WAL 日志.md",
+    "docs/Kafka/Kafka ACL.md",
+    "template/博客-评论.md",
+    "docs/Kafka/Kafka 主题与分区.md",
+    "docs/Kafka/Kafka 集群搭建.md",
+    "docs/Linux/curl.md",
+    "docs/LocalFile/Picture/用户数据报的格式.png",
     "docs/MySQL/安装 MySQL.md",
     "docs/MySQL/备份 MySQL.md",
     "docs/MySQL/MySQL Tips.md",
     "docs/OS/并发——多线程.md",
     "docs/MySQL/MySQL 配置主从.md",
     "docs/Algorithms/数据结构：图.md",
-    "mkdocs.yml",
-    "template/博客-评论.md",
     "docs/DM/达梦安装.md",
     "docs/MySQL/忘记 root 用户密码.md",
-    "docs/stylesheets/extra.css",
-    "overrides/partials/comments.html",
-    "docs/Readme.md",
-    "docs/Linux/时间.md",
-    "docs/Linux/定时备份 MySQL.md",
-    "docs/Linux/磁盘分区挂载.md",
-    "docs/Linux/磁盘分区.md",
-    "docs/Linux/定时任务.md",
-    "docs/Linux/查找文件.md",
-    "docs/Kafka/Kafka 主题与分区.md",
-    "docs/Kafka/Kafka 集群搭建.md",
-    "docs/K8S/安装 Nginx Ingress.md",
+    "docs/index.html.md",
     "docs/LocalFile/favicon.svg",
     "template",
     "docs/LocalFile/Picture/OS Tips-1.png",
