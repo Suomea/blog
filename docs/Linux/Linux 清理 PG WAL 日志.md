@@ -21,3 +21,14 @@ Latest checkpoint's REDO WAL file: 00000001000007EE00000002
 清除 00000001000007EE00000002 之前的文件
 
 ./pg_archivecleanup -d /var/lib/postgresql/13/main/pg_wal/ 00000001000007EE00000002
+
+
+查看每个库数据占用的磁盘空间
+```
+select datname, pg_size_pretty (pg_database_size(datname)) AS size from pg_database;
+```
+
+查看库中每个表占用的磁盘空间
+```
+select relname, pg_size_pretty(pg_relation_size(relid)) from pg_stat_user_tables where schemaname='public' order by pg_relation_size(relid) desc;
+```
