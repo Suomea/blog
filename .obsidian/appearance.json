@@ -2,5 +2,6 @@
   "accentColor": "",
   "textFontFamily": "等线",
   "interfaceFontFamily": "等线",
-  "monospaceFontFamily": "Consolas"
+  "monospaceFontFamily": "Consolas",
+  "baseFontSize": 20
 }
