@@ -69,3 +69,13 @@ ssh-keygen -t rsa
 2. 新建 Linux ~/.ssh/authorized_keys 文件，将 Win 的公钥内容粘贴进来。  
 3. 设置 authorized_keys 文件的权限，只能自己读写：`chmod 0600 ~/.ssh/auhtorized_keys`
 
+## 超时自动退出
+
+可以在 /etc/profile 文件设置变量 $TMOUT，单位为秒。
+
+## 查询机器上次启动时间
+
+```
+who -b
+```
+
