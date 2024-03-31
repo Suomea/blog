@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Java/Tips.md",
+                "file": "docs/Network/运输层：TCP.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Java/Tips.md",
+                "file": "docs/Network/运输层：TCP.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Java/Tips.md",
+                "file": "docs/Network/运输层：TCP.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Java/Tips.md"
+                "file": "docs/Network/运输层：TCP.md"
               }
             }
           }
@@ -134,7 +134,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -149,11 +150,17 @@
   },
   "active": "044546147249fa2a",
   "lastOpenFiles": [
+    "docs/Network/Network Tips.md",
+    "docs/Network/运输层：TCP.md",
+    "docs/Network/运输层：UDP.md",
+    "docs/LocalFile/Picture/TCP首部.png",
+    "docs/LocalFile/Picture/计算机网络-TCP首部.drawio.png",
+    "docs/OS/OS Tips.md",
+    "docs/Java/Tips.md",
     "docs/Kafka/Kafka ACL.md",
     "docs/Kafka/Kafka 主题与分区.md",
     "docs/Kafka/Kafka 集群搭建.md",
     "docs/Linux/Linux Tips.md",
-    "docs/Java/Tips.md",
     "docs/Java/微服务优雅停机.md",
     "docs/Java/微服务架构.md",
     "docs/Python/第 4 章：流程控制.md",
@@ -167,15 +174,10 @@
     "docs/Linux/Linux 清理 PG WAL 日志.md",
     "docs/Tips/开发规范.md",
     "docs/DM/达梦安装.md",
-    "docs/Network/运输层：TCP.md",
-    "docs/Network/Network Tips.md",
     "docs/Network/网络层：IP.md",
     "docs/Network/网络层：TCP.md",
     "docs/Network/运输层：介绍.md",
-    "docs/Network/运输层：UDP.md",
     "docs/Network/网络层：ICMP.md",
-    "docs/MySQL/MySQL Tips.md",
-    "docs/index.md",
     "overrides/partials/footer.html",
     "overrides/partials/comments.html",
     "docs/index.html",
