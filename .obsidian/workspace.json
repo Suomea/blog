@@ -134,8 +134,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -151,8 +150,11 @@
   "active": "044546147249fa2a",
   "lastOpenFiles": [
     "docs/Network/Network Tips.md",
-    "docs/Network/运输层：TCP.md",
     "docs/Network/运输层：UDP.md",
+    "docs/stylesheets/extra.css",
+    "mkdocs.yml",
+    "docs/Network/运输层：TCP.md",
+    "docs/Linux/curl.md",
     "docs/LocalFile/Picture/TCP首部.png",
     "docs/LocalFile/Picture/计算机网络-TCP首部.drawio.png",
     "docs/OS/OS Tips.md",
@@ -169,8 +171,6 @@
     "docs/Reading/2022.md",
     "docs/Reading/2023.md",
     "docs/Reading/读书计划.md",
-    "mkdocs.yml",
-    "docs/Linux/curl.md",
     "docs/Linux/Linux 清理 PG WAL 日志.md",
     "docs/Tips/开发规范.md",
     "docs/DM/达梦安装.md",
@@ -181,7 +181,6 @@
     "overrides/partials/footer.html",
     "overrides/partials/comments.html",
     "docs/index.html",
-    "docs/stylesheets/extra.css",
     "docs/LocalFile/Picture/用户数据报的格式.png",
     "docs/LocalFile/favicon.svg",
     "template",

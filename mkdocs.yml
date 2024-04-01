@@ -61,8 +61,9 @@ nav:
       - Linux/定时任务.md
       - Linux/定时备份 MySQL.md
       - Linux/文件与文件系统.md
-      - Linux/磁盘分区.md
+      - Linux/磁盘分区挂载.md
       - Linux/Nginx 编译安装.md
+      - Linux/curl.md
   - 操作系统:
       - OS/OS Tips.md
       - OS/并发——多线程.md
@@ -70,6 +71,7 @@ nav:
       - OS/汇编——介绍.md
       - OS/汇编——环境搭建.md
     #   - OS/汇编——寄存器介绍.md
+      - Network/Network Tips.md
       - Network/网络层：IP.md
       - Network/网络层：ICMP.md
       - Network/运输层：UDP.md
