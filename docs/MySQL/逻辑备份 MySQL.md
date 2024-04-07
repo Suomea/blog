@@ -1,3 +1,6 @@
+---
+comments: true
+---
 备份采用 crontab 定时执行脚本的方式进行。
 
 ## 备份
@@ -34,7 +37,7 @@ then
     mkdir -p $backup_dir;
 fi
 
-mysqldump --defaults-file=$cre_file $database_name | gzip > $backup_dir/$database_name-$dd.gz
+mysqldump --single_transaction --master-data=2 --defaults-file=$cre_file $database_name | gzip > $backup_dir/$database_name-$dd.gz
 
 echo "dump file: $backup_dir/$database_name-$dd.gz" >> $backup_dir/dump.log
 

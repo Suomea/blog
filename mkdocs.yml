@@ -49,7 +49,8 @@ nav:
   - 数据库:
       - MySQL/MySQL Tips.md
       - MySQL/安装 MySQL.md
-      - MySQL/备份 MySQL.md
+      - MySQL/逻辑备份 MySQL.md
+      - MySQL/物理备份 MySQL.md
       - MySQL/MySQL 配置主从.md
       - DM/达梦安装.md
   - K8S:
@@ -59,7 +60,6 @@ nav:
   - Linux:
       - Linux/Linux Tips.md
       - Linux/定时任务.md
-      - Linux/定时备份 MySQL.md
       - Linux/文件与文件系统.md
       - Linux/磁盘分区挂载.md
       - Linux/Nginx 编译安装.md

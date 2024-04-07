@@ -79,3 +79,23 @@ ssh-keygen -t rsa
 who -b
 ```
 
+
+## 查看操作系统信息
+
+```
+cat /etc/os-release
+```
+
+或者
+```
+ls-release -a
+```
+## 查看 CPU 信息
+```
+lscpu
+```
+
+或者
+```
+cat /proc/cpuinfo
+```
