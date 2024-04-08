@@ -174,17 +174,27 @@ FIN 报文段可以包含客户端发送的最后一块数据。或者仅仅只�
 
 | 状态          | 说明                            |
 | ----------- | ----------------------------- |
-| CLOSED      | 没有连接。                         |
-| LISTEN      | 收到了被动打开，等待 SYN。               |
-| SYN-SENT    | 已发送了 SYN，等待 ACK。              |
-| SYN-RCVD    | 已发送了 SYN+ACK，等待 ACK。          |
-| ESTABLISHED | 连接建立，数据传送在进行。                 |
-| FIN-WAIT1   | 第一个 FIN 已发送，等待 ACK。           |
-| FIN-WAIT2   | 对第一个 FIN 的 ACK 已收到，等待第二个 FIN。 |
-| CLOSE-WAIT  | 收到第一个 FIN，已发送 ACK，等待应用程序关闭。   |
-| TIME-WAIT   | 收到第二个 FIN，已发送 ACK，等待 2MSL 超时。 |
-| LAST-ACK    | 已发送第二个 FIN，等待 ACK。            |
-| CLOSING     | 双方都以决定同时关闭。                   |
+| `CLOSED`      | 没有连接。                         |
+| `LISTEN`      | 收到了被动打开，等待 SYN。               |
+| `SYN-SENT`    | 已发送了 SYN，等待 ACK。              |
+| `SYN-RCVD`    | 已发送了 SYN+ACK，等待 ACK。          |
+| `ESTABLISHED` | 连接建立，数据传送在进行。                 |
+| `FIN-WAIT1`   | 第一个 FIN 已发送，等待 ACK。           |
+| `FIN-WAIT2`   | 对第一个 FIN 的 ACK 已收到，等待第二个 FIN。 |
+| `CLOSE-WAIT`  | 收到第一个 FIN，已发送 ACK，等待应用程序关闭。   |
+| `TIME-WAIT`   | 收到第二个 FIN，已发送 ACK，等待 2MSL 超时。 |
+| `LAST-ACK`    | 已发送第二个 FIN，等待 ACK。            |
+| `CLOSING`     | 双方都以决定同时关闭。                   |
+
+下图展示了 TCP 建立连接和半关闭终止的时间线图。
+![](../LocalFile/Picture/TCP连接建立和半关闭终止的状态图.png)
+**客户端状态**
+
+客户进程向 TCP 发出命令，请求连接某个特定的套接字地址，这就称为主打开。于是 TCP 发出一个 SYN 报文段，进入到 SYN-SENT 状态。
+
+在收到 SYN+ACK 报文段后，TCP 发送 ACK 报文段，并进入 ESTABLISHED 状态。此后数据开始传送和确认。
+
+当客户没有更多的数据要传送时，就发出称为主动关闭的命令。于是 TCP 发送 FIN 报文段，并进入到 FIN-WAIT-1 状态。
 
 ## tcpdump
 

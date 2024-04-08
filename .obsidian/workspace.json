@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Tips/API.md",
+                "file": "docs/Network/运输层：TCP.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "PG",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Tips/API.md",
+                "file": "docs/Network/运输层：TCP.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Tips/API.md",
+                "file": "docs/Network/运输层：TCP.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Tips/API.md"
+                "file": "docs/Network/运输层：TCP.md"
               }
             }
           }
@@ -134,7 +134,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -149,37 +150,40 @@
   },
   "active": "044546147249fa2a",
   "lastOpenFiles": [
-    "docs/Tips/小记.md",
-    "docs/Tips/API.md",
-    "docs/Network/运输层：TCP.md",
-    "docs/LocalFile/Picture/TCP-TCP中止连接半关闭.png",
-    "docs/Linux/Linux 清理 PG WAL 日志.md",
-    "docs/Tips/开发规范.md",
-    "docs/Tips/深度学习.md",
-    "docs/Linux/磁盘分区挂载.md",
-    "docs/Linux/curl.md",
+    "docs/LocalFile/Picture/TCP连接建立和半关闭终止的状态图.png",
+    "docs/MySQL/逻辑备份 MySQL.md",
+    "docs/MySQL/物理备份 MySQL.md",
+    "docs/LocalFile/Picture/求解算数表达式的值.jpg",
     "docs/LocalFile/Picture/TCP建立连接三向握手.png",
-    "docs/Network/网络层：IP.md",
+    "docs/LocalFile/Picture/TCP中止连接三向握手.png",
+    "docs/LocalFile/Picture/TCP-TCP中止连接半关闭.png",
+    "docs/Linux/磁盘分区挂载.md",
+    "docs/Network/运输层：TCP.md",
+    "docs/Network/Network Tips.md",
+    "docs/Network/运输层：UDP.md",
+    "docs/stylesheets/extra.css",
+    "mkdocs.yml",
+    "docs/Linux/curl.md",
+    "docs/LocalFile/Picture/TCP首部.png",
+    "docs/LocalFile/Picture/计算机网络-TCP首部.drawio.png",
+    "docs/OS/OS Tips.md",
+    "docs/Java/Tips.md",
     "docs/Kafka/Kafka ACL.md",
     "docs/Kafka/Kafka 主题与分区.md",
     "docs/Kafka/Kafka 集群搭建.md",
-    "docs/K8S/安装 Nginx Ingress.md",
-    "docs/K8S/安装 Kuboard 集群管理界面.md",
-    "docs/K8S/安装 Kubernetes 集群.md",
-    "docs/Java/Tips.md",
-    "docs/Docker/安装 Docker.md",
-    "docs/Docker/镜像操作.md",
-    "docs/Arts/侠客行-李白.md",
-    "docs/Arts/满江红-岳飞.md",
-    "docs/Algorithms/Base64 算法.md",
-    "docs/Algorithms/数据结构：图.md",
-    "docs/Linux/VIM.md",
-    "docs/Algorithms/求解算数表达式的值.md",
-    "docs/MySQL/逻辑备份 MySQL.md",
-    "mkdocs.yml",
-    "docs/stylesheets/extra.css",
-    "docs/LocalFile/Picture/TCP首部.png",
-    "docs/LocalFile/Picture/计算机网络-TCP首部.drawio.png",
+    "docs/Linux/Linux Tips.md",
+    "docs/Java/微服务优雅停机.md",
+    "docs/Java/微服务架构.md",
+    "docs/Python/第 4 章：流程控制.md",
+    "docs/Python/第 2 章：算术、字符串与变量.md",
+    "docs/Reading/2021.md",
+    "docs/Reading/2022.md",
+    "docs/Reading/2023.md",
+    "docs/Reading/读书计划.md",
+    "docs/Linux/Linux 清理 PG WAL 日志.md",
+    "docs/Tips/开发规范.md",
+    "docs/DM/达梦安装.md",
+    "docs/Network/网络层：IP.md",
     "overrides/partials/footer.html",
     "overrides/partials/comments.html",
     "docs/index.html",
@@ -187,6 +191,6 @@
     "docs/LocalFile/favicon.svg",
     "template",
     "docs/LocalFile/Picture/OSTips.png",
-    "docs/LocalFile/Picture/求解算数表达式的值.jpg"
+    "docs/LocalFile/Picture/求解算数表达式的值-1.jpg"
   ]
 }
