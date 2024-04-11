@@ -1,6 +1,5 @@
 
 ## 配置
-
 编辑配置文件 `vim ~/.vimrc`。
 ```
 set nu 
@@ -19,18 +18,22 @@ set noswapfile
 
 光标跳到行首：`shift + ^`
 
-光标跳到文件开头：`gg`
+光标跳到文件开头：`gg`/`1g`
 
 光标跳到文件结尾：`shift + g`
 
 ## 替换
-
 `:n1,n2s/word1/word2/g` 在 n1 行和 n2 行之间，替换 `word1` 为 `word2`。
 
 `:1,$s/word1/word2/g` 在 第一行与最后一行之间寻找 `word1` 替换为 `word2`，等同于 `:%s/word1/word2/g`。
 
-## 换行
+`:s/word1/word2` 当前行的第一个 `word1` 替换为 `word2`。 
 
+`:s/word1/word2/g`  当前行的所有的 `word1` 替换为 `word2`。
+
+`:%s/word1/word2` 每一行的第一个 `word1` 替换为 `word2`。
+
+## 换行
 执行如下命令
 ```shell
 # echo hello > test.txt
