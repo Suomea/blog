@@ -1,8 +1,6 @@
 ## suomea-tool
 
 base64 加密
-接口路径：`GET` `/suomea-tool/base64/encoder`
-
 ```shell
 curl http://106.15.72.83/suomea-tool/base64/encoder?content=<string>
 ```
