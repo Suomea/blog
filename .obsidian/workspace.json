@@ -13,19 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Linux/Linux Tips.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "922361604b3a7ecb",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Linux/VIM.md",
+                "file": "docs/Network/运输层：TCP.md",
                 "mode": "source",
                 "source": false
               }
@@ -60,8 +48,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "VIM",
-                "matchingCase": true,
+                "query": "",
+                "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
@@ -97,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Linux/Linux Tips.md",
+                "file": "docs/Network/运输层：TCP.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Linux/Linux Tips.md",
+                "file": "docs/Network/运输层：TCP.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Linux/Linux Tips.md"
+                "file": "docs/Network/运输层：TCP.md"
               }
             }
           }
@@ -146,8 +134,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -162,47 +149,51 @@
   },
   "active": "044546147249fa2a",
   "lastOpenFiles": [
-    "docs/Linux/VIM.md",
-    "docs/Linux/Linux Tips.md",
-    "docs/Linux/PG Tips.md",
+    "docs/Linux/curl.md",
     "docs/MySQL/安装 MySQL.md",
+    "docs/Linux/Debian 软件安装.md",
     "docs/Network/运输层：TCP.md",
-    "docs/LocalFile/Picture/TCP连接建立和半关闭终止的状态图.png",
-    "docs/MySQL/逻辑备份 MySQL.md",
-    "docs/MySQL/物理备份 MySQL.md",
-    "docs/LocalFile/Picture/求解算数表达式的值.jpg",
-    "docs/LocalFile/Picture/TCP建立连接三向握手.png",
-    "docs/LocalFile/Picture/TCP中止连接三向握手.png",
-    "docs/LocalFile/Picture/TCP-TCP中止连接半关闭.png",
-    "docs/Linux/磁盘分区挂载.md",
+    "docs/Linux/Linux Tips.md",
+    "docs/Network/网络层：IP.md",
+    "docs/Tips/开发规范.md",
+    "docs/Tips/深度学习.md",
+    "docs/Tips/API.md",
+    "site/Tips/API/index.html",
+    "site/search/search_index.json",
+    "site/search",
+    "site/Tips/深度学习/index.html",
+    "site/Tips/开发规范/index.html",
+    "site/Tips/深度学习",
+    "site/Tips/开发规范",
+    "site/Tips/API",
+    "site/Tips",
+    "site/Spring/资源加载策略/index.html",
+    "site/assets/images/favicon.png",
+    "site/LocalFile/Picture/选项的格式.png",
+    "site/LocalFile/Picture/详细分分片示例.png",
+    "site/LocalFile/Picture/记录路由选项.png",
+    "site/LocalFile/Picture/求解算数表达式的值.jpg",
+    "site/LocalFile/Picture/用户数据报的格式.png",
+    "site/LocalFile/Picture/并发——多线程-1.png",
+    "site/LocalFile/Picture/带权图.png",
+    "site/LocalFile/Picture/人工智能、机器学习和深度学习的关系.png",
+    "site/LocalFile/Picture/TCP首部.png",
+    "docs/Linux/VIM.md",
+    "docs/Linux/PG Tips.md",
+    "docs/Linux/Nginx 编译安装.md",
+    "docs/Linux/文件与文件系统.md",
+    "docs/Linux/查找文件.md",
     "docs/Network/Network Tips.md",
     "docs/Network/运输层：UDP.md",
-    "docs/stylesheets/extra.css",
-    "mkdocs.yml",
-    "docs/Linux/curl.md",
-    "docs/LocalFile/Picture/TCP首部.png",
-    "docs/LocalFile/Picture/计算机网络-TCP首部.drawio.png",
-    "docs/OS/OS Tips.md",
-    "docs/Java/Tips.md",
+    "docs/Network/运输层：介绍.md",
+    "docs/Network/网络层：ICMP.md",
+    "docs/Tips/小记.md",
+    "docs/Linux/磁盘分区挂载.md",
     "docs/Kafka/Kafka ACL.md",
     "docs/Kafka/Kafka 主题与分区.md",
     "docs/Kafka/Kafka 集群搭建.md",
-    "docs/Java/微服务优雅停机.md",
-    "docs/Java/微服务架构.md",
-    "docs/Python/第 4 章：流程控制.md",
-    "docs/Python/第 2 章：算术、字符串与变量.md",
-    "docs/Reading/2021.md",
-    "docs/Reading/2022.md",
-    "docs/Reading/2023.md",
-    "docs/Reading/读书计划.md",
-    "docs/Linux/Linux 清理 PG WAL 日志.md",
-    "docs/Tips/开发规范.md",
-    "overrides/partials/footer.html",
-    "overrides/partials/comments.html",
-    "docs/index.html",
-    "docs/LocalFile/Picture/用户数据报的格式.png",
-    "docs/LocalFile/favicon.svg",
-    "template",
-    "docs/LocalFile/Picture/OSTips.png"
+    "docs/K8S/安装 Nginx Ingress.md",
+    "docs/K8S/安装 Kuboard 集群管理界面.md",
+    "docs/K8S/安装 Kubernetes 集群.md"
   ]
 }
