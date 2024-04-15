@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "端口",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,7 +65,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -147,8 +148,9 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "044546147249fa2a",
+  "active": "4fa63aab94a20f16",
   "lastOpenFiles": [
+    "docs/LocalFile/Picture/TCP拒绝连接.png",
     "docs/Linux/curl.md",
     "docs/MySQL/安装 MySQL.md",
     "docs/Linux/Debian 软件安装.md",
@@ -193,7 +195,6 @@
     "docs/Kafka/Kafka 主题与分区.md",
     "docs/Kafka/Kafka 集群搭建.md",
     "docs/K8S/安装 Nginx Ingress.md",
-    "docs/K8S/安装 Kuboard 集群管理界面.md",
-    "docs/K8S/安装 Kubernetes 集群.md"
+    "docs/K8S/安装 Kuboard 集群管理界面.md"
   ]
 }
