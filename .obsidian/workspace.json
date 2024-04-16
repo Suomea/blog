@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Network/运输层：TCP.md",
+                "file": "docs/MySQL/物理备份 MySQL.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "Chxy",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,7 +65,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Network/运输层：TCP.md",
+                "file": "docs/MySQL/物理备份 MySQL.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Network/运输层：TCP.md",
+                "file": "docs/MySQL/物理备份 MySQL.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Network/运输层：TCP.md"
+                "file": "docs/MySQL/物理备份 MySQL.md"
               }
             }
           }
@@ -147,12 +148,15 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "044546147249fa2a",
+  "active": "4fa63aab94a20f16",
   "lastOpenFiles": [
-    "docs/Linux/curl.md",
+    "docs/MySQL/逻辑备份 MySQL.md",
+    "docs/MySQL/MySQL 配置主从.md",
+    "docs/MySQL/物理备份 MySQL.md",
     "docs/MySQL/安装 MySQL.md",
-    "docs/Linux/Debian 软件安装.md",
     "docs/Network/运输层：TCP.md",
+    "docs/Linux/curl.md",
+    "docs/Linux/Debian 软件安装.md",
     "docs/Linux/Linux Tips.md",
     "docs/Network/网络层：IP.md",
     "docs/Tips/开发规范.md",
@@ -191,9 +195,6 @@
     "docs/Linux/磁盘分区挂载.md",
     "docs/Kafka/Kafka ACL.md",
     "docs/Kafka/Kafka 主题与分区.md",
-    "docs/Kafka/Kafka 集群搭建.md",
-    "docs/K8S/安装 Nginx Ingress.md",
-    "docs/K8S/安装 Kuboard 集群管理界面.md",
-    "docs/K8S/安装 Kubernetes 集群.md"
+    "docs/Kafka/Kafka 集群搭建.md"
   ]
 }

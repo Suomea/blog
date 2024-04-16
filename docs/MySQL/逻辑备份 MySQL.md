@@ -1,10 +1,27 @@
 ---
 comments: true
 ---
-备份采用 crontab 定时执行脚本的方式进行。
+
+## `mysqldump` 命令
+
+导出指定数据库的数据，导出的 SQL 文件包含 DROP TABLE，CREATE TABLE，INSERT INTO TABLE。
+```
+mysqldump -u <user> -p <dbname> > dbname.sql
+```
+
+导出所有数据库的数据，导出的 SQL 文件包含 DROP TABLE，CREATE TABLE，INSERT INTO TABLE。
+```
+mysqldump -u <user> -p --all-databases > alldb.sql
+```
+
+导出指定表的数据，导出的 SQL 文件包含 DROP TABLE，CREATE TABLE，INSERT INTO TABLE。
+```
+mysqldump -u <user> -p <dbname> <tablename1> <tablename2> > tablename.sql
+```
+
 
 ## 备份
-
+备份采用 crontab 定时执行脚本的方式进行。
 ### 创建连接凭证配置文件
 MySQL 连接凭证单独放在文件一个文件中，置于 /data/database/db_name 目录下，文件名为 `.bak.cnf`，内容如下：
 ```text

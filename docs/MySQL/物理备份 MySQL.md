@@ -26,7 +26,7 @@ tags:
 ## mysqldump 备份
 
 ```shell
-mysqldump --source-data=2 --single-transaction -h 192.168.3.251 -u root -pChxy@122619 --all-databases | gzip > test.sql.gz
+mysqldump --source-data=2 --single-transaction -h 192.168.3.251 -u root -p --all-databases | gzip > test.sql.gz
 ```
 
 `--source-data=2`：导出二进制日志文件名称和位置信息，并且在导出文件中以注释的形式展示。
