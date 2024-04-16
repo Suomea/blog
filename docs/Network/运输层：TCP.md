@@ -221,10 +221,67 @@ TCP 可以一直保持在 `ESTABLISHED` 状态，直到收到来自客户端的 
 服务端 TCP 发送 FIN 报文段，表示要关闭这个连接，并进入到 `LAST-ACK` 状态。服务器 TCP 一直处于这个状态直到收到最后的 ACK 报文段，然后进入 `CLOSED` 状态。
 
 ### 拒绝连接
-一种常见的情况是，客户端请求服务器的端口建立连接，但是服务端的端口并没有处于 LISTEN 状态。服务器 TCP 在收到这样的 SYN 报文段后会发送一个 RST+ACK 报文段，它确认了 SYN 报文段，单于此同时重置这条连接。客户端在收到这个 RST+ACK 报文段后进入 CLOSED 状态。
+![](../LocalFile/Picture/TCP拒绝连接.png)
+一种常见的情况是，客户端请求服务器的端口建立连接，但是服务端的端口并没有处于 `LISTEN` 状态。
+
+服务器 TCP 在收到这样的 SYN 报文段后会发送一个 RST+ACK 报文段，它确认了 SYN 报文段，但于此同时重置这条连接。
+
+客户端在收到这个 RST+ACK 报文段后进入 `CLOSED` 状态。
+
+
 ## tcpdump
+**网卡选项** 直接抓取主机上的所有包，-i 选项指定网卡，any 表示任意网卡。
+```shell
+tcpdump -i any
+```
 
+**IP 选项** 抓取 IP 地址为 192.168.31.99 的包，`host` 可以是源地址或者目的地址。只抓取源地址使用 `src`，只抓取目的地址使用 `dst`。
+```shell
+tcpdump -i any host 192.168.31.99
+```
 
+**PORT 选项** 抓取端口为 80 的数据包，port 指定端口号。只抓取源端口号（本机发出）在 `port` 前加 `src`，只抓取目的端口号（收到）在 `port` 前加 `dst`。
+```shell
+tcpdump -i any [src|dst] port 80
+```
+
+也可使用 portrange 选项抓取指定端口范围的流量。
+```shell
+tcpdump portrange 80-88
+```
+
+-n 选项，直接输出 IP 地址和端口号，默认会打印主机名和端口的协议名称。
+
+-c 选项，指定抓包的数量。
+
+-w 选项，将抓包文件输出到文件，生成的 pcap 文件可以使用 wireshark 进行详细分析。
+
+抓包 22222 端口，10 个包，写入到 test.pcap 文件，显示绝对序号。
+```shell
+tcpdump -i any port 22222 -c 10 -w test.pcap -U
+```
+
+**高级技巧** 可以使用 and、or 和 not 来组成表达式过滤条件。
+
+抓取 IP 为 192.168.31.99 且目的端口为 3306 的包。
+```
+tcpdump -i any host 192.168.31.99 and dst port 3306
+```
+
+抓取 IP 为 192.168.31.99 且目的端口不为 22222 的包。
+```
+tcpdump -i any host 192.168.31.99 and not dst port 22222
+```
+
+也支持使用括号 `()` 将复杂的表达式组合起来，但是 shell 里面括号是特殊字符，所以需要使用单引号包含表达式。
+```
+tcpdump -i any 'src 192.168.31.99 and (dst port 3306 or dst port 6379)'
+```
+
+抓取所有 RST 的包，tcp 头部第 14 个字节，取值进行运算。
+```
+tcpdump 'tcp[13] & 4 != 0'
+```
 ## QA
 
 ### Java 实现 Echo 协议代码
