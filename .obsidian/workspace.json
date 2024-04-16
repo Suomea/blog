@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/MySQL/物理备份 MySQL.md",
+                "file": "docs/Nginx/Nginx 安装.md",
                 "mode": "source",
                 "source": false
               }
@@ -65,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MySQL/物理备份 MySQL.md",
+                "file": "docs/Nginx/Nginx 安装.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/MySQL/物理备份 MySQL.md",
+                "file": "docs/Nginx/Nginx 安装.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MySQL/物理备份 MySQL.md"
+                "file": "docs/Nginx/Nginx 安装.md"
               }
             }
           }
@@ -135,7 +134,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -148,17 +148,24 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "4fa63aab94a20f16",
+  "active": "044546147249fa2a",
   "lastOpenFiles": [
+    "未命名.canvas",
+    "docs/Network/网络层：ICMP.md",
+    "docs/Network/网络层：IP.md",
+    "docs/Network/运输层：介绍.md",
+    "docs/Network/运输层：UDP.md",
+    "docs/Network/运输层：TCP.md",
+    "docs/LocalFile/Picture/TCP接收窗口和分配的缓存.png",
+    "docs/LocalFile/Picture/TCP发送窗口.png",
+    "docs/Linux/Linux Tips.md",
+    "docs/Linux/ls.md",
+    "docs/MySQL/物理备份 MySQL.md",
     "docs/MySQL/逻辑备份 MySQL.md",
     "docs/MySQL/MySQL 配置主从.md",
-    "docs/MySQL/物理备份 MySQL.md",
     "docs/MySQL/安装 MySQL.md",
-    "docs/Network/运输层：TCP.md",
     "docs/Linux/curl.md",
     "docs/Linux/Debian 软件安装.md",
-    "docs/Linux/Linux Tips.md",
-    "docs/Network/网络层：IP.md",
     "docs/Tips/开发规范.md",
     "docs/Tips/深度学习.md",
     "docs/Tips/API.md",
@@ -180,21 +187,14 @@
     "site/LocalFile/Picture/用户数据报的格式.png",
     "site/LocalFile/Picture/并发——多线程-1.png",
     "site/LocalFile/Picture/带权图.png",
-    "site/LocalFile/Picture/人工智能、机器学习和深度学习的关系.png",
-    "site/LocalFile/Picture/TCP首部.png",
     "docs/Linux/VIM.md",
     "docs/Linux/PG Tips.md",
     "docs/Linux/Nginx 编译安装.md",
     "docs/Linux/文件与文件系统.md",
     "docs/Linux/查找文件.md",
     "docs/Network/Network Tips.md",
-    "docs/Network/运输层：UDP.md",
-    "docs/Network/运输层：介绍.md",
-    "docs/Network/网络层：ICMP.md",
     "docs/Tips/小记.md",
     "docs/Linux/磁盘分区挂载.md",
-    "docs/Kafka/Kafka ACL.md",
-    "docs/Kafka/Kafka 主题与分区.md",
-    "docs/Kafka/Kafka 集群搭建.md"
+    "docs/Kafka/Kafka ACL.md"
   ]
 }

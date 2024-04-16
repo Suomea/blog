@@ -83,3 +83,5 @@ lscpu
 ```
 cat /proc/cpuinfo
 ```
+
+ ### `lsof`
