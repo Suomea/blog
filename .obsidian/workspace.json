@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Nginx/Nginx 安装.md",
+                "file": "docs/Network/运输层：TCP.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Nginx/Nginx 安装.md",
+                "file": "docs/Network/运输层：TCP.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Nginx/Nginx 安装.md",
+                "file": "docs/Network/运输层：TCP.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Nginx/Nginx 安装.md"
+                "file": "docs/Network/运输层：TCP.md"
               }
             }
           }
@@ -150,6 +150,7 @@
   },
   "active": "044546147249fa2a",
   "lastOpenFiles": [
+    "docs/Nginx/Nginx 安装.md",
     "未命名.canvas",
     "docs/Network/网络层：ICMP.md",
     "docs/Network/网络层：IP.md",
