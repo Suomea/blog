@@ -18,6 +18,14 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "841aa3ec46b980ef",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
           }
         ]
       }
@@ -48,7 +56,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Chxy",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -134,8 +142,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -150,8 +157,11 @@
   },
   "active": "044546147249fa2a",
   "lastOpenFiles": [
-    "docs/MySQL/安装 MySQL.md",
+    "docs/Network/Network Tips.md",
     "docs/Network/运输层：TCP.md",
+    "docs/LocalFile/Picture/Pastedimage20240423194526.png",
+    "docs/LocalFile/Picture/Pastedimage20240423194147.png",
+    "docs/MySQL/安装 MySQL.md",
     "docs/Nginx/Nginx 安装.md",
     "未命名.canvas",
     "docs/Network/网络层：ICMP.md",
@@ -186,16 +196,12 @@
     "site/LocalFile/Picture/记录路由选项.png",
     "site/LocalFile/Picture/求解算数表达式的值.jpg",
     "site/LocalFile/Picture/用户数据报的格式.png",
-    "site/LocalFile/Picture/并发——多线程-1.png",
-    "site/LocalFile/Picture/带权图.png",
     "docs/Linux/VIM.md",
     "docs/Linux/PG Tips.md",
     "docs/Linux/Nginx 编译安装.md",
     "docs/Linux/文件与文件系统.md",
     "docs/Linux/查找文件.md",
-    "docs/Network/Network Tips.md",
     "docs/Tips/小记.md",
-    "docs/Linux/磁盘分区挂载.md",
-    "docs/Kafka/Kafka ACL.md"
+    "docs/Linux/磁盘分区挂载.md"
   ]
 }
