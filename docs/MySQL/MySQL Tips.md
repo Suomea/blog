@@ -77,3 +77,8 @@ exit;
 去掉增加的配置，重启 MySQL 服务，完成。
 
 参考：https://stackoverflow.com/questions/50691977/how-to-reset-the-root-password-in-mysql-8-0-11
+
+### 错误修复 `Too many connections`
+
+调整 max_connections 系统变量，重启数据库。
+参考：https://dev.mysql.com/doc/refman/8.3/en/server-system-variables.html#sysvar_max_connections
