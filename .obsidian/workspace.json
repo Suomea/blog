@@ -13,19 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Network/运输层：TCP.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ef87ceb9b66f9574",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ArcLinux 安装.md",
+                "file": "docs/Kafka/Kafka 常用命令.md",
                 "mode": "source",
                 "source": false
               }
@@ -39,8 +27,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -106,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ArcLinux 安装.md",
+                "file": "docs/Kafka/Kafka 常用命令.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -123,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ArcLinux 安装.md",
+                "file": "docs/Kafka/Kafka 常用命令.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -146,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ArcLinux 安装.md"
+                "file": "docs/Kafka/Kafka 常用命令.md"
               }
             }
           }
@@ -155,8 +142,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -169,10 +155,20 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "ef87ceb9b66f9574",
+  "active": "044546147249fa2a",
   "lastOpenFiles": [
+    "docs/Kafka/Kafka 主题与分区.md",
+    "docs/Kafka/Kafka 集群搭建.md",
     "docs/Network/运输层：TCP.md",
-    "ArcLinux 安装.md",
+    "docs/Linux/磁盘分区挂载.md",
+    "docs/Architecture/设备信息.md",
+    "docs/Linux/磁盘分区.md",
+    "docs/MySQL/逻辑备份 MySQL.md",
+    "docs/Linux/定时备份 MySQL.md",
+    "docs/Linux/安装 NFS.md",
+    "docs/K8S/安装配置 StorageClass.md",
+    "docs/K8S/Pod 生命周期.md",
+    "docs/Network/运输层：UDP.md",
     "docs/Network/Network Tips.md",
     "docs/LocalFile/Picture/Pastedimage20240423194526.png",
     "docs/LocalFile/Picture/Pastedimage20240423194147.png",
@@ -182,19 +178,16 @@
     "docs/Network/网络层：ICMP.md",
     "docs/Network/网络层：IP.md",
     "docs/Network/运输层：介绍.md",
-    "docs/Network/运输层：UDP.md",
     "docs/LocalFile/Picture/TCP接收窗口和分配的缓存.png",
     "docs/LocalFile/Picture/TCP发送窗口.png",
     "docs/Linux/Linux Tips.md",
     "docs/Linux/ls.md",
     "docs/MySQL/物理备份 MySQL.md",
-    "docs/MySQL/逻辑备份 MySQL.md",
     "docs/MySQL/MySQL 配置主从.md",
     "docs/Linux/curl.md",
     "docs/Linux/Debian 软件安装.md",
     "docs/Tips/开发规范.md",
     "docs/Tips/深度学习.md",
-    "docs/Tips/API.md",
     "site/Tips/API/index.html",
     "site/search/search_index.json",
     "site/search",
@@ -210,13 +203,6 @@
     "site/LocalFile/Picture/详细分分片示例.png",
     "site/LocalFile/Picture/记录路由选项.png",
     "site/LocalFile/Picture/求解算数表达式的值.jpg",
-    "site/LocalFile/Picture/用户数据报的格式.png",
-    "docs/Linux/VIM.md",
-    "docs/Linux/PG Tips.md",
-    "docs/Linux/Nginx 编译安装.md",
-    "docs/Linux/文件与文件系统.md",
-    "docs/Linux/查找文件.md",
-    "docs/Tips/小记.md",
-    "docs/Linux/磁盘分区挂载.md"
+    "site/LocalFile/Picture/用户数据报的格式.png"
   ]
 }
