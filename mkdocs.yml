@@ -64,6 +64,13 @@ nav:
       - Linux/磁盘分区挂载.md
       - Linux/Nginx 编译安装.md
       - Linux/curl.md
+  - C:
+  - 计算机网络:
+      - Network/Network Tips.md
+      - Network/网络层：IP.md
+      - Network/网络层：ICMP.md
+      - Network/运输层：UDP.md
+      - Network/运输层：TCP.md
   - 操作系统:
       - OS/OS Tips.md
       - OS/并发——多线程.md
@@ -71,11 +78,6 @@ nav:
       - OS/汇编——介绍.md
       - OS/汇编——环境搭建.md
     #   - OS/汇编——寄存器介绍.md
-      - Network/Network Tips.md
-      - Network/网络层：IP.md
-      - Network/网络层：ICMP.md
-      - Network/运输层：UDP.md
-      - Network/运输层：TCP.md
 #      - OS/并发——可视性的问题.md
 #      - OS/并发——条件变量.md
 #      - OS/并发——信号量.md
