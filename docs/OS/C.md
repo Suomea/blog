@@ -137,6 +137,117 @@ int main() {
 
 ### 单词计数
 假设单词的分割符包括空格、制表符或换行符。代码示例：
+```c
+#include <stdio.h>
+
+#define IN 1
+#define OUT 0
+
+int main() {
+    int nw = 0, nl = 0, nc = 0;
+    int c;
+    int state = OUT;
+    
+    while((c = getchar()) != EOF) {
+        nc ++;
+
+        if (c == '\n') {
+            nl ++;
+        }
+        
+        if (c == ' ' || c == '\t' || c == '\n') {
+            state = OUT;
+        } else if(state == OUT) {
+            state = IN;
+            nw ++;
+        }
+    }
+    printf("nc: %d, nw: %d, nl: %d\n", nc, nw, nl);
+}
 ```
 
+
+## 函数
+
+### main 函数
+
+  
+在 C 语言中，`main` 函数可以接受两个参数：`argc` 和 `argv`。
+- `argc`：这是一个整数，表示命令行参数的数量，包括程序的名称。即使没有提供额外的参数，`argc` 的值也至少为 1。
+
+- `argv`：这是一个指向指针数组的指针，每个指针指向一个字符串，表示一个命令行参数。第一个参数是程序的名称，后续参数是传递给程序的参数。
+
+其中 argc 和 argv 两个形参的参数类型和顺序是固定的，形参的名称则可以自定义。
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+
+    printf("argument count: %d", argc);
+
+    for(int i = 0; i < argc; i ++)
+        printf("argument %d: %s", i, argv[i]);
+}
 ```
+
+运行结果：
+```shell
+# ./a.out hello world
+argument count: 3
+argument 0: ./a.out
+argument 1: hello
+argument 2: world
+```
+
+如果 `main` 函数没有定义 `return` 语句，则编译器会默认添加 `return 0;` 语句，返回 0 标识正常终止，非 0 标识出现异常情况或出错结束条件。
+
+### 自定义函数
+之前的代码使用的函数如 `printf`、`getchar` 和 `putchar` 都是库函数中提供的函数，自己实现一个求幂函数 `power(m, n)`。`power(m, n)` 函数用于计算求整数 m 的 n 次幂，其中 n 是正整数。
+
+代码：
+```c
+#include <stdio.h>
+
+int power(int m, int n);
+
+int main() 
+{
+    for(int i = 0; i < 10; ++ i) 
+        printf("%d %5d %7d\n", i, power(2, i), power(-3, i));
+}
+c
+int power(int m, int n) {
+    int i, p;
+
+    p = 1;
+    for (i = 0; i < n; i ++) {
+        p = p * m;
+    }
+    
+    return p;
+}
+```
+
+在 main 函数之前有 power 函数的声明语句，表明 power 函数有两个 int 类型的参数，并返回一个 int 类型的值。
+```c
+int power(int m, int n);
+```
+
+这种声明成为函数原型，它必须与 power 函数定义和用法一致。函数原型中的参数名是可选的，也可以写成下面的形式：
+```c
+int power(int, int);
+```
+
+
+### 传值调用
+在 C 语言中，所有的函数参数都是“通过值”传递的。
+
+也就是说，传递给被调用函数的参数值存放在临时变量中，而不是存放在原来的变量中。因此在 C 语言中，被调用函数不能直接修改主调函数中变量的值，而只能修改其私有的临时副本的值。
+
+
+## 数据类型c
+
+类型和长度
+
+默认值
