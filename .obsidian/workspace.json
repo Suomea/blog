@@ -11,9 +11,11 @@
             "id": "044546147249fa2a",
             "type": "leaf",
             "state": {
-              "type": "vscode-editor",
+              "type": "markdown",
               "state": {
-                "file": "mkdocs.yml"
+                "file": "docs/OS/C.md",
+                "mode": "source",
+                "source": false
               }
             }
           },
@@ -91,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "mkdocs.yml",
+                "file": "docs/OS/C.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "mkdocs.yml",
+                "file": "docs/OS/C.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -131,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "mkdocs.yml"
+                "file": "docs/OS/C.md"
               }
             }
           }
@@ -156,11 +158,11 @@
   },
   "active": "044546147249fa2a",
   "lastOpenFiles": [
+    "mkdocs.yml",
     "docs/OS/C.md",
     "docs/Python/第 6 章：字符串.md",
     "docs/Algorithms/Base64 算法.md",
     "docs/Tips/API.md",
-    "mkdocs.yml",
     "docs/Linux/ArcLinux 安装.md",
     "docs/Network/程序：时间服务.md",
     "docs/OS/OS Tips.md",
@@ -182,7 +184,6 @@
     "ArcLinux 安装.md",
     "docs/Kafka/Kafka 集群搭建.md",
     "docs/Linux/磁盘分区挂载.md",
-    "docs/Architecture/设备信息.md",
     "docs/LocalFile/Picture/Pastedimage20240423194526.png",
     "docs/LocalFile/Picture/Pastedimage20240423194147.png",
     "未命名.canvas",

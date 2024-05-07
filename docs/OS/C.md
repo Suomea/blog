@@ -245,8 +245,82 @@ int power(int, int);
 
 也就是说，传递给被调用函数的参数值存放在临时变量中，而不是存放在原来的变量中。因此在 C 语言中，被调用函数不能直接修改主调函数中变量的值，而只能修改其私有的临时副本的值。
 
+## 字符数组
+下面的程序读取一组文版，并把最长的文本行打印出来。
+```c
+#include <stdio.h>
 
-## 数据类型c
+#define MAXLINE 100
+
+int get_line(char line[], int maxline);
+void copy(char from[], char to[]);
+
+int main() {
+    int len;
+    int max;
+    
+    char line[MAXLINE];
+    char longest[MAXLINE];
+
+    max = 0;
+    while((len = get_line(line, MAXLINE)) > 0) {
+        if (len > max) {
+            max = len;
+            copy(line, longest);
+        }
+    }
+
+    if (max > 0) {
+        printf("%s", longest);
+    }
+
+    return 0;
+}
+
+int get_line(char s[], int lim) {
+    int c, i;
+    
+    for(i = 0; i < lim - 1 && (c = getchar()) != '\n' && c != EOF; i ++) {
+        s[i] = c;
+    }
+
+    if (c == '\n') {
+        s[i] = c;
+        i ++;
+    }
+
+    s[i] = '\0';
+    return i;
+}
+
+void copy(char from[], char to[]) {
+    int i;
+
+    for(i = 0; (to[i] = from[i]) != '\0'; i ++) {
+        ;
+    }
+}
+```
+
+`get_line` 函数把字符 `\0` 即空字符插入到数组的末尾，以标记字符串的结束。所以在 C 语言中，声明 `"hello"` 字符串，在内存中会被存储为 `h` `e` `l` `l` `o` `\0`。
+
+`printf` 函数中的格式规范 `%s` 规定，对应的参数必须是以这种形式标识的字符串。
+```c
+#include <stdio.h>
+
+int main() {
+
+    char tmp[] = {'a', 'b', 'c', '\0', 'd', 'e', 'f'};
+
+    printf("%s\n", tmp);    // 打印 abc
+
+    return 0;
+}
+```
+
+另外 `copy` 函数的调用，传参也是值传递，传递的是数组的起始地址。
+
+## 数据类型
 
 类型和长度
 
