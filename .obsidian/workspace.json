@@ -56,7 +56,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "ASCII",
+                "query": "!!!",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -73,7 +73,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -158,15 +159,16 @@
   },
   "active": "044546147249fa2a",
   "lastOpenFiles": [
-    "mkdocs.yml",
+    "docs/MySQL/MySQL Tips.md",
     "docs/OS/C.md",
+    "docs/Reading/2024.md",
+    "mkdocs.yml",
     "docs/Python/第 6 章：字符串.md",
     "docs/Algorithms/Base64 算法.md",
     "docs/Tips/API.md",
     "docs/Linux/ArcLinux 安装.md",
     "docs/Network/程序：时间服务.md",
     "docs/OS/OS Tips.md",
-    "docs/Reading/2024.md",
     "docs/Reading/读书计划.md",
     "docs/Reading/2022.md",
     "docs/Reading/2023.md",
@@ -179,7 +181,6 @@
     "docs/OS/并发——锁.md",
     "docs/OS/汇编——寻址方式.md",
     "docs/OS/汇编——介绍.md",
-    "docs/MySQL/MySQL Tips.md",
     "docs/Kafka/Kafka ACL.md",
     "ArcLinux 安装.md",
     "docs/Kafka/Kafka 集群搭建.md",
