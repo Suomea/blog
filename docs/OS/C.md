@@ -351,6 +351,8 @@ extern int global_var
 
 !!! note "define 和 declaration"
 	一般 `define` 定义，表示创建变量或分配存储单元；而 `declaration` 声明，指的是说明变量的性质，但不分配存储单元。
+
+C 语言程序可以看成由一些列外部对象构成，这些外部对象可能是变量或函数。外部变量定义在函数之外，可以在函数中使用。而函数本身就是“外部的”。默认情况下，外部变量具有下列性质：通过一个名字对外部变量的所有引用实际上都是引用同一个对象。
 ## 数据类型
 
 基本数据类型有：char，short int，int，long int，float，double，long double。
@@ -361,7 +363,116 @@ short int 和 long int 类型的声明中，int 可以省略。int 通常代表�
 
 `signed` 和 `unsigned` 可以修饰 char 或者任何整型，比如 signed char 类型的变量取值范围为 -128~127，而 unsigned char 取值范围为 0~255。
 
-float、double 和 long double 的长度也取决具体的实现。
+`float`、`double` 和 `long double` 的长度也取决具体的实现。
+
+有关基本类型的取值范围，整形可以在 `<limits.h>` 中获取，浮点型可以在 `<float.h>` 文件中获取。
+```c
+#include <stdio.h>
+#include <limits.h>
+#include <float.h>
+
+int main() {C
+    // signed types
+    printf("signed char min     = %d\n", SCHAR_MIN);
+    printf("signed char max     = %d\n", SCHAR_MAX);
+    printf("signed short min    = %d\n", SHRT_MIN);
+    printf("signed short max    = %d\n", SHRT_MAX);
+    printf("signed int min      = %d\n", INT_MIN);
+    printf("signed int max      = %d\n", INT_MAX);
+    printf("signed long min     = %ld\n", LONG_MIN);
+    printf("signed long max     = %ld\n", LONG_MAX);
+
+    // unsigned types
+    printf("unsigned char max     = %u\n", UCHAR_MAX);
+    printf("unsigned short max    = %u\n", USHRT_MAX);
+    printf("unsigned int max      = %u\n", UINT_MAX);
+    printf("unsigned long max     = %lu\n", ULONG_MAX);
+
+    printf("float min: %E\n", FLT_MIN);
+    printf("float max: %E\n", FLT_MAX);
+    printf("double min: %E\n", DBL_MIN);
+    printf("double max: %E\n", DBL_MAX);
+    printf("long double max: %E\n", LDBL_MAX);
+    printf("long double max: %E\n", LDBL_MAX);
+}
+```
+
+## 函数
+一个设计得当的函数可以把程序中不需要了解的具体操作细节隐藏起来，从而使整个程序结构更加清晰，并降低程序的修改难度。
+
+编写一个程序，将输入中包含特定“模式”或字符串的各行打印出来。例如，在下面文本中查找包含字符串 “ould” 的行：
+```
+Ah Love! could you and I with Fate conspire
+To grasp this sorry Scheme of Things entire,
+Would not we shatter it to bits -- and then
+Re-mould it nearer to the Heart's Desire
+```
+
+程序执行后输出下列结果：
+```
+Ah Love! could you and I with Fate conspire 
+Would not we shatter it to bits -- and then 
+Re-mould it nearer to the Heart's Desire!
+```
+
+代码如下：
+```c
+#include <stdio.h>
+
+#define MAXLINE 100
+
+char pattern[] = "ould";
+
+int get_line(char*, int);
+
+int strindex(char*, char*);
+
+int main() {
+
+    char line[MAXLINE];
+
+    while(get_line(line, MAXLINE) > 0) {
+        if (strindex(line, pattern) >= 0) {
+            printf("%s", line);
+        }
+    }
+}
+
+int get_line(char *line, int lim) {
+    int c;
+    int i = 0;
+
+    while(--lim > 0 && (c = getchar()) != '\n' && c != EOF) {
+        line[i++] = c;
+    }
+
+    if (c == '\n') {
+        line[i++] = c;
+    }
+
+    line[i] = '\0';
+    return i;
+}
+
+int strindex(char *line, char *p) {
+    int i, j, k;
+
+    for(i = 0; line[i] != '\0'; i ++) {
+        j = i;
+        k = 0;
+
+        while (p[k] != '\0' && line[j] == p[k]) {
+            j ++;
+            k ++;
+        }
+
+        if (k > 0 && p[k] == '\0') {
+            return i;
+        }
+    }
+    return -1;
+}
+```
 
 
-默认值
+
