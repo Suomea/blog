@@ -341,7 +341,7 @@ int main() {
 }
 ```
 
-在源文件中，如果外部变量的定义出现在使用它的函数之前，那么在使用外部变量的函数中就可以省略 `extern` 声明。如果程序包含多个源文件，而某个外部变量定义在 file1，在 file2 和 file3 中使用就需要使用 extern 声明。当然一般使用头文件进行声明，并在每个源文件的开头使用 `#include` 语句把所要使用的头文件包含进来。
+在源文件中，如果外部变量的定义出现在使用它的函数之前，那么在使用外部变量的函数中就可以省略 `extern` 声明。如果程序包含多个源文件，而某个外部变量定义在 file1，在 file2 和 file3 中使用就需要使用 `extern` 声明。当然一般使用头文件进行声明，并在每个源文件的开头使用 `#include` 语句把所要使用的头文件包含进来。
 ```c
 #ifndef GLOBAL_VAR_FLAG
 #define GLOBAL_VAR_FLAG
@@ -350,9 +350,18 @@ extern int global_var
 ```
 
 !!! note "define 和 declaration"
-	一般 define 定义，表示创建变量获分配存储单元；而 declaration 声明，指的是说明变量的性质，但不分配存储单元。
+	一般 `define` 定义，表示创建变量或分配存储单元；而 `declaration` 声明，指的是说明变量的性质，但不分配存储单元。
 ## 数据类型
 
-类型和长度c
+基本数据类型有：char，short int，int，long int，float，double，long double。
+
+char 类型占用一个字节。
+
+short int 和 long int 类型的声明中，int 可以省略。int 通常代表机器中整数的自然长度。short 通常为 16 位，long 通常为 32 位，int 可以为 16 位或者 32 位。编译器可以根据硬件特性自主选择合适的长度，但是遵循下列限制：short 和 int 类型至少为 16 位，long 类型至少为 32 位，并且 short 不得长于 int，int 不得长于 long。
+
+`signed` 和 `unsigned` 可以修饰 char 或者任何整型，比如 signed char 类型的变量取值范围为 -128~127，而 unsigned char 取值范围为 0~255。
+
+float、double 和 long double 的长度也取决具体的实现。
+
 
 默认值
