@@ -23,11 +23,9 @@
             "id": "c8c6d46ec9ed37c7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "vscode-editor",
               "state": {
-                "file": "docs/OS/C.md",
-                "mode": "source",
-                "source": false
+                "file": "mkdocs.yml"
               }
             }
           },
@@ -90,8 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "64d5a5772b68a5f2",
@@ -107,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/OS/C.md",
+                "file": "mkdocs.yml",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/OS/C.md",
+                "file": "mkdocs.yml",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -147,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/OS/C.md"
+                "file": "mkdocs.yml"
               }
             }
           }
@@ -156,8 +153,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -172,15 +168,18 @@
   },
   "active": "c8c6d46ec9ed37c7",
   "lastOpenFiles": [
-    "docs/Arts/大观楼长联-孙髯.md",
     "docs/Arts/满江红-岳飞.md",
-    "docs/Arts/侠客行-李白.md",
+    "docs/Arts/大观楼长联-孙髯.md",
+    "mkdocs.yml",
+    "docs/Algorithms/数据结构：图.md",
+    "docs/Algorithms/Base64 算法.md",
+    "docs/Network/网络层：IP.md",
+    "docs/Network/运输层：TCP.md",
     "docs/OS/C.md",
+    "docs/Arts/侠客行-李白.md",
     "docs/MySQL/MySQL Tips.md",
     "docs/Reading/2024.md",
-    "mkdocs.yml",
     "docs/Python/第 6 章：字符串.md",
-    "docs/Algorithms/Base64 算法.md",
     "docs/Tips/API.md",
     "docs/Linux/ArcLinux 安装.md",
     "docs/Network/程序：时间服务.md",
@@ -189,16 +188,12 @@
     "docs/Reading/2022.md",
     "docs/Reading/2023.md",
     "docs/Reading/2021.md",
-    "docs/Network/运输层：TCP.md",
     "docs/OS/汇编——环境搭建.md",
     "docs/OS/并发——多线程.md",
     "docs/Kafka/Kafka 常用命令.md",
     "docs/Kafka/Kafka 主题与分区.md",
     "docs/OS/并发——锁.md",
     "docs/OS/汇编——寻址方式.md",
-    "docs/OS/汇编——介绍.md",
-    "docs/Kafka/Kafka ACL.md",
-    "ArcLinux 安装.md",
     "docs/LocalFile/Picture/Pastedimage20240423194526.png",
     "docs/LocalFile/Picture/Pastedimage20240423194147.png",
     "未命名.canvas",
