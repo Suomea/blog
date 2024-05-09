@@ -74,7 +74,7 @@ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic quicksta
 
 赋予 `usera` 用户对所有 Topic 的读取权限。
 ```shell
-bin/kafka-acls.sh ----bootstrap-server localhost:9092 --add --allow-principal User:usera --operation Read --topic '*' --group '*' --command-config admin-jaas
+bin/kafka-acls.sh --bootstrap-server localhost:9092 --add --allow-principal User:usera --operation Read --topic '*' --group '*' --command-config admin-jaas
 ```
 
 ### 配置
