@@ -349,6 +349,8 @@ extern int global_var
 #endif
 ```
 
+
+
 !!! note "define 和 declaration"
 	一般 `define` 定义，表示创建变量或分配存储单元；而 `declaration` 声明，指的是说明变量的性质，但不分配存储单元。
 
@@ -400,6 +402,7 @@ int main() {C
 ## 函数
 一个设计得当的函数可以把程序中不需要了解的具体操作细节隐藏起来，从而使整个程序结构更加清晰，并降低程序的修改难度。
 
+### 查找文本
 编写一个程序，将输入中包含特定“模式”或字符串的各行打印出来。例如，在下面文本中查找包含字符串 “ould” 的行：
 ```
 Ah Love! could you and I with Fate conspire
@@ -474,5 +477,175 @@ int strindex(char *line, char *p) {
 }
 ```
 
+### 计算后缀表达式的值
+中缀表达式：`(1 + 2) * 3` 对应的后缀表达式为：`1 2 + 3 *` 。后缀表达式也成为逆波兰表达式。
+
+`calc.h` 代码为头文件，定义宏并且声明函数。
+```c
+// calc.h
+#define NUMBER '0'
+
+void push(double);
+
+double pop();
+
+int getop(char []);
+
+int getch();
+
+void ungetch(int);
+```
+
+后缀表达式的求值逻辑：由左向右逐个读取后缀表达式的元素，如果读取的元素为操作数则将操作数压入栈中，如果读取的元素为操作符，则取出栈顶的两个操作数，进行计算并将计算结果入栈。  
+```c
+// main.c
+#include <stdio.h>
+#include <stdlib.h>
+#include "calc.h"
+
+#define MAXOP 100
+
+int main() {
+    int type;
+    double op2;
+    char s[MAXOP];
+
+    while((type = getop(s)) != EOF) {
+        switch (type) {
+        case NUMBER:
+            push(atof(s));
+            break;
+        case '+':
+            push(pop() + pop());
+            break;
+        case '*':
+            push(pop() * pop());
+            break;
+        case '-':
+            op2 = pop();
+            push(pop() - op2);
+            break;
+        case '/':
+            op2 = pop();
+            if (op2 != 0.0) {
+                push(pop() / op2);
+            } else {
+                printf("error: zero divisor\n");
+            }
+            break;
+        case '\n':
+            printf("\t%.8g\n", pop());
+            break;
+        default:
+            printf("error: unknown command %s\n", s);
+            break;
+        }
+    }
+    return 0;
+}
+```
+
+`stack.c` 封装栈的基本操作。
+```c
+stack.c
+#include <stdio.h>
+#include "calc.h"
+
+#define MAXVAL 100
+c
+int sp = 0;
+
+double val[MAXVAL];
+
+void push(double f) {
+    if(sp < MAXVAL) {
+        val[sp ++] = f;
+    } else {
+        printf("error: stack full, can't push %g\n", f);
+    }
+}
+
+double pop() {
+    if(sp > 0) {
+        return val[--sp];
+    } else {
+        printf("error: stack empty\n");
+        return 0.0;
+    }
+}
+```
+
+`getop.c` 代码的作用是解析后缀表达式中的每个元素。
+```c
+// getop.c
+#include <stdio.h>
+#include <ctype.h>
+#include "calc.h"
+
+int getch();
+void ungetch(int);
+
+int getop(char s[]) {
+    int i, c;
+
+    // 获取第一个操作字符，忽略前置的空格和 TAB
+    while((s[0] = c = getch()) == ' ' || c == '\t') {
+        ;
+    }
+    s[1] = '\0';
+
+    // 判断字符如果是不属于数字直接返回
+    if (!isdigit(c) && c != '.') {
+        return c;
+    }
+
+    i = 0;
+    // 如果是多位数
+    if (isdigit(c)) {
+        while(isdigit(s[++i] = c = getch())) {
+            ;
+        }
+    }
+    // 如果遇到小数位继续获取后续的小数部分
+    if (c == '.') {
+        /* code */
+        while(isdigit(s[++i] = c = getch())) {
+            ;
+        }
+    }
+
+    s[i] = '\0';
+
+    // 缓存多读取的下一个元素
+    if (c != EOF) {
+        ungetch(c);
+    }
+    return NUMBER;
+}
+```
+
+`getch.c` 代码的作用是缓存读取的字符，因为 `getop.c` 为了获取一个元素，往往要多读取一个字符来判断当前元素是不是结束，所以要将多读取的字符缓存起来。
+```c
+// getch.c
+#include <stdio.h>
+#define BUFSIZE 100
+
+char buf[BUFSIZE];
+int bufp = 0;
+
+int getch() {
+    return (bufp > 0) ? buf[--bufp] : getchar();
+}
+
+void ungetch(int c) {
+    if (bufp >= BUFSIZE) {c
+        printf("ungetch: too many characters\n");
+    } else {
+        buf[bufp ++] = c;
+    }
+    
+}
+```
+## 作用域规则
 
 
