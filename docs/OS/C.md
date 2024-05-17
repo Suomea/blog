@@ -595,11 +595,22 @@ int getop(char s[]) {
     s[1] = '\0';
 
     // 判断字符如果是不属于数字直接返回
-    if (!isdigit(c) && c != '.') {
+    if (!isdigit(c) && c != '.' && c != '-') {
         return c;
     }
 
     i = 0;
+    if (c == '-') {
+        if (isdigit(c = getch()) || c == '.') {
+            s[++i] = c;
+        } else {
+            if (c != EOF) {
+                ungetch(c);
+            }
+            return '-';
+        }   
+    }
+    
     // 如果是多位数
     if (isdigit(c)) {
         while(isdigit(s[++i] = c = getch())) {
