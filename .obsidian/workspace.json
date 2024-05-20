@@ -171,19 +171,20 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "vscode-editor:Create Code File": false,
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "vscode-editor:新建代码文件": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
     }
   },
   "active": "3ec641745c4ff14c",
   "lastOpenFiles": [
-    "docs/Algorithms/求解算数表达式的值.md",
+    "docs/OS/OS Tips.md",
     "docs/OS/C.md",
+    "docs/Algorithms/求解算数表达式的值.md",
     "docs/Algorithms/字符串匹配算法.md",
     "docs/Algorithms/Base64 算法.md",
     "docs/Network/运输层：TCP.md",
@@ -199,7 +200,6 @@
     "docs/Tips/API.md",
     "docs/Linux/ArcLinux 安装.md",
     "docs/Network/程序：时间服务.md",
-    "docs/OS/OS Tips.md",
     "docs/Reading/读书计划.md",
     "docs/Reading/2022.md",
     "docs/Reading/2023.md",
