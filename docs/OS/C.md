@@ -744,6 +744,24 @@ ip = &z[0];    // ip now points to z[0]
 ```
 
 ### 指针与函数
+由于 C 语言是以传值的方式将参数值传递给被调用函数。因此，被调用函数不能直接修改主调函数中变量的值。
 
+如下的 swap 函数就是错误的，它仅仅交换了 a 和 b 的副本的值。
+```c
+void swap(int x, int y) {
+	int tmp = x;
+	x = y;
+	y = tmp;
+}
+```
+
+正确的定义如下：
+```c
+void swap(int *x, int *y) {
+	int tmp = *x;
+	*x = *y;
+	*i = tmp;
+}
+```
 ### 指针与数组
 
