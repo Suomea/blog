@@ -45,7 +45,7 @@ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <topic_n
 
 创建 Topic。
 ```shell
-bin/kafka-topics.sh — bootstrap-server localhost:9092 --create --topic quickstart-events [--partitions num] [--replication-factor num] --command-config admin-jaas
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic quickstart-events [--partitions num] [--replication-factor num] --command-config admin-jaas
 ```
 
 ### 生产

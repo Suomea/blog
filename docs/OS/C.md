@@ -817,7 +817,6 @@ int str_len(char *s) {
 	指针与整数之间不能互相转换，但是 0 是唯一的例外：常量 0 可以赋值给指针，指针也可以和常量 0 进行比较。程序中常用符号 `NULL` 代替常量 0，符号常量 NULL 定义在标准头文件 `<stddef.h>` 中。
 
 在某些情况下指针可以及进行比较运算，例如，如果指针 p 和 q 指向同一个数组的成员，那么它们之间就可以进行类似与 `==`、`!=`  的关系比较运算。但是，指向不同数组的元素的指针之间的算术或比较运算没有意义。
-
 如果 p 指向的元素的位置在 q 指向的元素的位置之前，那么下面的表达式为真。
 ```c
 p < q
@@ -828,3 +827,77 @@ p < q
 指针的相减运算也是有意义的：如果 p 和 q 指向相同数组中的元素，且 p < q，那么 `q - p + 1` 就是位于 p 和 q 指向的元素之间元素的数目。
 
 有效的指针运算包括相同类型指针之间的赋值运算；指针同整数时间的加减法运算；指向相同数组中元素的两个指针间的减法或比较运算；将指针赋值为 0 或指针与 0 之间的比较运算。其它所有形式的指针运算都是非法的。
+### 字符指针与函数
+字符串常量是一个字符数组，例如，`"I am a string"` 在字符串的内部表示中，字符数组以空字符 `\0` 结尾，所以，可以通过检查空字符找到字符数组的结尾。字符串常量占据的存储单元数也因此比双引号内的字符数大 1。
+
+字符串常量一个常见的用法是作为函数参数，例如，下面代码实际上是通过字符指针访问该字符串的。
+```c
+printf("hello world\n");
+```
+
+下面两个语句的定义之间有很大的差别：
+```c
+char amessage[] = "now is the time";
+char *pmessage = "now is the time";
+```
+
+`amessage` 是一个仅仅足以存放初始化字符串以及空字符 `\0` 的一维数组。数组中的字符可以修改，但是 amessage 始终指向同一存储位置。
+`pmessage` 是一个指针，其初始值指向一个字符串常量，之后它可以被修改指向其它地址，**但如果试图修改字符串的内容，其结果是没有定义的。**
+
+下面是使用指针实现的字符串复制函数，提供将字符串指针 `t` 指向的字符串复制到 `s`。
+```c
+#include <stdio.h>
+
+void str_copy1(char*, char*);
+void str_copy2(char*, char*);
+void str_copy3(char*, char*);
+
+int main() {
+    
+    char s1[] = "hello world!";
+    char t1[] = "nihao";
+    
+    str_copy1(s1, t1);
+    printf("%s\n", s1);  // nihao
+    
+    char s2[] = "how much!";
+    char t2[] = "duoshao";
+    
+    str_copy2(s2, t2);
+    printf("%s\n", s2); // duoshao
+    
+    char s3[] = "thank you!";
+    char t3[] = "tks";
+    
+    str_copy3(s3, t3);
+    printf("%s\n", s3); // tks
+}
+
+void str_copy1(char *s, char *t) {
+    int i = 0;
+    
+    while((s[i] = t[i]) != '\0') {
+        i ++;
+    }
+}
+
+void str_copy2(char *s, char *t) {
+    while((*s = *t) != '\0') {
+        s ++;
+        t ++;
+    }
+}
+
+void str_copy3(char *s, char *t) {
+    while((*s ++ = *t ++) != '\0') {    // 此处也可以省略和空字符 '\0' 的比较，因为空字符的值为 0 即 false
+        ;
+    }
+}
+
+void strcpy(char *s, char * t) {
+    while(*s ++ = *t ++) {
+        ;
+    }
+}
+```
+
