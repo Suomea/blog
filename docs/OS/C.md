@@ -901,3 +901,47 @@ void strcpy(char *s, char * t) {
 }
 ```
 
+下面是字符串比较函数，比较字符串 s 和 t，并且根据 s 按照字典顺序小于、等于或大于 t 的结果分别返回负整数、0 或正整数。
+```c
+#include <stdio.h>
+
+int strcmp1(char *, char *);
+int strcmp2(char *, char *);
+
+int main()
+{
+    char str1[] = "a!a";   
+    char *str2 = "a!";
+    
+    printf("strcmp1 result: %d\n", strcmp1(str1, str2));
+    printf("strcmp2 result: %d\n", strcmp2(str1, str2));
+}
+
+int strcmp1(char *s, char *t)
+{
+    int i = 0;
+    while (s[i] == t[i])
+    {
+        if (s[i] == '\0')
+        {
+            return 0;
+        }
+        i++;
+    }
+
+    return s[i] - t[i];
+}
+
+int strcmp2(char *s, char *t)
+{
+    while (*s == *t)
+    {
+        if (*s == '\0')
+        {
+            return 0;
+        }
+        s++, t++;
+    }
+    return *s - *t;
+}
+```

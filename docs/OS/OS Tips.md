@@ -233,6 +233,74 @@ $ gcc -o hello -Wl,rpath=/home/c -L. -lfoo hello.c
 $ ./hello
 ```
 
+## GDB
+
+检查安装
+```c
+gdb --version
+```
+
+使用 gcc -g 选项编译源文件，然后 gdb 可执行文件即可进入调试。
+```shell
+gcc -g p3.c
+gdb a.out
+```
+
+gdb 选项
+- `l` 查看程序，默认每次输出 10 行，可多次使用 l 查看程序。
+- `r` 从头执行程序， 遇到断点会阻塞。
+- `q` 退出调试。
+
+- `b` 进行打断点，两种方式 b func_name，b line_number
+- `info b` 查看断点列表信息。
+- `n` 一行一行执行代码。如果该行代码调用的函数里面有断点，n 会进入到断点里面。
+
+- `p` 打印变量的值。例如 `p *s` 、`p arr[1]`、 `p &arr[1]`。
+- `step` 可以进入函数。
+
+- `shell cmd` 可以执行命令。
+- `set logging on` 将调试信息输出到日志。
+
+观察点 watchpoint，用来监听地址的值是否发生变化，如果在程序执行过程中观察点的值发生变化会输出响应的信息。
+- 增加观察点 `watch *0xxxxxxxxxx`。
+- 查看观察点 `info watchpoints`。
+
+观察点的示例。
+```
+// 获取变量 a 的地址
+(gdb) p &a
+$1 = (int *) 0x7fffffffe6bc
+
+// 增加观察点
+(gdb) watch *0x7fffffffe6bc
+Hardware watchpoint 2: *0x7fffffffe6bc
+(gdb) n
+10                  a++;
+// 执行 a++ 观察点的值发生了变化
+(gdb) n
+
+Hardware watchpoint 2: *0x7fffffffe6bc
+
+Old value = 1
+New value = 2
+0x000055555555513e in main () at wp.c:10
+10                  a++;
+(gdb) n
+
+Breakpoint 1, main () at wp.c:8
+8               if (a < 5)
+(gdb) n
+10                  a++;
+// 继续执行 a++ 观察点的值又发生了变化
+(gdb) n
+
+Hardware watchpoint 2: *0x7fffffffe6bc
+
+Old value = 2
+New value = 3
+0x000055555555513e in main () at wp.c:10
+10                  a++;
+```
 
 ## 从可执行进行反汇编
 
