@@ -945,3 +945,4 @@ int strcmp2(char *s, char *t)
     return *s - *t;
 }
 ```
+

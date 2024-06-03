@@ -240,13 +240,14 @@ $ ./hello
 gdb --version
 ```
 
-使用 gcc -g 选项编译源文件，然后 gdb 可执行文件即可进入调试。
+使用 gcc `-g` 选项编译源文件，然后 gdb 可执行文件即可进入调试。
 ```shell
 gcc -g p3.c
 gdb a.out
 ```
 
-gdb 选项
+gdb 选项  
+
 - `l` 查看程序，默认每次输出 10 行，可多次使用 l 查看程序。
 - `r` 从头执行程序， 遇到断点会阻塞。
 - `q` 退出调试。
@@ -262,7 +263,8 @@ gdb 选项
 - `set logging on` 将调试信息输出到日志。
 
 观察点 watchpoint，用来监听地址的值是否发生变化，如果在程序执行过程中观察点的值发生变化会输出响应的信息。
-- 增加观察点 `watch *0xxxxxxxxxx`。
+
+- 增加观察点 `watch *0x7fffffffe6bc。
 - 查看观察点 `info watchpoints`。
 
 观察点的示例。
