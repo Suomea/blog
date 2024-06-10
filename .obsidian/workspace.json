@@ -37,7 +37,43 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Server/阿里云服务器106.15.72.83.md",
+                "file": "docs/Server/本地服务器192.168.31.11.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "58119842feb1ab9f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/ES/环境搭建.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "33cebeca1e62f4f1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/ES/Spring Boot 集成 ES.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "e7b94f67a9ef5845",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/ES/ES DSL查询方式.md",
                 "mode": "source",
                 "source": false
               }
@@ -52,7 +88,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -118,7 +154,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Server/阿里云服务器106.15.72.83.md",
+                "file": "docs/ES/ES DSL查询方式.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -135,7 +171,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Server/阿里云服务器106.15.72.83.md",
+                "file": "docs/ES/ES DSL查询方式.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -158,7 +194,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Server/阿里云服务器106.15.72.83.md"
+                "file": "docs/ES/ES DSL查询方式.md"
               }
             }
           }
@@ -180,8 +216,21 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "3ec641745c4ff14c",
+  "active": "e7b94f67a9ef5845",
   "lastOpenFiles": [
+    "docs/Docker/镜像操作.md",
+    "docs/Docker/安装 Docker.md",
+    "docs/ES/环境搭建.md",
+    "docs/ES/ES DSL查询方式.md",
+    "docs/ES/Spring Boot 集成 ES.md",
+    "docs/Server/本地服务器192.168.31.11.md",
+    "docs/ES",
+    "未命名.canvas",
+    "docs/Linux/PG Tips.md",
+    "docs/Linux/Nginx 编译安装.md",
+    "docs/Server/阿里云服务器106.15.72.83.md",
+    "docs/Linux/Linux Tips.md",
+    "docs/Linux/Debian 软件安装.md",
     "docs/Java/Tips.md",
     "docs/Java/微服务架构.md",
     "docs/Java/微服务优雅停机.md",
@@ -197,23 +246,11 @@
     "docs/Python/第 10 章：面向对象编程.md",
     "docs/Python/学习资料.md",
     "mkdocs.yml",
-    "docs/Server/阿里云服务器106.15.72.83.md",
     "docs/Linux/正则表达式.md",
-    "docs/Kafka/Kafka 常用命令.md",
-    "docs/Network/运输层：UDP.md",
     "docs/Server",
-    "docs/OS/GDB.md",
-    "docs/Linux/Linux Tips.md",
-    "docs/Kafka/Kafka 集群搭建.md",
-    "docs/Kafka/Kafka 主题与分区.md",
-    "docs/Network/运输层：TCP.md",
-    "docs/Network/网络层：IP.md",
-    "docs/Network/Network Tips.md",
-    "docs/Linux/网络.md",
     "docs/OS/C.md~",
     "docs/LocalFile/Picture/Pastedimage20240423194526.png",
     "docs/LocalFile/Picture/Pastedimage20240423194147.png",
-    "未命名.canvas",
     "docs/LocalFile/Picture/TCP接收窗口和分配的缓存.png",
     "docs/LocalFile/Picture/TCP发送窗口.png",
     "site/Tips/API/index.html",
@@ -222,7 +259,6 @@
     "site/Tips/深度学习/index.html",
     "site/Tips/开发规范/index.html",
     "site/Tips/深度学习",
-    "site/Tips/开发规范",
     "site/assets/images/favicon.png",
     "site/LocalFile/Picture/选项的格式.png",
     "site/LocalFile/Picture/详细分分片示例.png",
