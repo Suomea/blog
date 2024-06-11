@@ -6,7 +6,7 @@ tags:
 参考：https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/
 ## Docker 安装
 ```shell
-docker run --name mysql -v /my/own/datadir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=pwd -d mysql:tag
+docker run --name mysql -v /my/own/datadir:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=pwd -d mysql:tag
 ```
 
 ## ATP 安装
@@ -32,7 +32,8 @@ apt install mysql-server
 设置 root 用户允许所有主机远程连接（仅用于测试，生产环境不允许 root 用户的远程连接）
 
 ```sql
-update mysql.user set host = '%' where user = 'root'; flush privileges;
+update mysql.user set host = '%' where user = 'root'; 
+flush privileges;
 ```
 
 Systemd 服务配置信息

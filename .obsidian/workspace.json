@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/OS/C.md",
+                "file": "docs/MySQL/安装 MySQL.md",
                 "mode": "source",
                 "source": false
               }
@@ -81,7 +81,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "PG",
+                "query": "远程",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -98,7 +98,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -118,7 +119,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/OS/C.md",
+                "file": "docs/MySQL/安装 MySQL.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -135,7 +136,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/OS/C.md",
+                "file": "docs/MySQL/安装 MySQL.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -158,7 +159,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/OS/C.md"
+                "file": "docs/MySQL/安装 MySQL.md"
               }
             }
           }
@@ -182,16 +183,18 @@
   },
   "active": "3ec641745c4ff14c",
   "lastOpenFiles": [
+    "docs/Server/本地服务器192.168.31.11.md",
+    "docs/OS/C.md",
+    "docs/MySQL/安装 MySQL.md",
+    "docs/MySQL/MySQL Tips.md",
     "docs/Docker/安装 Docker.md",
     "docs/Server/阿里云服务器106.15.72.83.md",
     "docs/Docker/镜像操作.md",
     "docs/Linux/PG Tips.md",
-    "docs/OS/C.md",
     "docs/ES/ES DSL查询方式.md",
     "docs/ES/环境搭建.md",
     "docs/ES/Spring Boot 集成 ES.md",
     "docs/Java/Tips.md",
-    "docs/Server/本地服务器192.168.31.11.md",
     "docs/ES",
     "docs/Arts/侠客行-李白.md",
     "docs/Kafka/Kafka 常用命令.md",
@@ -207,9 +210,7 @@
     "docs/Python/第 8 章：输入和输出.md",
     "docs/Python/第 9 章：异常.md",
     "docs/Python/第 10 章：面向对象编程.md",
-    "docs/Python/学习资料.md",
     "mkdocs.yml",
-    "docs/Linux/正则表达式.md",
     "docs/Server",
     "docs/OS/C.md~",
     "docs/LocalFile/Picture/Pastedimage20240423194526.png",
