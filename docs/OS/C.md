@@ -173,6 +173,7 @@ int main() {
 
   
 在 C 语言中，`main` 函数可以接受两个参数：`argc` 和 `argv`。
+
 - `argc`：这是一个整数，表示命令行参数的数量，包括程序的名称。即使没有提供额外的参数，`argc` 的值也至少为 1。
 
 - `argv`：这是一个指向指针数组的指针，每个指针指向一个字符串，表示一个命令行参数。第一个参数是程序的名称，后续参数是传递给程序的参数。
@@ -946,3 +947,94 @@ int strcmp2(char *s, char *t)
 }
 ```
 
+### 二维数组
+
+```c
+#include <stdio.h>
+
+int main() {
+    int day_of_year(int, int, int);
+    void month_day(int, int, int*, int *);
+    
+    printf("2024-03-10: %d\n", day_of_year(2024, 3, 10)); //2024-03-10: 70
+    
+    
+    int month = 0;
+    int day = 0;
+    month_day(2024, 70, &month, & day);
+    printf("2024 70, month: %d, day: %d\n", month, day); // 2024 70, month: 3, day: 10
+
+}
+
+static char daytab[2][13] = {
+    {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
+    {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
+};
+
+int day_of_year(int year, int month, int day) {
+    int i, leap;
+    leap = year % 4 == 0 && year % 100 != 0 || year % 400 ==0;
+    for(i = 1; i < month; i ++) {
+        day += daytab[leap][i];
+    }
+    return day;
+}
+
+void month_day(int year, int yearday, int *pmonth, int *pday) {
+    int i, leap;
+    leap = year % 4 == 0 && year % 100 != 0 || year % 400 ==0;
+    for(i = 1; yearday > daytab[leap][i]; i ++) {
+        yearday -= daytab[leap][i];
+    }
+    *pmonth = i;
+    *pday = yearday;
+}
+```
+
+在 C 语言中，二维数组是一种特殊的一维数组，它的每一个元素也是一个数组。可以表示为
+	`daytab[i][j]`    // `[row][col]`
+
+如果将二维数据作文参数传递给函数 f，那么 f 的声明可以写成如下形式。
+```c
+f(int daytab[2][13]) {}
+
+f(int daytab[][13]) {}
+
+f(int (*daytab)[13]) {}
+```
+
+需要注意的是 `[]` 的优先级高于 `*`。所有下面两种声明方式是有区别的：
+- `int (*daytab)[13]` 表示 daytab 是一个指针，指向包含 13 个整型元素的数组。指向数组的指针。
+- `int *daytab[13]`  表示 daytab 是一个数组，数组内包含 13 个元素，其中每一个元素都是一个指向 int 类型的指针。指针数组。
+
+`int a[10][20]`
+`int *b[10]`
+这里 a 是一个真正的二维数组，分配了 200 个 int 长度的存储空间。
+而 b 仅仅分配了 10 个指针。
+
+main 函数打印参数。
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+    // int i;
+    
+    // for(int i = 1; i < argc; i ++) {
+    //     printf("%s%s", argv[i], (i < argc - 1) ? " " : "");
+    // }
+    // printf("\n");
+    // return 0;
+    // ---------------------------------------------------------
+    // while(--argc > 0) {
+    //     printf("%s%s", *++argv, (argc > 1) ? " ": "");
+    // }
+    // printf("\n");
+    // return 0;
+    // ---------------------------------------------------------
+    while(--argc > 0) {
+        printf((argc > 1) ? "%s " : "%s", *++argv);
+    }
+    printf("\n");
+    return 0;
+}
+```
