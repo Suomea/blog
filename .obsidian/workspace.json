@@ -8,51 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "044546147249fa2a",
+            "id": "f2404c7088dc2ab8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Arts/侠客行-李白.md",
+                "file": "docs/OS/C.md",
                 "mode": "source",
                 "source": false
               }
-            }
-          },
-          {
-            "id": "c8c6d46ec9ed37c7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Algorithms/Base64 算法.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "3ec641745c4ff14c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/MySQL/安装 MySQL.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "841aa3ec46b980ef",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -81,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "远程",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -98,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -119,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/MySQL/安装 MySQL.md",
+                "file": "docs/OS/C.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/MySQL/安装 MySQL.md",
+                "file": "docs/OS/C.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -159,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/MySQL/安装 MySQL.md"
+                "file": "docs/OS/C.md"
               }
             }
           }
@@ -181,12 +147,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "3ec641745c4ff14c",
+  "active": "f2404c7088dc2ab8",
   "lastOpenFiles": [
-    "docs/Server/本地服务器192.168.31.11.md",
+    "docs/Linux/PT.md",
+    "docs/Linux/账号和群组.md",
     "docs/OS/C.md",
-    "docs/MySQL/安装 MySQL.md",
-    "docs/MySQL/MySQL Tips.md",
     "docs/Docker/安装 Docker.md",
     "docs/Server/阿里云服务器106.15.72.83.md",
     "docs/Docker/镜像操作.md",
@@ -195,6 +160,7 @@
     "docs/ES/环境搭建.md",
     "docs/ES/Spring Boot 集成 ES.md",
     "docs/Java/Tips.md",
+    "docs/Server/本地服务器192.168.31.11.md",
     "docs/ES",
     "docs/Arts/侠客行-李白.md",
     "docs/Kafka/Kafka 常用命令.md",

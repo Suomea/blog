@@ -1038,3 +1038,150 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 ```
+
+目前所有遇到的指针的形式
+```c
+#include <stdio.h>
+
+int main(int argc, char **argv) {
+    
+    while(argc-- > 0) {
+        printf((argc > 0 ? "%s " : "%s\n"), *(argv++));
+    }
+    
+    char *pmsg = "hello";
+    char amsg[] = {'h', 'e', 'l', 'l', 'o', '\0'};
+    printf("pmsg: %s, amsg: %s\n", pmsg, amsg);        // pmsg: hello, amsg: hello
+    printf("pmsg: %c, amsg: %c\n", *pmsg, *amsg);      // pmsg: h, amsg: h
+    printf("pmsg: %c, amsg: %c\n", pmsg[0], amsg[0]);  // pmsg: h, amsg: h
+    
+    char *p[] = {
+        "hello",
+        "nihao"
+    };
+    char a[][6] = {
+        {'h', 'e', 'l', 'l', 'o', '\0'},
+        {'n', 'i', 'h', 'a', 'o', '\0'}
+    };
+    printf("a: %s, p: %s\n", *(p+1), a[1]);     // a: nihao, p: nihao
+    printf("a: %c, p: %c\n", **(p+1), *a[1]);   // a: n, p: n
+    printf("a: %c, p: %c\n", *p[1], a[1][0]);   // a: n, p: n
+}
+```
+
+运行输出结果
+```shell
+# ./a.out hello nihao
+./a.out hello nihao
+pmsg: hello, amsg: hello
+pmsg: h, amsg: h
+pmsg: h, amsg: h
+a: nihao, p: nihao
+a: n, p: n
+a: n, p: n
+```
+
+### 指向函数的指针
+
+### 复杂的指针声明
+
+## 结构体
+一些简单的使用示例：
+```c
+#include <stdio.h>
+#define XMAX 100
+#define YMAX 100
+
+struct point
+{
+    int x;
+    int y;
+};
+
+struct rect
+{
+    struct point pt1;
+    struct point pt2;
+};
+
+int main()
+{
+    struct rect screen;
+    struct point middle;
+    struct point makepoint(int, int);
+
+    screen.pt1 = makepoint(0, 0);
+    screen.pt2 = makepoint(XMAX, YMAX);
+    middle = makepoint((screen.pt1.x + screen.pt2.x) / 2,
+                       (screen.pt1.y + screen.pt2.y) / 2);
+                       
+    printf("middle x: %d, y: %d\n", middle.x, middle.y);
+}
+
+struct point makepoint(int x, int y)
+{
+    struct point temp;
+    temp.x = x;
+    temp.y = y;
+    return temp;
+};
+
+struct point addpoint(struct point p1, struct point p2)
+{
+    p1.x += p2.x;
+    p1.y += p2.y;
+    return p1;
+}
+
+int ptinrect(struct point p, struct rect r)
+{
+    return p.x >= r.pt1.x && p.x < r.pt2.x && p.y>= r.pt1.y && p.y < r.pt2.y;
+}
+```
+
+如果传递给函数的结构很大，使用指针方式比复制整个结构的效率要高。C 语言为值传递。
+```
+struct point *pp;
+```
+pp 指向一个 point 结构，`*pp` 即为该结构，`(*pp).x` 和 `(*pp).y` 则是结构成员。`pp->x` 和 `pp->y` 也是结构成员。
+```c
+#include <stdio.h>
+
+struct point {
+    int x;
+    int y;
+} origin, *pp;
+
+int main() {
+    origin.x = 100;
+    origin.y = 100;
+    
+    pp = &origin;
+    printf("origin is (%d, %d)\n", (*pp).x, (*pp).y);
+    printf("origin is (%d, %d)\n", pp->x, pp->y);
+}
+```
+
+下面四个表达式是等价的。
+```
+struct rect r, *rp = &r;
+
+r.pt1.x;
+rp->pt1.x;
+(r.pt1).x;
+(rp->pt1).x;
+```
+
+在所有的运算符中结构运算符 `.` 和 `->`、用于函数调用的“()” 以及用于下标的“[]” 的优先级最高。
+```
+struct {
+	int len;
+	char *str;
+} *p;
+
+++p.len // 将增加 len 的值
+*p->str  // 读取的是 str 所指的对象的值
+*p->str++ // 先读取 str 所指的对象的值，然后再将 str 加 1，不是 str 的值加 1
+(*p->str)++ // 先读取 str 所指的对象的值，然后再将 str 所指向的值加 1
+*p++->str // 先读取 str 指向的对象的值，然后再将 p 加 1
+```
