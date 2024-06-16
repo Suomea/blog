@@ -1185,3 +1185,22 @@ struct {
 (*p->str)++ // 先读取 str 所指的对象的值，然后再将 str 所指向的值加 1
 *p++->str // 先读取 str 指向的对象的值，然后再将 p 加 1
 ```
+
+## 输入输出
+下面的程序从标准输入中一个一个读取字符，然后将字符一个一个输出到标准输出。
+```c
+#include <stdio.h>
+
+int main() {
+    int c;
+
+    while((c = getchar()) != EOF) 
+        printf("%c", c);
+
+    return 0;
+}
+```
+
+`./a.out` 直接等待输入，直到遇到换行或者 EOF（Ctrl+D）。
+`./a.out < filename` 使用重定向输出文件的内容。注意 `< filename` 并不包含在 argv 的命令行参数中。
+`echo "hello world" | ./a.out` 使用管道输出上一个程序的输出。注意 `echo "hello world" |` 并不包含在 argv 的命令行参数中。
