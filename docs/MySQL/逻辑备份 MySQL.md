@@ -1,7 +1,6 @@
 ---
 comments: true
 ---
-
 ## `mysqldump` 命令
 
 导出指定数据库的数据，导出的 SQL 文件包含 DROP TABLE，CREATE TABLE，INSERT INTO TABLE。

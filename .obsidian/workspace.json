@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "docs/ES/环境搭建.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "904baf37c44bd7c7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "docs/OS/C.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -147,17 +160,27 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "f2404c7088dc2ab8",
+  "active": "904baf37c44bd7c7",
   "lastOpenFiles": [
+    "docs/ES/操作.md",
+    "docs/ES/环境搭建.md",
+    "docs/ES/ES DSL查询方式.md",
+    "docs/Reading/2023.md",
+    "docs/Reading/2024.md",
+    "docs/index.md",
+    "docs/MySQL/逻辑备份 MySQL.md",
+    "docs/MySQL/安装 MySQL.md",
+    "docs/MySQL/MySQL Tips.md",
+    "docs/MySQL/MySQL Tips.md~",
+    "docs/OS/OS Tips.md",
+    "docs/Tips/API.md",
+    "docs/OS/C.md",
     "docs/Linux/PT.md",
     "docs/Linux/账号和群组.md",
-    "docs/OS/C.md",
     "docs/Docker/安装 Docker.md",
     "docs/Server/阿里云服务器106.15.72.83.md",
     "docs/Docker/镜像操作.md",
     "docs/Linux/PG Tips.md",
-    "docs/ES/ES DSL查询方式.md",
-    "docs/ES/环境搭建.md",
     "docs/ES/Spring Boot 集成 ES.md",
     "docs/Java/Tips.md",
     "docs/Server/本地服务器192.168.31.11.md",
@@ -167,15 +190,6 @@
     "docs/Kafka/Kafka 主题与分区.md",
     "docs/Java/微服务架构.md",
     "docs/Java/微服务优雅停机.md",
-    "docs/OS/OS Tips.md",
-    "docs/Nginx/Nginx 安装.md",
-    "docs/index.md",
-    "docs/Python/第 6 章：字符串.md",
-    "docs/Python/第 5 章：函数.md",
-    "docs/Python/第 2 章：算术、字符串与变量.md",
-    "docs/Python/第 8 章：输入和输出.md",
-    "docs/Python/第 9 章：异常.md",
-    "docs/Python/第 10 章：面向对象编程.md",
     "mkdocs.yml",
     "docs/Server",
     "docs/OS/C.md~",
@@ -189,7 +203,6 @@
     "site/search",
     "site/Tips/深度学习/index.html",
     "site/Tips/开发规范/index.html",
-    "site/Tips/深度学习",
     "site/assets/images/favicon.png",
     "site/LocalFile/Picture/选项的格式.png",
     "site/LocalFile/Picture/详细分分片示例.png",

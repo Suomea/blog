@@ -6,7 +6,6 @@ tags:
 ### `count` 函数的注意事项
 
 表结构定义如下：
-
 ```sql
 create table test_tb
 (
@@ -50,7 +49,7 @@ from test_db;
 select * from user where find_in_set('中国人', tag);
 ```
 
-Mybatis Plus 中常见的用法：
+`Mybatis Plus` 中的用法：
 ```java
 Wrappers.<User>lambdaQuery()
 	.apply("find_in_set({0}, tag)", "中国人");
@@ -80,5 +79,6 @@ exit;
 
 ### 错误修复 `Too many connections`
 
-调整 max_connections 系统变量，重启数据库。
+调整 max_connections 系统变量，重启数据库。  
+
 参考：https://dev.mysql.com/doc/refman/8.3/en/server-system-variables.html#sysvar_max_connections

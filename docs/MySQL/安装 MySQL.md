@@ -3,7 +3,6 @@ comments: true
 tags:
   - MySQL
 ---
-参考：https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/
 ## Docker 安装
 ```shell
 docker run --name mysql -v /my/own/datadir:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=pwd -d mysql:tag
@@ -29,16 +28,14 @@ apt update
 apt install mysql-server
 ```
 
-设置 root 用户允许所有主机远程连接（仅用于测试，生产环境不允许 root 用户的远程连接）
+设置 root 用户允许所有主机远程连接（仅用于测试，生产环境不允许 root 用户的远程连接）。
 
 ```sql
 update mysql.user set host = '%' where user = 'root'; 
 flush privileges;
 ```
 
-Systemd 服务配置信息
-
-文件地址：/lib/systemd/system/mysql.service
+`Systemd` 服务配置，文件地址：`/lib/systemd/system/mysql.service`。
 ```
 [Unit]
 Description=MySQL Community Server
@@ -97,11 +94,9 @@ rm -rf /etc/systemd/system/mysql.service
 systemctl daemon-reload
 ```
 
-## Generic Binaries
+## 通用二进制安装包安装
 
-### 准备
-
-安装必要的库。
+### 安装必要的库
 ```shell
 apt install libaio1
 apt install libnuma1
@@ -111,7 +106,6 @@ apt install libncurses6
 ### 下载安装包
 
 下载和解压缩：
-
 ```shell
 wget https://downloads.mysql.com/archives/get/p/23/file/mysql-8.0.33-linux-glibc2.28-x86_64.tar.gz 
 tar -zxvf mysql-8.0.33-linux-glibc2.28-x86_64.tar.gz -C /usr/local/
@@ -123,41 +117,36 @@ tar -zxvf mysql-8.0.33-linux-glibc2.28-x86_64.tar.gz -C /usr/local/
 | ------------- | ----------------------------- |
 | bin           | mysqld server，client 和 一些工具程序 |
 | docs          | 手册                            |
-| man           | Unix manual oages             |
+| man           | Unix manual pages             |
 | include       | 头文件                           |
 | lib           | 库文件                           |
 | share         | 错误信息、字典和数据库安装 SQL             |
 | support-files | 支持文件                          |
 
 ### 创建用户和组
-
 ```shell
 groupadd mysql 
 useradd -r -g mysql -s /bin/false mysql
 ```
 
 useradd 命令解释
-
+```
 -r：创建系统用户
 
 -g：指定用户的初始组
 
 -s：/bin/false 禁止用户登录任何服务，相对 /sbin/nologin 更为严格。
+```
 
 ### 初始化
+初始化数据目录 `Initializing the Data Directory`，使用二进制安装包的安装方式必须手动初始化数据目录，包括初始化系统相关的表，使用 ATP 安装方式则会自动进行。
 
-配置环境变量
-
+配置环境变量：
 ```shell
 export PATH=$PATH:/usr/local/mysql/bin
 ```
 
-初始化数据目录 Initializing the Data Directory
-
-使用 generic binary 的安装方式必须手动初始化数据目录，包括初始化系统相关的表，使用 ATP 安装方式则会自动进行。
-
 新建目录：
-
 ```shell
 cd /usr/local/mysql 
 mkdir mysql-files 
@@ -165,8 +154,7 @@ chown mysql:mysql mysql-files
 chmod 750 mysql-files
 ```
 
-创建配置文件：/etc/mysql/my.cnf
-
+创建配置文件：`/etc/mysql/my.cnf`
 ```
 [mysqld] 
 basedir=/usr/local/mysql/ 
@@ -174,23 +162,18 @@ datadir=/usr/local/mysql/mysql-files
 ```
 
 初始化数据目录，其中 root 用户的密码会输出的控制台：
-
 ```shell
 mysqld --initialize --user=mysql
 ```
 
 ### 启动 MySQL 服务器
 
-启动服务器：
-
+可以直接使用 `mysqld` 命令启动 MySQL 服务器。`mysqld_safe` 是一个启动脚本会间接调用 `mysqld`，并且启动一个监控进程，监控 `mysqld` 挂了之后进行重启。启动服务器：
 ```shell
 mysqld_safe --user=mysql &
 ```
 
-可以直接使用 mysqld 命令启动 MySQL 服务器。mysqld_safe 是一个启动脚本会间接调用 mysqld，并且启动一个监控进程，监控 mysqld 挂了之后进行重启。
-
 更新密码：
-
 ```sql
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'root-password'; 
 flush privileges;
@@ -207,7 +190,6 @@ flush privileges;
 测试数据仓库地址：[https://github.com/datacharmer/test_db](https://github.com/datacharmer/test_db)
 
 导入命令，需要进入到仓库本地所在的目录：
-
 ```sql
 mysql -t -u root -p < employees.sql
 ```

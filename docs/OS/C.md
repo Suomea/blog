@@ -1204,3 +1204,119 @@ int main() {
 `./a.out` 直接等待输入，直到遇到换行或者 EOF（Ctrl+D）。
 `./a.out < filename` 使用重定向输出文件的内容。注意 `< filename` 并不包含在 argv 的命令行参数中。
 `echo "hello world" | ./a.out` 使用管道输出上一个程序的输出。注意 `echo "hello world" |` 并不包含在 argv 的命令行参数中。
+
+
+## 习题答案
+1-1 在你自己的系统中运行“hello, world”程序。再有意去掉程序中的部分 内容，看看会得到什么出错信息。
+解：
+加上 `\n` 字符表示换行。
+```c
+// p1-1.c
+#include <stdio.h>
+
+int main() {
+    printf("hello world!\n");
+}
+```
+
+1-2做个实验，当 printf 函数的参数字符串中包含\c（其中 c 是上面的转义 字符序列中未曾列出的某一个字符）时，观察一下会出现什么情况。
+解：
+转义字符 `\c` 是未定义的，其行为是未定义的。`\7` 则是一声蜂鸣。
+```
+// p1-2.c
+#include <stdio.h>
+
+int main() {
+    printf("\chello world!\n"); // chello world
+    printf("\7hello world!\n"); // hello world
+}
+```
+
+1-3 修改温度转换程序，使之能在转换表的顶部打印一个标题。
+华氏温度转换为摄氏温度和的转换公式如下： `℃=(5/9)(℉-32)`。源程序：
+```c
+#include <stdio.h>
+#define UPPER 300
+#define STEP 20
+
+int main() {
+    for(int i = 0; i <= UPPER; i += STEP) {
+	    printf("%3d\t%7.2f\n", i, (i - 32) * 5.0 / 9);
+    }
+}
+```
+解：
+```c
+// p1-3.c
+#include <stdio.h>
+#define UPPER 300
+#define STEP 20
+
+int main() {
+    printf("Fahr\tCelsius\n");
+    for(int i = 0; i <= UPPER; i += STEP) {
+        printf("%3d\t%7.2f\n", i, (i - 32) * 5.0 / 9);
+    }
+}
+```
+
+练习 1-4 编写一个程序打印摄氏温度转换为相应华氏温度的转换表。
+解：
+摄氏温度转换为华氏温度的公式：`℉=℃(9/5)+32`。
+```c
+// p1-4.c
+#include <stdio.h>
+#define UPPER 300
+#define STEP 20
+
+int main() {
+    printf("Celsius\t   Fahr\n");
+    for(int i = 0; i <= UPPER; i += STEP) {
+        printf("%7d\t%7.0f\n", i, i * 9.0 / 5 + 32);
+    }
+}
+```
+
+1-5 修改温度转换程序，要求以逆序（即按照从 300 度到 0 度的顺序）打印温度转换表。
+解：
+```c
+// p1-5.c
+#include <stdio.h>
+#define UPPER 300
+#define STEP 20
+
+int main() {
+    for(int i = UPPER; i >= 0; i-=STEP) {
+        printf("%3d\t%7.2f\n", i, (i - 32) * 5.0 / 9);
+    }
+}
+```
+
+
+1-6 验证表达式 getchar() != EOF 的值是 0 还是 1。
+解：
+表达式 `c = getchar() != EOF` 与表达式 `c = (getchar() != EOF)` 是等价的。
+```c
+// p1-6.c
+#include <stdio.h>
+
+int main() {
+    int c;
+    while(c = getchar() != EOF) {
+        printf("%d\n", c);
+    }
+    printf("%d - at EOF\n", c);  // ctrl + D 结束程序时打印 0 - at EOF
+}
+```
+
+1-7 编写一个打印 EOF 值的程序。
+解：
+`EOF` 在 `stdio.h` 中被定义，一般定义为 `-1`，`#define EOF (-1)`。
+```c
+// p1-7.c
+#include <stdio.h>
+
+int main() {
+    printf("%d\n", EOF);
+}
+```
