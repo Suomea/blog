@@ -1320,3 +1320,141 @@ int main() {
     printf("%d\n", EOF);
 }
 ```
+
+1-8 编写一个统计空格、制表符与换行符个数的程序。
+解：
+```c
+// p1-8.c
+#include <stdio.h>
+
+int main() {
+    int ws = 0, tab = 0, nl = 0;
+
+    int c;
+    while((c = getchar()) != EOF) {
+        switch(c) {
+            case '\n':
+                nl ++;
+                break;
+            case '\t':
+                tab ++;
+                break;
+            case ' ':
+                ws ++;
+                break;
+            default:
+                break;
+        }
+    }
+
+    printf("ws: %d, tab: %d, nl: %d\n", ws, tab, nl);
+}
+```
+
+1-9 编写一个将输入复制到输出的程序，并将其中连续的多个空格用一个空格代替。
+解：
+```c
+// p1-9.c
+#include <stdio.h>
+
+int main() {
+    int c;
+    int ws = 0;
+    
+    while((c = getchar()) != EOF) {
+        if(c == ' ') {
+            if(ws == 0) {
+                putchar(c);
+                ws = 1;
+            }
+        } else {
+            putchar(c);
+            ws = 0;
+        }
+    }
+}
+```
+
+1-10 编写一个将输入复制到输出的程序，并将其中的制表符替换为\t，把回退符 替换为\b，把反斜杠替按为\\。这样可以将制表符和回退符以可见的方式显示出来。
+解：
+```c
+// p1-10.c
+#include <stdio.h>
+
+int main() {
+    int c;
+    
+    while((c = getchar()) != EOF) {
+        if(c == '\t') {
+            printf("\\t");
+        } else if(c == '\b') {
+            printf("\\b");
+        } else if(c == '\\') {
+            printf("\\\\");
+        } else {
+            putchar(c);
+        }
+    }
+}
+```
+
+1-11 你准备如何测试单词计数程序？如果程序中存在某种错误，那么什么样的输 入最可能发现这类错误呢？
+首先一个程序统计字符、行和单词的数量，假定单词的定义为不包括空格、制表符或换行符的字符序列。
+```c
+#include <stdio.h>
+
+#define IN 1
+#define OUT 0
+
+int main() {
+    int c, nc, nw, nl, state;
+    
+    nc = nw = nl = 0;
+    state = OUT;
+    while((c = getchar()) != EOF) {
+        nc ++;
+        if(c == '\n') {
+            nl ++;
+        } 
+        if(c == '\t' || c == ' ' || c == '\n') {
+            state = OUT;
+        } else if(state == OUT) {
+            state = IN;
+            nw ++;
+        }
+    }
+    printf("nc: %d nw: %d nl: %d\n", nc, nw, nl);
+}
+```
+解：
+测试用例的选取问题，除一般字符串外，考虑边界值、非法值、极端值的情况。
+1. 没有输入。
+2. 全部空格。
+
+1-12 编写一个程序，以每行一个单词的形式打印其输入。
+解：
+```c
+// p1-12.c
+#include <stdio.h>
+
+#define IN 1
+#define OUT 0
+
+int main() {
+    int c, state;
+    
+    state = OUT;
+    while((c = getchar()) != EOF) {
+        if(c == '\t' || c == ' ' || c == '\n') {
+            if(state == IN) {
+                state = OUT;
+                putchar('\n');
+            }
+        } else {
+            state = IN;
+            putchar(c);
+        }
+    }
+}
+```
+
