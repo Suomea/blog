@@ -23,11 +23,9 @@
             "id": "904baf37c44bd7c7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "vscode-editor",
               "state": {
-                "file": "docs/OS/C.md",
-                "mode": "source",
-                "source": false
+                "file": "mkdocs.yml"
               }
             }
           }
@@ -98,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/OS/C.md",
+                "file": "mkdocs.yml",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/OS/C.md",
+                "file": "mkdocs.yml",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/OS/C.md"
+                "file": "mkdocs.yml"
               }
             }
           }
@@ -162,23 +160,26 @@
   },
   "active": "904baf37c44bd7c7",
   "lastOpenFiles": [
+    "docs/index.md",
+    "docs/OS/汇编——介绍.md",
+    "mkdocs.yml",
+    "docs/stylesheets/extra.css",
+    "docs/Server/阿里云服务器106.15.72.83.md",
+    "docs/OS/C.md",
     "docs/ES/操作.md",
     "docs/ES/环境搭建.md",
     "docs/ES/ES DSL查询方式.md",
     "docs/Reading/2023.md",
     "docs/Reading/2024.md",
-    "docs/index.md",
     "docs/MySQL/逻辑备份 MySQL.md",
     "docs/MySQL/安装 MySQL.md",
     "docs/MySQL/MySQL Tips.md",
     "docs/MySQL/MySQL Tips.md~",
     "docs/OS/OS Tips.md",
     "docs/Tips/API.md",
-    "docs/OS/C.md",
     "docs/Linux/PT.md",
     "docs/Linux/账号和群组.md",
     "docs/Docker/安装 Docker.md",
-    "docs/Server/阿里云服务器106.15.72.83.md",
     "docs/Docker/镜像操作.md",
     "docs/Linux/PG Tips.md",
     "docs/ES/Spring Boot 集成 ES.md",
@@ -189,8 +190,6 @@
     "docs/Kafka/Kafka 常用命令.md",
     "docs/Kafka/Kafka 主题与分区.md",
     "docs/Java/微服务架构.md",
-    "docs/Java/微服务优雅停机.md",
-    "mkdocs.yml",
     "docs/Server",
     "docs/OS/C.md~",
     "docs/LocalFile/Picture/Pastedimage20240423194526.png",
@@ -202,7 +201,6 @@
     "site/search/search_index.json",
     "site/search",
     "site/Tips/深度学习/index.html",
-    "site/Tips/开发规范/index.html",
     "site/assets/images/favicon.png",
     "site/LocalFile/Picture/选项的格式.png",
     "site/LocalFile/Picture/详细分分片示例.png",

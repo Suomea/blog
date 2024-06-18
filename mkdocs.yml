@@ -5,10 +5,9 @@ theme:
   favicon: LocalFile/favicon.svg
   logo: LocalFile/favicon.svg
   palette: 
-    - scheme: default
-      primary: white
+    primary: custom
   font:
-    text: 等线
+    text: STSong
     code: Console
   name: material
   custom_dir: overrides
