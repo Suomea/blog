@@ -110,3 +110,22 @@ boolean isPizzaFantastic() {
   return useOnionFlag.get() || hasMushroom(ENOKI, PORTOBELLO);
 }
 ```
+
+## 文本文件转码
+将目录下的所有以 `.cue` 结尾的文件，从 `GBK` 转到 `UTF-8`。
+```java
+    private static final String DIR = "";
+
+    public static void main(String[] args) throws IOException {
+        Files.walk(Paths.get(DIR)).forEach(path -> {
+            String fileName = path.toAbsolutePath().toString();
+            if (fileName.endsWith(".cue") || fileName.endsWith(".CUE")) {
+                try {
+                    Files.writeString(path, Files.readString(path, Charset.forName("GBK")), StandardCharsets.UTF_8);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+```

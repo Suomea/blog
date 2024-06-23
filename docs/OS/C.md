@@ -1207,7 +1207,8 @@ int main() {
 
 
 ## 习题答案
-1-1 在你自己的系统中运行“hello, world”程序。再有意去掉程序中的部分 内容，看看会得到什么出错信息。
+### 1-1
+在你自己的系统中运行“hello, world”程序。再有意去掉程序中的部分 内容，看看会得到什么出错信息。
 解：
 加上 `\n` 字符表示换行。
 ```c
@@ -1219,7 +1220,8 @@ int main() {
 }
 ```
 
-1-2做个实验，当 printf 函数的参数字符串中包含\c（其中 c 是上面的转义 字符序列中未曾列出的某一个字符）时，观察一下会出现什么情况。
+### 1-2
+做个实验，当 printf 函数的参数字符串中包含\c（其中 c 是上面的转义 字符序列中未曾列出的某一个字符）时，观察一下会出现什么情况。
 解：
 转义字符 `\c` 是未定义的，其行为是未定义的。`\7` 则是一声蜂鸣。
 ```
@@ -1232,7 +1234,8 @@ int main() {
 }
 ```
 
-1-3 修改温度转换程序，使之能在转换表的顶部打印一个标题。
+### 1-3
+修改温度转换程序，使之能在转换表的顶部打印一个标题。
 华氏温度转换为摄氏温度和的转换公式如下： `℃=(5/9)(℉-32)`。源程序：
 ```c
 #include <stdio.h>
@@ -1260,7 +1263,8 @@ int main() {
 }
 ```
 
-练习 1-4 编写一个程序打印摄氏温度转换为相应华氏温度的转换表。
+###  1-4
+编写一个程序打印摄氏温度转换为相应华氏温度的转换表。
 解：
 摄氏温度转换为华氏温度的公式：`℉=℃(9/5)+32`。
 ```c
@@ -1277,7 +1281,8 @@ int main() {
 }
 ```
 
-1-5 修改温度转换程序，要求以逆序（即按照从 300 度到 0 度的顺序）打印温度转换表。
+### 1-5
+修改温度转换程序，要求以逆序（即按照从 300 度到 0 度的顺序）打印温度转换表。
 解：
 ```c
 // p1-5.c
@@ -1293,7 +1298,8 @@ int main() {
 ```
 
 
-1-6 验证表达式 getchar() != EOF 的值是 0 还是 1。
+### 1-6
+验证表达式 getchar() != EOF 的值是 0 还是 1。
 解：
 表达式 `c = getchar() != EOF` 与表达式 `c = (getchar() != EOF)` 是等价的。
 ```c
@@ -1309,7 +1315,8 @@ int main() {
 }
 ```
 
-1-7 编写一个打印 EOF 值的程序。
+### 1-7
+编写一个打印 EOF 值的程序。
 解：
 `EOF` 在 `stdio.h` 中被定义，一般定义为 `-1`，`#define EOF (-1)`。
 ```c
@@ -1321,7 +1328,8 @@ int main() {
 }
 ```
 
-1-8 编写一个统计空格、制表符与换行符个数的程序。
+### 1-8
+编写一个统计空格、制表符与换行符个数的程序。
 解：
 ```c
 // p1-8.c
@@ -1351,7 +1359,8 @@ int main() {
 }
 ```
 
-1-9 编写一个将输入复制到输出的程序，并将其中连续的多个空格用一个空格代替。
+### 1-9
+编写一个将输入复制到输出的程序，并将其中连续的多个空格用一个空格代替。
 解：
 ```c
 // p1-9.c
@@ -1375,7 +1384,8 @@ int main() {
 }
 ```
 
-1-10 编写一个将输入复制到输出的程序，并将其中的制表符替换为\t，把回退符 替换为\b，把反斜杠替按为\\。这样可以将制表符和回退符以可见的方式显示出来。
+### 1-10
+编写一个将输入复制到输出的程序，并将其中的制表符替换为\t，把回退符 替换为\b，把反斜杠替按为\\。这样可以将制表符和回退符以可见的方式显示出来。
 解：
 ```c
 // p1-10.c
@@ -1398,7 +1408,8 @@ int main() {
 }
 ```
 
-1-11 你准备如何测试单词计数程序？如果程序中存在某种错误，那么什么样的输 入最可能发现这类错误呢？
+### 1-11 
+你准备如何测试单词计数程序？如果程序中存在某种错误，那么什么样的输 入最可能发现这类错误呢？
 首先一个程序统计字符、行和单词的数量，假定单词的定义为不包括空格、制表符或换行符的字符序列。
 ```c
 #include <stdio.h>
@@ -1431,7 +1442,8 @@ int main() {
 1. 没有输入。
 2. 全部空格。
 
-1-12 编写一个程序，以每行一个单词的形式打印其输入。
+### 1-12 
+编写一个程序，以每行一个单词的形式打印其输入。
 解：
 ```c
 // p1-12.c
@@ -1458,3 +1470,177 @@ int main() {
 }
 ```
 
+### 1-13
+编写一个程序，打印输入中单词长度的直方图。水平方向的直方图比较容易绘制，垂直方向的直方图则要困难些。
+解：
+```c
+// p1-13.c
+#include <stdio.h>
+
+#define IN 1
+#define OUT 0
+#define MAXWORD 20
+
+int wordLen[MAXWORD];
+
+int
+main()
+{
+  int state = OUT;
+  int len = 0;
+  int overflow = 0;
+
+  // 单词计数逻辑
+  int c;
+  while ((c = getchar()) != EOF) {
+    if (c == '\n' || c == '\t' || c == ' ') {
+      if (state == IN) {
+        if (len <= MAXWORD) {
+          wordLen[len - 1]++;
+        } else {
+          overflow++;
+        }
+      }
+      len = 0;
+      state = OUT;
+    } else {
+      if (state == OUT) {
+        state = IN;
+        len++;
+      } else {
+        len++;
+      }
+    }
+  }
+
+  if (state == IN) {
+    if (len <= MAXWORD) {
+      wordLen[len - 1]++;
+    } else {
+      overflow++;
+    }
+  }
+
+  // 打印水平方向
+  for (int i = 0; i < sizeof wordLen / sizeof(int); i++) {
+    printf("%2d : ", i + 1);
+    for (int j = 0; j < wordLen[i]; j++) {
+      putchar('*');
+    }
+    printf(" %d\n", wordLen[i]);
+  }
+
+  if (overflow > 0) {
+    printf("There ard %d words > %d\n", overflow, MAXWORD);
+  }
+
+  // 打印垂直方向
+  int maxvalue = 0;
+  for (int i = 0; i < MAXWORD; i++) {
+    if (wordLen[i] > maxvalue) {
+      maxvalue = wordLen[i];
+    }
+  }
+
+  for (int i = maxvalue + 1; i > 0; i--) {
+    for (int j = 0; j < MAXWORD; j++) {
+      if (wordLen[j] == i - 1) {
+        printf("%3d", i - 1);
+      } else if (wordLen[j] >= i) {
+        printf("  *");
+      } else {
+        printf("  \\");
+      }
+    }
+    putchar('\n');
+  }
+
+  for (int i = 0; i < MAXWORD; i++) {
+    printf("%3d", i + 1);
+  }
+
+  putchar('\n');
+  if (overflow > 0) {
+    printf("There ard %d words > %d\n", overflow, MAXWORD);
+  }
+}
+
+```
+
+### 1-14 
+编写一个程序，打印输入中各个字符出现频度的直方图。
+解：
+和 1-13 不同的是，指定了图表的最大长度为 15。
+```c
+// p1-14.c
+#include <stdio.h>
+#include <ctype.h>
+
+#define MAXHIST 15
+#define MAXCHAR 120
+
+int main() {
+    int c;
+    int len;
+    int maxvalue;
+    int cc[MAXCHAR];
+
+    for(int i = 0; i < MAXCHAR; i ++) {
+        cc[i] = 0;
+    }
+
+    while((c = getchar()) != EOF) {
+        if(c < MAXCHAR) {
+            ++cc[c];
+        }
+    }
+
+    maxvalue = 0;
+    for(int i = 0; i < MAXCHAR; i ++) {
+        if(cc[i] > maxvalue) {
+            maxvalue = cc[i];
+        }
+    }
+
+    for(int i = 1; i < MAXCHAR; i ++) {
+        if(isprint(i)) {
+            printf("%5d - %c - %5d : ", i, i, cc[i]);
+        } else {
+            printf("%5d -    - %5d : ", i, i, cc[i]);
+        }
+
+        if(cc[i] > 0) {
+            if((len = cc[i] * MAXHIST / maxvalue) <= 0){
+                len = 1;
+            }
+        } else {
+            len = 0;
+        }
+        while(len > 0) {
+            putchar('*');
+            --len;
+        }
+        putchar('\n');
+    }
+}
+```
+
+### 1-15 
+重新编写 1.2 节中的温度转换程序，使用函数实现温度转换计算。
+解：
+```c
+// p1-15.c
+#include <stdio.h>
+
+float ceisius(float);
+
+int main() {
+    for(float i = 0; i < 300; i += 20) {
+        printf("%3.0f %6.1f\n", i, ceisius(i));
+    }
+}
+
+float ceisius(float fahr) {
+    return (5.0 / 9) * (fahr - 32);
+}
+```
