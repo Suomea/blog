@@ -7,7 +7,7 @@ theme:
   palette: 
     primary: custom
   font:
-    text: STSong
+    text: Console
     code: Console
   name: material
   custom_dir: overrides

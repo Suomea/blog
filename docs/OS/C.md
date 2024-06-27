@@ -790,7 +790,7 @@ pa = a;
 
 但是，数组名和指针有一个不同之处，指针是一个变量，因此，在 C 语言中语句 `pa = a` 和 `pa ++` 都是合法的。但数组名不是变量，因此，类似与 `a = pa` 和 `a++` 形式的语句都是非法的。
 
-当把数组名传递给一个函数时，实际上传递的时该数组第一个元素的地址。因此在函数定义中，形参 `char s[]` 和 `char *s` 是等价的。
+当把数组名传递给一个函数时，实际上传递的是该数组第一个元素的地址，即指针。因此在函数定义中，形参 `char s[]` 和 `char *s` 是等价的。
 ```c
 #include <stdio.h>
 
@@ -810,6 +810,16 @@ int str_len(char *s) {
         n ++;
     }
     return n;
+}
+```
+
+由于数组的传递实际上传递的是指针，因此在函数内部使用 sizeof 是获取不到数组的长度。因此在下面的代码中 `sizeof line` 和 `sizeof(char *)` 是等价的。
+```c
+int get_line(char line[]) {
+    printf("get_line line len: %d\n", sizeof line);
+    printf("get_line line len: %d\n", sizeof(char *));
+    
+    return 0;
 }
 ```
 
@@ -1308,8 +1318,8 @@ int main() {
 
 int main() {
     int c;
-    while(c = getchar() != EOF) {
-        printf("%d\n", c);
+    while((c = getchar()) != EOF) {
+        purchar(c);
     }
     printf("%d - at EOF\n", c);  // ctrl + D 结束程序时打印 0 - at EOF
 }
@@ -1642,5 +1652,114 @@ int main() {
 
 float ceisius(float fahr) {
     return (5.0 / 9) * (fahr - 32);
+}
+```
+
+### 1-16 
+修改打印最长文本行的程序的主程序 main，使之可以打印任意长度的输入行的长度，并尽可能多地打印文本。
+解：
+1. 假设最多打印 99 个字符。
+```c
+// p1-16.c
+#include <stdio.h>
+
+#define MAXLINE 100
+
+int get_line(char *, int);
+
+void copy(char *, char *);
+
+int main() {
+    
+    char longest[MAXLINE];
+    char line[MAXLINE];
+    
+    int max = 0;
+    int len;
+    
+    while((len = get_line(line, MAXLINE)) > 0) {
+        if(len > max) {
+            copy(line, longest);
+            max = len;
+        }
+    }
+    
+    printf("longest line len: %d, content: %s", max, longest);
+}
+
+void copy(char from[], char to[]) {
+    int i = 0;
+    while((to[i] = from[i]) != '\0') {
+        i ++;
+    }
+}
+```
+
+```c
+// get_line.c
+#include <stdio.h>
+
+int get_line(char *line, int lim) {
+    int c;
+    int i = 0, l = 0;
+    while((c = getchar()) != EOF && c != '\n') {
+        if(i < lim - 2) {
+            line[i++] = c;
+        }
+        
+        l ++;
+    } 
+    
+    if(c == '\n') {
+        line[i++] = '\n';
+        l ++;
+    }
+    
+    line[i] = '\0';
+    
+    return l;
+}
+```
+
+## 1-17 
+编写一个程序，打印长度大于 80 个字符的所有输入行。
+解：
+```c
+
+#include <stdio.h>
+
+#define MAXLINE 10
+#define PLEN 15
+
+int get_line(char *, int);
+
+int main() {
+    int len;
+    char line[MAXLINE];
+    
+    while((len = get_line(line, MAXLINE)) > 0) {
+        if(len > PLEN) {
+            printf("%s", line);
+        }
+    }
+}
+
+int get_line(char line[], int lim) {
+    int c;
+    int l = 0, i = 0;
+    while((c = getchar()) != EOF && c != '\n') {
+        if(l < lim - 2) {
+            line[i++] = c;
+        }
+        l ++;
+    }
+    
+    if(c == '\n') {
+        line[i ++] = c;
+        l ++;
+    }
+    
+    line[i] = '\0';
+    return l;
 }
 ```
