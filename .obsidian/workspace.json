@@ -37,9 +37,9 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/OS/C.md",
+                "file": "docs/English/Last, the last, the latest.md",
                 "mode": "source",
-                "source": true
+                "source": false
               }
             }
           }
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/OS/C.md",
+                "file": "docs/English/Last, the last, the latest.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/OS/C.md",
+                "file": "docs/English/Last, the last, the latest.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/OS/C.md"
+                "file": "docs/English/Last, the last, the latest.md"
               }
             }
           }
@@ -174,36 +174,37 @@
   },
   "active": "1f6f9ca4a85897be",
   "lastOpenFiles": [
+    "docs/ES/环境搭建.md",
+    "docs/ES/ES DSL查询方式.md",
+    "docs/Java/Tips.md",
+    "docs/Java/微服务优雅停机.md",
+    "docs/Java/微服务架构.md",
+    "docs/K8S/安装 Kubernetes 集群.md",
+    "docs/K8S/安装 Kuboard 集群管理界面.md",
+    "docs/K8S/安装 Nginx Ingress.md",
+    "docs/Reading/读书计划.md",
+    "docs/Reading/2024.md",
+    "docs/Reading/2023.md",
+    "docs/Reading/2022.md",
+    "docs/Reading/2021.md",
+    "docs/Server/本地服务器192.168.31.11.md",
+    "docs/MySQL/MySQL Tips.md",
+    "docs/OS/C.md",
+    "docs/OS/并发——多线程.md",
+    "docs/OS/并发——锁.md",
+    "docs/OS/汇编——介绍.md",
+    "docs/OS/汇编——环境搭建.md",
+    "docs/OS/汇编——寻址方式.md",
+    "docs/OS/OS Tips.md",
     "docs/Network/网络层：IP.md",
     "docs/LocalFile/Picture/记录路由选项.png",
     "docs/Network/程序：时间服务.md",
     "docs/Network/网络层：ICMP.md",
     "mkdocs.yml",
-    "docs/OS/C.md",
     "docs/English/Last, the last, the latest.md",
-    "docs/Reading/读书计划.md",
     "docs/English",
-    "docs/index.md",
-    "docs/OS/汇编——介绍.md",
     "docs/stylesheets/extra.css",
-    "docs/Server/阿里云服务器106.15.72.83.md",
-    "docs/ES/操作.md",
-    "docs/ES/环境搭建.md",
-    "docs/ES/ES DSL查询方式.md",
-    "docs/Reading/2023.md",
-    "docs/Reading/2024.md",
-    "docs/MySQL/逻辑备份 MySQL.md",
-    "docs/MySQL/安装 MySQL.md",
-    "docs/MySQL/MySQL Tips.md",
     "docs/MySQL/MySQL Tips.md~",
-    "docs/OS/OS Tips.md",
-    "docs/Tips/API.md",
-    "docs/Linux/PT.md",
-    "docs/Linux/账号和群组.md",
-    "docs/Docker/安装 Docker.md",
-    "docs/Docker/镜像操作.md",
-    "docs/Linux/PG Tips.md",
-    "docs/ES/Spring Boot 集成 ES.md",
     "docs/ES",
     "docs/Server",
     "docs/OS/C.md~",
