@@ -24,7 +24,7 @@ select count(*)                          as totalCount,
 from test_tb;
 ```
 
-错误的原因在于 `manual_level != auto_level` 逻辑表达式，无论表达式返回的结果是 `True` 或者 `False` 都会被 `count()` 函数统计进去。
+错误的原因在于 `manual_level != auto_level` 是逻辑表达式，无论表达式返回的结果是 `True` 或者 `False` 都会被 `count()` 函数统计进去。
 !!! note "如果表达式两边至少一方为 NULL，那么表达式的结果就是 NLL，count 函数不会统计 NULL。"
 
 正确的 SQL：

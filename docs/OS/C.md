@@ -1721,7 +1721,7 @@ int get_line(char *line, int lim) {
 }
 ```
 
-## 1-17 
+### 1-17 
 编写一个程序，打印长度大于 80 个字符的所有输入行。
 解：
 ```c
@@ -1763,3 +1763,193 @@ int get_line(char line[], int lim) {
     return l;
 }
 ```
+
+### 1-18 
+编写一个程序，删除每个输入行末尾的空格及制表符，并删除完全是空格的行。
+解：
+```c
+// p1-18.c
+#include <stdio.h>
+#include <string.h>
+
+#define MAXLINE 100
+
+int get_line(char *, int);
+void remove_end_blank(char *, int);
+
+int main() {
+    char line[MAXLINE];
+    
+    int len;
+    while((len = get_line(line, MAXLINE)) > 0) {
+        printf("str len: %d, str: %s", strlen(line), line);
+        remove_end_blank(line, MAXLINE);
+        if(line[0] != '\n') {
+            printf("str len: %d, str: %s", strlen(line), line);
+        }
+    }   
+}
+
+void remove_end_blank(char line[], int max) {
+    int i;
+    for(i = 0; i < max && line[i] != '\0'; i ++);
+    
+    for(i = i - 1; i >= 0 && (line[i] == '\t' || line[i] == ' ' || line[i] == '\n'); i--);
+    
+    line[i + 1] = '\n';
+    line[i + 2] = '\0';
+}
+
+int get_line(char line[], int max) {
+    int c;
+    int i = 0, l = 0;
+    
+    
+    while((c = getchar()) != EOF && c != '\n') {
+        if(i < max - 2) {
+            line[i++] = c;
+        }
+        
+        l++;
+    }
+    
+    if(c == '\n') {
+        line[i++] = '\n';
+        l++;
+    }
+    
+    line[i] = '\0';
+    return l;
+}
+```
+
+### 1-19 
+编写函数 reverse(s)，将字符串 s 中的字符顺序颠倒过来。使用该函数 编写一个程序，每次颠倒一个输入行中的字符顺序。
+解：
+```c
+// p1-19.c
+#include <stdio.h>
+#include <string.h>
+#define MAXLINE 100
+
+int get_line(char *, int);
+
+void revese(char *, int);
+
+int main() {
+    char line[MAXLINE];
+    while(get_line(line, MAXLINE) > 0) {
+        printf("str len: %d, str: %s\n", strlen(line), line);
+        revese(line, MAXLINE);
+        if(line[0] != '\n') {
+            printf("str len: %d, str: %s", strlen(line), line);
+        }
+    }
+}
+
+void revese(char line[], int max) {
+    int i;
+    for(i = 0; i < max && (line[i] != '\n') && line[i] != '\0'; i ++) {
+        printf("%c - %d\n", line[i], i);
+    }
+    
+    int right = i - 1, left = 0;
+    while(left < right) {
+        int tmp = line[left];
+        line[left] = line[right];
+        line[right] = tmp;
+        
+        left ++;ccc 
+        right --;
+    }
+}
+
+int get_line(char line[], int max) {
+    int c;
+    int i = 0, l = 0;
+    
+    while((c = getchar()) != EOF && c != '\n') {
+        if(i < max - 2) {
+            line[i++] = c;
+        }
+        l++;
+    }
+    
+    if(c == '\n') {
+        line[i] = '\n';
+        l ++;
+    }
+    
+    line[i] = '\0';
+    return l;
+}
+```
+### 1-23 
+编写一个删除 C 语言程序中所有的注释语句。要正确处理带引号的字符串与 字符常量。在 C 语言中，注释不允许嵌套。  
+解：  
+要处理几种情况：   
+
+- `// xxx` 直到行结束，或者文件结束。  
+- `\* *\`  多行注释。  
+- `'xxx // xxx \' xx  '` 引号内的内容原样输出。  
+- `"xxx // xxx \" xx "`  引号内的内容原样输出。  
+
+```c
+// p1-23.c
+#include <stdio.h>
+
+void echo_quote(int);
+
+int main() {
+    printf("hello \" world!\n");
+    printf("// helloworld /* nihaos */ \n");
+    int c;
+    // hello world
+    /*
+        hello world // 
+        ' '
+        "hello world"
+    */
+    int d;
+    while((c = getchar()) != EOF) {
+        if(c == '/') {
+            if((d = getchar()) == '*') {
+                c = getchar();
+                d = getchar();
+                while(c != '*' || d != '/') {
+                    c = d;
+                    d = getchar();
+                }
+            } else if(d == '/') {
+                while((c = getchar()) != EOF && c != '\n')
+                    ;
+                if(c == '\n') {
+                    putchar(c);
+                }
+            } else {
+                putchar(c);
+                putchar(d);
+            }
+        }  else if(c == '\'' || c == '"') {
+            echo_quote(c);
+        } else {
+            putchar(c);
+        }
+    }
+}
+
+void echo_quote(int c) {
+    int d;
+    putchar(c);
+    
+    while((d = getchar()) != c) {
+        putchar(d);
+        if(d == '\\') {
+            putchar(getchar());
+        }
+    }
+    
+    putchar(d);
+}
+```
+
