@@ -401,7 +401,7 @@ short int 和 long int 类型的声明中，int 可以省略。int 通常代表�
 #include <limits.h>
 #include <float.h>
 
-int main() {C
+int main() {
     // signed types
     printf("signed char min     = %d\n", SCHAR_MIN);
     printf("signed char max     = %d\n", SCHAR_MAX);
