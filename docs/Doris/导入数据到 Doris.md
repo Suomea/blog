@@ -74,7 +74,7 @@ PARTITION BY RANGE(`time`)() DISTRIBUTED BY HASH(`time`) BUCKETS 8 PROPERTIES (
   "dynamic_partition.time_zone"="Asia/Shanghai"
 );
 ```
-## JDBC Catalog 配合 INSERT INTO SELECT
+## INSERT INTO SELECT
 参考文档  
 1. https://doris.apache.org/zh-CN/docs/2.0/lakehouse/database/jdbc  
 2. https://doris.apache.org/zh-CN/docs/2.0/data-operate/import/insert-into-manual  
@@ -109,30 +109,20 @@ insert into thermo_hygro_meter select * from mysql.iot_data.thermo_hygro_meter;
 
 -- 或者
 
-insert into
-  thermo_hygro_meter(
-    device_id,
-    detect_time,
-    temperature,
-    humidity,
-    create_time
-  )
-select
-  device_id,
-  detect_time,
-  temperature,
-  humidity,
-  create_time
-from
-  mysql.iot_data.thermo_hygro_meter;
+insert into thermo_hygro_meter(device_id, detect_time, temperature, humidity, create_time)
+select device_id, detect_time, temperature, humidity, create_time from mysql.iot_data.thermo_hygro_meter;
 ```
 
-有一个问题，创建完 mysql 数据源之后，mysql 的元数据信息如表的字段列表貌似会被 Doris 缓存下来，如果 MySQL 更新了字段会导致在 Doris 中查询（`select *` 或者 `select new_field_name`）出错。   
-[提问链接](https://ask.selectdb.com/questions/D1ff1/jdbc-catalog-geng-xin-yuan-shu-ju-biao-zi-duan-wen-ti) 解决方案是刷新 Catalog 数据源的元数据信息，[参考链接](https://doris.apache.org/zh-CN/docs/dev/sql-manual/sql-statements/Utility-Statements/REFRESH/?_highlight=refresh)。
+有一个问题，创建完 mysql 数据源之后，mysql 的元数据信息如表的字段列表貌似会被 Doris 缓存下来，如果 MySQL 更新了字段会导致在 Doris 中查询（`select *` 或者 `select new_field_name`）出错。[提问链接](https://ask.selectdb.com/questions/D1ff1/jdbc-catalog-geng-xin-yuan-shu-ju-biao-zi-duan-wen-ti) 解决方案是刷新 Catalog 数据源的元数据信息，[参考链接](https://doris.apache.org/zh-CN/docs/dev/sql-manual/sql-statements/Utility-Statements/REFRESH/?_highlight=refresh)：
+```
+REFRESH CATALOG catalog_name;  
+REFRESH DATABASE [catalog_name.]database_name;  
+REFRESH TABLE [catalog_name.][database_name.]table_name;
+```
 
-测试大量数据导入的性能
+测试大量数据导入的性能。
 
-这种导入方式好像不支持 CDC。
+这种导入方式好像不支持 CDC。在 2.1 版本 Doris 引入了 Job Scheduler 实现作业调度，结合 Catalog 能够实现定时同步数据的方案。
 
 ## JDBC
 
@@ -140,5 +130,6 @@ from
 
 Doris 在启用了 `rewriteBatchedStatements=true` 之后大批量的实时写入，还是有点慢。单次写入 2w 条数据大概耗时 20s。
 
+## StreamLoad
 参考数据导入的 [StreamLoad](https://doris.apache.org/zh-CN/docs/2.0/data-operate/import/stream-load-manual) 的方式。
 ## SeaTunnel 
