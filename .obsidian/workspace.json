@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Doris/从 MySQL 导入数据到 Doris.md",
+                "file": "docs/Doris/导入数据到 Doris.md",
                 "mode": "source",
                 "source": false
               }
@@ -65,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Doris/从 MySQL 导入数据到 Doris.md",
+                "file": "docs/Doris/导入数据到 Doris.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Doris/从 MySQL 导入数据到 Doris.md",
+                "file": "docs/Doris/导入数据到 Doris.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Doris/从 MySQL 导入数据到 Doris.md"
+                "file": "docs/Doris/导入数据到 Doris.md"
               }
             }
           }
@@ -148,19 +147,20 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "c3e1cd9fa3752c91",
+  "active": "642b096f9ca9a91e",
   "lastOpenFiles": [
     "docs/Linux/iptables.md",
+    "docs/Doris/导入数据到 Doris.md",
+    "未命名.md",
+    "mkdocs.yml",
     "docs/K8S/安装 Kubernetes 集群.md",
     "docs/Linux/磁盘分区挂载.md",
-    "mkdocs.yml",
     "docs/index.md",
     "docs/Linux/正则表达式.md",
     "docs/Linux/账号和群组.md",
     "docs/Linux/未命名.md",
     "docs/Linux/文件与文件系统.md",
     "docs/Network/Network Tips.md",
-    "docs/Doris/从 MySQL 导入数据到 Doris.md",
     "docs/Doris",
     "docs/Network/运输层：UDP.md",
     "docs/Network/网络层：ICMP.md",

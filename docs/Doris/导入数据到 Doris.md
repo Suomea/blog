@@ -133,4 +133,12 @@ from
 测试大量数据导入的性能
 
 这种导入方式好像不支持 CDC。
+
+## JDBC
+
+对于一些数据库（比如 MySQL），默认情况下 JDBC 并不总是将多个 INSERT 语句合并成一个批量插入语句发送给数据库，而是逐条发送。这会增加网络延迟和数据库处理开销。启用 `rewriteBatchedStatements` 后，JDBC 会尝试将多个 INSERT 语句合并为一个大的 INSERT 语句，以便一次性发送给数据库，从而显著提升插入效率。
+
+Doris 在启用了 `rewriteBatchedStatements=true` 之后大批量的实时写入，还是有点慢。单次写入 2w 条数据大概耗时 20s。
+
+参考数据导入的 [StreamLoad](https://doris.apache.org/zh-CN/docs/2.0/data-operate/import/stream-load-manual) 的方式。
 ## SeaTunnel 
