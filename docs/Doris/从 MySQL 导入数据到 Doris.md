@@ -47,11 +47,38 @@ UNIQUE KEY (`device_id`, `detect_time`)
 DISTRIBUTED BY HASH(`detect_time`) BUCKETS 1;  
 ```
 
+另一张不相干的表，用来演示动态分区表的创建：
+```sql
+CREATE TABLE vehicle_gps_data (
+  license varchar(255) comment '车牌',
+  `time` datetime comment '时间',
+  color varchar(100) comment '车牌颜色',
+  lon decimal(15, 12) comment '经度',
+  lat decimal(15, 12) comment '纬度',
+  speed float comment '速度',
+  altitude int comment '海拔',
+  direction int comment '方向角',
+  acc int comment '加速度',
+  create_time datetime not null default current_timestamp comment '创建时间'
+)
+UNIQUE KEY (`license`, `time`) 
+PARTITION BY RANGE(`time`)() DISTRIBUTED BY HASH(`time`) BUCKETS 8 PROPERTIES (
+ "replication_num" = "1",
+  "dynamic_partition.enable" = "true",
+  "dynamic_partition.time_unit" = "MONTH",
+  "dynamic_partition.end" = "10",
+  "dynamic_partition.prefix" = "p",
+  "dynamic_partition.buckets" = "8",
+  "dynamic_partition.create_history_partition" = "true",
+  "dynamic_partition.history_partition_num" = "8",
+  "dynamic_partition.time_zone"="Asia/Shanghai"
+);
+```
 ## JDBC Catalog 配合 INSERT INTO SELECT
-参考文档
-1. https://doris.apache.org/zh-CN/docs/2.0/lakehouse/database/jdbc
-2. https://doris.apache.org/zh-CN/docs/2.0/data-operate/import/insert-into-manual
-INSERT INTO SELECT 导入
+参考文档  
+1. https://doris.apache.org/zh-CN/docs/2.0/lakehouse/database/jdbc  
+2. https://doris.apache.org/zh-CN/docs/2.0/data-operate/import/insert-into-manual  
+
 下载最新的 MySQL JDBC 驱动，放在 FE 和 BE 的 `fe/jdbc_drivers/` `be/jdbc_drivers` 目录下。
 
 创建数据源
@@ -60,7 +87,7 @@ INSERT INTO SELECT 导入
 CREATE CATALOG mysql PROPERTIES (
     "type"="jdbc",
     "user"="root",
-    "password"="Chxy@122619",
+    "password"="xxxx",
     "jdbc_url" = "jdbc:mysql://192.168.31.11:3306",
     "driver_url" = "mysql-connector-j-8.4.0.jar",
     "driver_class" = "com.mysql.cj.jdbc.Driver"
@@ -100,7 +127,8 @@ from
   mysql.iot_data.thermo_hygro_meter;
 ```
 
-有一个问题，创建完 mysql 数据源之后，mysql 的元数据信息如表的字段列表貌似会被 Doris 缓存下来，如果 MySQL 更新了字段会导致在 Doris 中查询（`select *` 或者 `select new_field_name`）出错。 [提问链接](https://ask.selectdb.com/questions/D1ff1/jdbc-catalog-geng-xin-yuan-shu-ju-biao-zi-duan-wen-ti)
+有一个问题，创建完 mysql 数据源之后，mysql 的元数据信息如表的字段列表貌似会被 Doris 缓存下来，如果 MySQL 更新了字段会导致在 Doris 中查询（`select *` 或者 `select new_field_name`）出错。   
+[提问链接](https://ask.selectdb.com/questions/D1ff1/jdbc-catalog-geng-xin-yuan-shu-ju-biao-zi-duan-wen-ti) 解决方案是刷新 Catalog 数据源的元数据信息，[参考链接](https://doris.apache.org/zh-CN/docs/dev/sql-manual/sql-statements/Utility-Statements/REFRESH/?_highlight=refresh)。
 
 测试大量数据导入的性能
 
