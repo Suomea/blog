@@ -3,5 +3,6 @@
   "textFontFamily": "MiSMiS",
   "interfaceFontFamily": "等线",
   "monospaceFontFamily": "Consolas",
-  "baseFontSize": 16
+  "baseFontSize": 14,
+  "baseFontSizeAction": true
 }

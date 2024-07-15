@@ -7,7 +7,7 @@ theme:
   palette: 
     primary: custom
   font:
-    text: Console
+    text: MiSans
     code: Console
   name: material
   custom_dir: overrides

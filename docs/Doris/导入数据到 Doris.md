@@ -61,7 +61,7 @@ CREATE TABLE vehicle_gps_data (
   acc int comment '加速度',
   create_time datetime not null default current_timestamp comment '创建时间'
 )
-UNIQUE KEY (`license`, `time`) 
+UNIQUE KEY (`license`, `time`)  -- 这里最好调整一下 time 和 license 的顺序，一般查询都会带上时间但是不一定会带上车牌号
 PARTITION BY RANGE(`time`)() DISTRIBUTED BY HASH(`time`) BUCKETS 8 PROPERTIES (
  "replication_num" = "1",
   "dynamic_partition.enable" = "true",
@@ -73,6 +73,21 @@ PARTITION BY RANGE(`time`)() DISTRIBUTED BY HASH(`time`) BUCKETS 8 PROPERTIES (
   "dynamic_partition.history_partition_num" = "8",
   "dynamic_partition.time_zone"="Asia/Shanghai"
 );
+
+-- 将查询的数据 geojson 展示路径
+SELECT CONCAT(
+    '{"type": "LineString", "coordinates": [',
+    GROUP_CONCAT(
+        CONCAT('[', lon, ',', lat, ']') order by time 
+    ),
+    ']}'
+) AS geojson
+FROM za_gps_data where  license = 'xxxxx' and time >= '2024-07-09 00:00:00'  ;
+```
+
+```sql
+-- 查询分区信息
+show partitions from vehicle_gps_data;
 ```
 ## INSERT INTO SELECT
 参考文档  

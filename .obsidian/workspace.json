@@ -8,103 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "642b096f9ca9a91e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/MySQL/MySQL Tips.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "5ed1f1c8b7306869",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/MySQL/索引.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "b1447be1e3068e64",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/MySQL/锁.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "260a75300a7d4d08",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Redis/安装 Redis.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "7ef723619179eb9a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Kafka/Kafka 集群搭建.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "2a46c3c2138c0a03",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Reading/读书计划.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "ca8dda93287b2643",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Reading/Timeline.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "6d6b76785a8f8f78",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Reading/Timeline.md",
+                "file": "docs/Doris/导入数据到 Doris.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 7
+        ]
       }
     ],
     "direction": "vertical"
@@ -170,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Reading/Timeline.md",
+                "file": "docs/Doris/导入数据到 Doris.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -187,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Reading/Timeline.md",
+                "file": "docs/Doris/导入数据到 Doris.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -210,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Reading/Timeline.md"
+                "file": "docs/Doris/导入数据到 Doris.md"
               }
             }
           }
@@ -234,10 +149,14 @@
   },
   "active": "6d6b76785a8f8f78",
   "lastOpenFiles": [
+    "docs/Redis/常用数据结构.md",
+    "docs/Redis/安装 Redis.md",
+    "mkdocs.yml",
+    "docs/Redis/分布式锁.md",
+    "docs/Reading/Timeline.md",
     "docs/Reading/减肥计划.md",
     "docs/Reading/读书计划.md",
     "docs/Reading/软件开发.md",
-    "docs/Reading/Timeline.md",
     "docs/Kafka/保证消息不丢失.md",
     "docs/Kafka/Kafka 集群搭建.md",
     "docs/Reading/2024.md",
@@ -248,9 +167,6 @@
     "docs/ES/操作.md",
     "docs/ES/ES DSL查询方式.md",
     "docs/Server/本地服务器192.168.31.11.md",
-    "docs/Redis/安装 Redis.md",
-    "docs/Redis/常用数据结构.md",
-    "docs/Redis/分布式锁.md",
     "docs/Kafka/Kafka 常用命令.md",
     "docs/Kafka/Kafka 主题与分区.md",
     "docs/MySQL/索引.md",
@@ -259,8 +175,6 @@
     "docs/MySQL/MySQL Tips.md",
     "docs/MySQL/MySQL 配置主从.md",
     "docs/MySQL/安装 MySQL.md",
-    "docs/MySQL/物理备份 MySQL.md",
-    "mkdocs.yml",
     "docs/Doris"
   ]
 }
