@@ -134,13 +134,14 @@ LTRIM key start end：对列表进行修剪，只保留从 start 偏移量到 en
 阻塞命令：
 ```
 BLPOP/BRPOP key [key ...] timeout
+```
 
 - 从第一个非空列表中弹出位于最左/右端的元素。
 
 - 是 LPOP 的阻塞版本，当没有元素可以从给定的列表中弹出时，会阻塞连接。
 
 - timeout 为阻塞等待的时间，0 表示一直等待，正整数表示等待的秒数。
-```
+
 
 ## 集合
 Redis 集合以无须的方式来存储多个各不相同的元素，支持快速的对集合执行添加元素、移除元素及检查元素是否在集合中。
@@ -212,6 +213,8 @@ HINCRBYFLOAT key field increment：将散列里面指的键对应的值加上一
 ## 有序集合
 和散列存储着键值之间的映射类似，有序集合也存储着成员与分值之间的映射，并提供了分值处理命令，以及根据分值大小有序地获取或扫描成员和分值的命令。
 
+在有序集合中有两个概念，分值和排名。类似考试的成绩单，成绩单的姓名对应有序集合中的元素，成绩对应有序集合元素的分值，排名对应有序集合中的排名。
+
 有序集合 `ZADD` 用命令：
 ```
 ZADD key [NX | XX] score member [score member ...]
@@ -232,14 +235,40 @@ ZCARD key：返回有序集合包含的成员数量。
 
 ZINCRBY key increment member：将有序集合中 member 成员的分值加上 increment。
 
-ZCOUNT key min max：返回有序集合中分值介于 min 和 max 之间的成员数量，-inf 表示负无穷，+inf 表示正无穷。是否包含边界值？
-
-ZRANK key member：返回成员 member 在有序集合中的排名。
-
 ZSOCRE key member：返回成员 member 的分值。
-
-ZRANGE key start stop [WITHSCORES]：返回有序集合中排名介于 start 和 stop 之间的成员，如果指定了 WITHSCORES 选项，那么成员的分值也一起返回。是否包含边界值？
 ```
+
+有序集合通过分值操作的命令：
+```
+ZCOUNT key min max：返回有序集合中分值介于 min 和 max 之间的成员数量。
+
+ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT offset count]：返回有序集合中分值介于 min 和 max 之间的所有元素。如果指定了 WITHSCORES 选项，那么成员的分值也一起返回。
+
+ZREVRANGEBYSCORE key min max [WITHSCORES] [LIMIT offset count]：返回有序集合中分值介于 min 和 max 之间的所有元素，并按照分值从大到小的顺序返回。如果指定了 WITHSCORES 选项，那么成员的分值也一起返回。
+
+ZRANGESTORE dst src min max [BYSCORE | BYLEX] [REV] [LIMIT offset count]：
+
+ZREMRANGEBYSCORE key min max：移除集合中分值介于 min 和 max 之间的所有成员。
+```
+
+有序集合通过排名操作的命令：
+```
+ZRANK key member：返回成员 member 在有序集合中的排名，按照分值从小到大排序，排名从 0 开始。注意返回的是第几名，不是分值。如果分值相等，则先插入的数据排名数值较小。
+
+ZREVRANK key member：返回成员 member 在有序集合中的排名，按照分值从大到小排序，排名从 0 开始。注意返回的是第几名，不是分值。如果分值相等，则后插入的数据排名数值较小。
+
+ZRANGE key start stop [WITHSCORES]：返回有序集合中排名介于 start 和 stop 之间的成员，按照分值从小到大排序，排名从 0 开始。如果指定了 WITHSCORES 选项，那么成员的分值也一起返回。
+
+ZREVRANGE key start stop [WITHSCORES]：返回有序集合中排名介于 start 和 stop 之间的成员，按照分值从大到小排序，排名从 0 开始。如果指定了 WITHSCORES 选项，那么成员的分值也一起返回。
+
+ZREMRANGEBYRANK key start stop：移除有序集合中排名介于 start 和 stop 之间的所有成员。
+```
+
+有序集合集合相关的操作：
+```
+
+```
+
 操作命令
 
 

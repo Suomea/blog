@@ -8,7 +8,7 @@ theme:
     primary: custom
   font:
     text: MiSans
-    code: Console
+    code: MiSans
   name: material
   custom_dir: overrides
   icon:
