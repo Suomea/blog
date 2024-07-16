@@ -1,8 +1,8 @@
 {
   "accentColor": "#5cf5c7",
-  "textFontFamily": "MiSMiS",
+  "textFontFamily": "MiSans",
   "interfaceFontFamily": "等线",
   "monospaceFontFamily": "Consolas",
-  "baseFontSize": 14,
+  "baseFontSize": 15,
   "baseFontSizeAction": true
 }

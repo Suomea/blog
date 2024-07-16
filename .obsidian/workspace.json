@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Redis/常用数据结构.md",
+                "file": "docs/Redis/Redis 数据结构.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "d1db8229203a9e0b",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Redis/常用数据结构.md",
+                "file": "docs/Redis/Redis 数据结构.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Redis/常用数据结构.md",
+                "file": "docs/Redis/Redis 数据结构.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Redis/常用数据结构.md"
+                "file": "docs/Redis/Redis 数据结构.md"
               }
             }
           }
@@ -135,8 +134,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -149,13 +147,14 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6d6b76785a8f8f78",
+  "active": "a46d90ea512d36f8",
   "lastOpenFiles": [
     "docs/Redis/安装 Redis.md",
-    "docs/Redis/常用数据结构.md",
+    "docs/Doris/导入数据到 Doris.md",
+    "docs/Linux/curl.md",
+    "docs/Redis/Redis 数据结构.md",
     "docs/MySQL/MySQL 配置主从.md",
     "mkdocs.yml",
-    "docs/Doris/导入数据到 Doris.md",
     "docs/Redis/分布式锁.md",
     "docs/Reading/Timeline.md",
     "docs/Reading/减肥计划.md",
