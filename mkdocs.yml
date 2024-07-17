@@ -47,10 +47,11 @@ markdown_extensions:
 nav:
   - 数据库:
       - MySQL/MySQL Tips.md
-      - MySQL/安装 MySQL.md
-      - MySQL/逻辑备份 MySQL.md
-      - MySQL/物理备份 MySQL.md
+      - MySQL/MySQL 安装.md
+      - MySQL/MySQL 备份.md
       - MySQL/MySQL 配置主从.md
+      - Redis/Redis 安装.md
+      - Redis/Redis 数据结构.md
       - DM/达梦安装.md
       - Doris/导入数据到 Doris.md
   - K8S:

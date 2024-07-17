@@ -29,25 +29,25 @@ FLUSHDB：删除当前数据库中所有的 key。
 FLUSHALL：删除所有数据库的 key。
 ```
 ### 过期时间
-Redis 存储的数据，如果有些数据在某个时间点之后就不再使用了，可以使用 `DEL <key_name>`  显示地删除这些无用的数据，也可以通过 Redis 的过期时间特性来让一个键在给定的时限之后自动删除。
+Redis 存储的数据，如果有些数据在某个时间点之后就不再使用了，可以使用 `DEL`  显示地删除这些无用的数据，也可以通过 Redis 的过期时间特性来让一个键在给定的时限之后自动删除。
 
 对于列表、集合、散列和有序集合这样的容器类型的数据结构来说，键的过期命令只能为整个键设置过期时间，而没有办法为键里的单个元素设置过期时间。**补充：不一定，要看数据类型和版本。**
 
 过期时间相关命令：
 ```
-PERSIST key-name：移除键的过期时间
+PERSIST key：移除键的过期时间
 
-TTL key-name：查看给定的键距离过期还有多少秒（time-to-live，ttl）
+TTL key：查看给定的键距离过期还有多少秒（time-to-live，ttl）
 
-EXPIRE key-name seconds：设置给定的键在指定的秒数之后过期
+EXPIRE key seconds：设置给定的键在指定的秒数之后过期
 
-EXPIREAT key-name timestamp：将给定的键的过期时间设置为给定的 UNIX 时间戳
+EXPIREAT key timestamp：将给定的键的过期时间设置为给定的 UNIX 时间戳
 
 PTTL key-nname：查看给定的键距离过期还有多少毫秒
 
-PEXPIRE key-name milliseconds：让给定的键在指定的毫秒数之后过期
+PEXPIRE key milliseconds：让给定的键在指定的毫秒数之后过期
 
-PEXPIREAT key-name timestamp-millseconds：将一个毫秒级经度的 UNIX 时间戳设置为给定键的过期时间
+PEXPIREAT key timestamp-millseconds：将一个毫秒级经度的 UNIX 时间戳设置为给定键的过期时间
 ```
 
 ## 字符串
@@ -55,10 +55,12 @@ PEXPIREAT key-name timestamp-millseconds：将一个毫秒级经度的 UNIX 时�
 字符串可以存储以下 3 钟类型的值。  
 
 - 字节串 byte string。  
-- 整数。  
+
+-  整数。  
+
 - 浮点数。
 
-核心 `SET` 命令语法
+### `SET` 命令语法
 ```
 SET key value [NX | XX] [GET] [EX seconds | PX milliseconds | EXAT unix-time-seconds | PXAT unix-time-milliseconds | KEEPTTL]
 ```
@@ -79,42 +81,42 @@ SET key value [NX | XX] [GET] [EX seconds | PX milliseconds | EXAT unix-time-
 
 - `GET` 返回键原来的值，如果之前不存在则返回 `nil`。
 
-字符串操作命令：
+### 字符串常用命令
 ```
-GET key-name：获取键的值
+GET key：获取键的值
 
-MSET key-name value [key-name value ...]：同时设置多个键值
+MSET key value [key value ...]：同时设置多个键值
 
-MGET key-name [key-name ...]：同时获取多个键的值
+MGET key [key ...]：同时获取多个键的值
 
-GETRANGE key-name start end：获取值的指定取键，0 表示第一个字符，-1 表示最后一个字符，-2 表示倒数第二个字符
+GETRANGE key start end：获取值的指定取键，0 表示第一个字符，-1 表示最后一个字符，-2 表示倒数第二个字符
 
-GETDEL key-name：获取值并删除键
+GETDEL key：获取值并删除键
 
-APPEND key-name value：在键的值后面追加 value，即使即使键不存在也不影响
+APPEND key value：在键的值后面追加 value，即使即使键不存在也不影响
 ```
 
 当用户将一个值存储到 Redis 字符串里面的时候，如果这个值可以被解释为十进制整数或者浮点数，那么 Redis 会察觉到这一点，并允许用户对这个字符串执行各种 `INCT *` 和 `DECR *` 操作。
 
 如果用户对一个不存在的键或者一个保存了空串的键执行自增或自减操作，那么 Redis 在执行操作的时候会将这个键值当作是 0 来处理。如果尝试对一个值无法被解释为整数或者浮点数的字符串执行自增或自减操作，那么 Redis 将返回一个错误。
 
-自增和自减的命令：
+### 自增和自减命令
 ```
-INCR key-name: 将键存储的值加上 1，只能用于整数
+INCR key: 将键存储的值加上 1，只能用于整数
 
-DECR key-name：将键存储的值减去 1，只能用于整数
+DECR key：将键存储的值减去 1，只能用于整数
 
-INCRBY key-name amount：将键存储的值加上整数 amount，只能用于整数
+INCRBY key amount：将键存储的值加上整数 amount，只能用于整数
 
-DECRBY key-name amount：将键存储的值减去整数 amount，只能用于整数
+DECRBY key amount：将键存储的值减去整数 amount，只能用于整数
 
-INCRBYFLOAT key-name amount：将键存储的值加上 amount，amount 可以是浮点数
+INCRBYFLOAT key amount：将键存储的值加上 amount，amount 可以是浮点数
 ```
 
 ## 列表
 Redis 列表允许用户从序列的两端推入或弹出元素，获取列表元素，以及执行各种常见的列表操作。
 
-列表常用的命令：
+### 列表常用命令
 ```
 RPUSH key val [val ...]：将一个或多个值推入列表的右端。
 
@@ -131,7 +133,7 @@ LRANGE key start end：返回列表中从 start 偏移量到 end 偏移量范围
 LTRIM key start end：对列表进行修剪，只保留从 start 偏移量到 end 偏移量范围内的元素，包括 start 和 end，0 表示最左边的元素，-1 表示最右边的元素。
 ```
 
-阻塞命令：
+### 阻塞式命令
 ```
 BLPOP/BRPOP key [key ...] timeout
 ```
@@ -140,13 +142,13 @@ BLPOP/BRPOP key [key ...] timeout
 
 - 是 LPOP 的阻塞版本，当没有元素可以从给定的列表中弹出时，会阻塞连接。
 
-- timeout 为阻塞等待的时间，0 表示一直等待，正整数表示等待的秒数。
+- `timeout` 为阻塞等待的时间，0 表示一直等待，正整数表示等待的秒数。
 
 
 ## 集合
 Redis 集合以无须的方式来存储多个各不相同的元素，支持快速的对集合执行添加元素、移除元素及检查元素是否在集合中。
 
-集合常用操作命令：
+### 集合常用命令
 ```
 SADD key item [item ...]：将一个或多个元素添加到集合中，并返回被添加元素中原本不存在于集合里面的数量。
 
@@ -163,7 +165,7 @@ SPOP key：随机的移除集合中的元素，并返回被移除的元素。
 SMOVE src-key dst-key item：如果集合 sre-key 包含元素 item，那么从集合 src-key 里面移除 item，并将元素 item 添加到 dst-key 中；如果 item 被成功移除，那么命令返回 1，否则返回 0。 
 ```
 
-集合运算命令：
+### 集合运算命令
 ```
 SDIFF key [key ...]：返回存在于第一个集合但不存在于其它集合的元素。
 
@@ -181,7 +183,7 @@ SUNIONSTORE dst-key key [key ...]：将所有集合中的元素存储到 dst-key
 ## 散列
 Redis 的散列可以将多个键值对存储到一个 Redis 键里面。
 
-散列常用命令：
+### 散列常用命令
 ```
 HSET key field valie [field valie ...]：设置散列里面指定的键值对，如果键已经在散列里面存在则覆盖值。
 
@@ -203,7 +205,7 @@ HLEN key：获取散列里面包含键的数量。
 ```
 
 
-散列更高级的操作命令：
+### 散列更高级的操作命令
 ```
 HINCRBY key field increment：将散列里面指定的键对应的值加上一个整数，如果键不存在则创建键，值默认为 0，然后相加。
 
@@ -213,7 +215,7 @@ HINCRBYFLOAT key field increment：将散列里面指的键对应的值加上一
 ## 有序集合
 和散列存储着键值之间的映射类似，有序集合也存储着成员与分值之间的映射，并提供了分值处理命令，以及根据分值大小有序地获取或扫描成员和分值的命令。
 
-在有序集合中有两个概念，分值和排名。类似考试的成绩单，成绩单的姓名对应有序集合中的元素，成绩对应有序集合元素的分值，排名对应有序集合中的排名。
+在有序集合中有三个概念，元素、分值和排名。类似考试的成绩单，成绩单的姓名对应有序集合中的元素，成绩单的成绩对应有序集合元素的分值，成绩单的排名对应有序集合中的排名。
 
 有序集合 `ZADD` 用命令：
 ```
@@ -226,8 +228,7 @@ ZADD key [NX | XX] score member [score member ...]
 
 - `XX` 仅当 member 存在时更新 score。如果 member 不存在则无操作。
 
-
-有序集合常用命令：
+### 有序集合常用命令
 ```
 ZREM key member [member ...]：从有序集合中删除给定的成员，并返回被移除成员的数量。
 
@@ -238,7 +239,7 @@ ZINCRBY key increment member：将有序集合中 member 成员的分值加上 i
 ZSOCRE key member：返回成员 member 的分值。
 ```
 
-有序集合通过分值操作的命令：
+### 有序集合通过分值操作的命令
 ```
 ZCOUNT key min max：返回有序集合中分值介于 min 和 max 之间的成员数量。
 
@@ -251,7 +252,7 @@ ZRANGESTORE dst src min max [BYSCORE | BYLEX] [REV] [LIMIT offset count]：
 ZREMRANGEBYSCORE key min max：移除集合中分值介于 min 和 max 之间的所有成员。
 ```
 
-有序集合通过排名操作的命令：
+### 有序集合通过排名操作的命令
 ```
 ZRANK key member：返回成员 member 在有序集合中的排名，按照分值从小到大排序，排名从 0 开始。注意返回的是第几名，不是分值。如果分值相等，则先插入的数据排名数值较小。
 
@@ -264,12 +265,47 @@ ZREVRANGE key start stop [WITHSCORES]：返回有序集合中排名介于 start 
 ZREMRANGEBYRANK key start stop：移除有序集合中排名介于 start 和 stop 之间的所有成员。
 ```
 
-有序集合集合相关的操作：
+### 有序集合并集操作
+有序集合的并集，并将结果存储到一个有序集合中。
+```
+ZUNIONSTORE destination numkeys key [key ...] [WEIGHTS weight [weight ...]] [AGGREGATE <SUM | MIN | MAX>]
 ```
 
+- 计算给定有序结合的并集，并将结果存储到指定的有序集合 destination 中。需要明确给出指定有序集合的数量。
+
+- 默认情况下，元素的结果分数是各个有序集合中分数的和。
+
+- 使用 `WEIGHTS` 选项可以为每个输入的有序集合指定乘法因子，每个元素的分值在传递给聚合函数之前都乘以指定的因子，默认值为 1。
+
+- `AGGEGATE` 选项可以指定如何聚合并集结果的分数，默认为 `SUM`。当指定为 `MIN` 或 `MAX` 是，生成的集合将被包含元素在输入中存在的最小或最大值。
+
+类似 `ZUNIONSTORE` 命令，只是 `ZUNION` 将并集结果返回给客户端。
+```
+ZUNION numkeys key [key ...] [WEIGHTS weight [weight ...]] [AGGREGATE <SUM | MIN | MAX>] [WITHSCORES]
 ```
 
-操作命令
+### 有序集合交集操作
+有序集合的交集，并将结果存储到一个有序集合中。
+```
+ZINTERSTORE destination numkeys key [key ...] [WEIGHTS weight [weight ...]] [AGGREGATE <SUM | MIN | MAX>]
+```
 
+- 计算给定有序结合的交集，并将结果存储到指定的有序集合 destination 中。需要明确给出指定有序集合的数量。
 
-适用业务
+- 默认情况下，元素的结果分数是各个有序集合中分数的和。
+
+- 使用 `WEIGHTS` 选项可以为每个输入的有序集合指定乘法因子，每个元素的分值在传递给聚合函数之前都乘以指定的因子，默认值为 1。
+
+- `AGGEGATE` 选项可以指定如何聚合并集结果的分数，默认为 `SUM`。当指定为 `MIN` 或 `MAX` 是，生成的集合将被包含元素在输入中存在的最小或最大值。
+
+类似 ZINTERSTORE 命令，只是 `ZINTER` 将交集结果返回给客户端。
+```
+ZINTER numkeys key [key ...] [WEIGHTS weight [weight ...]] [AGGREGATE <SUM | MIN | MAX>] [WITHSCORES]
+```
+
+### 有序集合的差集操作
+```
+ZDIFFSTORE destination numkeys key [key ...]：将存在于第一个有序集合但是不存在于其它有序集合中的元素存储到 destination 有结合中。
+
+ZDIFF numkeys key [key ...] [WITHSCORES]：将存在于第一个有序集合但是不存在于其它有序集合中的元素返回给客户端。
+```

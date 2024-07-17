@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Redis/Redis 数据结构.md",
+                "file": "docs/PG/PG 清理 WAL 日志.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Redis/Redis 数据结构.md",
+                "file": "docs/PG/PG 清理 WAL 日志.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Redis/Redis 数据结构.md",
+                "file": "docs/PG/PG 清理 WAL 日志.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Redis/Redis 数据结构.md"
+                "file": "docs/PG/PG 清理 WAL 日志.md"
               }
             }
           }
@@ -134,8 +134,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -150,12 +149,16 @@
   },
   "active": "6d6b76785a8f8f78",
   "lastOpenFiles": [
+    "docs/PG",
+    "docs/Redis/Redis 安装.md",
+    "docs/Doris/导入数据到 Doris.md",
     "mkdocs.yml",
     "docs/Redis/Redis 数据结构.md",
-    "docs/Redis/安装 Redis.md",
-    "docs/Doris/导入数据到 Doris.md",
-    "docs/Linux/curl.md",
     "docs/MySQL/MySQL 配置主从.md",
+    "docs/MySQL/MySQL 备份.md",
+    "docs/MySQL/逻辑备份 MySQL.md",
+    "docs/MySQL/MySQL 安装.md",
+    "docs/Linux/curl.md",
     "docs/Redis/分布式锁.md",
     "docs/Reading/Timeline.md",
     "docs/Reading/减肥计划.md",
@@ -173,9 +176,6 @@
     "docs/Server/本地服务器192.168.31.11.md",
     "docs/Kafka/Kafka 常用命令.md",
     "docs/Kafka/Kafka 主题与分区.md",
-    "docs/MySQL/索引.md",
-    "docs/MySQL/事务.md",
-    "docs/MySQL/锁.md",
     "docs/Doris"
   ]
 }

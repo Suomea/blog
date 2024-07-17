@@ -5,7 +5,7 @@ tags:
 ---
 > 测试环境基于 MySQL 8.0.35，XtraBackup 8.0.35-30。
 
-演示环境
+准备环境：
 
 | **服务器** | **软件** | **用途描述** |
 | ---- | ---- | ---- |
@@ -21,9 +21,11 @@ tags:
 1. 在生产实践中，对于大数据来说，物理备份是必须的：逻辑备份太慢并且受到资源限制，从逻辑备份中恢复数据需要很长时间。基于快照的备份可以使用 `XtraBackup`。对于较小的数据库，逻辑备份可以很好的胜任。
 2. 保留多个备份集。
 3. 定期从逻辑备份（或者物理备份）中抽取数据进行恢复测试。
-4. 备份文件不要和 `MySQL` 服务器数据文件放在同一个磁盘、服务器、机房、城市。（一般软测的要求是 30km 的另一个机房）
+4. 备份文件不要和 `MySQL` 服务器数据文件放在同一个磁盘、服务器、机房、城市。（一般软测的要求是 30km 外的另一个机房）
 
-## mysqldump 备份
+## mysqldump 逻辑备份
+
+### mysqldump 命令
 
 ```shell
 mysqldump --source-data=2 --single-transaction -h 192.168.3.251 -u root -p --all-databases | gzip > test.sql.gz
@@ -35,7 +37,76 @@ mysqldump --source-data=2 --single-transaction -h 192.168.3.251 -u root -p --all
 
 `--all-databases`：导出全部数据库，会包含系统库。也可以使用 --databases tb1 tb2 指定导出数据库的名称。
 
-## XtraBackup 备份
+
+导出指定数据库的数据。
+```
+mysqldump -u <user> -p <dbname> > dbname.sql
+```
+
+导出所有数据库的数据。
+```
+mysqldump -u <user> -p --all-databases > alldb.sql
+```
+
+导出指定表的数据。
+```
+mysqldump -u <user> -p <dbname> <tablename1> <tablename2> > tablename.sql
+```
+
+### 创建连接凭证配置文件
+MySQL 连接凭证单独放在文件一个文件中，置于 /data/database/db_name 目录下，文件名为 `.bak.cnf`，内容如下：
+```text
+[client]
+user=root
+password=pwd
+```
+
+设置文件的权限，只有自己可读（r:4）可写(w:2)：
+```shell
+chmod 600 .bak.cnf
+```
+
+### 备份脚本文件
+脚本文件放置在 /data/database/db_name 目录下，文件名为 bak.sh，内容如下：
+```shell
+#!/bin/bash
+
+source /etc/profile
+
+number=31
+backup_dir=/data/database/db_name
+cre_file=/data/database/db_name/.bak.cnf
+dd=`date +%Y-%m-%d-%H-%M-%S`
+database_name=db_name
+
+
+if [ ! -d $backup_dir ];
+then
+    mkdir -p $backup_dir;
+fi
+
+mysqldump --single_transaction --master-data=2 --defaults-file=$cre_file $database_name | gzip > $backup_dir/$database_name-$dd.gz
+
+echo "dump file: $backup_dir/$database_name-$dd.gz" >> $backup_dir/dump.log
+
+delfile=`ls -l -crt  $backup_dir/*.gz | awk '{print $9 }' | head -1`
+
+count=`ls -l -crt  $backup_dir/*.gz | awk '{print $9 }' | wc -l`
+
+if [ $count -gt $number ]
+then
+  rm $delfile
+  echo "delete $delfile" >> $backup_dir/dump.log
+fi
+```
+
+### crontab 配置
+设置为每天凌晨 2 点执行，使用 `crontab -e` 命令，新增一行配置：
+```text
+0 2 * * * bash /data/database/db_name/bak.sh
+```
+
+## XtraBackup 物理备份
 ### 备份准备工作
 APT 安装。
 ```shell
@@ -56,7 +127,7 @@ FLUSH PRIVILEGES;
 ```
 
 ### 恢复准备工作
-使用 Docker 安装 MySQL 进行恢复测试。[[安装 Docker#安装]] [[安装 MySQL#Docker 安装]]
+使用 Docker 安装 MySQL 进行恢复测试。[[安装 Docker#安装]] [[MySQL 安装#Docker 安装]]
 ```shell
  docker run --name mysql -v /root/mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=pwd -d mysql:8.0.35
 ```
