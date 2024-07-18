@@ -73,8 +73,9 @@ nav:
       - Network/运输层：TCP.md
   - 操作系统:
       - OS/OS Tips.md
-      - OS/并发——多线程.md
-      - OS/并发——锁.md
+      - OS/进程.md
+      - OS/线程.md
+      - OS/锁.md
       - OS/汇编——介绍.md
       - OS/汇编——环境搭建.md
       - OS/C.md

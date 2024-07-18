@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/PG/PG 清理 WAL 日志.md",
+                "file": "docs/OS/线程.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "8364f7f1d8a80f5a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/OS/进程.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -69,7 +82,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "d1db8229203a9e0b",
@@ -85,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/PG/PG 清理 WAL 日志.md",
+                "file": "docs/OS/进程.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/PG/PG 清理 WAL 日志.md",
+                "file": "docs/OS/进程.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/PG/PG 清理 WAL 日志.md"
+                "file": "docs/OS/进程.md"
               }
             }
           }
@@ -147,15 +161,24 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6d6b76785a8f8f78",
+  "active": "8364f7f1d8a80f5a",
   "lastOpenFiles": [
+    "docs/MySQL/MySQL 备份.md",
+    "docs/MySQL/MySQL 配置主从.md",
+    "docs/MySQL/MySQL Tips.md",
+    "docs/Doris/导入数据到 Doris.md",
+    "docs/OS/进程.md",
+    "docs/OS/OS Tips.md",
+    "docs/OS/C.md",
+    "docs/OS/线程.md",
+    "docs/OS/锁.md",
+    "mkdocs.yml",
+    "docs/OS/未命名 1.md",
+    "docs/OS/未命名.md",
+    "docs/PG/PG 清理 WAL 日志.md",
     "docs/PG",
     "docs/Redis/Redis 安装.md",
-    "docs/Doris/导入数据到 Doris.md",
-    "mkdocs.yml",
     "docs/Redis/Redis 数据结构.md",
-    "docs/MySQL/MySQL 配置主从.md",
-    "docs/MySQL/MySQL 备份.md",
     "docs/MySQL/逻辑备份 MySQL.md",
     "docs/MySQL/MySQL 安装.md",
     "docs/Linux/curl.md",
@@ -168,14 +191,6 @@
     "docs/Kafka/Kafka 集群搭建.md",
     "docs/Reading/2024.md",
     "docs/Reading/2023.md",
-    "docs/Reading/2022.md",
-    "docs/Reading/2021.md",
-    "docs/ES/环境搭建.md",
-    "docs/ES/操作.md",
-    "docs/ES/ES DSL查询方式.md",
-    "docs/Server/本地服务器192.168.31.11.md",
-    "docs/Kafka/Kafka 常用命令.md",
-    "docs/Kafka/Kafka 主题与分区.md",
     "docs/Doris"
   ]
 }
