@@ -309,3 +309,5 @@ ZDIFFSTORE destination numkeys key [key ...]：将存在于第一个有序集合
 
 ZDIFF numkeys key [key ...] [WITHSCORES]：将存在于第一个有序集合但是不存在于其它有序集合中的元素返回给客户端。
 ```
+
+## GEO

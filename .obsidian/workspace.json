@@ -25,14 +25,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/OS/进程.md",
+                "file": "docs/Doris/导入数据到 Doris.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "5e3de0ae73146200",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/Doris/导入数据到 Doris.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -82,8 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "d1db8229203a9e0b",
@@ -99,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/OS/进程.md",
+                "file": "docs/Doris/导入数据到 Doris.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/OS/进程.md",
+                "file": "docs/Doris/导入数据到 Doris.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/OS/进程.md"
+                "file": "docs/Doris/导入数据到 Doris.md"
               }
             }
           }
@@ -161,13 +172,21 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "8364f7f1d8a80f5a",
+  "active": "5e3de0ae73146200",
   "lastOpenFiles": [
+    "docs/Redis/Redis 数据结构.md",
+    "docs/Redis/Redis 安装.md",
+    "docs/Kafka/Kafka 常用命令.md",
+    "docs/Doris/导入数据到 Doris.md",
+    "docs/Doris/日期时间类型.md",
+    "template/Doris.md",
+    "docs/OS/汇编——环境搭建.md",
+    "docs/OS/汇编——介绍.md",
+    "docs/OS/汇编——寻址方式.md",
+    "docs/OS/进程.md",
     "docs/MySQL/MySQL 备份.md",
     "docs/MySQL/MySQL 配置主从.md",
     "docs/MySQL/MySQL Tips.md",
-    "docs/Doris/导入数据到 Doris.md",
-    "docs/OS/进程.md",
     "docs/OS/OS Tips.md",
     "docs/OS/C.md",
     "docs/OS/线程.md",
@@ -177,20 +196,12 @@
     "docs/OS/未命名.md",
     "docs/PG/PG 清理 WAL 日志.md",
     "docs/PG",
-    "docs/Redis/Redis 安装.md",
-    "docs/Redis/Redis 数据结构.md",
     "docs/MySQL/逻辑备份 MySQL.md",
     "docs/MySQL/MySQL 安装.md",
     "docs/Linux/curl.md",
     "docs/Redis/分布式锁.md",
     "docs/Reading/Timeline.md",
     "docs/Reading/减肥计划.md",
-    "docs/Reading/读书计划.md",
-    "docs/Reading/软件开发.md",
-    "docs/Kafka/保证消息不丢失.md",
-    "docs/Kafka/Kafka 集群搭建.md",
-    "docs/Reading/2024.md",
-    "docs/Reading/2023.md",
     "docs/Doris"
   ]
 }
