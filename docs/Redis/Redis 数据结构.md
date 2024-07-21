@@ -310,4 +310,52 @@ ZDIFFSTORE destination numkeys key [key ...]：将存在于第一个有序集合
 ZDIFF numkeys key [key ...] [WITHSCORES]：将存在于第一个有序集合但是不存在于其它有序集合中的元素返回给客户端。
 ```
 
-## GEO
+## 地理坐标索引
+
+用来存储元素的地理坐标，并提供了一些坐标计算的函数。
+
+实际上 Geo Index 的数据结构就是一个有序集合，Redis 会将传入的经纬度转换成 Geohash 作为分值，因此可以使用有序集合的一些命令进行操作。
+
+Resdis 的 Geohash 采用 52 比特的精度，能精确到米级。
+
+### 地理坐标常用命令
+```
+GEOADD key [NX | XX] longitude latitude member [longitude latitude member ...]：添加元素坐标
+ZREM key member [member ...]：从有序集合中删除给定的成员，并返回被移除成员的数量。
+GEODIST key member1 member2 [m | km | ft | mi]：获取两个元素之间的距离
+GEOPOS key [member [member ...]]：获取元素的坐标
+GEOHASH key [member [member ...]]：获取元素的 Geohash
+```
+
+Redisson 代码示例获取北京到上海的距离：
+```java
+RGeo<String> geo = client.getGeo("test");  
+geo.add(new GeoEntry(116.731059,39.91088, "beijing"),  
+        new GeoEntry(121.480324,31.236485, "shanghai"));  
+  
+Double dist = geo.dist("beijing", "shanghai", GeoUnit.KILOMETERS);  
+System.out.println("beijing to shanghai: " + dist + "km");    // beijing to shanghai: 1055.7237km
+```
+
+
+### 搜索附近的元素
+```
+GEOSEARCH key <FROMMEMBER member | FROMLONLAT longitude latitude>
+  <BYRADIUS radius <m | km | ft | mi> | BYBOX width height <m | km |ft | mi>> 
+  [ASC | DESC] [COUNT count [ANY]] [WITHCOORD] [WITHDIST] [WITHHASH]
+```
+
+- `ASC` 按照距离中心点位由近及远排序。
+
+- `DESC` 按照距离中心点由远及近排序。
+
+- `WITHCOORD` 同时返匹配元素的回经纬度。
+
+- `WITHDIST` 同时返回距离，单位与查询时指定的半径或者宽高相同。
+
+- `WITHHASH` 同时返回元素的 Geohash。
+
+Geohash 的作用
+如果要求计算距离某个点最近的 10 个点的时候，要与数据库中所有的数据都去计算一下距离然后再获取最近的 10 个，这种做法太不明智了。
+
+那么，可以根据经度或者维度的相似性先过滤掉大部分点。经度相近，纬度可能差很远，或者反过来纬度相近经度差很远，都不太好过滤。使用 Geohash 就是将经度和维度归纳近一个字段，比较一个字段的相似性就能确立两个点位的大致距离，过滤掉大部分点。然后再根据精确的坐标算出精确距离。

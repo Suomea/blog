@@ -13,38 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/OS/线程.md",
+                "file": "docs/Redis/Redis 数据结构.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "8364f7f1d8a80f5a",
+            "id": "29c7fdb7632bdd24",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Doris/导入数据到 Doris.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "5e3de0ae73146200",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Doris/导入数据到 Doris.md",
+                "file": "docs/Linux/账号和群组.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -110,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Doris/导入数据到 Doris.md",
+                "file": "docs/Linux/账号和群组.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Doris/导入数据到 Doris.md",
+                "file": "docs/Linux/账号和群组.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Doris/导入数据到 Doris.md"
+                "file": "docs/Linux/账号和群组.md"
               }
             }
           }
@@ -159,7 +147,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -172,36 +161,37 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "5e3de0ae73146200",
+  "active": "29c7fdb7632bdd24",
   "lastOpenFiles": [
+    "docs/Linux/网络.md",
+    "docs/Linux/磁盘分区挂载.md",
+    "docs/Linux/文件与文件系统.md",
+    "docs/Linux/定时任务.md",
+    "docs/Linux/VIM.md",
+    "docs/Linux/PT.md",
+    "docs/Linux/Nginx Tips.md",
+    "docs/Linux/iptables.md",
+    "docs/Linux/Nginx 编译安装.md",
+    "docs/Linux/Linux Tips.md",
+    "docs/Linux/Git.md",
+    "docs/Linux/Debian 软件安装.md",
+    "docs/Linux/curl.md",
+    "docs/Linux/ArcLinux 安装.md",
+    "docs/OS/锁.md",
+    "docs/OS/线程.md",
+    "docs/OS/进程.md",
+    "docs/Reading/Timeline.md",
     "docs/Redis/Redis 数据结构.md",
     "docs/Redis/Redis 安装.md",
-    "docs/Kafka/Kafka 常用命令.md",
-    "docs/Doris/导入数据到 Doris.md",
-    "docs/Doris/日期时间类型.md",
     "template/Doris.md",
-    "docs/OS/汇编——环境搭建.md",
-    "docs/OS/汇编——介绍.md",
-    "docs/OS/汇编——寻址方式.md",
-    "docs/OS/进程.md",
-    "docs/MySQL/MySQL 备份.md",
-    "docs/MySQL/MySQL 配置主从.md",
-    "docs/MySQL/MySQL Tips.md",
-    "docs/OS/OS Tips.md",
-    "docs/OS/C.md",
-    "docs/OS/线程.md",
-    "docs/OS/锁.md",
-    "mkdocs.yml",
-    "docs/OS/未命名 1.md",
-    "docs/OS/未命名.md",
+    "template",
     "docs/PG/PG 清理 WAL 日志.md",
     "docs/PG",
-    "docs/MySQL/逻辑备份 MySQL.md",
     "docs/MySQL/MySQL 安装.md",
-    "docs/Linux/curl.md",
-    "docs/Redis/分布式锁.md",
-    "docs/Reading/Timeline.md",
-    "docs/Reading/减肥计划.md",
+    "docs/MySQL/MySQL 备份.md",
+    "docs/Doris/日期时间类型.md",
+    "mkdocs.yml",
+    "docs/Redis/安装 Redis.md",
     "docs/Doris"
   ]
 }

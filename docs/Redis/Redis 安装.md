@@ -30,3 +30,9 @@ OK
 127.0.0.1:6379> get name
 "jacky"
 ```
+
+编辑配置文件 `/etc/redis/reids.conf`，配置允许远程连接，关闭保护模式（为了方便测试，不设置密码）。
+```
+bind 0.0.0.0 -::1
+protected-mode no
+```
