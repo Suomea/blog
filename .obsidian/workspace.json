@@ -13,26 +13,37 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Redis/Redis 数据结构.md",
+                "file": "docs/Java/并发.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "29c7fdb7632bdd24",
+            "id": "8364f7f1d8a80f5a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Linux/账号和群组.md",
+                "file": "docs/Doris/导入数据到 Doris.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "5e3de0ae73146200",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/OS/线程.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -61,7 +72,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "note",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -98,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Linux/账号和群组.md",
+                "file": "docs/Java/并发.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +126,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Linux/账号和群组.md",
+                "file": "docs/Java/并发.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Linux/账号和群组.md"
+                "file": "docs/Java/并发.md"
               }
             }
           }
@@ -147,8 +158,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -161,37 +171,36 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "29c7fdb7632bdd24",
+  "active": "6d6b76785a8f8f78",
   "lastOpenFiles": [
-    "docs/Linux/网络.md",
-    "docs/Linux/磁盘分区挂载.md",
-    "docs/Linux/文件与文件系统.md",
-    "docs/Linux/定时任务.md",
-    "docs/Linux/VIM.md",
-    "docs/Linux/PT.md",
-    "docs/Linux/Nginx Tips.md",
-    "docs/Linux/iptables.md",
-    "docs/Linux/Nginx 编译安装.md",
-    "docs/Linux/Linux Tips.md",
-    "docs/Linux/Git.md",
-    "docs/Linux/Debian 软件安装.md",
-    "docs/Linux/curl.md",
-    "docs/Linux/ArcLinux 安装.md",
-    "docs/OS/锁.md",
     "docs/OS/线程.md",
+    "docs/Java/并发.md",
+    "docs/OS/并发控制.md",
+    "mkdocs.yml",
+    "docs/OS/C.md",
     "docs/OS/进程.md",
-    "docs/Reading/Timeline.md",
+    "docs/Server/阿里云服务器106.15.72.83.md",
+    "docs/Server/本地服务器192.168.31.11.md",
     "docs/Redis/Redis 数据结构.md",
     "docs/Redis/Redis 安装.md",
-    "template/Doris.md",
-    "template",
-    "docs/PG/PG 清理 WAL 日志.md",
-    "docs/PG",
-    "docs/MySQL/MySQL 安装.md",
-    "docs/MySQL/MySQL 备份.md",
+    "docs/Redis/分布式锁.md",
+    "docs/Reading/软件开发.md",
+    "docs/Reading/Timeline.md",
+    "docs/Reading/减肥计划.md",
+    "docs/Reading/读书计划.md",
+    "docs/Doris/导入数据到 Doris.md",
+    "docs/Kafka/Kafka 常用命令.md",
     "docs/Doris/日期时间类型.md",
-    "mkdocs.yml",
-    "docs/Redis/安装 Redis.md",
+    "template/Doris.md",
+    "docs/OS/汇编——环境搭建.md",
+    "docs/OS/汇编——介绍.md",
+    "docs/OS/汇编——寻址方式.md",
+    "docs/MySQL/MySQL 备份.md",
+    "docs/MySQL/MySQL 配置主从.md",
+    "docs/MySQL/MySQL Tips.md",
+    "docs/OS/OS Tips.md",
+    "docs/OS/未命名 1.md",
+    "docs/PG",
     "docs/Doris"
   ]
 }
