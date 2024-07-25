@@ -147,4 +147,28 @@ Doris 在启用了 `rewriteBatchedStatements=true` 之后大批量的实时写�
 
 ## StreamLoad
 参考数据导入的 [StreamLoad](https://doris.apache.org/zh-CN/docs/2.0/data-operate/import/stream-load-manual) 的方式。
+
+如果 JSON 字段与表字段完全一致，可以省略 jsonpaths 和 columns 请求头。
+
+```shell
+curl -L -X PUT 'http://172.31.8.116:8030/api/dbname/tablename/_stream_load' \
+	-H 'Expect: 100-continue' \
+	-H 'format: json' \
+	-H 'strip_outer_array: true' \
+	-H 'jsonpaths: ["$.user_id", "$.name", "$.born_time"]' \
+	-H 'columns: user_id,name,born_time' \
+	-H 'Content-Type: application/json' \
+	-H 'Authorization: Basic base64(username:password)' \
+	-d '[
+    {
+        "user_id": 1,
+        "name": "Emily",
+        "born_time": "20231212234523111"
+    },
+    {
+        "user_id": 2,
+        "name": "Benjamin",
+        "born_time": "20231212234523222"
+    }]'
+```
 ## SeaTunnel 

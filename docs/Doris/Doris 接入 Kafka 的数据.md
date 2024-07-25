@@ -1,0 +1,58 @@
+
+### Kafka 账号授权
+```
+bin/kafka-acls.sh --bootstrap-server localhost:9092 --add --allow-principal User:xxx  --operation Read --topic '*' --group 'xxx' --command-config admin-jaas 
+```
+
+### 创建唯一模型
+```
+CREATE TABLE test_json_load(
+    user_id BIGINT NOT NULL COMMENT "用户 ID",
+    name VARCHAR(20) COMMENT "用户姓名",
+    born_time datetime COMMENT "出生日期"
+)UNIQUE KEY(user_id)
+DISTRIBUTED BY HASH(user_id) BUCKETS 1;
+```
+
+### 创建导入作业
+```
+CREATE ROUTINE LOAD `yunlu_iot_data`.`kafka-quickstart_events` ON
+`quickstart_events`
+        PROPERTIES
+        (
+            "desired_concurrent_number" = "3",
+            "format" = "json",
+            "strict_mode" = "false"
+        )
+FROM
+KAFKA
+        (
+            "kafka_broker_list" = "172.31.8.164:9092,172.31.8.165:9092,172.31.8.166:9092",
+            "kafka_topic" = "quickstart-events",
+            "property.group.id" = "xxxxx",
+            "property.kafka_default_offsets" = "OFFSET_BEGINNING",
+            "property.security.protocol" = "SASL_PLAINTEXT",
+            "property.sasl.mechanism" = "PLAIN",
+            "property.sasl.username" = "qC4nI2",
+            "property.sasl.password" = "xxxx"
+        );
+```
+
+### 往 Kafka 中写入数据测试
+值为 null 或者日期格式都兼容，unique key 模式也能唯一去重保留新的数据。
+```
+        { "user_id" : 1, "name" : "Benjamin", "born_time": "2023-01-01 00:00:00" }
+        { "user_id" : 2, "name" : "Emily", "born_time": "20240101122323" }
+        { "user_id" : 3, "name" : "Emily", "born_time": "20240101122323" }
+        { "user_id" : 4, "name" : "Emily", "born_time": null }
+        { "user_id" : 5, "name" : "Alexander"}
+        { "user_id" : 4, "name" : "Alexander"}
+        { "user_id" : 6, "born_time": "20240101122323", "name" : "Emily"}
+```
+
+### 导入任务管理
+show routine load 能够查询导入作业的状态。
+
+如果遇到错误，比如必填字段缺少会导致任务 pause，resume routine load for task_name; 重启启动任务就好，会跳过错误的消息。
+
+测试完毕之后可以通过 pause 暂停导入任务：pause routine load for  task_name;
