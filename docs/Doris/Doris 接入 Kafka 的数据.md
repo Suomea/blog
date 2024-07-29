@@ -33,7 +33,7 @@ KAFKA
             "property.kafka_default_offsets" = "OFFSET_BEGINNING",
             "property.security.protocol" = "SASL_PLAINTEXT",
             "property.sasl.mechanism" = "PLAIN",
-            "property.sasl.username" = "qC4nI2",
+            "property.sasl.username" = "xxxx",
             "property.sasl.password" = "xxxx"
         );
 ```
@@ -53,6 +53,6 @@ KAFKA
 ### 导入任务管理
 show routine load 能够查询导入作业的状态。
 
-如果遇到错误，比如必填字段缺少会导致任务 pause，resume routine load for task_name; 重启启动任务就好，会跳过错误的消息。
+如果遇到错误，比如必填字段缺少会导致任务 pause，`resume routine load for task_name;` 重启启动任务就好，会跳过错误的消息。
 
-测试完毕之后可以通过 pause 暂停导入任务：pause routine load for  task_name;
+测试完毕之后可以通过 pause 暂停导入任务：`pause routine load for  task_name;`。

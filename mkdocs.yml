@@ -93,8 +93,10 @@ nav:
       - Arts/满江红-岳飞.md
       - Arts/侠客行-李白.md
       - Arts/大观楼长联-孙髯.md
-  # - 读书:
-  #     - Reading/读书计划.md
+  - 爪哇:
+      - Java/并发.md
+  - 记录:
+      - Reading/Timeline.md
   #     - Reading/2022.md
   #     - Reading/2021.md
   #     - Reading/2023.md
