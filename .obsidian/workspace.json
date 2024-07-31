@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Linux/Linux 磁盘分区.md",
+                "file": "docs/Java/并发.md",
                 "mode": "source",
                 "source": false
               }
@@ -37,7 +37,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Java/重复提交.md",
+                "file": "docs/OS/并发控制.md",
                 "mode": "source",
                 "source": false
               }
@@ -67,8 +67,7 @@
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -134,7 +133,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Java/重复提交.md",
+                "file": "docs/Java/并发.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +150,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Java/重复提交.md",
+                "file": "docs/Java/并发.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -174,7 +173,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Java/重复提交.md"
+                "file": "docs/Java/并发.md"
               }
             }
           }
@@ -196,12 +195,14 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "934cebd8e14fc42f",
+  "active": "6d6b76785a8f8f78",
   "lastOpenFiles": [
+    "docs/OS/并发控制.md",
+    "docs/Java/并发.md",
+    "docs/Linux/Linux 磁盘分区.md",
+    "docs/Java/重复提交.md",
     "docs/Java/微服务优雅停机.md",
     "docs/Java/微服务架构.md",
-    "docs/Java/并发.md",
-    "docs/Java/重复提交.md",
     "mkdocs.yml",
     "docs/Reading/Timeline.md",
     "docs/Reading/软件开发.md",
@@ -211,7 +212,6 @@
     "docs/Algorithms/数据结构：图.md",
     "docs/Algorithms/字符串匹配算法.md",
     "docs/Algorithms/Base64 算法.md",
-    "docs/Linux/Linux 磁盘分区.md",
     "docs/Linux/Linux 账号群组.md",
     "docs/Linux/正则表达式.md",
     "docs/index.md",
@@ -224,7 +224,6 @@
     "docs/Java/Tips.md",
     "docs/K8S/安装 Nginx Ingress.md",
     "docs/K8S/安装 Kuboard 集群管理界面.md",
-    "docs/K8S/安装 Kubernetes 集群.md",
     "docs/LocalFile/Picture/Kafka-ConsumerGroup.png",
     "docs/PG",
     "docs/Doris"
