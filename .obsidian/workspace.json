@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/OS/并发控制.md",
+                "file": "docs/Java/并发.md",
                 "mode": "source",
                 "source": false
               }
@@ -133,7 +133,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/OS/并发控制.md",
+                "file": "docs/Java/并发.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,7 +150,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/OS/并发控制.md",
+                "file": "docs/Java/并发.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -173,7 +173,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/OS/并发控制.md"
+                "file": "docs/Java/并发.md"
               }
             }
           }
@@ -197,18 +197,21 @@
   },
   "active": "6d6b76785a8f8f78",
   "lastOpenFiles": [
-    "docs/Java/并发.md",
     "docs/OS/并发控制.md",
+    "docs/Java/并发.md",
+    "docs/Java/微服务架构.md",
+    "docs/Doris/Doris 接入 Kafka 的数据.md",
+    "docs/Doris/Doris 接入 MySQL 的数据.md",
+    "docs/Kafka/Kafka 常用命令.md",
+    "docs/Kafka/保证消息不丢失.md",
     "docs/Linux/Linux 磁盘分区.md",
     "docs/Java/重复提交.md",
     "docs/Java/微服务优雅停机.md",
-    "docs/Java/微服务架构.md",
     "mkdocs.yml",
     "docs/Reading/Timeline.md",
     "docs/Reading/软件开发.md",
     "docs/Reading/减肥计划.md",
     "docs/Reading/读书计划.md",
-    "docs/Doris/Doris 接入 Kafka 的数据.md",
     "docs/Algorithms/数据结构：图.md",
     "docs/Algorithms/字符串匹配算法.md",
     "docs/Algorithms/Base64 算法.md",
@@ -220,10 +223,7 @@
     "docs/Linux/Linux 文件系统.md",
     "docs/Linux/网络.md",
     "docs/Linux/Linux 定时任务.md",
-    "docs/Kafka/Kafka 常用命令.md",
     "docs/Java/Tips.md",
-    "docs/K8S/安装 Nginx Ingress.md",
-    "docs/K8S/安装 Kuboard 集群管理界面.md",
     "docs/LocalFile/Picture/Kafka-ConsumerGroup.png",
     "docs/PG",
     "docs/Doris"
