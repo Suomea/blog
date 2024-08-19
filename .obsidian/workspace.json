@@ -11,11 +11,9 @@
             "id": "6d6b76785a8f8f78",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "docs/Java/并发.md",
-                "mode": "source",
-                "source": false
+                "file": "docs/LocalFile/Picture/ReentrantLock类图.png"
               }
             }
           },
@@ -25,7 +23,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Java/并发.md",
+                "file": "docs/Linux/Nginx Tips.md",
                 "mode": "source",
                 "source": false
               }
@@ -67,7 +65,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -96,7 +95,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "note",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -133,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Java/并发.md",
+                "file": "docs/Linux/Nginx Tips.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -150,7 +149,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Java/并发.md",
+                "file": "docs/Linux/Nginx Tips.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -173,7 +172,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Java/并发.md"
+                "file": "docs/Linux/Nginx Tips.md"
               }
             }
           }
@@ -195,10 +194,14 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "6d6b76785a8f8f78",
+  "active": "47b552b8f2a4ce6b",
   "lastOpenFiles": [
-    "docs/OS/并发控制.md",
+    "docs/Linux/Nginx 编译安装.md",
+    "docs/Linux/Shell 脚本.md",
     "docs/Java/并发.md",
+    "docs/LocalFile/Picture/ReentrantLock类图.png",
+    "mkdocs.yml",
+    "docs/OS/并发控制.md",
     "docs/Java/微服务架构.md",
     "docs/Doris/Doris 接入 Kafka 的数据.md",
     "docs/Doris/Doris 接入 MySQL 的数据.md",
@@ -207,7 +210,6 @@
     "docs/Linux/Linux 磁盘分区.md",
     "docs/Java/重复提交.md",
     "docs/Java/微服务优雅停机.md",
-    "mkdocs.yml",
     "docs/Reading/Timeline.md",
     "docs/Reading/软件开发.md",
     "docs/Reading/减肥计划.md",
@@ -222,8 +224,6 @@
     "docs/Linux/ls.md",
     "docs/Linux/Linux 文件系统.md",
     "docs/Linux/网络.md",
-    "docs/Linux/Linux 定时任务.md",
-    "docs/Java/Tips.md",
     "docs/LocalFile/Picture/Kafka-ConsumerGroup.png",
     "docs/PG",
     "docs/Doris"
