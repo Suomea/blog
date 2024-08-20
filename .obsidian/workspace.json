@@ -23,7 +23,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Linux/Nginx Tips.md",
+                "file": "docs/Kafka/Kafka 常用命令.md",
                 "mode": "source",
                 "source": false
               }
@@ -132,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Linux/Nginx Tips.md",
+                "file": "docs/Kafka/Kafka 常用命令.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -149,7 +149,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Linux/Nginx Tips.md",
+                "file": "docs/Kafka/Kafka 常用命令.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -172,7 +172,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Linux/Nginx Tips.md"
+                "file": "docs/Kafka/Kafka 常用命令.md"
               }
             }
           }
@@ -181,7 +181,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -196,11 +197,12 @@
   },
   "active": "47b552b8f2a4ce6b",
   "lastOpenFiles": [
+    "docs/Java/并发.md",
+    "mkdocs.yml",
+    "docs/Linux/Nginx Tips.md",
     "docs/Linux/Nginx 编译安装.md",
     "docs/Linux/Shell 脚本.md",
-    "docs/Java/并发.md",
     "docs/LocalFile/Picture/ReentrantLock类图.png",
-    "mkdocs.yml",
     "docs/OS/并发控制.md",
     "docs/Java/微服务架构.md",
     "docs/Doris/Doris 接入 Kafka 的数据.md",
@@ -220,10 +222,8 @@
     "docs/Linux/Linux 账号群组.md",
     "docs/Linux/正则表达式.md",
     "docs/index.md",
-    "docs/Linux/Nginx Tips.md",
     "docs/Linux/ls.md",
     "docs/Linux/Linux 文件系统.md",
-    "docs/Linux/网络.md",
     "docs/LocalFile/Picture/Kafka-ConsumerGroup.png",
     "docs/PG",
     "docs/Doris"

@@ -5,6 +5,11 @@ tags:
 ---
 ## Topic
 
+创建 topic
+```
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic topic_name --command-config admin-jass
+```
+
 查看所有的 topic
 ```
 bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
