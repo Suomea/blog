@@ -4,45 +4,23 @@
     "type": "split",
     "children": [
       {
-        "id": "a45a840c1ad45698",
+        "id": "2457a014dcc786df",
         "type": "tabs",
         "children": [
           {
-            "id": "6d6b76785a8f8f78",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "docs/LocalFile/Picture/ReentrantLock类图.png"
-              }
-            }
-          },
-          {
-            "id": "47b552b8f2a4ce6b",
+            "id": "c6edb4b183968a09",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Kafka/Kafka 常用命令.md",
+                "file": "docs/Java/Tips.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "15ad8188edb7d17e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Doris/Doris 用户角色权限.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "577d134547ab0814",
+            "id": "22e7c5fd8003101c",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -52,45 +30,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "934cebd8e14fc42f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/OS/并发控制.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "8364f7f1d8a80f5a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Doris/Doris 接入 MySQL 的数据.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "5e3de0ae73146200",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/OS/线程.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -119,7 +61,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tar",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -140,7 +82,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "d1db8229203a9e0b",
@@ -219,36 +162,41 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "577d134547ab0814",
+  "active": "22e7c5fd8003101c",
   "lastOpenFiles": [
     "docs/OS/并发控制.md",
+    "docs/Java/Tips.md",
     "docs/Java/并发.md",
-    "docs/Java/微服务架构.md",
-    "docs/Linux/Linux Tips.md",
-    "docs/Linux/Linux 账号群组.md",
-    "docs/Doris/Doris 接入 Kafka 的数据.md",
+    "docs/OS/进程.md",
+    "docs/OS/线程.md",
+    "docs/LocalFile/Picture/ReentrantLock类图.svg",
+    "docs/LocalFile/Picture/ReentrantReadWriteLock类图.svg",
+    "docs/Doris/Doris 接入 MySQL 的数据.md",
+    "docs/LocalFile/Picture/ReentrantReadWriteLock类图.png",
+    "docs/LocalFile/Picture/ReentrantLock类图.png",
+    "docs/LocalFile/Picture/Pastedimage20240423194147.png",
+    "docs/Redis/Redis 分布式锁.md",
+    "docs/Redis/Redis 数据结构.md",
+    "docs/Redis/Redis 安装.md",
+    "docs/Server/本地服务器192.168.31.11.md",
+    "docs/MySQL/MySQL 配置主从.md~",
     "docs/Doris/Doris 用户角色权限.md",
     "docs/Doris/Doris 分区表.md",
+    "docs/Server/阿里云服务器106.15.72.83.md",
+    "docs/MySQL/MySQL 配置主从.md",
+    "docs/MySQL/MySQL 安装.md",
+    "docs/MySQL/MySQL 备份.md",
+    "docs/MySQL/MySQL Tips.md",
     "docs/Kafka/Kafka 常用命令.md",
     "mkdocs.yml",
     "docs/Linux/Nginx Tips.md",
     "docs/Linux/Nginx 编译安装.md",
     "docs/Linux/Shell 脚本.md",
-    "docs/LocalFile/Picture/ReentrantLock类图.png",
-    "docs/Doris/Doris 接入 MySQL 的数据.md",
+    "docs/Java/微服务架构.md",
+    "docs/Doris/Doris 接入 Kafka 的数据.md",
     "docs/Kafka/保证消息不丢失.md",
     "docs/Linux/Linux 磁盘分区.md",
     "docs/Java/重复提交.md",
-    "docs/Java/微服务优雅停机.md",
-    "docs/Reading/Timeline.md",
-    "docs/Reading/软件开发.md",
-    "docs/Reading/减肥计划.md",
-    "docs/Reading/读书计划.md",
-    "docs/Algorithms/数据结构：图.md",
-    "docs/Algorithms/字符串匹配算法.md",
-    "docs/Algorithms/Base64 算法.md",
-    "docs/Linux/正则表达式.md",
-    "docs/index.md",
     "docs/LocalFile/Picture/Kafka-ConsumerGroup.png",
     "docs/PG",
     "docs/Doris"

@@ -82,6 +82,7 @@ Executed_Gtid_Set:
 server_id               = 21
 expire_logs_days        = 15
 
+read-only               = 1
 character-set-server    = utf8mb4
 max_connections         = 2000
 ```
@@ -135,3 +136,16 @@ mysqldump -u root -p --source-data=2 --databases test_db > /root/test.sql
 
 如果 `--source-data` 设置为 `1`，从库导入数据的时候就会设置主库的二进制文件和位置信息，执行 `CHANGE REPLICATION SOURCE TO` 语句时就不需要再次设置了；
 如果设置为 `2`，从库执行 `CHANGE REPLICATION SOURCE TO` 语句需要设置二进制文件和位置信息，值需要去主库导出的 SQL 文件中查找。
+
+## 主从切换
+假设主库数据库服务器炸了，那么从库进行操作：
+```
+-- 首先停止主从同步
+stop slave;
+reset slave all;
+
+-- 取消数据库的只读限制
+SET GLOBAL read_only=0;
+
+-- 服务配置更新数据库地址，重启服务
+```

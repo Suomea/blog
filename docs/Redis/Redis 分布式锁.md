@@ -1,4 +1,4 @@
-set nx ex 
+set key value NX EX seconds 
 
 为什么使用 Redission
 
