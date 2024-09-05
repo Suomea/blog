@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Java/Tips.md",
+                "file": "docs/Java/并发.md",
                 "mode": "source",
                 "source": false
               }
@@ -31,8 +31,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -82,8 +81,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "d1db8229203a9e0b",
@@ -148,8 +146,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -162,11 +159,14 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "22e7c5fd8003101c",
+  "active": "c6edb4b183968a09",
   "lastOpenFiles": [
-    "docs/OS/并发控制.md",
-    "docs/Java/Tips.md",
+    "docs/Java/重复提交.md",
+    "docs/Java/微服务架构.md",
+    "docs/Java/微服务优雅停机.md",
     "docs/Java/并发.md",
+    "docs/Java/Tips.md",
+    "docs/OS/并发控制.md",
     "docs/OS/进程.md",
     "docs/OS/线程.md",
     "docs/LocalFile/Picture/ReentrantLock类图.svg",
@@ -192,11 +192,8 @@
     "docs/Linux/Nginx Tips.md",
     "docs/Linux/Nginx 编译安装.md",
     "docs/Linux/Shell 脚本.md",
-    "docs/Java/微服务架构.md",
     "docs/Doris/Doris 接入 Kafka 的数据.md",
     "docs/Kafka/保证消息不丢失.md",
-    "docs/Linux/Linux 磁盘分区.md",
-    "docs/Java/重复提交.md",
     "docs/LocalFile/Picture/Kafka-ConsumerGroup.png",
     "docs/PG",
     "docs/Doris"
