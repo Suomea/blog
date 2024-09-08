@@ -4,27 +4,11 @@
 apt install gcc make
 ```
 
-### 安装 pcre
+### 安装必要的支持库
 pcre 提供 http rewrite 支持
 ```shell
-apt install libpcre3 libpcre3-dev
+apt install  libpcre3-dev zlib1g-dev libssl-dev libgd-dev
 ```
-
-### 安装 zlib
-```shell
-apt install zlib1g zlib1g-dev
-```
-
-### 安装 openssl
-```shell
-apt install openssl libssl-dev
-```
-
-### 安装 gd
-```shell
-apt install libgd-dev
-```
-
 ## 安装 Nginx
 ### 下载 
 ```shell
@@ -33,43 +17,14 @@ wget https://nginx.org/download/nginx-1.22.1.tar.gz
 tar -zxvf nginx-1.22.1.tar.gz -C /usr/local/src
 ```
 
-### 编译
+### 编译安装
 完整的编译参数参考：http://nginx.org/en/docs/configure.html
 ```shell
 cd /usr/local/srv/nginx-1.22.1
 
 ./configure --prefix=/usr/local/nginx \
---with-pcre \
---with-http_ssl_module \
---with-http_v2_module \
---with-http_realip_module \
---with-http_addition_module \
---with-http_sub_module \
---with-http_dav_module \
---with-http_flv_module \
---with-http_mp4_module \
---with-http_gunzip_module \
---with-http_gzip_static_module \
---with-http_random_index_module \
---with-http_secure_link_module \
---with-http_stub_status_module \
---with-http_auth_request_module \
---with-http_image_filter_module \
---with-http_slice_module \
---with-mail \
---with-threads \
---with-file-aio \
 --with-stream \
---with-mail_ssl_module \
 --with-stream_ssl_module \
---with-file-aio \
---with-threads \
---with-http_slice_module \
---with-mail_ssl_module \
---with-stream \
---with-stream_realip_module \
---with-stream_ssl_module \
---with-stream_ssl_preread_module
 
 make && make install 
 ```
@@ -104,6 +59,7 @@ After=network.target
 
 [Service]
 Type=forking
+LimitNOFILE=65535
 PIDFile=/usr/local/nginx/logs/nginx.pid
 ExecStartPre=/usr/local/nginx/sbin/nginx -t -c /usr/local/nginx/conf/nginx.conf
 ExecStart=/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
@@ -178,7 +134,7 @@ systemctl status nginx
 # 全局参数设置 
 worker_processes  1;          # 设置nginx启动进程的数量，一般设置成与逻辑cpu数量相同 
 error_log  logs/error.log;    # 指定错误日志 
-worker_rlimit_nofile 102400;  # 设置一个nginx进程能打开的最大文件数 
+worker_rlimit_nofile 65535;   # 设置一个nginx进程能打开的最大文件数 
 pid        /var/run/nginx.pid; 
 events {                      # 事件配置
     worker_connections  10240; # 设置一个进程的最大并发连接数

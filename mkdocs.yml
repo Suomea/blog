@@ -47,6 +47,7 @@ markdown_extensions:
 nav:
   - 数据库:
       - MySQL/MySQL Tips.md
+      - MySQL/MySQL 系统和状态变量.md
       - MySQL/MySQL 安装.md
       - MySQL/MySQL 备份.md
       - MySQL/MySQL 配置主从.md
