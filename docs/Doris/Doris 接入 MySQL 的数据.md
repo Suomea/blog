@@ -108,6 +108,9 @@ CREATE CATALOG mysql PROPERTIES (
     "driver_class" = "com.mysql.cj.jdbc.Driver"
 );
 
+-- 查询添加的 catalog 数据源
+show catalogs;
+
 -- 查询 mysql 中有哪些数据库
 show databases from mysql;
 

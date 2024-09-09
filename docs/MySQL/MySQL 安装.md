@@ -200,7 +200,7 @@ flush privileges;
 
 测试数据仓库地址：[https://github.com/datacharmer/test_db](https://github.com/datacharmer/test_db)
 
-导入命令，需要进入到仓库本地所在的目录：
+mysql 执行 SQL 导入数据的语法：
 ```sql
-mysql -t -u root -p < employees.sql
+mysql -h localhost -P 3306 -u root -p dbname < file.sql
 ```
