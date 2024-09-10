@@ -435,25 +435,25 @@ public static void park() 将停止当前线程的 CPU 调度，直到下列任�
 
 park 调用的返回并不会告诉线程是那种情况返回，所以应该总是重新检查导致线程暂停的条件。
 ### AbstractQueuedSynchronizer
-队列同步器 AbstractQueuedSynchronizer 是用来构建锁和其它同步组件（信号量...）的基础框架。
+队列同步器 AbstractQueuedSynchronizer 是用来构建锁和其它同步组件的基础框架。
 
-队列同步器是实现锁的和其它同步组件的关键，在锁的实现中聚合同步器，利用队列同步器实现锁的语义。锁是面向使用者的，它定义了使用者与锁交互的接口，隐藏了实现细节。队列同步器面向的是锁和其它同步组件的，它简化了锁和其它同步组件的实现方式，提供了状态管理、线程排队、等待和唤醒等底层操作。
+锁是面向使用者的，它定义了使用者与锁交互的接口，隐藏了实现细节。队列同步器面向的是锁和其它同步组件的，它简化了锁和其它同步组件的实现方式，提供了状态管理、线程排队、等待和唤醒等底层操作。
 
 它使用一个 int 成员变量表示同步状态：
 ```java
-    private volatile int state;   // 注意 state 使用 volatile 修饰
+private volatile int state;   // 注意 state 使用 volatile 修饰
+protected final int getState() {
+    return state;
+}
 
-    protected final int getState() {
-        return state;
-    }
-    
-    protected final void setState(int newState) {   // state 从 0 到 1 的过程永远是 cas 设置的，所以永远只有一个线程能对 state 进行更新，不需要同步
-        state = newState;
-    }
+// state 从 0 到 1 的过程永远是 cas 设置的，所以永远只有一个线程能对 state 进行更新，不需要同步
+protected final void setState(int newState) {   
+    state = newState;
+}
 
-    protected final boolean compareAndSetState(int expect, int update) {
-        return U.compareAndSetInt(this, STATE, expect, update);
-    }
+protected final boolean compareAndSetState(int expect, int update) {
+    return U.compareAndSetInt(this, STATE, expect, update);
+}
 ```
 
 通过内置的 FIFO 队列来完成线程的排队工作：
@@ -474,6 +474,8 @@ park 调用的返回并不会告诉线程是那种情况返回，所以应该总
 	    return U.compareAndSetReference(this, TAIL, c, v);  
 	}
 ```
+
+AQS 使用队列来维护排队的线程，并发数据结构的实现一般会用到锁，但是 AQS 本身就是实现锁的基础组件，在用锁去实现并发队列就死循环了。所以 AQS 使用 CAS 和 volatile 语义来实现并发队列的正确性，非常厉害！需要注意的是只有入队是存在竞态条件的，出队由获取锁的线程负责，不存在竞争。
 
 队列同步器的涉及是基于模板方法，使用者需要继承同步器并重写指定的方法，随后将同步器组合在自定义同步组件的实现中，并调用同步器提供的模板方法，而这些模板方法将会调用使用者重写的方法。
 
@@ -1226,10 +1228,11 @@ protected final int tryAcquireShared(int unused) {
                 cachedHoldCounter = rh = readHolds.get();  
             else if (rh.count == 0)  
                 readHolds.set(rh);  
-            rh.count++;  
+            rh.count++;  // 当前线程获取读锁的次数加 1
         }  
         return 1;  
     }  
+    // 没有获取读锁成功
     return fullTryAcquireShared(current);  
 }
 
@@ -1238,16 +1241,16 @@ final int fullTryAcquireShared(Thread current) {
      * This code is in part redundant with that in     
      * tryAcquireShared but is simpler overall by not     
      * complicating tryAcquireShared with interactions between     
-     * retries and lazily reading hold counts.     
-     * */    
+     * retries and lazily reading hold counts.     */    
     HoldCounter rh = null;  
-    for (;;) {  
+    for (;;) {  // 通过 for 循环一直尝试获取锁
         int c = getState();  
         if (exclusiveCount(c) != 0) {  
             if (getExclusiveOwnerThread() != current)  
                 return -1;  
             // else we hold the exclusive lock; blocking here  
-            // would cause deadlock.        } else if (readerShouldBlock()) {  
+            // would cause deadlock.        
+        } else if (readerShouldBlock()) {  
             // Make sure we're not acquiring read lock reentrantly  
             if (firstReader == current) {  
                 // assert firstReaderHoldCount > 0;  
@@ -1310,7 +1313,8 @@ protected final boolean tryReleaseShared(int unused) {
         // assert firstReaderHoldCount > 0;  
         if (firstReaderHoldCount == 1)  
             firstReader = null;  
-        else            firstReaderHoldCount--;  
+        else            
+	        firstReaderHoldCount--;  
     } else {  
         HoldCounter rh = cachedHoldCounter;  
         if (rh == null ||  

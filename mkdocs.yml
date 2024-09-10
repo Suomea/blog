@@ -1,6 +1,4 @@
 site_name: 陈亮的笔记
-repo_url: https://github.com/Suomea/blog
-repo_name: Suomea/blog
 theme:
   favicon: LocalFile/favicon.svg
   logo: LocalFile/favicon.svg
@@ -8,31 +6,13 @@ theme:
     primary: custom
   font:
     text: MiSans
-    code: MiSans
+    code: Consolas
   name: material
   custom_dir: overrides
-  icon:
-    repo: fontawesome/brands/git-alt
-    admonition:
-      note: octicons/tag-16
-      abstract: octicons/checklist-16
-      info: octicons/info-16
-      tip: octicons/squirrel-16
-      success: octicons/check-16
-      question: octicons/question-16
-      warning: octicons/alert-16
-      failure: octicons/x-circle-16
-      danger: octicons/zap-16
-      bug: octicons/bug-16
-      example: octicons/beaker-16
-      quote: octicons/quote-16
+
 
   features:
-    # - navigation.instant
-    # - navigation.tracking
-    # - navigation.footer
     - navigation.tabs
-#    - navigation.tabs.sticky
     - navigation.top
 markdown_extensions:
   - pymdownx.highlight:
@@ -95,7 +75,8 @@ nav:
       - Arts/侠客行-李白.md
       - Arts/大观楼长联-孙髯.md
   - 爪哇:
-      - Java/并发.md
+      - Java/Tips.md
+      - Java/Java 并发.md
       - Java/重复提交.md
   - 记录:
       - Reading/Timeline.md

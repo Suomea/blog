@@ -79,16 +79,7 @@ if ((!pepperoniService.empty() || sausages.size() > 0)
 }
 ```
 
-第一步将表达式提取出来，并且按照涵义命名：
-```java
-boolean isPizzaFantastic = (!pepperoniService.empty() || sausages.size() > 0)
-    && (useOnionFlag.get() || hasMushroom(ENOKI, PORTOBELLO)) && hasCheese();
-if (isPizzaFantastic) {
-  ...
-}
-```
-
-第二步进一步将表达式进行逻辑拆分：
+将表达式进行逻辑拆分：
 ```java
 boolean hasGoodMeat = !pepperoniService.empty() || sausages.size() > 0;
 boolean hasGoodVeggies = useOnionFlag.get() || hasMushroom(ENOKI, PORTOBELLO);
@@ -98,7 +89,7 @@ if (isPizzaFantastic) {
 }
 ```
 
-或者将判断逻辑单独拆分为一个方法。
+将判断逻辑单独拆分为一个方法。
 ```java
 boolean isPizzaFantastic() {
   if (!hasCheese()) {
