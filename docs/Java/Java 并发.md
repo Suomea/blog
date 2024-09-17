@@ -434,7 +434,7 @@ public static void park() 将停止当前线程的 CPU 调度，直到下列任�
 - 虚假唤醒。
 
 park 调用的返回并不会告诉线程是那种情况返回，所以应该总是重新检查导致线程暂停的条件。
-### AbstractQueuedSynchronizer
+ ## AbstractQueuedSynchronizer
 队列同步器 AbstractQueuedSynchronizer 是用来构建锁和其它同步组件的基础框架。
 
 锁是面向使用者的，它定义了使用者与锁交互的接口，隐藏了实现细节。队列同步器面向的是锁和其它同步组件的，它简化了锁和其它同步组件的实现方式，提供了状态管理、线程排队、等待和唤醒等底层操作。
@@ -1339,8 +1339,8 @@ protected final boolean tryReleaseShared(int unused) {
     }  
 }
 ```
-## 死锁
-一般两种方式来避免死锁：
 
-- 避免获取锁的顺序不一致。
-- 使用 tryLock 方法来获取锁。
+## Future/Callable
+
+## 线程池
+

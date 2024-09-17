@@ -9,8 +9,6 @@ theme:
     code: Consolas
   name: material
   custom_dir: overrides
-
-
   features:
     - navigation.tabs
     - navigation.top
