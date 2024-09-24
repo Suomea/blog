@@ -37,7 +37,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Linux/Linux 账号群组.md",
+                "file": "docs/Linux/Nginx 编译安装.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "2844fda6b6953f20",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/Linux/Nginx 使用自签名证书.md",
                 "mode": "source",
                 "source": false
               }
@@ -80,7 +92,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -146,7 +158,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Linux/Linux 账号群组.md",
+                "file": "docs/Linux/Nginx 使用自签名证书.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -163,7 +175,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Linux/Linux 账号群组.md",
+                "file": "docs/Linux/Nginx 使用自签名证书.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -186,7 +198,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Linux/Linux 账号群组.md"
+                "file": "docs/Linux/Nginx 使用自签名证书.md"
               }
             }
           }
@@ -208,8 +220,14 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "577d134547ab0814",
+  "active": "2844fda6b6953f20",
   "lastOpenFiles": [
+    "docs/Linux/Nginx Tips.md",
+    "docs/Nginx/Nginx 安装.md",
+    "docs/Linux/Nginx 使用自签名证书.md",
+    "docs/Linux/Nginx 编译安装.md",
+    "docs/Linux/未命名 1.md",
+    "docs/Linux/Linux 账号群组.md",
     "docs/Redis/Redis 分布式锁.md",
     "docs/Java/Java 并发.md",
     "docs/Java/Java 队列.md",
@@ -231,15 +249,9 @@
     "docs/Doris/Doris 接入 MySQL 的数据.md",
     "docs/Network/程序：时间服务.md",
     "docs/MySQL/MySQL Tips.md",
-    "docs/MySQL/MySQL 配置主从.md",
     "docs/LocalFile/Picture/ReentrantReadWriteLock类图.svg",
     "docs/LocalFile/Picture/ReentrantLock类图.svg",
-    "docs/Linux/PT.md",
-    "docs/Tips/开发规范.md",
     "docs/LocalFile/Picture/ReentrantLock类图.png",
-    "docs/Kafka/Kafka 常用命令.md",
-    "docs/OS/并发控制.md",
-    "docs/Java/微服务架构.md",
     "docs/LocalFile/Picture/Kafka-ConsumerGroup.png",
     "docs/PG",
     "docs/Doris"

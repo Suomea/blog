@@ -25,10 +25,12 @@ cd /usr/local/srv/nginx-1.22.1
 ./configure --prefix=/usr/local/nginx \
 --with-stream \
 --with-stream_ssl_module \
+--with-http_ssl_module
 
 make && make install 
 ```
 
+--with-http_ssl_module                              # 启用ssl支持
 ### 启动命令
 ```shell
 cd /usr/local/nginx
