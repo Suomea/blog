@@ -210,6 +210,8 @@
   },
   "active": "577d134547ab0814",
   "lastOpenFiles": [
+    "docs/DM/达梦备份.md",
+    "docs/DM/达梦安装.md",
     "docs/Linux/Nginx 使用自签名证书.md",
     "docs/Linux/Linux 账号群组.md",
     "docs/Redis/Redis 分布式锁.md",
@@ -237,9 +239,7 @@
     "docs/LocalFile/Picture/ReentrantReadWriteLock类图.svg",
     "docs/LocalFile/Picture/ReentrantLock类图.svg",
     "docs/Linux/PT.md",
-    "docs/Tips/开发规范.md",
     "docs/LocalFile/Picture/ReentrantLock类图.png",
-    "docs/Kafka/Kafka 常用命令.md",
     "docs/LocalFile/Picture/Kafka-ConsumerGroup.png",
     "docs/PG",
     "docs/Doris"
