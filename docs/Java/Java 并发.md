@@ -17,7 +17,7 @@ tags:
 ## 基础知识
 
 ### 原子操作
-是不能被线程调度机制中断的操作，一旦操作开始，那么它一定可以在可能发生的上下文切换之前执行完毕。
+假设只有一个逻辑 CPU，那么原子操作就是不能被线程调度机制中断的操作，一旦操作开始那么它一定可以在可能发生的上下文切换之前执行完毕。
 
 ### 监视器 Monitor
 Java 每个对象都有一个监视器（monitor），监视器相当于锁。监视器具有 ownership 和 entry count 两个属性，表示锁的持有者和重入次数。
@@ -27,9 +27,9 @@ Java 每个对象都有一个监视器（monitor），监视器相当于锁。�
 
 - **New** 新建的线程还没有开始执行。
 - **Runnable** 可运行，已经在运行或者可以运行但是还没有获得 CPU 时间。
-- **Blocked** 阻塞，在等待锁。
-- **Waiting** 等待，Object.wait、Thread.join 不指定时间、 LockSupport.park 不指定时间，都会让线程处于该状态。该状态该在等待另一个线程的特定行为，比如 Object.notify/notifyAll、另一个线程结束、另一个线程 unpark 调用。 条件变量和信号量也会让线程处于该状态。
-- **Timed waiting** 计时等待，指定指定的时间，Thread.sleep、Thread.join 指定时间、LockSupport.park 指定时间。
+- **Blocked** 阻塞，在等待 monitor 锁而进入 syncrhonized 方法时的状态。
+- **Waiting** 等待，Object.wait 不指定时间、Thread.join 不指定时间、 LockSupport.park，都会让线程处于该状态。该状态该在等待另一个线程的特定行为，比如 Object.notify/notifyAll、另一个线程结束、另一个线程 unpark 调用。 
+- **Timed waiting** 计时等待，等待指定的时间，对 Thread.sleep、Object.wait 指定时间、Thread.join 指定时间、LockSupport.parkNanos、LockSupport.parkUntil 方法的调用都会使线程进入该状态。
 - **Terminated** 终止，线程执行完毕。
 
 获取线程状态示例代码：
