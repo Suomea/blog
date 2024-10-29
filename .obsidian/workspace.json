@@ -16,7 +16,9 @@
                 "file": "docs/Kafka/Kafka 常用命令.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Kafka 常用命令"
             }
           },
           {
@@ -28,7 +30,9 @@
                 "file": "docs/Doris/Doris 用户角色权限.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Doris 用户角色权限"
             }
           },
           {
@@ -37,10 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Java/Java 并发.md",
+                "file": "docs/DM/达梦安装.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "达梦安装"
             }
           },
           {
@@ -52,7 +58,9 @@
                 "file": "docs/OS/并发控制.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "并发控制"
             }
           },
           {
@@ -64,7 +72,9 @@
                 "file": "docs/Doris/Doris 接入 MySQL 的数据.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Doris 接入 MySQL 的数据"
             }
           },
           {
@@ -76,7 +86,9 @@
                 "file": "docs/OS/线程.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "线程"
             }
           }
         ],
@@ -100,7 +112,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
             }
           },
           {
@@ -115,7 +129,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
             }
           },
           {
@@ -123,7 +139,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
             }
           }
         ]
@@ -146,7 +164,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/Java/Java 并发.md",
+                "file": "docs/DM/达梦安装.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -154,7 +172,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "达梦安装 的反向链接列表"
             }
           },
           {
@@ -163,10 +183,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/Java/Java 并发.md",
+                "file": "docs/DM/达梦安装.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "达梦安装 的出链列表"
             }
           },
           {
@@ -177,7 +199,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
             }
           },
           {
@@ -186,8 +210,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Java/Java 并发.md"
-              }
+                "file": "docs/DM/达梦安装.md"
+              },
+              "icon": "lucide-list",
+              "title": "达梦安装 的大纲"
             }
           }
         ],
@@ -210,13 +236,22 @@
   },
   "active": "577d134547ab0814",
   "lastOpenFiles": [
-    "docs/Reading/Timeline.md",
-    "docs/DM/达梦安装.md",
     "docs/DM/达梦备份.md",
+    "docs/DM/达梦 Tips.md",
+    "docs/Doris/Doris 接入 MySQL 的数据.md",
+    "docs/Doris/Doris 接入 Kafka 的数据.md",
+    "docs/Doris/Doris 分区表.md",
+    "docs/Doris/Doris 用户角色权限.md",
+    "docs/Doris/Doris 日期时间类型.md",
+    "docs/DM/达梦安装.md",
+    "docs/Kafka/Kafka 常用命令.md",
+    "docs/Kafka/Kafka 集群搭建.md",
+    "docs/Kafka/Kafka 消费者.md",
+    "docs/Java/Java 并发.md",
+    "docs/Reading/Timeline.md",
     "docs/Linux/Nginx 使用自签名证书.md",
     "docs/Linux/Linux 账号群组.md",
     "docs/Redis/Redis 分布式锁.md",
-    "docs/Java/Java 并发.md",
     "docs/Java/Java 队列.md",
     "docs/index.md",
     "mkdocs.yml",
@@ -228,15 +263,6 @@
     "docs/Linux/ArcLinux 安装.md",
     "docs/Java/并发.md",
     "docs/Java/微服务优雅停机.md",
-    "docs/Docker/安装 Docker.md",
-    "docs/Doris/Doris 接入 Kafka 的数据.md",
-    "docs/Doris/Doris 分区表.md",
-    "docs/MySQL/MySQL 备份.md",
-    "docs/MySQL/MySQL 安装.md",
-    "docs/Doris/Doris 接入 MySQL 的数据.md",
-    "docs/Network/程序：时间服务.md",
-    "docs/MySQL/MySQL Tips.md",
-    "docs/MySQL/MySQL 配置主从.md",
     "docs/LocalFile/Picture/ReentrantReadWriteLock类图.svg",
     "docs/LocalFile/Picture/ReentrantLock类图.svg",
     "docs/LocalFile/Picture/ReentrantLock类图.png",
