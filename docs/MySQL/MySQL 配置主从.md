@@ -63,6 +63,29 @@ character-set-server    = utf8mb4
 max_connections         = 2000
 ```
 
+使用启动选项 --binglog-ignore-db=db_name 可以配置对某个数据库不生成 binlog。该启动选项没有对应的系统变量。
+```
+[mysqld] 
+binlog-ignore-db=test_db 
+binlog-ignore-db=dev_db
+```
+
+查看 binlog 的文件内容：
+```
+mysqlbinlog --no-defaults --base64-output=decode-rows -v ./mysql_binary_log.135674 --result-file=135674.sql
+```
+- **`mysqlbinlog`**：这是 MySQL 提供的一个命令行工具，用于读取和显示 MySQL 二进制日志文件的内容。
+    
+- **`--no-defaults`**：这个选项告诉工具不要使用任何默认的配置文件（如 `my.cnf` 或 `my.ini`）。这样可以确保命令的执行仅依赖于命令行中提供的参数，而不受任何配置文件的影响。
+    
+- **`--base64-output=decode-rows`**：这个选项指定解码二进制日志中的基于 base64 编码的行事件。当二进制日志中的行数据被修改时，会进行 base64 编码，因此解码后可以使输出更具可读性。
+    
+- **`-v`**：这个选项是 `verbose`（详细模式）的缩写，表示输出会更加详细。它会以可读的格式展示每个事件的内容，显示实际执行的 SQL 语句，而不仅仅是事件类型。
+    
+- **`./mysql_binary_log.135674`**：这是需要处理的 MySQL 二进制日志文件的路径。在此命令中，文件名为 `mysql_binary_log.135674`，该文件包含了 MySQL 数据库的所有更改日志。
+    
+- **`--result-file=135674.sql`**：这个选项指定处理后的结果输出到一个文件中。在本例中，解码后的 SQL 语句和数据变更将保存到 `135674.sql` 文件中。
+
 查看二进制日志文件和位置，从库配置需要使用 `File`和`Position`。
 ```text
 mysql> show master status \G

@@ -13,10 +13,14 @@ Maven 依赖
 mvn install:install-file -Dfile=.\DmJdbcDriver18.jar -DgroupId=com.dm -DartifactId=DmJdbcDriver18 -Dversion=18 -Dpackaging=jar 
 ```
 
-## 查看 License 信息
-EXPIRED_DATE 为空说明永久有效。
-```
+## 查询信息
+查看许可信息，EXPIRED_DATE 为空说明永久有效。
+```sql
 select * from v$license
 ```
 
+查看版本信息。
+```sql
+select * from v$instance;
+```
 ## 达梦默认的角色
