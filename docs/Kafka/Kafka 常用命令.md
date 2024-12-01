@@ -7,7 +7,7 @@ tags:
 
 创建 topic
 ```
-bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic topic_name --command-config admin-jass
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic <topic_name> --create
 ```
 
 查看所有的 topic
@@ -17,12 +17,17 @@ bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
 
 查看 topic 的信息
 ```
-bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic <topic_name>
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic <topic_name> --describe 
 ```
 
 查看 topic 每个分区的 offset
 ```
 bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list localhost:9092 --topic <topic_name>
+```
+
+修改 topic 的分区数量
+```
+bin/kafka
 ```
 ## Consumer
 
