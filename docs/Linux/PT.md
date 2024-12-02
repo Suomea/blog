@@ -94,3 +94,102 @@ The.Beekeeper.2024.2160p.UHD.Blu-ray.Remux.HEVC.TrueHD7.1.Atmos.iso
 ```
 
 
+合并 B 站视频，合集视频的一个章节视频目录如下：
+```
+c_509967785
+├── 80
+│   ├── audio.m4s     // 音频信息
+│   ├── index.json    // 
+│   └── video.m4s     // 视频信息
+├── danmaku.xml       // 弹幕信息
+└── entry.json        // 章节视频描述信息，可以用来提取视频标题
+```
+
+使用 ffmpeg 合并命令
+```
+ffmpeg -i video.m4s -i audio.m4s -c copy -loglevel quit output.mp4
+```
+
+示例代码：
+```java
+import java.io.BufferedReader;  
+import java.io.File;  
+import java.io.IOException;  
+import java.io.InputStreamReader;  
+import java.nio.file.Files;  
+import java.nio.file.Path;  
+import java.nio.file.Paths;  
+  
+public class BSiteMerge {  
+  
+    private static final String ENTRY_FILE = "entry.json";  
+    private static final String VIDEO_FILE = "80/video.m4s";  
+    private static final String AUDIO_FILE = "80/audio.m4s";  
+  
+    private static final String ROOT_DIR = "/Volumes/New Volume/学习资料/1852212560";  
+    private static final String OUTPUT_DIR = "/Volumes/New Volume/学习资料/k1";  
+  
+    public static void main(String[] args) throws Exception{  
+        Files.list(Paths.get(ROOT_DIR)).forEach(part -> {  
+  
+            Path entryPath = part.resolve(ENTRY_FILE);  
+            String partName = getPartName(entryPath);  
+  
+            Path videoPath = part.resolve(VIDEO_FILE);  
+            Path audioPath = part.resolve(AUDIO_FILE);  
+  
+            String outputFile = OUTPUT_DIR + File.separator + partName + ".mp4";  
+            ProcessBuilder builder = new ProcessBuilder("ffmpeg",  
+                    "-i", videoPath.toString(),  
+                    "-i", audioPath.toString(),  
+                    "-c", "copy",  
+                    "-loglevel", "quiet",  
+                    outputFile);  
+            try {  
+                // 执行命令  
+                Process process = builder.start();  
+  
+                // 打印 FFmpeg 输出（可选）  
+                BufferedReader reader = new BufferedReader(  
+                        new InputStreamReader(process.getInputStream())  
+                );  
+                String line;  
+                while ((line = reader.readLine()) != null) {  
+                    System.out.println(line);  
+                }  
+  
+                // 等待进程完成  
+                int exitCode = process.waitFor();  
+                if (exitCode == 0) {  
+                    System.out.println("视频和音频合并成功，输出文件：" + outputFile);  
+                } else {  
+                    System.err.println("合并失败，退出代码：" + exitCode);  
+                }  
+            } catch (IOException | InterruptedException e) {  
+                e.printStackTrace();  
+            }  
+  
+        });  
+    }  
+  
+  
+  
+    public static String getPartName(Path path) {  
+        try {  
+            String entryContent = Files.readString(path);  
+            // 查找 "part" 的位置  
+            String key = "\"part\":";  
+            int startIndex = entryContent.indexOf(key);  
+  
+            // 定位值的开始和结束  
+            startIndex += key.length();  
+            int endIndex = entryContent.indexOf(",", startIndex);  
+  
+            // 提取值并去除多余的引号  
+            return entryContent.substring(startIndex + 1, endIndex - 1).trim();  
+        } catch (IOException e) {  
+            throw new RuntimeException(e);  
+        }  
+    }  
+}
+```
