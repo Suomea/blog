@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Kafka/Kafka 配置.md",
+                "file": "docs/Linux/ls.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Kafka 配置"
+              "title": "ls"
+            }
+          },
+          {
+            "id": "6946aa7c05144594",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/Linux/运维监控.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "运维监控"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -77,7 +92,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "d1db8229203a9e0b",
@@ -164,17 +180,29 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "0743fed77e619d96",
+  "active": "6946aa7c05144594",
   "lastOpenFiles": [
-    "docs/Kafka/Kafka 快速开始.md",
-    "docs/Kafka/Kafka 配置.md",
-    "docs/Kafka/Kafka Tips.md",
+    "docs/Linux/ls.md",
+    "docs/Linux/运维监控.md",
+    "未命名",
+    "docs/Linux/Linux 文件系统.md",
+    "docs/Linux/Linux Tips.md",
+    "docs/Linux/Nginx 编译安装.md",
+    "docs/Linux/Nginx 使用自签名证书.md",
+    "docs/Linux/Nginx Tips.md",
     "docs/Linux/PT.md",
+    "docs/Linux/Debian 软件安装.md",
+    "docs/Linux/Git.md",
+    "docs/Linux/curl.md",
+    "docs/Linux/ArcLinux 安装.md",
+    "docs/Linux/正则表达式.md",
+    "docs/Linux/时间.md",
+    "docs/Linux/查找文件.md",
+    "docs/Kafka/Kafka 配置.md",
+    "docs/Kafka/Kafka 快速开始.md",
+    "docs/Kafka/Kafka Tips.md",
     "docs/Kafka/Kafka 集群搭建.md",
     "docs/Kafka/Kafka 常用命令.md",
-    "docs/Linux/Nginx 使用自签名证书.md",
-    "docs/Linux/Linux Tips.md",
-    "docs/Linux/Debian 软件安装.md",
     "docs/Linux/VIM.md",
     "docs/Server/本地服务器192.168.31.11.md",
     "docs/Kafka/保证消息不丢失.md",
@@ -182,17 +210,6 @@
     "mkdocs.yml",
     "docs/MySQL/MySQL 配置主从.md",
     "docs/MySQL/MySQL 备份.md",
-    "docs/MySQL/MySQL Tips.md",
-    "docs/Doris/Doris 接入 MySQL 的数据.md",
-    "docs/Doris/Doris 分区表.md",
-    "docs/Doris/Doris 日期时间类型.md",
-    "docs/Doris/Doris 用户角色权限.md",
-    "docs/DM/达梦安装.md",
-    "docs/DM/达梦备份.md",
-    "docs/DM/达梦 Tips.md",
-    "docs/Java/Tips.md",
-    "docs/Java/重复提交.md",
-    "未命名.md",
     "overrides/partials/comments.html",
     "overrides/partials/footer.html",
     "docs/LocalFile/Picture/ReentrantReadWriteLock类图.svg",
