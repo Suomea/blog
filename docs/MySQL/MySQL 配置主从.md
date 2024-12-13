@@ -53,14 +53,23 @@ grant replication slave on *.* to 'repl'@'%';
 flush privileges;
 ```
 
-二进制日志默认是开启的，服务器 ID 默认是 1，修改配置文件需要重启数据库。配置文件 **/etc/mysql/mysql.conf.d/mysqld.cnf**新增配置：
+二进制日志默认是开启的，日志默认存储再数据目录下，服务器 ID 默认是 1，修改配置文件需要重启数据库。配置文件 **/etc/mysql/mysql.conf.d/mysqld.cnf**新增配置：
 ```cnf
 [mysqld]
 server_id               = 2
-expire_logs_days        = 15
+log-bin                 = mysql-bin
 
 character-set-server    = utf8mb4
 max_connections         = 2000
+```
+
+使用启动选项 --binlog-expire-logs-seconds 设置日志的过期时间，默认 30 天。
+
+使用启动选项 --binglog-do-db=db_name 可以配置指定数据库生成 binlog。该启动选项没有对应的系统变量。
+```
+[mysqld] 
+binlog-do-db=test_db 
+binlog-do-db=dev_db
 ```
 
 使用启动选项 --binglog-ignore-db=db_name 可以配置对某个数据库不生成 binlog。该启动选项没有对应的系统变量。
