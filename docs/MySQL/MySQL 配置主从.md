@@ -119,6 +119,13 @@ character-set-server    = utf8mb4
 max_connections         = 2000
 ```
 
+配置从库只同步主库的部分数据库：
+```
+[mysqld]
+replicate-do-db=database1
+replicate-do-db=database2
+```
+
 配置主库信息：
 ```sql
 CHANGE REPLICATION SOURCE TO
