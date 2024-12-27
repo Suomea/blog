@@ -11,6 +11,16 @@ Partition 区，一个主题可以有多个分区，每个分区包含主题中�
 Consumer Group 是消费者组，消费者属于消费者组。一个消费者组会完整的消费一个主题的数据，具体由消费者消费分区的数据实现。同一个消费者组的每个消费者可以消费零到多个分区的数据，但是不能多个消费者同时消费一个分区的数据。
 
 ![[Kafka-ConsumerGroup.png]]
+## 生产者配置
+Kafka 生产者有两个线程（假设 Main 线程和 Sender 线程），一个内存池缓存发送的数据。
+
+假设 send(msg) 方法在 Main 线程调用，消息会经历拦截器、序列化器、分区器，然后消息会存储在内存池中。Sender 线程负责读取缓存的数据发送到 Kafka。
+
+buffer.memory 控制缓冲区的容量，默认 32MB。如果缓冲区满了，max.blocks.ms 控制 Main 线程写入到缓冲区的阻塞时间。
+缓冲区里面是多个队列，每个 topic 的分区都对应一个队列。队列中的多个消息可以组成一个批次，batch.size 控制批次的大小。如果消息批次达到 batch.size 则整批次的消息会发送到 Kafka。如果一批次的消息大小未达到 batch.size，可能会因为超时 linger.ms 而提前发送，linger.ms 默认为 0，消息立即发送。
+
+buffer-available-bytes 用来监控缓冲区的情况。
+compression.type=gzip 可以启用消息压缩，减少缓冲区的占用。
 
 ## 消费者配置
 **auto.offset.reset**

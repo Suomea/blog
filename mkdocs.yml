@@ -24,30 +24,51 @@ markdown_extensions:
 
 nav:
   - 数据库:
+    - "MySQL":
       - MySQL/MySQL Tips.md
       - MySQL/MySQL 系统和状态变量.md
       - MySQL/MySQL 安装.md
       - MySQL/MySQL 备份.md
       - MySQL/MySQL 配置主从.md
-      - Redis/Redis 安装.md
-      - Redis/Redis 数据结构.md
-      - DM/达梦安装.md
-      - Doris/Doris 接入 Kafka 的数据.md
-      - Doris/Doris 接入 MySQL 的数据.md
-      - Doris/Doris 日期时间类型.md
+    - "Redis":
+        - Redis/Redis 安装.md
+        - Redis/Redis 数据结构.md
+    - "达梦":
+        - DM/达梦 Tips.md
+        - DM/达梦安装.md
+        - DM/达梦备份.md
+    - "Doris":
+        - Doris/Doris 接入 Kafka 的数据.md
+        - Doris/Doris 接入 MySQL 的数据.md
+        - Doris/Doris 日期时间类型.md
   - K8S:
       - K8S/安装 Kubernetes 集群.md
       - K8S/安装 Kuboard 集群管理界面.md
       - K8S/安装 Nginx Ingress.md
   - Linux:
-      - Linux/Linux Tips.md
-      - Linux/Linux 定时任务.md
-      - Linux/Linux 文件系统.md
-      - Linux/Linux 磁盘分区.md
-      - Linux/Linux 账号群组.md
-      - Linux/正则表达式.md
+    - Linux/Linux Tips.md
+    - Linux/ArcLinux 安装.md
+    - Linux/curl.md
+    - Linux/Debian 软件安装.md
+    - Linux/Git.md
+    - Linux/iptables.md
+    - Linux/磁盘分区.md
+    - Linux/Linux 定时任务.md
+    - Linux/Linux 文件系统.md
+    - Linux/Linux 账号群组.md
+    - Linux/ls.md
+    - "Nginx":
+      - Linux/Nginx Tips.md
       - Linux/Nginx 编译安装.md
-      - Linux/curl.md
+      - Linux/Nginx 配置 Basic Auth.md
+      - Linux/Nginx 使用自签名证书.md
+    - Linux/PT.md
+    - Linux/Shell 脚本.md
+    - Linux/VIM.md
+    - Linux/查找文件.md
+    - Linux/时间.md
+    - Linux/运维监控.md
+    - Linux/正则表达式.md
   - 计算机网络:
       - Network/Network Tips.md
       - Network/网络层：IP.md

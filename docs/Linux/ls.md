@@ -1,5 +1,3 @@
-#Linux
-
 ## 文件的时间：
 
 - mtime，modification time 当文件的内容变更时，就会更新这个时间。

@@ -5,30 +5,23 @@ tags:
 ---
 ## Topic
 
-创建 topic
+topic 操作选项
 ```
-bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic <topic_name> --create
-```
-
-查看所有的 topic
-```
-bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
-```
-
-查看 topic 的信息
-```
-bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic <topic_name> --describe 
+--topic 指定要操作的 topic 名称
+--create 创建 topic
+--delete 删除 topic
+--describe 查看 topic 的详细描述
+--alter 修改主题
+--partitions <num> 修改主题的分区数，只能增加，不能减少
+--replication-factor <num> 设置分区副本数（如果设置为 3，那么就是 1 个 Leader 副本，3 个 Follower 副本）
+--config <key=val> 更新系统默认设置
 ```
 
-查看 topic 每个分区的 offset
+创建 Topic。
+```shell
+bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic quickstart-events [--partitions num] [--replication-factor num] --command-config admin-jaas
 ```
-bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list localhost:9092 --topic <topic_name>
-```
-
-修改 topic 的分区数量
-```
-bin/kafka
-```
+ 
 ## Consumer
 
 控制台消费者
@@ -51,12 +44,6 @@ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <topic_n
 ```
 
 ## ACL
-### Topic
-
-创建 Topic。
-```shell
-bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic quickstart-events [--partitions num] [--replication-factor num] --command-config admin-jaas
-```
 
 ### 生产
 
