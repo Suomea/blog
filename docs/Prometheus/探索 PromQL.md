@@ -211,3 +211,9 @@ sum(http_requests_total) without (instance)
 ```
 
 内置函数
+
+
+increase(v range-vector) 计算时间范围内的总增量
+rate(v range-vector) 计算时间范围内的每秒平均增长率
+irate(v range-vector) 基于最后两个数据点计算的每秒瞬时增长率
+

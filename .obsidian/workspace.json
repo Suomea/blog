@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Prometheus/探索 PromQL.md",
+                "file": "docs/Reading/Timeline.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "探索 PromQL"
+              "title": "Timeline"
             }
           }
         ],
@@ -182,10 +182,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Kafka/Kafka Tips.md"
+                "file": "docs/Reading/Timeline.md"
               },
               "icon": "lucide-list",
-              "title": "Kafka Tips 的大纲"
+              "title": "Timeline 的大纲"
             }
           }
         ],
@@ -193,8 +193,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -210,32 +209,32 @@
   "active": "70e320b58f86b1d6",
   "lastOpenFiles": [
     "mkdocs.yml",
+    "docs/index.md",
+    "docs/Nginx/Nginx 安装.md",
+    "docs/English/Last, the last, the latest.md",
+    "docs/ES/操作.md",
+    "docs/ES/环境搭建.md",
+    "docs/ES/ES DSL查询方式.md",
+    "docs/ES/Spring Boot 集成 ES.md",
+    "docs/Reading/Timeline.md",
+    "docs/Python/Tips.md",
+    "docs/Python/学习资料.md",
+    "docs/Reading/读书.md",
+    "docs/Python/第 2 章：算术、字符串与变量.md",
+    "docs/Python/第 4 章：流程控制.md",
+    "docs/Python/第 5 章：函数.md",
+    "docs/Python/第 7 章：数据结构.md",
+    "docs/Python/第 8 章：输入和输出.md",
+    "docs/Python/第 9 章：异常.md",
+    "docs/Python/第 10 章：面向对象编程.md",
+    "docs/Reading/减肥计划.md",
+    "docs/Reading/软件开发.md",
     "docs/Prometheus/探索 PromQL.md",
+    "docs/Prometheus/运维监控.md",
+    "docs/Linux/Nginx 编译安装.md",
     "docs/Prometheus",
     "docs/DM/达梦 Tips.md",
     "docs/DM/达梦备份.md",
-    "docs/DM/达梦安装.md",
-    "docs/Arts/满江红-岳飞.md",
-    "docs/Arts/大观楼长联-孙髯.md",
-    "docs/Arts/侠客行-李白.md",
-    "docs/Algorithms/求解算数表达式的值.md",
-    "docs/Algorithms/数据结构：图.md",
-    "docs/Algorithms/字符串匹配算法.md",
-    "docs/Algorithms/Base64 算法.md",
-    "docs/Linux/ls.md",
-    "docs/Linux/磁盘分区.md",
-    "template/Doris.md",
-    "未命名.md",
-    "docs/Linux/未命名.md",
-    "docs/Linux/Debian 软件安装.md",
-    "docs/Linux/ArcLinux 安装.md",
-    "docs/Linux/运维监控.md",
-    "docs/index.md",
-    "docs/Linux/Linux 文件系统.md",
-    "docs/Java/Java 并发.md",
-    "docs/Kafka/Kafka 配置.md",
-    "docs/Kafka/Kafka 常用命令.md",
-    "docs/Kafka/Kafka 集群搭建.md",
     "overrides/partials/comments.html",
     "overrides/partials/footer.html",
     "docs/LocalFile/Picture/ReentrantReadWriteLock类图.svg",

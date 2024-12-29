@@ -27,6 +27,10 @@ cd /usr/local/srv/nginx-1.22.1
 --with-stream_ssl_module \
 --with-http_ssl_module
 
+ 实现 TCP 和 UDP 流量的转发和负载，实现四层代理
+ 实现 TCP/UDP 流量的加密
+ 实现 HTTPS 协议的支持
+
 make && make install 
 ```
 
