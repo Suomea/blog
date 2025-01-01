@@ -2,20 +2,8 @@
 comments: true
 tags:
   - MySQL
+  - 备份
 ---
-> 测试环境基于 MySQL 8.0.35，XtraBackup 8.0.35-30。
-
-准备环境：
-
-| **服务器** | **软件** | **用途描述** |
-| ---- | ---- | ---- |
-| 192.168.31.12 | MySQL 1 | MySQL 主库 |
-| 192.168.31.13 | MySQL 2 | MySQL 从库，XtraBackup 安装在此服务器上。 |
-| 192.168.31.14 | Docker | 备份恢复测试服务器。 |
-
-## 物理备份和逻辑备份
-
-
 ## 备份的要求
 
 1. 在生产实践中，对于大数据来说，物理备份是必须的：逻辑备份太慢并且受到资源限制，从逻辑备份中恢复数据需要很长时间。基于快照的备份可以使用 `XtraBackup`。对于较小的数据库，逻辑备份可以很好的胜任。
@@ -28,7 +16,7 @@ tags:
 ### mysqldump 命令
 
 ```shell
-mysqldump --source-data=2 --single-transaction -h 192.168.3.251 -u root -p --all-databases | gzip > test.sql.gz
+mysqldump --source-data=2 --single-transaction -h localhost -u root -p --all-databases | gzip > test.sql.gz
 ```
 
 `--source-data=2`：导出二进制日志文件名称和位置信息，并且在导出文件中以注释的形式展示。
@@ -124,12 +112,6 @@ GRANT SELECT ON performance_schema.log_status TO 'bkpuser'@'localhost';
 GRANT SELECT ON performance_schema.keyring_component_status TO bkpuser@'localhost'; 
 GRANT SELECT ON performance_schema.replication_group_members TO bkpuser@'localhost'; 
 FLUSH PRIVILEGES;
-```
-
-### 恢复准备工作
-使用 Docker 安装 MySQL 进行恢复测试。[[安装 Docker#安装]] [[MySQL 安装#Docker 安装]]
-```shell
- docker run --name mysql -v /root/mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=pwd -d mysql:8.0.35
 ```
 
 ### 本地直接全量物理备份

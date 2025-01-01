@@ -47,6 +47,8 @@ nav:
       - K8S/安装 Nginx Ingress.md
   - Linux:
     - Linux/Linux Tips.md
+    - Linux/正则表达式.md
+    - Linux/查找文件.md
     - Linux/ArcLinux 安装.md
     - Linux/curl.md
     - Linux/Debian 软件安装.md
@@ -65,10 +67,10 @@ nav:
     - Linux/PT.md
     - Linux/Shell 脚本.md
     - Linux/VIM.md
-    - Linux/查找文件.md
+
     - Linux/时间.md
     - Linux/运维监控.md
-    - Linux/正则表达式.md
+
   - 计算机网络:
       - Network/Network Tips.md
       - Network/网络层：IP.md
