@@ -26,9 +26,14 @@ mysqldump --source-data=2 --single-transaction -h localhost -u root -p --all-dat
 `--all-databases`：导出全部数据库，会包含系统库。也可以使用 --databases tb1 tb2 指定导出数据库的名称。
 
 
-导出指定数据库的数据。
+导出一个数据库的数据。
 ```
 mysqldump -u <user> -p <dbname> > dbname.sql
+```
+
+导出多个数据库的数据。
+```
+mysqldump -u <user> -p --databases db1 db2 db3 > db.sql
 ```
 
 导出所有数据库的数据。
@@ -41,6 +46,10 @@ mysqldump -u <user> -p --all-databases > alldb.sql
 mysqldump -u <user> -p <dbname> <tablename1> <tablename2> > tablename.sql
 ```
 
+在数据中执行指定的 SQL 文件。
+```
+mysql -u <user> -p <db> < a.sql
+```
 ### 创建连接凭证配置文件
 MySQL 连接凭证单独放在文件一个文件中，置于 /data/database/db_name 目录下，文件名为 `.bak.cnf`，内容如下：
 ```text

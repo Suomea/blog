@@ -7,17 +7,7 @@ tags:
 ```shell
 安装命令：
 docker run --name mysql -v /my/own/datadir:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=pwd -d mysql:tag
-
-选项解释：
--v /my/own/datadir:/var/lib/mysql 将容器的数据目录映射到本机目录。
-
--p 3306:3306 将容器的 3306 映射到主机的 3306 端口。
-
--e MYSQL_ROOT_PASSWORD=pwd 指定 MySQL root 用户的密码。
-
--d 后台运行容器。
 ```
-
 
 ## ATP 安装
 

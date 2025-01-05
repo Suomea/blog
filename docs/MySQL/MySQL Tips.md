@@ -82,3 +82,33 @@ exit;
 调整 max_connections 系统变量，重启数据库。  
 
 参考：https://dev.mysql.com/doc/refman/8.3/en/server-system-variables.html#sysvar_max_connections
+
+### 用户操作
+查询所有的用户
+```
+select user, host from mysql.user;
+```
+
+查询用户权限
+```
+show grants for username;
+```
+
+赋予用户查询数据库的权限
+```
+GRANT SELECT ON mydb.* TO 'username'@'%';
+-- 撤销
+REVOKE SELECT ON mydb.* TO 'username'@'%';
+```
+
+赋予用户数据库的全部权限
+```
+GRANT ALL PRIVILEGES ON mydb.* TO 'username'@'%';
+-- 撤销
+REVOKE ALL PRIVILEGES ON mydb.* FROM 'username'@'%';
+```
+
+确保权限立即生效
+```
+FLUSH PRIVILEGES;
+```

@@ -1,4 +1,8 @@
-
+---
+comments: true
+tags:
+  - MySQL
+---
 ## 系统变量
 官方文档：https://dev.mysql.com/doc/refman/8.4/en/server-system-variables.html
 
