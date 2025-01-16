@@ -84,3 +84,6 @@ KAFKA
             "property.sasl.password" = "xxxx"
         );
 ```
+
+
+参考：https://doris.apache.org/zh-CN/docs/2.0/sql-manual/sql-reference/Data-Manipulation-Statements/Load/ALTER-ROUTINE-LOAD
