@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Algorithms/求解算数表达式的值.md",
+                "file": "docs/Doris/Doris 接入 Kafka 的数据.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "求解算数表达式的值"
+              "title": "Doris 接入 Kafka 的数据"
             }
           },
           {
@@ -119,7 +119,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "bad",
+                "query": "sea",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -206,10 +206,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Algorithms/求解算数表达式的值.md"
+                "file": "docs/Doris/Doris 接入 Kafka 的数据.md"
               },
               "icon": "lucide-list",
-              "title": "求解算数表达式的值 的大纲"
+              "title": "Doris 接入 Kafka 的数据 的大纲"
             }
           }
         ],
@@ -232,9 +232,13 @@
   },
   "active": "527fad748a9aece7",
   "lastOpenFiles": [
-    "docs/Algorithms/数据结构：图.md",
-    "docs/Algorithms/求解算数表达式的值.md",
+    "docs/Kafka/Kafka 常用命令.md",
+    "docs/Kafka/Kafka Tips.md",
+    "mkdocs.yml",
+    "docs/Doris/Doris 接入 MySQL 的数据.md",
     "docs/Flink/快速开始.md",
+    "docs/Algorithms/求解算数表达式的值.md",
+    "docs/Algorithms/数据结构：图.md",
     "docs/LocalFile/Picture/详细分分片示例.png",
     "docs/LocalFile/Picture/用户数据报的格式.png",
     "docs/LocalFile/Picture/Pasted image 20250116235550.png",
@@ -249,11 +253,9 @@
     "docs/MySQL/索引.md",
     "docs/MySQL/事务.md",
     "docs/Linux/OpenLDAP.md",
-    "docs/Kafka/Kafka 常用命令.md",
     "docs/Kafka/保证消息不丢失.md",
     "docs/Kafka/Kafka 快速开始.md",
     "docs/Kafka/Kafka 配置.md",
-    "docs/Kafka/Kafka Tips.md",
     "docs/Linux/ls.md",
     "docs/Reading/Timeline.md",
     "docs/MySQL/MySQL Tips.md",
@@ -266,9 +268,6 @@
     "docs/Java/NIO Tips.md",
     "docs/Java/Java 打包.md",
     "docs/Linux/查找文件.md",
-    "docs/Linux/tar.md",
-    "mkdocs.yml",
-    "docs/Java/日期时间操作.md",
     "docs/Prometheus",
     "overrides/partials/comments.html",
     "overrides/partials/footer.html",

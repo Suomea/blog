@@ -3,7 +3,7 @@ comments: true
 tags:
   - Kafka
 ---
-## Topic
+## 主题操作
 
 topic 操作选项
 ```
@@ -19,10 +19,12 @@ topic 操作选项
 
 创建 Topic。
 ```shell
-bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic quickstart-events [--partitions num] [--replication-factor num] --command-config admin-jaas
+bin/kafka-topics.sh --bootstrap-server localhost:9092 \
+	--create \
+	--topic quickstart-events [--partitions num] [--replication-factor num] --command-config admin-jaas
 ```
  
-## Consumer
+## 消费消息
 
 控制台消费者
 ```
@@ -40,16 +42,30 @@ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <topic_n
 
 指定分区消费最新的两条消息，partition 和 offset 需要同时指定。
 ```
-bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <topic_name> --partition <partitionidu> --offset <offset> --max-messages 2
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
+	--topic <topic_name> --partition <partitionidu> --offset <offset> --max-messages 2
 ```
 
-## ACL
+## 生产者权限
 
-### 生产
-
-赋予 `usera` 用户向 Topic `quickstart-events` 写入权限。
+赋予 usera 用户向 Topic `quickstart-events` 写入权限。
 ```shell
-bin/kafka-acls.sh --bootstrap-server localhost:9092 --add --allow-principal User:usera --operation Write --topic quickstart-events --command-config admin-jaas
+bin/kafka-acls.sh --bootstrap-server localhost:9092 \
+	--add \
+	--allow-principal User:usera \
+	--operation Write \
+	--topic quickstart-events \
+	--command-config admin-jaas
+```
+
+赋予 usera 用户向所有 topic 写入的权限：
+```
+bin/kafka-acls.sh --bootstrap-server localhost:9092 \
+	--add \
+	--allow-principal User:usera \
+	--operation Write \
+	--topic '*' \
+	--command-config admin-jaas
 ```
 
 测试
@@ -57,11 +73,17 @@ bin/kafka-acls.sh --bootstrap-server localhost:9092 --add --allow-principal User
 bin/kafka-console-producer.sh --bootstrap-server localhost:9092  --topic quickstart-events --producer.config usera-jaas
 ```
 
-### 消费
+## 消费者权限
 
 赋予 `usera` 用户使用 `usera` 消费者组消费 Topic `quickstart-events` 的权限。
 ```shell
-bin/kafka-acls.sh --bootstrap-server localhost:9092 --add --allow-principal User:usera --operation Read --topic quickstart-events --group usera --command-config admin-jaas
+bin/kafka-acls.sh --bootstrap-server localhost:9092 \
+	--add \
+	--allow-principal User:usera \
+	--operation Read \
+	--topic quickstart-events \
+	--group usera \
+	--command-config admin-jaas
 ```
 
 测试
@@ -74,14 +96,16 @@ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic quicksta
 bin/kafka-acls.sh --bootstrap-server localhost:9092 --add --allow-principal User:usera --operation Read --topic '*' --group '*' --command-config admin-jaas
 ```
 
-### 配置
+## 权限查看
 
 查看所有的 ACL 权限配置。
 ```shell
-bin/kafka-acls.sh --bootstrap-server localhost:9092 --list [--principal User:username] [--topic topicname] [--group topicname] --command-config admin-jaas
+bin/kafka-acls.sh --bootstrap-server localhost:9092 \
+	--list [--principal User:username] [--topic topicname] [--group topicname] \
+	--command-config admin-jaas
 ```
 
-
+## 权限删除
 删除 `usera` 用户对 Topic `quickstart-event` 的读取权限。
 ```shell
 bin/kafka-acls.sh --bootstrap-server localhost:9092 --remove --allow-principal User:usera --operation Read --topic quickstart-events --command-config admin-jaas 

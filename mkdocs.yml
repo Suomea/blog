@@ -91,14 +91,18 @@ nav:
       - Algorithms/数据结构：图.md
 #  - Architecture:
 #      - Architecture/设备信息.md
-  - 文章:
-      - Arts/满江红-岳飞.md
-      - Arts/侠客行-李白.md
-      - Arts/大观楼长联-孙髯.md
   - 爪哇:
       - Java/Tips.md
       - Java/Java 并发.md
       - Java/重复提交.md
+  - 大数据:
+    - "Kafka":
+      - Kafka/Kafka 常用命令.md
+  - 文章:
+      - Arts/满江红-岳飞.md
+      - Arts/侠客行-李白.md
+      - Arts/大观楼长联-孙髯.md
+
   - 记录:
       - Reading/Timeline.md
   #     - Reading/2022.md
