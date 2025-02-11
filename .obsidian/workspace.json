@@ -53,14 +53,26 @@
             "id": "527fad748a9aece7",
             "type": "leaf",
             "state": {
+              "type": "vscode-editor",
+              "state": {
+                "file": "mkdocs.yml"
+              },
+              "icon": "lucide-file",
+              "title": "mkdocs"
+            }
+          },
+          {
+            "id": "ba0e771d431bf1d4",
+            "type": "leaf",
+            "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Doris/Doris 接入 Kafka 的数据.md",
+                "file": "docs/English/Would 和 Want.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Doris 接入 Kafka 的数据"
+              "title": "Would 和 Want"
             }
           },
           {
@@ -72,23 +84,9 @@
               "icon": "lucide-file",
               "title": "新标签页"
             }
-          },
-          {
-            "id": "70e320b58f86b1d6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Linux/正则表达式.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "正则表达式"
-            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -107,7 +105,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -206,10 +205,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Doris/Doris 接入 Kafka 的数据.md"
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Doris 接入 Kafka 的数据 的大纲"
+              "title": "大纲"
             }
           }
         ],
@@ -230,11 +231,26 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "527fad748a9aece7",
+  "active": "54a6a2097fcd82ce",
   "lastOpenFiles": [
+    "docs/Linux/正则表达式.md",
+    "docs/English/Would 和 Want.md",
+    "docs/Python/Tips.md",
+    "docs/index.md",
+    "docs/Python/Python Tips.md",
+    "docs/AI/安装 ComfyUI.md",
+    "docs/AI/ollama.md",
+    "mkdocs.yml",
+    "docs/AI",
+    "未命名",
+    "docs/Python/第 4 章：流程控制.md",
+    "docs/Python/第 5 章：函数.md",
+    "docs/Python/第 7 章：数据结构.md",
+    "docs/Python/第 9 章：异常.md",
+    "docs/ML/Keras 入门.md",
+    "docs/Doris/Doris 接入 Kafka 的数据.md",
     "docs/Kafka/Kafka 常用命令.md",
     "docs/Kafka/Kafka Tips.md",
-    "mkdocs.yml",
     "docs/Doris/Doris 接入 MySQL 的数据.md",
     "docs/Flink/快速开始.md",
     "docs/Algorithms/求解算数表达式的值.md",
@@ -248,7 +264,6 @@
     "docs/LocalFile/Picture/Pasted image 20250117000803.png",
     "docs/LocalFile/Picture/Pasted image 20250117000239.png",
     "docs/LocalFile/Picture/Pasted image 20250117000101.png",
-    "docs/Doris/Doris 接入 Kafka 的数据.md",
     "docs/Flink",
     "docs/MySQL/索引.md",
     "docs/MySQL/事务.md",
@@ -257,17 +272,6 @@
     "docs/Kafka/Kafka 快速开始.md",
     "docs/Kafka/Kafka 配置.md",
     "docs/Linux/ls.md",
-    "docs/Reading/Timeline.md",
-    "docs/MySQL/MySQL Tips.md",
-    "docs/MySQL/MySQL 备份.md",
-    "docs/MySQL/MySQL 安装.md",
-    "docs/MySQL/MySQL 系统和状态变量.md",
-    "docs/K8S/安装 Kubernetes 集群.md",
-    "docs/K8S/安装 Nginx Ingress.md",
-    "docs/K8S/安装 Kuboard 集群管理界面.md",
-    "docs/Java/NIO Tips.md",
-    "docs/Java/Java 打包.md",
-    "docs/Linux/查找文件.md",
     "docs/Prometheus",
     "overrides/partials/comments.html",
     "overrides/partials/footer.html",
