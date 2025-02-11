@@ -1,0 +1,3137 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../MySQL%20%E5%AE%89%E8%A3%85/">
+      
+      
+        <link rel="next" href="../MySQL%20%E9%85%8D%E7%BD%AE%E4%B8%BB%E4%BB%8E/">
+      
+      
+      <link rel="icon" href="../../LocalFile/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>MySQL 备份 - 陈亮的笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=MiSans:300,300i,400,400i,700,700i%7CConsolas:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"MiSans";--md-code-font:"Consolas"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="陈亮的笔记" class="md-header__button md-logo" aria-label="陈亮的笔记" data-md-component="logo">
+      
+  <img src="../../LocalFile/favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            陈亮的笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MySQL 备份
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../MySQL%20Tips/" class="md-tabs__link">
+          
+  
+  数据库
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../K8S/%E5%AE%89%E8%A3%85%20Kubernetes%20%E9%9B%86%E7%BE%A4/" class="md-tabs__link">
+          
+  
+  K8S
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Linux/Linux%20Tips/" class="md-tabs__link">
+          
+  
+  Linux
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Network/Network%20Tips/" class="md-tabs__link">
+          
+  
+  计算机网络
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../OS/OS%20Tips/" class="md-tabs__link">
+          
+  
+  操作系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Algorithms/%E6%B1%82%E8%A7%A3%E7%AE%97%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%80%BC/" class="md-tabs__link">
+          
+  
+  数据结构和算法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Java/Tips/" class="md-tabs__link">
+          
+  
+  爪哇
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Kafka/Kafka%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-tabs__link">
+          
+  
+  大数据
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Arts/%E6%BB%A1%E6%B1%9F%E7%BA%A2-%E5%B2%B3%E9%A3%9E/" class="md-tabs__link">
+          
+  
+  文章
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Reading/Timeline/" class="md-tabs__link">
+          
+  
+  记录
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="陈亮的笔记" class="md-nav__button md-logo" aria-label="陈亮的笔记" data-md-component="logo">
+      
+  <img src="../../LocalFile/favicon.svg" alt="logo">
+
+    </a>
+    陈亮的笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    数据库
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            数据库
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MySQL
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            MySQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MySQL%20Tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MySQL Tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MySQL%20%E7%B3%BB%E7%BB%9F%E5%92%8C%E7%8A%B6%E6%80%81%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MySQL 系统和状态变量
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MySQL%20%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MySQL 安装
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    MySQL 备份
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    MySQL 备份
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      备份的要求
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysqldump" class="md-nav__link">
+    <span class="md-ellipsis">
+      mysqldump 逻辑备份
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="mysqldump 逻辑备份">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysqldump_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      mysqldump 命令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建连接凭证配置文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      备份脚本文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crontab" class="md-nav__link">
+    <span class="md-ellipsis">
+      crontab 配置
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xtrabackup" class="md-nav__link">
+    <span class="md-ellipsis">
+      XtraBackup 物理备份
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="XtraBackup 物理备份">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      备份准备工作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      本地直接全量物理备份
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      远程全量物理备份
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qa" class="md-nav__link">
+    <span class="md-ellipsis">
+      QA
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MySQL%20%E9%85%8D%E7%BD%AE%E4%B8%BB%E4%BB%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MySQL 配置主从
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Redis
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Redis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Redis/Redis%20%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis 安装
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Redis/Redis%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redis 数据结构
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    达梦
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            达梦
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DM/%E8%BE%BE%E6%A2%A6%20Tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    达梦 Tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DM/%E8%BE%BE%E6%A2%A6%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    达梦安装
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DM/%E8%BE%BE%E6%A2%A6%E5%A4%87%E4%BB%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    达梦备份
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Doris
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Doris
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Doris/Doris%20%E6%8E%A5%E5%85%A5%20Kafka%20%E7%9A%84%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Doris 接入 Kafka 的数据
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Doris/Doris%20%E6%8E%A5%E5%85%A5%20MySQL%20%E7%9A%84%E6%95%B0%E6%8D%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Doris 接入 MySQL 的数据
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Doris/Doris%20%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E7%B1%BB%E5%9E%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Doris 日期时间类型
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    K8S
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            K8S
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../K8S/%E5%AE%89%E8%A3%85%20Kubernetes%20%E9%9B%86%E7%BE%A4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安装 Kubernetes 集群
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../K8S/%E5%AE%89%E8%A3%85%20Kuboard%20%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86%E7%95%8C%E9%9D%A2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安装 Kuboard 集群管理界面
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../K8S/%E5%AE%89%E8%A3%85%20Nginx%20Ingress/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安装 Nginx Ingress
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Linux%20Tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux Tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    正则表达式
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    查找文件
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/ArcLinux%20%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ArcLinux 安装
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/curl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Curl
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Debian%20%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/iptables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iptables
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    磁盘分区
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Linux%20%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux 定时任务
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Linux%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux 文件系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Linux%20%E8%B4%A6%E5%8F%B7%E7%BE%A4%E7%BB%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux 账号群组
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/ls/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ls
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_14" id="__nav_3_14_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Nginx
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_14">
+            <span class="md-nav__icon md-icon"></span>
+            Nginx
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Nginx%20Tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nginx Tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Nginx%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nginx 编译安装
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Nginx%20%E9%85%8D%E7%BD%AE%20Basic%20Auth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nginx 配置 Basic Auth
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Nginx%20%E4%BD%BF%E7%94%A8%E8%87%AA%E7%AD%BE%E5%90%8D%E8%AF%81%E4%B9%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nginx 使用自签名证书
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/PT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FFmpeg
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/Shell%20%E8%84%9A%E6%9C%AC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shell 脚本
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/VIM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VIM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/%E6%97%B6%E9%97%B4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ntp #Linux
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/运维监控.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机网络
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/Network%20Tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/%E7%BD%91%E7%BB%9C%E5%B1%82%EF%BC%9AIP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网络层：IP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/%E7%BD%91%E7%BB%9C%E5%B1%82%EF%BC%9AICMP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    网络层：ICMP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/%E8%BF%90%E8%BE%93%E5%B1%82%EF%BC%9AUDP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    运输层：UDP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network/%E8%BF%90%E8%BE%93%E5%B1%82%EF%BC%9ATCP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    运输层：TCP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    操作系统
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            操作系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/OS%20Tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OS Tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/%E8%BF%9B%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    进程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/%E7%BA%BF%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线程
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    并发控制
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/%E6%B1%87%E7%BC%96%E2%80%94%E2%80%94%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    汇编——介绍
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/%E6%B1%87%E7%BC%96%E2%80%94%E2%80%94%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    汇编——环境搭建
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    数据结构和算法
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            数据结构和算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithms/%E6%B1%82%E8%A7%A3%E7%AE%97%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E5%80%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    求解算数表达式的值
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithms/Base64%20%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base64 算法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithms/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A%E5%9B%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数据结构：图
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    爪哇
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            爪哇
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Java/Tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tips
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Java/Java%20%E5%B9%B6%E5%8F%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java 并发
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Java/%E9%87%8D%E5%A4%8D%E6%8F%90%E4%BA%A4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    重复提交
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    大数据
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            大数据
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Kafka
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            Kafka
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Kafka/Kafka%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kafka 常用命令
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    文章
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            文章
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arts/%E6%BB%A1%E6%B1%9F%E7%BA%A2-%E5%B2%B3%E9%A3%9E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    满江红 岳飞
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arts/%E4%BE%A0%E5%AE%A2%E8%A1%8C-%E6%9D%8E%E7%99%BD/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    侠客行 李白
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arts/%E5%A4%A7%E8%A7%82%E6%A5%BC%E9%95%BF%E8%81%94-%E5%AD%99%E9%AB%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大观楼长联 孙髯
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    记录
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            记录
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Reading/Timeline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Timeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      备份的要求
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysqldump" class="md-nav__link">
+    <span class="md-ellipsis">
+      mysqldump 逻辑备份
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="mysqldump 逻辑备份">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysqldump_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      mysqldump 命令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建连接凭证配置文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      备份脚本文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crontab" class="md-nav__link">
+    <span class="md-ellipsis">
+      crontab 配置
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xtrabackup" class="md-nav__link">
+    <span class="md-ellipsis">
+      XtraBackup 物理备份
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="XtraBackup 物理备份">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      备份准备工作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      本地直接全量物理备份
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      远程全量物理备份
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qa" class="md-nav__link">
+    <span class="md-ellipsis">
+      QA
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>MySQL 备份</h1>
+
+<h2 id="_1">备份的要求</h2>
+<ol>
+<li>在生产实践中，对于大数据来说，物理备份是必须的：逻辑备份太慢并且受到资源限制，从逻辑备份中恢复数据需要很长时间。基于快照的备份可以使用 <code>XtraBackup</code>。对于较小的数据库，逻辑备份可以很好的胜任。</li>
+<li>保留多个备份集。</li>
+<li>定期从逻辑备份（或者物理备份）中抽取数据进行恢复测试。</li>
+<li>备份文件不要和 <code>MySQL</code> 服务器数据文件放在同一个磁盘、服务器、机房、城市。（一般软测的要求是 30km 外的另一个机房）</li>
+</ol>
+<h2 id="mysqldump">mysqldump 逻辑备份</h2>
+<h3 id="mysqldump_1">mysqldump 命令</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mysqldump<span class="w"> </span>--source-data<span class="o">=</span><span class="m">2</span><span class="w"> </span>--single-transaction<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p<span class="w"> </span>--all-databases<span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span>test.sql.gz
+</code></pre></div>
+<p><code>--source-data=2</code>：导出二进制日志文件名称和位置信息，并且在导出文件中以注释的形式展示。</p>
+<p><code>--single-transaction</code>：导出过程在一个事务中。</p>
+<p><code>--all-databases</code>：导出全部数据库，会包含系统库。也可以使用 --databases tb1 tb2 指定导出数据库的名称。</p>
+<p>导出一个数据库的数据。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mysqldump -u &lt;user&gt; -p &lt;dbname&gt; &gt; dbname.sql
+</code></pre></div></p>
+<p>导出多个数据库的数据。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mysqldump -u &lt;user&gt; -p --databases db1 db2 db3 &gt; db.sql
+</code></pre></div></p>
+<p>导出所有数据库的数据。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mysqldump -u &lt;user&gt; -p --all-databases &gt; alldb.sql
+</code></pre></div></p>
+<p>导出指定表的数据。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>mysqldump -u &lt;user&gt; -p &lt;dbname&gt; &lt;tablename1&gt; &lt;tablename2&gt; &gt; tablename.sql
+</code></pre></div></p>
+<p>在数据中执行指定的 SQL 文件。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>mysql -u &lt;user&gt; -p &lt;db&gt; &lt; a.sql
+</code></pre></div></p>
+<h3 id="_2">创建连接凭证配置文件</h3>
+<p>MySQL 连接凭证单独放在文件一个文件中，置于 /data/database/db_name 目录下，文件名为 <code>.bak.cnf</code>，内容如下：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[client]
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>user=root
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>password=pwd
+</code></pre></div></p>
+<p>设置文件的权限，只有自己可读（r:4）可写(w:2)：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>.bak.cnf
+</code></pre></div></p>
+<h3 id="_3">备份脚本文件</h3>
+<p>脚本文件放置在 /data/database/db_name 目录下，文件名为 bak.sh，内容如下：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">source</span><span class="w"> </span>/etc/profile
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nv">number</span><span class="o">=</span><span class="m">31</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nv">backup_dir</span><span class="o">=</span>/data/database/db_name
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nv">cre_file</span><span class="o">=</span>/data/database/db_name/.bak.cnf
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="nv">dd</span><span class="o">=</span><span class="sb">`</span>date<span class="w"> </span>+%Y-%m-%d-%H-%M-%S<span class="sb">`</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nv">database_name</span><span class="o">=</span>db_name
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-d<span class="w"> </span><span class="nv">$backup_dir</span><span class="w"> </span><span class="o">]</span><span class="p">;</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="k">then</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">    </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$backup_dir</span><span class="p">;</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="k">fi</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>mysqldump<span class="w"> </span>--single_transaction<span class="w"> </span>--master-data<span class="o">=</span><span class="m">2</span><span class="w"> </span>--defaults-file<span class="o">=</span><span class="nv">$cre_file</span><span class="w"> </span><span class="nv">$database_name</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$backup_dir</span>/<span class="nv">$database_name</span>-<span class="nv">$dd</span>.gz
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;dump file: </span><span class="nv">$backup_dir</span><span class="s2">/</span><span class="nv">$database_name</span><span class="s2">-</span><span class="nv">$dd</span><span class="s2">.gz&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$backup_dir</span>/dump.log
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="nv">delfile</span><span class="o">=</span><span class="sb">`</span>ls<span class="w"> </span>-l<span class="w"> </span>-crt<span class="w">  </span><span class="nv">$backup_dir</span>/*.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $9 }&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="sb">`</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="nv">count</span><span class="o">=</span><span class="sb">`</span>ls<span class="w"> </span>-l<span class="w"> </span>-crt<span class="w">  </span><span class="nv">$backup_dir</span>/*.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $9 }&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="sb">`</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$count</span><span class="w"> </span>-gt<span class="w"> </span><span class="nv">$number</span><span class="w"> </span><span class="o">]</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="k">then</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="w">  </span>rm<span class="w"> </span><span class="nv">$delfile</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;delete </span><span class="nv">$delfile</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$backup_dir</span>/dump.log
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="k">fi</span>
+</code></pre></div></p>
+<h3 id="crontab">crontab 配置</h3>
+<p>设置为每天凌晨 2 点执行，使用 <code>crontab -e</code> 命令，新增一行配置：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>0 2 * * * bash /data/database/db_name/bak.sh
+</code></pre></div></p>
+<h2 id="xtrabackup">XtraBackup 物理备份</h2>
+<h3 id="_4">备份准备工作</h3>
+<p>APT 安装。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>wget<span class="w"> </span>https://repo.percona.com/apt/percona-release_latest.<span class="k">$(</span>lsb_release<span class="w"> </span>-sc<span class="k">)</span>_all.deb<span class="w"> </span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>dpkg<span class="w"> </span>-i<span class="w"> </span>percona-release_latest.bookworm_all.deb<span class="w"> </span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>apt<span class="w"> </span>update<span class="w"> </span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>apt<span class="w"> </span>install<span class="w"> </span>percona-xtrabackup-80
+</code></pre></div></p>
+<p>创建备份账号并授权。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;bkpuser&#39;</span><span class="nv">@&#39;localhost&#39;</span><span class="w"> </span><span class="k">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;123456&#39;</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">GRANT</span><span class="w"> </span><span class="n">BACKUP_ADMIN</span><span class="p">,</span><span class="w"> </span><span class="k">PROCESS</span><span class="p">,</span><span class="w"> </span><span class="k">RELOAD</span><span class="p">,</span><span class="w"> </span><span class="k">LOCK</span><span class="w"> </span><span class="k">TABLES</span><span class="p">,</span><span class="w"> </span><span class="k">REPLICATION</span><span class="w"> </span><span class="k">CLIENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;bkpuser&#39;</span><span class="nv">@&#39;localhost&#39;</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">performance_schema</span><span class="p">.</span><span class="n">log_status</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;bkpuser&#39;</span><span class="nv">@&#39;localhost&#39;</span><span class="p">;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">performance_schema</span><span class="p">.</span><span class="n">keyring_component_status</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">bkpuser</span><span class="nv">@&#39;localhost&#39;</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">performance_schema</span><span class="p">.</span><span class="n">replication_group_members</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">bkpuser</span><span class="nv">@&#39;localhost&#39;</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="k">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span>
+</code></pre></div></p>
+<h3 id="_5">本地直接全量物理备份</h3>
+<p>备份命令。备份的文件不是同一时刻状态一致的，因为备份程序运行需要时间并且运行过程中源文件可能会发生变化。192.168.31.13 服务器上执行。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>xtrabackup<span class="w"> </span>--user<span class="o">=</span>bkpuser<span class="w"> </span>--password<span class="o">=</span><span class="m">123456</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span>--backup<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span>--target-dir<span class="o">=</span>/data/bkps/
+</code></pre></div>
+<code>--backup</code> 选项创建备份。
+<code>--target-dir</code> 选项指定备份存放的目录。
+<code>--compress</code> 选项开启压缩备份，能大量减少备份文件占用磁盘空间大小，默认使用 zstd 算法。<code>--compress-threads</code> 指定并行压缩的线程数量。关于压缩参考：<a href="https://docs.percona.com/percona-xtrabackup/innovation-release/create-compressed-backup.html">创建压缩备份</a></p>
+<p>如果创建备份的时候使用了 <code>--compress</code> 选项，那么在进行 prepare 之前需要先进行 decomprss。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>xtrabackup --decompress --target-dir=/data/bkps/
+</code></pre></div>
+<code>--remove-original</code> 解压缩默认不会删除压缩文件，添加该选项删除原始压缩文件。</p>
+<p>所以对于备份还原来说，需要先 prepare 备份文件，使数据达到 a single instant in time。192.168.31.13 服务器上执行（还原可以在任何服务器上执行，前提是安装 XtraBackup）。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>xtrabackup<span class="w"> </span>--prepare<span class="w"> </span>--target-dir<span class="o">=</span>/data/bkps
+</code></pre></div></p>
+<p>恢复之前先停止 Docker mysql，并删除 mysql 的数据文件。192.168.31.14 服务器上执行。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>docker<span class="w"> </span>stop<span class="w"> </span>mysql
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>mysql-data/*
+</code></pre></div></p>
+<p>同步文件到 Docker mysql 数据目录，一般情况下文件的恢复需要注意 Linux 文件属性问题。192.168.31.13 服务器上执行。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>rsync<span class="w"> </span>-avrP<span class="w"> </span>/data/bkps/<span class="w"> </span>root@192.168.31.14:/root/mysql-data/
+</code></pre></div></p>
+<p>启动 Docker mysql，验证数据是否恢复。</p>
+<h3 id="_6">远程全量物理备份</h3>
+<p>在 192.168.31.14 服务器上执行备份任务，并且将备份文件存储到 192.168.31.14 服务器。所有命令均在 192.168.31.14 服务器执行。需要在 192.168.31.14 服务器安装 XtraBackup。</p>
+<p>备份。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ssh<span class="w"> </span>root@192.168.31.13<span class="w"> </span><span class="s2">&quot;xtrabackup --user=bkpuser --password=123456  --compress --compress-threads=4 --backup --stream=xbstream&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span>&gt;<span class="w"> </span>backup.xbstream<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="m">2</span>&gt;<span class="w"> </span>backup.log
+</code></pre></div>
+<code>--stream</code> 压缩文件会以流的形式追加到标准输出，并且指定了流的格式。</p>
+<p>停止 Docker mysql，并删除 Docker mysql 的数据目录。</p>
+<p>解压缩
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>xbstream<span class="w"> </span>--extract<span class="w"> </span>&lt;<span class="w"> </span>backup.xbstream<span class="w"> </span>-C<span class="w"> </span>/root/restore/<span class="w"> </span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>xtrabackup<span class="w"> </span>--decompress<span class="w"> </span>--remove-original<span class="w"> </span>--target-dir<span class="o">=</span>/root/restore/
+</code></pre></div></p>
+<p>prepare
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>xtrabackup<span class="w"> </span>--prepare<span class="w"> </span>--target-dir<span class="o">=</span>/root/restore/
+</code></pre></div></p>
+<p>还原
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>xtrabackup<span class="w"> </span>--copy-back<span class="w"> </span>--target-dir<span class="o">=</span>/root/restore/<span class="w"> </span>--datadir<span class="o">=</span>/root/mysql-data
+</code></pre></div></p>
+<h2 id="qa">QA</h2>
+<p><strong>MySQL 查询数据库中每个库占用的空间大小。</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">select</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">DATA_LENGTH</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1024</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">data</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;GB&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">TABLE_SCHEMA</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="k">TABLES</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">TABLE_SCHEMA</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;mysql&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;sys&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;performance_schema&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;information_schema&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">TABLE_SCHEMA</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">data</span><span class="p">;</span>
+</code></pre></div></p>
+<p><strong>MySQL 查看数据库中每个表占用的空间大小。</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">select</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">DATA_LENGTH</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">data</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;MB&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">TABLE_SCHEMA</span><span class="p">,</span><span class="w"> </span><span class="k">TABLE_NAME</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="k">TABLES</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">TABLE_SCHEMA</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;mysql&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;sys&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;performance_schema&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;information_schema&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">TABLE_SCHEMA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;yl_dyzx&#39;</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">TABLE_SCHEMA</span><span class="p">,</span><span class="w"> </span><span class="k">TABLE_NAME</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">TABLE_SCHEMA</span><span class="p">,</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="k">desc</span><span class="w"> </span><span class="p">;</span>
+</code></pre></div></p>
+<p><strong>XtraBackup 备份还原数据中文乱码问题。</strong>
+需要配置所有数据库字符集相关的变量值一致。</p>
+<p><strong>关于压缩备份的 <code>--compress</code> 和 <code>--remove-original</code> 选项效果。</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>--  直接备份不压缩的备份目录
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>root@suomea03:~# ls -l /data/bkps/
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>total 70712
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>-rw-r----- 1 root root      447 Dec 17 00:40 backup-my.cnf
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>-rw-r----- 1 root root      157 Dec 17 00:40 binlog.000014
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>-rw-r----- 1 root root       16 Dec 17 00:40 binlog.index
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>-rw-r----- 1 root root     4287 Dec 17 00:40 ib_buffer_pool
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>-rw-r----- 1 root root 12582912 Dec 17 00:40 ibdata1
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>drwxr-x--- 2 root root     4096 Dec 17 00:40 mysql
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>-rw-r----- 1 root root 26214400 Dec 17 00:40 mysql.ibd
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>drwxr-x--- 2 root root     4096 Dec 17 00:40 performance_schema
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>drwxr-x--- 2 root root     4096 Dec 17 00:40 suomea_book
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>drwxr-x--- 2 root root     4096 Dec 17 00:40 sys
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>-rw-r----- 1 root root 16777216 Dec 17 00:40 undo_001
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>-rw-r----- 1 root root 16777216 Dec 17 00:40 undo_002
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>-rw-r----- 1 root root       18 Dec 17 00:40 xtrabackup_binlog_info
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>-rw-r----- 1 root root      134 Dec 17 00:40 xtrabackup_checkpoints
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>-rw-r----- 1 root root      480 Dec 17 00:40 xtrabackup_info
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>-rw-r----- 1 root root     2560 Dec 17 00:40 xtrabackup_logfile
+<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>-rw-r----- 1 root root       39 Dec 17 00:40 xtrabackup_tablespaces
+<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>
+<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>-- 直接备份并且压缩的备份目录
+<a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>root@suomea03:~# ls -l /data/bkps/
+<a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a>total 1584
+<a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>-rw-r----- 1 root root     302 Dec 17 00:35 backup-my.cnf.zst
+<a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>-rw-r----- 1 root root     112 Dec 17 00:35 binlog.000012.zst
+<a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>-rw-r----- 1 root root      29 Dec 17 00:35 binlog.index.zst
+<a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>-rw-r----- 1 root root     615 Dec 17 00:35 ib_buffer_pool.zst
+<a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>-rw-r----- 1 root root    3960 Dec 17 00:35 ibdata1.zst
+<a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>drwxr-x--- 2 root root    4096 Dec 17 00:35 mysql
+<a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>-rw-r----- 1 root root 1364740 Dec 17 00:35 mysql.ibd.zst
+<a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a>drwxr-x--- 2 root root    4096 Dec 17 00:35 performance_schema
+<a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a>drwxr-x--- 2 root root    4096 Dec 17 00:35 suomea_book
+<a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a>drwxr-x--- 2 root root    4096 Dec 17 00:35 sys
+<a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a>-rw-r----- 1 root root  101826 Dec 17 00:35 undo_001.zst
+<a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a>-rw-r----- 1 root root   94040 Dec 17 00:35 undo_002.zst
+<a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a>-rw-r----- 1 root root      31 Dec 17 00:35 xtrabackup_binlog_info.zst
+<a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a>-rw-r----- 1 root root     134 Dec 17 00:35 xtrabackup_checkpoints
+<a id="__codelineno-23-39" name="__codelineno-23-39" href="#__codelineno-23-39"></a>-rw-r----- 1 root root     326 Dec 17 00:35 xtrabackup_info.zst
+<a id="__codelineno-23-40" name="__codelineno-23-40" href="#__codelineno-23-40"></a>-rw-r----- 1 root root     193 Dec 17 00:35 xtrabackup_logfile.zst
+<a id="__codelineno-23-41" name="__codelineno-23-41" href="#__codelineno-23-41"></a>-rw-r----- 1 root root      52 Dec 17 00:35 xtrabackup_tablespaces.zst
+<a id="__codelineno-23-42" name="__codelineno-23-42" href="#__codelineno-23-42"></a>
+<a id="__codelineno-23-43" name="__codelineno-23-43" href="#__codelineno-23-43"></a>-- 压缩备份解压缩后的备份目录，不加 --remove-original 选项
+<a id="__codelineno-23-44" name="__codelineno-23-44" href="#__codelineno-23-44"></a>root@suomea03:~# ls -l /data/bkps/
+<a id="__codelineno-23-45" name="__codelineno-23-45" href="#__codelineno-23-45"></a>total 72284
+<a id="__codelineno-23-46" name="__codelineno-23-46" href="#__codelineno-23-46"></a>-rw-r--r-- 1 root root      447 Dec 17 00:36 backup-my.cnf
+<a id="__codelineno-23-47" name="__codelineno-23-47" href="#__codelineno-23-47"></a>-rw-r----- 1 root root      302 Dec 17 00:35 backup-my.cnf.zst
+<a id="__codelineno-23-48" name="__codelineno-23-48" href="#__codelineno-23-48"></a>-rw-r--r-- 1 root root      157 Dec 17 00:36 binlog.000012
+<a id="__codelineno-23-49" name="__codelineno-23-49" href="#__codelineno-23-49"></a>-rw-r----- 1 root root      112 Dec 17 00:35 binlog.000012.zst
+<a id="__codelineno-23-50" name="__codelineno-23-50" href="#__codelineno-23-50"></a>-rw-r--r-- 1 root root       16 Dec 17 00:36 binlog.index
+<a id="__codelineno-23-51" name="__codelineno-23-51" href="#__codelineno-23-51"></a>-rw-r----- 1 root root       29 Dec 17 00:35 binlog.index.zst
+<a id="__codelineno-23-52" name="__codelineno-23-52" href="#__codelineno-23-52"></a>-rw-r--r-- 1 root root     4287 Dec 17 00:36 ib_buffer_pool
+<a id="__codelineno-23-53" name="__codelineno-23-53" href="#__codelineno-23-53"></a>-rw-r----- 1 root root      615 Dec 17 00:35 ib_buffer_pool.zst
+<a id="__codelineno-23-54" name="__codelineno-23-54" href="#__codelineno-23-54"></a>-rw-r--r-- 1 root root 12582912 Dec 17 00:36 ibdata1
+<a id="__codelineno-23-55" name="__codelineno-23-55" href="#__codelineno-23-55"></a>-rw-r----- 1 root root     3960 Dec 17 00:35 ibdata1.zst
+<a id="__codelineno-23-56" name="__codelineno-23-56" href="#__codelineno-23-56"></a>drwxr-x--- 2 root root     4096 Dec 17 00:36 mysql
+<a id="__codelineno-23-57" name="__codelineno-23-57" href="#__codelineno-23-57"></a>-rw-r--r-- 1 root root 26214400 Dec 17 00:36 mysql.ibd
+<a id="__codelineno-23-58" name="__codelineno-23-58" href="#__codelineno-23-58"></a>-rw-r----- 1 root root  1364740 Dec 17 00:35 mysql.ibd.zst
+<a id="__codelineno-23-59" name="__codelineno-23-59" href="#__codelineno-23-59"></a>drwxr-x--- 2 root root    12288 Dec 17 00:36 performance_schema
+<a id="__codelineno-23-60" name="__codelineno-23-60" href="#__codelineno-23-60"></a>drwxr-x--- 2 root root     4096 Dec 17 00:36 suomea_book
+<a id="__codelineno-23-61" name="__codelineno-23-61" href="#__codelineno-23-61"></a>drwxr-x--- 2 root root     4096 Dec 17 00:36 sys
+<a id="__codelineno-23-62" name="__codelineno-23-62" href="#__codelineno-23-62"></a>-rw-r--r-- 1 root root 16777216 Dec 17 00:36 undo_001
+<a id="__codelineno-23-63" name="__codelineno-23-63" href="#__codelineno-23-63"></a>-rw-r----- 1 root root   101826 Dec 17 00:35 undo_001.zst
+<a id="__codelineno-23-64" name="__codelineno-23-64" href="#__codelineno-23-64"></a>-rw-r--r-- 1 root root 16777216 Dec 17 00:36 undo_002
+<a id="__codelineno-23-65" name="__codelineno-23-65" href="#__codelineno-23-65"></a>-rw-r----- 1 root root    94040 Dec 17 00:35 undo_002.zst
+<a id="__codelineno-23-66" name="__codelineno-23-66" href="#__codelineno-23-66"></a>-rw-r--r-- 1 root root       18 Dec 17 00:36 xtrabackup_binlog_info
+<a id="__codelineno-23-67" name="__codelineno-23-67" href="#__codelineno-23-67"></a>-rw-r----- 1 root root       31 Dec 17 00:35 xtrabackup_binlog_info.zst
+<a id="__codelineno-23-68" name="__codelineno-23-68" href="#__codelineno-23-68"></a>-rw-r----- 1 root root      134 Dec 17 00:35 xtrabackup_checkpoints
+<a id="__codelineno-23-69" name="__codelineno-23-69" href="#__codelineno-23-69"></a>-rw-r--r-- 1 root root      521 Dec 17 00:36 xtrabackup_info
+<a id="__codelineno-23-70" name="__codelineno-23-70" href="#__codelineno-23-70"></a>-rw-r----- 1 root root      326 Dec 17 00:35 xtrabackup_info.zst
+<a id="__codelineno-23-71" name="__codelineno-23-71" href="#__codelineno-23-71"></a>-rw-r--r-- 1 root root     2560 Dec 17 00:36 xtrabackup_logfile
+<a id="__codelineno-23-72" name="__codelineno-23-72" href="#__codelineno-23-72"></a>-rw-r----- 1 root root      193 Dec 17 00:35 xtrabackup_logfile.zst
+<a id="__codelineno-23-73" name="__codelineno-23-73" href="#__codelineno-23-73"></a>-rw-r--r-- 1 root root       39 Dec 17 00:36 xtrabackup_tablespaces
+<a id="__codelineno-23-74" name="__codelineno-23-74" href="#__codelineno-23-74"></a>-rw-r----- 1 root root       52 Dec 17 00:35 xtrabackup_tablespaces.zst
+<a id="__codelineno-23-75" name="__codelineno-23-75" href="#__codelineno-23-75"></a>
+<a id="__codelineno-23-76" name="__codelineno-23-76" href="#__codelineno-23-76"></a>-- 压缩备份解压缩后的备份目录，加 --remove-original 选项
+<a id="__codelineno-23-77" name="__codelineno-23-77" href="#__codelineno-23-77"></a>root@suomea03:~# ls -l /data/bkps/
+<a id="__codelineno-23-78" name="__codelineno-23-78" href="#__codelineno-23-78"></a>total 70712
+<a id="__codelineno-23-79" name="__codelineno-23-79" href="#__codelineno-23-79"></a>-rw-r--r-- 1 root root      447 Dec 17 00:38 backup-my.cnf
+<a id="__codelineno-23-80" name="__codelineno-23-80" href="#__codelineno-23-80"></a>-rw-r--r-- 1 root root      157 Dec 17 00:38 binlog.000013
+<a id="__codelineno-23-81" name="__codelineno-23-81" href="#__codelineno-23-81"></a>-rw-r--r-- 1 root root       16 Dec 17 00:38 binlog.index
+<a id="__codelineno-23-82" name="__codelineno-23-82" href="#__codelineno-23-82"></a>-rw-r--r-- 1 root root     4287 Dec 17 00:38 ib_buffer_pool
+<a id="__codelineno-23-83" name="__codelineno-23-83" href="#__codelineno-23-83"></a>-rw-r--r-- 1 root root 12582912 Dec 17 00:38 ibdata1
+<a id="__codelineno-23-84" name="__codelineno-23-84" href="#__codelineno-23-84"></a>drwxr-x--- 2 root root     4096 Dec 17 00:38 mysql
+<a id="__codelineno-23-85" name="__codelineno-23-85" href="#__codelineno-23-85"></a>-rw-r--r-- 1 root root 26214400 Dec 17 00:38 mysql.ibd
+<a id="__codelineno-23-86" name="__codelineno-23-86" href="#__codelineno-23-86"></a>drwxr-x--- 2 root root     4096 Dec 17 00:38 performance_schema
+<a id="__codelineno-23-87" name="__codelineno-23-87" href="#__codelineno-23-87"></a>drwxr-x--- 2 root root     4096 Dec 17 00:38 suomea_book
+<a id="__codelineno-23-88" name="__codelineno-23-88" href="#__codelineno-23-88"></a>drwxr-x--- 2 root root     4096 Dec 17 00:38 sys
+<a id="__codelineno-23-89" name="__codelineno-23-89" href="#__codelineno-23-89"></a>-rw-r--r-- 1 root root 16777216 Dec 17 00:38 undo_001
+<a id="__codelineno-23-90" name="__codelineno-23-90" href="#__codelineno-23-90"></a>-rw-r--r-- 1 root root 16777216 Dec 17 00:38 undo_002
+<a id="__codelineno-23-91" name="__codelineno-23-91" href="#__codelineno-23-91"></a>-rw-r--r-- 1 root root       18 Dec 17 00:38 xtrabackup_binlog_info
+<a id="__codelineno-23-92" name="__codelineno-23-92" href="#__codelineno-23-92"></a>-rw-r----- 1 root root      134 Dec 17 00:37 xtrabackup_checkpoints
+<a id="__codelineno-23-93" name="__codelineno-23-93" href="#__codelineno-23-93"></a>-rw-r--r-- 1 root root      521 Dec 17 00:38 xtrabackup_info
+<a id="__codelineno-23-94" name="__codelineno-23-94" href="#__codelineno-23-94"></a>-rw-r--r-- 1 root root     2560 Dec 17 00:38 xtrabackup_logfile
+<a id="__codelineno-23-95" name="__codelineno-23-95" href="#__codelineno-23-95"></a>-rw-r--r-- 1 root root       39 Dec 17 00:38 xtrabackup_tablespaces
+</code></pre></div></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+<h2 id="__comments">Comments</h2>
+<!-- Insert generated snippet here -->
+<script src="https://giscus.app/client.js"
+        data-repo="Suomea/blog"
+        data-repo-id="R_kgDOITzhEQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOITzhEc4CWHA2"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme)
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+<div class="center">
+<div class="md-footer-copyright">
+  Built With <a target="_blank" href="https://www.mkdocs.org/">Mkdocs 1.6.1 </a>
+</div>
+</div>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.top"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  </body>
+</html>
