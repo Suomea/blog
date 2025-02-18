@@ -89,6 +89,11 @@ exit;
 select user, host from mysql.user;
 ```
 
+创建新的用户
+```
+create user 'test'@'%' identified by 'xxxx';
+```
+
 查询用户权限
 ```
 show grants for username;

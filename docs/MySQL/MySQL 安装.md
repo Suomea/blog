@@ -129,15 +129,10 @@ tar -zxvf mysql-8.0.33-linux-glibc2.28-x86_64.tar.gz -C /usr/local/
 groupadd mysql 
 useradd -r -g mysql -s /bin/false mysql
 ```
+-r：创建系统用户  
+-g：指定用户的初始组  
+-s：/bin/false 禁止用户登录任何服务，相对 /sbin/nologin 更为严格。  
 
-useradd 命令解释
-```
--r：创建系统用户
-
--g：指定用户的初始组
-
--s：/bin/false 禁止用户登录任何服务，相对 /sbin/nologin 更为严格。
-```
 
 ### 初始化
 初始化数据目录 `Initializing the Data Directory`，使用二进制安装包的安装方式必须手动初始化数据目录，包括初始化系统相关的表，使用 ATP 安装方式则会自动进行。
@@ -193,4 +188,19 @@ flush privileges;
 mysql 执行 SQL 导入数据的语法：
 ```sql
 mysql -h localhost -P 3306 -u root -p dbname < file.sql
+```
+
+手动添加测试数据
+```
+create database if not exists test;
+use test;
+
+create table if not exists user(
+	username varchar(100) not null comment '姓名',
+	age int not null comment '年龄',
+	create_at datetime not null default current_timestamp comment '数据创建时间'
+) comment '用户信息表';
+
+insert into user(username, age)
+values ('jacky', 22), ('otto', 18), ('zhangsan', 25);
 ```
