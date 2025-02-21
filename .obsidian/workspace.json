@@ -79,10 +79,14 @@
             "id": "54a6a2097fcd82ce",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "docs/Java/MyBatis 快速入门.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "MyBatis 快速入门"
             }
           }
         ],
@@ -118,7 +122,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "sea",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -139,7 +143,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -205,12 +210,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "docs/Java/MyBatis 快速入门.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "MyBatis 快速入门 的大纲"
             }
           }
         ],
@@ -233,6 +239,10 @@
   },
   "active": "54a6a2097fcd82ce",
   "lastOpenFiles": [
+    "mkdocs.yml",
+    "docs/Java/MyBatis 快速入门.md",
+    "docs/Linux/Nginx Tips.md",
+    "docs/OS/Nginx/Nginx 安装.md",
     "docs/Linux/正则表达式.md",
     "docs/English/Would 和 Want.md",
     "docs/Python/Tips.md",
@@ -240,7 +250,6 @@
     "docs/Python/Python Tips.md",
     "docs/AI/安装 ComfyUI.md",
     "docs/AI/ollama.md",
-    "mkdocs.yml",
     "docs/AI",
     "未命名",
     "docs/Python/第 4 章：流程控制.md",
@@ -268,10 +277,6 @@
     "docs/MySQL/索引.md",
     "docs/MySQL/事务.md",
     "docs/Linux/OpenLDAP.md",
-    "docs/Kafka/保证消息不丢失.md",
-    "docs/Kafka/Kafka 快速开始.md",
-    "docs/Kafka/Kafka 配置.md",
-    "docs/Linux/ls.md",
     "docs/Prometheus",
     "overrides/partials/comments.html",
     "overrides/partials/footer.html",

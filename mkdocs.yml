@@ -92,9 +92,11 @@ nav:
 #  - Architecture:
 #      - Architecture/设备信息.md
   - 爪哇:
-      - Java/Tips.md
-      - Java/Java 并发.md
-      - Java/重复提交.md
+    - Java/Tips.md
+    - Java/Java 并发.md
+    - Java/重复提交.md
+    - "MyBatis":
+      - Java/MyBatis 快速入门.md
   - 大数据:
     - "Kafka":
       - Kafka/Kafka 常用命令.md
