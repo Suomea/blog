@@ -146,8 +146,8 @@ public class MyBatisTest {
             Map<String, Object> params = new HashMap<>();
             params.put("username", "jacky");
             params.put("age", 22);
-            User user = sqlSession.selectOne("UserMapper.selectAll", params);
-            System.out.println("query result: ==> " + user);
+            List<User> userList = sqlSession.selectList("UserMapper.selectAll", params);
+            System.out.println("query result: ==> " + userList);
         }
     }
 }
@@ -253,7 +253,7 @@ public class MyBatisConfig {
 
 进一步简化调用代码
 ```java
-public class App {
+public class MyBatisTest {
     public static void main(String[] args) throws IOException {
         // 从 SqlSessionFactory 中获取 SqlSession
         try(SqlSession sqlSession = MyBatisConfig.sqlSessionFactory().openSession()) {
