@@ -12,9 +12,12 @@ theme:
   features:
     - navigation.tabs
     - navigation.top
+    - content.code.copy
+    - content.code.select
+  language: zh
 markdown_extensions:
   - pymdownx.highlight:
-      anchor_linenums: true
+      linenums: true
   - admonition
   - pymdownx.details
   - pymdownx.inlinehilite
@@ -113,3 +116,5 @@ nav:
 
 extra_css:
   - stylesheets/extra.css
+extra_javascript:
+  - copy-code.js

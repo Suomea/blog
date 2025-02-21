@@ -1,21 +1,25 @@
 MyBatis 官网：https://mybatis.org/mybatis-3/zh_CN/index.html
 
 ## 准备数据
+DDL
 ```sql
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `username` varchar(100) NOT NULL COMMENT '姓名',
   `age` int NOT NULL COMMENT '年龄',
   `create_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '数据创建时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户信息表';
+) ENGINE=InnoDB COMMENT='用户信息表';
 
-INSERT INTO `user` VALUES ('jacky',22,'2025-02-14 10:52:01'),('otto',18,'2025-02-14 10:52:01'),('zhangsan',25,'2025-02-14 10:52:01');
+INSERT INTO `user` 
+VALUES 
+	('jacky',22,'2025-02-14 10:52:01'),
+	('otto',18,'2025-02-14 10:52:01'),
+	('zhangsan',25,'2025-02-14 10:52:01');
 ```
-
 
 实体类
 ```java
-package com.jacky.mybatis.entity;
+package com.otto.mybatis.entity;
 
 import java.time.LocalDateTime;
 
@@ -32,8 +36,6 @@ public class User {
 
 ```
 ## 直接使用 JDBC 查询数据
-直接使用 JDBC 查询数据。
-
 添加依赖
 ```
 <dependency>  
@@ -69,7 +71,6 @@ public class JDBCTest {
 ```
 
 ## 使用 MyBatis
-
 添加依赖
 ```xml
 <dependency>  
@@ -103,8 +104,8 @@ public class JDBCTest {
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
                 <property name="url" value="jdbc:mysql://192.168.199.129:3306/test"/>
-                <property name="username" value="test"/>
-                <property name="password" value="Chxy@122619"/>
+                <property name="username" value="xxx"/>
+                <property name="password" value="xxxxxx"/>
             </dataSource>
         </environment>
     </environments>
@@ -123,12 +124,11 @@ public class JDBCTest {
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="UserMapper">
-    <select id="selectAll" resultType="com.jacky.mybatis.entity.User">
+    <select id="selectAll" resultType="com.otto.mybatis.entity.User">
         select username, age, create_at as createAt from user where username = #{username} and age = #{age}
     </select>
 </mapper>
 ```
-
 
 查询数据代码
 ```java
@@ -159,7 +159,6 @@ public class MyBatisTest {
 >
 > 示例代码中参数如果有多个占位符参数的话，可以使用 Map 传递参数，使用占位符名称作为键，实际的参数作为值。
 
-
 ### 使用 Mapper 代理开发
 配置 Maven 打包代码包里面的 xml 文件。
 ```xml
@@ -184,25 +183,25 @@ public class MyBatisTest {
 ```xml
 <mappers>  
     <mapper resource="mapper/UserMapper.xml"/>  
-    <package name="com.jacky.mybatis.mapper"/>  
+    <package name="com.otto.mybatis.mapper"/>  
 </mappers>
 ```
 
-新增 com.jacky.mybatis.mapper.UserMapper.java 文件
+新增 com.otto.mybatis.mapper.UserMapper.java 文件
 ```java
 public interface UserMapper {  
     List<User> selectAll(@Param("username") String username, @Param("age") Integer age);  
 }
 ```
 
-新增 com.jacky.mybatis.mapper.UserMapper.xml 文件
+新增 com.otto.mybatis.mapper.UserMapper.xml 文件
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper  
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">  
-<mapper namespace="com.jacky.mybatis.mapper.UserMapper">  
-    <select id="selectAll" resultType="com.jacky.mybatis.entity.User">  
+<mapper namespace="com.otto.mybatis.mapper.UserMapper">  
+    <select id="selectAll" resultType="com.otto.mybatis.entity.User">  
         select username, age, create_at as createAt from user where username = #{username} and age = #{age}  
     </select>  
 </mapper>
@@ -213,4 +212,57 @@ public interface UserMapper {
 UserMapper userMapper = sqlSession.getMapper(UserMapper.class);  
 List<User> userList = userMapper.selectAll("jacky", 22);  
 System.out.println("query result: ==> " + userList);
+```
+
+### 不使用 XML 构建 SqlSessionFactory
+使用单例模式构建 SqlSessionFactory
+```java
+public class MyBatisConfig {  
+  
+    private static SqlSessionFactory FACTORY_INSTANCE = null;  
+  
+    public static SqlSessionFactory sqlSessionFactory() {  
+        if (FACTORY_INSTANCE == null) {  
+            synchronized (MyBatisConfig.class) {  
+                if (FACTORY_INSTANCE == null) {  
+                    // 配置数据源  
+                    PooledDataSource dataSource = new PooledDataSource();  
+                    dataSource.setDriver("com.mysql.cj.jdbc.Driver");  
+                    dataSource.setUrl("jdbc:mysql://192.168.199.129:3306/test_db");  
+                    dataSource.setUsername("xxx");  
+                    dataSource.setPassword("xxxxx");  
+                    // 配置事务管理器  
+                    JdbcTransactionFactory transactionFactory = new JdbcTransactionFactory();  
+                    // 配置环境  
+                    Environment environment = new Environment("development", transactionFactory, dataSource);  
+                    // 配置 MyBatis                    
+                    Configuration configuration = new Configuration(environment);  
+                    // 设置日志实现为标准输出  
+                    configuration.setLogImpl(org.apache.ibatis.logging.stdout.StdOutImpl.class);  
+                    // 如果 Mapper 接口都在同一个包下，可以使用包扫描  
+                    configuration.addMappers("com.otto.mybatis.mapper");  
+                    // 构建 SqlSessionFactory                    
+                    FACTORY_INSTANCE =  new SqlSessionFactoryBuilder().build(configuration);  
+                }  
+            }  
+        }  
+        return FACTORY_INSTANCE;  
+    }  
+}
+```
+
+进一步简化调用代码
+```java
+public class App {
+    public static void main(String[] args) throws IOException {
+        // 从 SqlSessionFactory 中获取 SqlSession
+        try(SqlSession sqlSession = MyBatisConfig.sqlSessionFactory().openSession()) {
+
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+            List<User> userList = userMapper.selectAll("jacky", 22);
+            System.out.println("query result: ==> " + userList);
+        }
+    }
+}
 ```

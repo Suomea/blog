@@ -79,6 +79,18 @@
             "id": "54a6a2097fcd82ce",
             "type": "leaf",
             "state": {
+              "type": "vscode-editor",
+              "state": {
+                "file": "docs/stylesheets/extra.css"
+              },
+              "icon": "lucide-file",
+              "title": "extra"
+            }
+          },
+          {
+            "id": "326541516c80c316",
+            "type": "leaf",
+            "state": {
               "type": "markdown",
               "state": {
                 "file": "docs/Java/MyBatis 快速入门.md",
@@ -90,7 +102,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -143,8 +155,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -237,10 +248,16 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "54a6a2097fcd82ce",
+  "active": "326541516c80c316",
   "lastOpenFiles": [
-    "mkdocs.yml",
+    "docs/stylesheets/extra.css",
     "docs/Java/MyBatis 快速入门.md",
+    "mkdocs.yml",
+    "docs/Java/Tips.md",
+    "docs/Java/NIO Tips.md",
+    "overrides/partials/footer.html",
+    "overrides/partials/comments.html",
+    "overrides/copy-code.js",
     "docs/Linux/Nginx Tips.md",
     "docs/OS/Nginx/Nginx 安装.md",
     "docs/Linux/正则表达式.md",
@@ -275,13 +292,8 @@
     "docs/LocalFile/Picture/Pasted image 20250117000101.png",
     "docs/Flink",
     "docs/MySQL/索引.md",
-    "docs/MySQL/事务.md",
-    "docs/Linux/OpenLDAP.md",
     "docs/Prometheus",
-    "overrides/partials/comments.html",
-    "overrides/partials/footer.html",
     "docs/LocalFile/Picture/ReentrantReadWriteLock类图.svg",
-    "docs/PG",
-    "docs/Doris"
+    "docs/PG"
   ]
 }
