@@ -159,8 +159,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "d1db8229203a9e0b",
@@ -252,14 +251,14 @@
   },
   "active": "3f2894de142cae47",
   "lastOpenFiles": [
-    "mkdocs.yml",
-    "docs/Java/反射和动态代理.md",
+    "docs/Java/MyBatis 快速入门.md",
     "docs/Java/Java 并发.md",
     "docs/Java/Java 打包.md",
     "docs/Java/Java 队列.md",
-    "docs/Java/MyBatis 快速入门.md",
-    "docs/Java/NIO Tips.md",
     "docs/Java/Tips.md",
+    "docs/Java/NIO Tips.md",
+    "docs/Java/反射和动态代理.md",
+    "mkdocs.yml",
     "docs/index.md",
     "docs/stylesheets/extra.css",
     "overrides/partials/footer.html",
