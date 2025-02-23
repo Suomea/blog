@@ -98,6 +98,7 @@ nav:
     - Java/Tips.md
     - Java/Java 并发.md
     - Java/重复提交.md
+    - Java/反射和动态代理.md
     - "MyBatis":
       - Java/MyBatis 快速入门.md
   - 大数据:
