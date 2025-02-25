@@ -89,3 +89,6 @@ FROM KAFKA (
 ```
 
 参考：https://doris.apache.org/zh-CN/docs/2.0/sql-manual/sql-reference/Data-Manipulation-Statements/Load/ALTER-ROUTINE-LOAD
+
+
+导入任务报错 TOO_MANY_TASKS，参考官方公众号“2.0.9和2.1.3之前都存在已知的bug导致TOO_MANY_TASKS的问题”。实际使用下来 2.0.12 也存在这个问题，解决方案是升级至 2.0.15 或者 2.1.8，最终 2.0.12 直接升级到 2.1.8 解决报错的问题。升级参考：

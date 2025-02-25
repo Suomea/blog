@@ -99,6 +99,9 @@ nav:
     - Java/Java 并发.md
     - Java/重复提交.md
     - Java/反射和动态代理.md
+    - "JVM":
+      - Java/JVM 内存空间划分.md
+      - Java/JVM 命令行工具.md
     - "MyBatis":
       - Java/MyBatis 快速入门.md
   - 大数据:
