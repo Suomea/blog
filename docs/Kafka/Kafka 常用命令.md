@@ -70,7 +70,9 @@ bin/kafka-acls.sh --bootstrap-server localhost:9092 \
 
 测试
 ```shell
-bin/kafka-console-producer.sh --bootstrap-server localhost:9092  --topic quickstart-events --producer.config usera-jaas
+bin/kafka-console-producer.sh --bootstrap-server localhost:9092  \
+	--topic quickstart-events \
+	--producer.config usera-jaas
 ```
 
 ## 消费者权限
@@ -88,12 +90,22 @@ bin/kafka-acls.sh --bootstrap-server localhost:9092 \
 
 测试
 ```shell
-bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic quickstart-events --from-beginning --group usera --consumer.config usera-jaas
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 \
+	--topic quickstart-events \
+	--from-beginning \
+	--group usera \
+	--consumer.config usera-jaas
 ```
 
 赋予 `usera` 用户对所有 Topic 的读取权限。
 ```shell
-bin/kafka-acls.sh --bootstrap-server localhost:9092 --add --allow-principal User:usera --operation Read --topic '*' --group '*' --command-config admin-jaas
+bin/kafka-acls.sh --bootstrap-server localhost:9092 \
+	--add \
+	--allow-principal User:usera \
+	--operation Read \
+	--topic '*' \
+	--group '*' \
+	--command-config admin-jaas
 ```
 
 ## 权限查看
@@ -108,5 +120,10 @@ bin/kafka-acls.sh --bootstrap-server localhost:9092 \
 ## 权限删除
 删除 `usera` 用户对 Topic `quickstart-event` 的读取权限。
 ```shell
-bin/kafka-acls.sh --bootstrap-server localhost:9092 --remove --allow-principal User:usera --operation Read --topic quickstart-events --command-config admin-jaas 
+bin/kafka-acls.sh --bootstrap-server localhost:9092 \
+	--remove \
+	--allow-principal User:usera \
+	--operation Read \
+	--topic quickstart-events \
+	--command-config admin-jaas 
 ```

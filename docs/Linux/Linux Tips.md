@@ -84,4 +84,25 @@ lscpu
 cat /proc/cpuinfo
 ```
 
- ### `lsof`
+## 查看进程占用的内存
+
+使用 ps 命令，查看指定进程的内存占用，rss Resident Set Size 表示占用物理内存大小，不包括 Swap，单位 KB。
+```
+# ps -o pid,rss,comm -p 170260
+    PID   RSS COMMAND
+ 170260 29016 java
+```
+
+使用 top 命令，可以指定进程 ID。使用 Shift + M 可以按照内存使用排序。RES  Resident Set Size 表示占用物理内存大小，不包括 Swap，单位 KB。
+```
+# top -p 170260
+……
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                                                                    
+ 170260 root      20   0 2384596  29016  15980 S   0.3   1.7   0:02.49 java
+```
+
+使用 `/proc/<PID>/status` 文件查询进程信息，包括内存占用。
+```
+# cat /proc/170260/status | grep VmRSS
+VmRSS:     29016 kB  
+```

@@ -101,11 +101,13 @@ nav:
     - Java/反射和动态代理.md
     - "JVM":
       - Java/JVM 内存空间划分.md
+      - Java/String.intern().md
       - Java/JVM 命令行工具.md
     - "MyBatis":
       - Java/MyBatis 快速入门.md
   - 大数据:
     - "Kafka":
+      - Kafka/Kafka 快速开始.md
       - Kafka/Kafka 常用命令.md
   - 文章:
       - Arts/满江红-岳飞.md

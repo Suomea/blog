@@ -1,5 +1,3 @@
-#Kafka
-
 Controller 是 Kafka 集群的一个节点，管理协调 Kafka 集群。
 
 Broker 是 Kafka 集群的一个节点，对外提服务。

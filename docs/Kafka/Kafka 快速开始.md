@@ -1,32 +1,34 @@
 ### Kafka 安装
-准备两个文件
-kafka_2.13-3.9.0.tgz
+准备安装文件。
+```
+kafka_2.13-3.9.0.tgz  
 OpenJDK21U-jdk_aarch64_linux_hotspot_21.0.5_11.tar.gz
+# tar -zxvf OpenJDK21U-jdk_aarch64_linux_hotspot_21.0.5_11.tar.gz -C /usr/local/
+# tar -zxvf kafka_2.13-3.9.0.tgz -C /usr/local/
+```
 
-解压缩
- tar -zxvf OpenJDK21U-jdk_aarch64_linux_hotspot_21.0.5_11.tar.gz -C /usr/local/
- tar -zxvf kafka_2.13-3.9.0.tgz -C /usr/local/
-
-配置 Java 环境  /etc/profile.d/java.sh， 执行 source /etc/profile，java -version 验证配置。
+配置 Java 环境变量  /etc/profile.d/java.sh。
 ```
 export JAVA_HOME=/usr/local/jdk-21.0.5+11
 export PATH=$PATH:$JAVA_HOME/bin
 ```
 
-进入到 Kafka 目录下，新建目录 kafka-files。
+进入到 Kafka 目录下，配置存储目录 kafka-files。
 ```
-mkdir kafka-files
+# kdir kafka-files
+
+编辑配置文件 config/kraft/reconfig-server.properties，修改配置。
+log.dirs=/usr/local/kafka_2.13-3.9.0/kafka-files。
 ```
 
-编辑配置文件 config/kraft/reconfig-server.properties，修改 log.dirs=/usr/local/kafka_2.13-3.9.0/kafka-files。
 
 初始化启动 Kafka
 ```
-KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
-bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/kraft/reconfig-server.properties
-bin/kafka-server-start.sh -daemon config/kraft/reconfig-server.properties
+# KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
+# bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/kraft/reconfig-server.properties
+# bin/kafka-server-start.sh -daemon config/kraft/reconfig-server.properties
 ```
-
+## 常用命令
 
 创建 Topic
 ```
@@ -75,20 +77,20 @@ Topic: quickstart-events Partition: 1 Leader: 1 Replicas: 1 Isr: 1 Elr: LastKnow
 KafkaUI 仓库地址：https://github.com/provectus/kafka-ui
 
 docker 安装
-```bash
-docker run -itd --name kafka-ui -p 8080:8080 -e DYNAMIC_CONFIG_ENABLED=true provectuslabs/kafka-ui
+```
+# docker run -itd --name kafka-ui -p 8080:8080 -e DYNAMIC_CONFIG_ENABLED=true provectuslabs/kafka-ui
 ```
 
 jar 包直接安装，配置参考：https://github.com/provectus/kafka-ui/tree/master/kafka-ui-api/src/main/resources
-```bash
-java -jar kafka-ui-api-v0.7.2.jar --dynamic.config.enabled=true
+```
+# java -jar kafka-ui-api-v0.7.2.jar --dynamic.config.enabled=true
 ```
 
 jar 包直接运行，指定额外的配置文件：
-```bash
-java -Dspring.config.additional-location=<path-to-application-local.yml> -jar <path-to-jar>.jar
 ```
-### 生产消费代码示例
+# java -Dspring.config.additional-location=<path-to-application-local.yml> -jar <path-to-jar>.jar
+```
+## 生产消费代码示例
 
 引入依赖
 ```xml
@@ -146,3 +148,7 @@ public static void main(String[] args) {
     }  
 }
 ```
+
+
+## 集群安装
+参考：https://medium.com/@azsecured/install-kafka-cluster-kraft-with-sasl-plaintext-and-acl-configs-ae01a1e0040d
