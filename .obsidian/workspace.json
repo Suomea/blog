@@ -11,14 +11,12 @@
             "id": "3f2894de142cae47",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "vscode-editor",
               "state": {
-                "file": "docs/Doris/Doris 接入 Kafka 的数据.md",
-                "mode": "source",
-                "source": false
+                "file": "mkdocs.yml"
               },
               "icon": "lucide-file",
-              "title": "Doris 接入 Kafka 的数据"
+              "title": "mkdocs"
             }
           }
         ]
@@ -140,13 +138,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Doris/Doris 接入 Kafka 的数据.md",
+                "file": "mkdocs.yml",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Doris 接入 Kafka 的数据 的大纲"
+              "title": "mkdocs 的大纲"
             }
           }
         ],
@@ -169,6 +167,9 @@
   },
   "active": "3f2894de142cae47",
   "lastOpenFiles": [
+    "docs/index.md",
+    "docs/Java/给视频和图片添加水印.md",
+    "docs/Doris/Doris 接入 Kafka 的数据.md",
     "docs/Flink/未命名.md",
     "docs/Flink/快速开始.md",
     "docs/MySQL/MySQL 安装.md",
@@ -187,15 +188,12 @@
     "docs/Java/JVM 内存空间划分.md",
     "docs/Linux/Linux Tips.md",
     "docs/Java/JVM 命令行工具.md",
-    "docs/Doris/Doris 接入 Kafka 的数据.md",
     "docs/Doris/Doris 接入 MySQL 的数据.md",
     "docs/Doris/Doris 分区表.md",
     "docs/Java/虚拟机类加载机制.md",
     "docs/Java/日期时间操作.md",
     "docs/Java/重复提交.md",
     "docs/Java/MyBatis 快速入门.md",
-    "docs/Java/Java 并发.md",
-    "docs/Java/Java 打包.md",
     "docs/stylesheets/extra.css",
     "overrides/partials/footer.html",
     "overrides/partials/comments.html",
