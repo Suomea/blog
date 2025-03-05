@@ -11,12 +11,14 @@
             "id": "3f2894de142cae47",
             "type": "leaf",
             "state": {
-              "type": "vscode-editor",
+              "type": "markdown",
               "state": {
-                "file": "mkdocs.yml"
+                "file": "docs/Java/给视频和图片添加水印.md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "mkdocs"
+              "title": "给视频和图片添加水印"
             }
           }
         ]
@@ -138,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "mkdocs.yml",
+                "file": "docs/Java/给视频和图片添加水印.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "mkdocs 的大纲"
+              "title": "给视频和图片添加水印 的大纲"
             }
           }
         ],
@@ -167,6 +169,9 @@
   },
   "active": "3f2894de142cae47",
   "lastOpenFiles": [
+    "docs/Java/Tips.md",
+    "docs/Java/String.intern().md",
+    "mkdocs.yml",
     "docs/index.md",
     "docs/Java/给视频和图片添加水印.md",
     "docs/Doris/Doris 接入 Kafka 的数据.md",
@@ -177,14 +182,11 @@
     "docs/Kafka/Kafka 快速开始.md",
     "docs/Kafka/Kafka 常用命令.md",
     "docs/Kafka/Kafka 集群搭建.md",
-    "mkdocs.yml",
     "docs/Kafka/Kafka 保证消息不丢失.md",
     "docs/Kafka/Kafka 配置.md",
     "docs/Kafka/Kafka SpringBoot 集成.md",
     "docs/Kafka/Kafka 消费异常处理.md",
     "docs/Kafka/Kafka Tips.md",
-    "docs/Java/Tips.md",
-    "docs/Java/String.intern().md",
     "docs/Java/JVM 内存空间划分.md",
     "docs/Linux/Linux Tips.md",
     "docs/Java/JVM 命令行工具.md",
@@ -193,7 +195,6 @@
     "docs/Java/虚拟机类加载机制.md",
     "docs/Java/日期时间操作.md",
     "docs/Java/重复提交.md",
-    "docs/Java/MyBatis 快速入门.md",
     "docs/stylesheets/extra.css",
     "overrides/partials/footer.html",
     "overrides/partials/comments.html",
