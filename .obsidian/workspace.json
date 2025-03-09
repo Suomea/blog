@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Java/给视频和图片添加水印.md",
+                "file": "docs/Doris/Doris Tips.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "给视频和图片添加水印"
+              "title": "Doris Tips"
             }
           }
         ]
@@ -44,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "文件列表"
+              "title": "Files"
             }
           },
           {
@@ -140,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Java/给视频和图片添加水印.md",
+                "file": "docs/Doris/Doris Tips.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "给视频和图片添加水印 的大纲"
+              "title": "Outline of Doris Tips"
             }
           }
         ],
@@ -158,25 +158,34 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false,
-      "vscode-editor:新建代码文件": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "vscode-editor:Create Code File": false
     }
   },
   "active": "3f2894de142cae47",
   "lastOpenFiles": [
+    "docs/Doris/Doris 接入 MySQL 的数据.md",
+    "docs/Doris/Doris 接入 Kafka 的数据.md",
+    "docs/Doris/Doris Tips.md",
+    "mkdocs.yml",
+    "docs/Redis/Redis 安装.md",
+    "docs/Doris/Doris 用户角色权限.md",
+    "docs/English/Would 和 Want.md",
+    "docs/English/Last, the last, the latest.md",
+    "docs/Flink/快速开始.md",
+    "docs/Flink/未命名.md",
+    "docs/Algorithms/求解算数表达式的值.md",
+    "docs/Algorithms/数据结构：图.md",
+    "docs/Algorithms/字符串匹配算法.md",
+    "docs/Java/给视频和图片添加水印.md",
     "docs/Java/Tips.md",
     "docs/Java/String.intern().md",
-    "mkdocs.yml",
     "docs/index.md",
-    "docs/Java/给视频和图片添加水印.md",
-    "docs/Doris/Doris 接入 Kafka 的数据.md",
-    "docs/Flink/未命名.md",
-    "docs/Flink/快速开始.md",
     "docs/MySQL/MySQL 安装.md",
     "docs/Java/反射和动态代理.md",
     "docs/Kafka/Kafka 快速开始.md",
@@ -186,15 +195,6 @@
     "docs/Kafka/Kafka 配置.md",
     "docs/Kafka/Kafka SpringBoot 集成.md",
     "docs/Kafka/Kafka 消费异常处理.md",
-    "docs/Kafka/Kafka Tips.md",
-    "docs/Java/JVM 内存空间划分.md",
-    "docs/Linux/Linux Tips.md",
-    "docs/Java/JVM 命令行工具.md",
-    "docs/Doris/Doris 接入 MySQL 的数据.md",
-    "docs/Doris/Doris 分区表.md",
-    "docs/Java/虚拟机类加载机制.md",
-    "docs/Java/日期时间操作.md",
-    "docs/Java/重复提交.md",
     "docs/stylesheets/extra.css",
     "overrides/partials/footer.html",
     "overrides/partials/comments.html",

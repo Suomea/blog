@@ -1,3 +1,4 @@
+## Debian
 安装 Redis。
 ```
 apt update
@@ -35,4 +36,12 @@ OK
 ```
 bind 0.0.0.0 -::1
 protected-mode no
+```
+
+## Windows
+下载安装文件 Redis-7.4.2-Windows-x64-msys2.zip
+
+解压缩，启动：
+```
+redis-server.exe redis.conf
 ```
