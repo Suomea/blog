@@ -72,9 +72,9 @@ show routine load 能够查询导入作业的状态。
 
 或者，可以通过修改 Routine Load 导入任务 load_properties 的 WHERE 子模块，来过滤掉不符合条件的数据。
 
-目前还不支持直接修改 RoutineLoad 增加 Where 子句，所以要 STOP RoutineLoad， 然后在重新创建。重新创建时，可以使用 kafka_partitions 和 kafka_offsets 指定每个分区的起始消费 offset，来避免重复或者遗漏消费数据。
+目前还不支持直接修改 RoutineLoad 增加 Where 子句，所以要 STOP RoutineLoad， 然后再重新创建。重新创建时，可以使用 kafka_partitions 和 kafka_offsets 指定每个分区的起始消费 offset，来避免重复或者遗漏消费数据。
 ```sql
-CREATE ROUTINE LOAD `yunlu_iot_data`.`kafka-quickstart_events` ON `quickstart_events`
+CREATE ROUTINE LOAD `iot_data`.`kafka-quickstart_events` ON `quickstart_events`
 WHERE born_time > '1900-01-01 00:00:00'
 PROPERTIES (
     "format" = "json",
@@ -96,4 +96,4 @@ https://doris.apache.org/zh-CN/docs/2.0/sql-manual/sql-reference/Data-Manipulati
 https://doris.apache.org/zh-CN/docs/sql-manual/sql-statements/data-modification/load-and-export/ALTER-ROUTINE-LOAD
 
 
-导入任务报错 TOO_MANY_TASKS，参考官方公众号“2.0.9和2.1.3之前都存在已知的bug导致TOO_MANY_TASKS的问题”。实际使用下来 2.0.12 也存在这个问题，解决方案是升级至 2.0.15 或者 2.1.8，最终 2.0.12 直接升级到 2.1.8 解决报错的问题。升级参考：
+导入任务报错 TOO_MANY_TASKS，参考官方公众号“2.0.9和2.1.3之前都存在已知的bug导致TOO_MANY_TASKS的问题”。实际使用下来 2.0.12 也存在这个问题，解决方案是升级至 2.0.15 或者 2.1.8，最终 2.0.12 直接升级到 2.1.8 解决报错的问题。

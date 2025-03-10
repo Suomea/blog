@@ -140,8 +140,25 @@ REFRESH TABLE [catalog_name.][database_name.]table_name;
 
 测试大量数据导入的性能。
 
-这种导入方式好像不支持 CDC。在 2.1 版本 Doris 引入了 Job Scheduler 实现作业调度，结合 Catalog 能够实现定时同步数据的方案。
+在 2.1 版本 Doris 引入了 Job Scheduler 实现作业调度，结合 Catalog 能够实现定时同步数据的方案，最高频率为 1 分钟执行一次。
 
+创建同步作业
+```
+CREATE JOB my_job 
+ON SCHEDULE EVERY 1 DAY STARTS '2020-01-01 00:00:00' 
+DO INSERT INTO db1.tbl1 SELECT * FROM db2.tbl2 WHERE  create_time >=  days_add(now(),-1);
+```
+
+查询同步作业和任务
+```
+select * from jobs(type='insert');
+select * from tasks(type='insert');
+```
+
+删除定时同步作业
+```
+DROP JOB where jobName = <job_name> ;
+```
 ## JDBC
 
 对于一些数据库（比如 MySQL），默认情况下 JDBC 并不总是将多个 INSERT 语句合并成一个批量插入语句发送给数据库，而是逐条发送。这会增加网络延迟和数据库处理开销。启用 `rewriteBatchedStatements` 后，JDBC 会尝试将多个 INSERT 语句合并为一个大的 INSERT 语句，以便一次性发送给数据库，从而显著提升插入效率。
@@ -174,4 +191,3 @@ curl -L -X PUT 'http://172.31.8.116:8030/api/dbname/tablename/_stream_load' \
         "born_time": "20231212234523222"
     }]'
 ```
-## SeaTunnel 
