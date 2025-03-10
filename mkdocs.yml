@@ -95,7 +95,7 @@ nav:
 #  - Architecture:
 #      - Architecture/设备信息.md
   - 爪哇:
-    - Java/Tips.md
+    - Java/Java Tips.md
     - Java/Java 并发.md
     - Java/重复提交.md
     - Java/反射和动态代理.md

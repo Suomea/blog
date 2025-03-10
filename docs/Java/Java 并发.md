@@ -197,7 +197,7 @@ final void join(long millis, int nanos)
 ```
 
 
-jion 方法的逻辑，精简版：
+join 方法的逻辑，精简版：
 ```java
     public final void join() throws InterruptedException {
         synchronized (this) {
