@@ -143,4 +143,140 @@ Reflector reflector = new Reflector(TestEntity.class);
     // 解决重载的 getter 方法
     resolveGetterConflicts(conflictingGetters);
   }
+
+  private void resolveGetterConflicts(Map<String, List<Method>> conflictingGetters) {
+    for (Entry<String, List<Method>> entry : conflictingGetters.entrySet()) {
+      // 从冲突的属性方法中选出一个
+      Method winner = null;
+      String propName = entry.getKey();
+      boolean isAmbiguous = false;
+      for (Method candidate : entry.getValue()) {
+        if (winner == null) {
+          winner = candidate;
+          continue;
+        }
+        Class<?> winnerType = winner.getReturnType();
+        // 候选方法
+        Class<?> candidateType = candidate.getReturnType();
+        if (candidateType.equals(winnerType)) { 
+          // 如果返回类型相同并且不是 boolean 返回类型的话就存在歧义
+          // 比如 String getA() 和 String isA()
+          if (!boolean.class.equals(candidateType)) {
+            isAmbiguous = true;
+            break;
+          }
+		  // 如果返回类型相同，并且都是 boolean 返回类型，则查找 is 开头的方法
+		  // 比如 boolean getA() 和 boolean isA() 则使用 isA()
+          if (candidate.getName().startsWith("is")) {
+            winner = candidate;
+          }
+        } 
+        // 如果返回类型不同，但是存在父子关系，则使用父类型方法
+        else if (candidateType.isAssignableFrom(winnerType)) {
+          // OK getter type is descendant
+        } else if (winnerType.isAssignableFrom(candidateType)) {
+          winner = candidate;
+        } 
+        // 存在属性相同，但是返回类型不一样，且返回类型不一致
+        // 比如 String getA() 和 Integer isA()
+        else {
+          isAmbiguous = true;
+          break;
+        }
+      }
+      addGetMethod(propName, winner, isAmbiguous);
+    }
+  }
+
+  private void addGetMethod(String name, Method method, boolean isAmbiguous) {
+    MethodInvoker invoker = isAmbiguous ? new AmbiguousMethodInvoker(method, MessageFormat.format(
+        "Illegal overloaded getter method with ambiguous type for property ''{0}'' in class ''{1}''. This breaks the JavaBeans specification and can cause unpredictable results.",
+        name, method.getDeclaringClass().getName())) : new MethodInvoker(method);
+    // 缓存属性和对应的 MethodInvoker
+    getMethods.put(name, invoker);
+    Type returnType = TypeParameterResolver.resolveReturnType(method, type);
+    // 缓存属性和 getter 的返回类型
+    getTypes.put(name, typeToClass(returnType));
+  }
+```
+
+`MethodInvoker` 类的源码：
+```java
+public interface Invoker {  
+  Object invoke(Object target, Object[] args) throws IllegalAccessException, InvocationTargetException;  
+  
+  Class<?> getType();  
+}
+
+public class MethodInvoker implements Invoker {
+
+  private final Class<?> type;
+  private final Method method;
+
+  public MethodInvoker(Method method) {
+    this.method = method;
+
+	// setter 方法 type 存储参数类型
+    if (method.getParameterTypes().length == 1) {
+      type = method.getParameterTypes()[0];
+    } 
+    // getter 方法存储返回类型
+    else {
+      type = method.getReturnType();
+    }
+  }
+
+  @Override
+  public Object invoke(Object target, Object[] args) throws IllegalAccessException, InvocationTargetException {
+    try {
+      return method.invoke(target, args);
+    } catch (IllegalAccessException e) {
+      if (Reflector.canControlMemberAccessible()) {
+        method.setAccessible(true);
+        return method.invoke(target, args);
+      }
+      throw e;
+    }
+  }
+
+  @Override
+  public Class<?> getType() {
+    return type;
+  }
+}
+```
+
+`ReflectorFactory` 工厂接口，只有一个实现类 `DefaultReflectorFactory`：
+```java
+public interface ReflectorFactory {
+    boolean isClassCacheEnabled();
+
+    void setClassCacheEnabled(boolean var1);
+
+    Reflector findForClass(Class<?> var1);
+}
+
+public class DefaultReflectorFactory implements ReflectorFactory { 
+    // 是否开启缓存
+    private boolean classCacheEnabled = true;  
+    // 缓存 Class 和 Reflector
+    private final ConcurrentMap<Class<?>, Reflector> reflectorMap = new ConcurrentHashMap();  
+  
+    public DefaultReflectorFactory() {  
+    }  
+  
+    public boolean isClassCacheEnabled() {  
+        return this.classCacheEnabled;  
+    }  
+  
+    public void setClassCacheEnabled(boolean classCacheEnabled) {  
+        this.classCacheEnabled = classCacheEnabled;  
+    }  
+  
+    public Reflector findForClass(Class<?> type) {  
+        return this.classCacheEnabled ? 
+        (Reflector)MapUtil.computeIfAbsent(this.reflectorMap, type, Reflector::new) : new Reflector(type);  
+    }  
+}
+
 ```
