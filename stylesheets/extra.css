@@ -1,0 +1,15 @@
+.md-grid {
+    max-width: 1500px;
+}
+
+.md-typeset {
+    font-size: .7rem;
+    line-height: 1.8;
+}
+
+
+
+.footer {
+    height: 60px; /* 设置页脚高度为100像素 */
+    /* 其他页脚样式属性 */
+}
