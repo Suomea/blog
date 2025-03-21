@@ -1,7 +1,6 @@
-
-依赖
-```
-    <dependencies>
+## 单词计数
+依赖：
+```xml
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-streaming-java</artifactId>
@@ -13,11 +12,10 @@
             <artifactId>flink-clients</artifactId>
             <version>1.20.0</version>
         </dependency>
-    </dependencies>
 ```
 
-代码
-```
+代码：
+```java
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -48,7 +46,7 @@ public class WordCount {
 }
 ```
 
-输出
+输出：
 ```
 3> (hello,1)
 3> (hello,2)
@@ -58,11 +56,11 @@ public class WordCount {
 9> (jacky,1)
 ```
 
+## 单词计数升级
+服务器监听端口 `nc -lk 8080`。服务端监听 `listen 8080` 端口并保持 `keep` 连接，能够通过命令行向连接的客户端发送数据。
 
-从网络监听 nc -lk 8080，监听 listen 8080 端口并保持 keep 连接，能够通过命令行向连接的客户端发送数据。
-
-代码
-```
+代码：
+```java
 import org.apache.flink.api.common.functions.FlatMapFunction;  
 import org.apache.flink.api.java.tuple.Tuple2;  
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;  
@@ -88,19 +86,19 @@ public class WordCountFromSocket {
 }
 ```
 
- 
-Flink 集群的角色
+## Flink 集群的角色
+`Client` 提交作业，不是运行时和执行程序的一部分。
 
-Client 提交作业，不是运行时和执行程序的一部分。
+`JobManager` 调度作业，默认进程为 `org.apache.flink.runtime.entrypoint.StandaloneSessionClusterEntrypoint`。
 
-JobManager 调度作业，默认进程为 org.apache.flink.runtime.entrypoint.StandaloneSessionClusterEntrypoint。
+`TaskManager` 执行作业，连接到 `JobManager` 宣布自己可用，并被分配工作。默认进程为 `org.apache.flink.runtime.taskexecutor.TaskManagerRunner`。
 
-TaskManager 执行作业，连接到 JobManager 宣布自己可用，并被分配工作。默认进程为 org.apache.flink.runtime.taskexecutor.TaskManagerRunner。
-
-启动 Flink 服务，Web 地址默认为 http://localhost:8081/#/overview 默认只有 localhost 访问，编辑配置文件 rest.bin-address 绑定 0.0.0.0 即可。
+## 提交作业给 Flink 集群
+启动服务。
 ```
 ./bin/start-cluster.sh
 ```
+`Web` 地址默认为 `http://localhost:8081/#/overview` 默认只有 `localhost` 访问，编辑配置文件 `rest.bin-address` 绑定 `0.0.0.0` 即可。
 
 配置依赖和打包插件，然后打包项目。
 ```
@@ -165,23 +163,23 @@ TaskManager 执行作业，连接到 JobManager 宣布自己可用，并被分�
     </build>
 ```
 
-Tips 依赖配置为 provided 之后 idea 运行会提示找不到类，点击下图左下角的 Edit configuration templates，勾选 Add dependencies with "provided" scope to classpath 即可在本地运行。
-![[Pasted image 20250116235550.png]]
+Tips 依赖配置为 provided 之后 idea 运行会提示找不到类，点击下图左下角的 Edit configuration templates，勾选 `Add dependencies with "provided" scope to classpath` 即可在本地运行。
+![](../LocalFile/Picture/20250116235550.png)
 
 登录 Flink Web，进入提交作业界面，点解 Add New，选择 jar 包。
-![[Pasted image 20250117000101.png]]
+![](../LocalFile/Picture/20250117000101.png)
 
 点击上传的 jar 包，编辑填入入口类，然后点击 Submit 会立即执行入口类代码。可以多次 Submit 不同的入口类。
-![[Pasted image 20250117000239.png]]
+![](../LocalFile/Picture/20250117000239.png)
 
 在 Jobs 界面可以看到提交的作业，以及运行状态，运行在哪个 TaskManager 上。在作业详情界面的左上角可以 Cancel Job。
-![[Pasted image 20250117000803.png]]
-![[Pasted image 20250117001041.png]]
+![](../LocalFile/Picture/20250117000803.png)
+![](../LocalFile/Picture/20250117001041.png)
 
 进入到具体的 TaskManager 之后，可以在 Stdout 看到输出。
-![[Pasted image 20250117001133.png]]
+![](../LocalFile/Picture/20250117001133.png)
 
-也可以使用命令行提交作业，-d 表示分离模式运行。
+也可以使用命令行提交作业，`-d` 表示分离模式运行。
 ```
 % bin/flink run -m localhost:8081 -d -c com.otto.WordCountFromSocket flink-1.0-SNAPSHOT.jar 
 Job has been submitted with JobID d4c29ebd42a91596e36619d7e679cef1
@@ -192,17 +190,13 @@ Job has been submitted with JobID d4c29ebd42a91596e36619d7e679cef1
 bin/stop-cluster.sh
 ```
 
-并行度的概念
+## 并行度的概念
+
 
 可以在代码 env 设置并行度，可以在算子后面紧跟设置某个算子的并行度，也可以在 Web 或者命令行设置并行度。优先级是代码算子 > 代码 env > 客户端设置 > 配置文件的默认并行度。
 
 整个任务的并行度以并行度最高的算子的并行度作为任务的并行度。
 
-操作链
-
-one-to-one forwarding 一对一，数据流维护着数据的顺序。如果多个子任务并行度相同，并且都是一对一，则会合并。
-
-redistributing 重分区
 
 
 

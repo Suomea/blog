@@ -66,6 +66,7 @@ show routine load 能够查询导入作业的状态。
 
 ## 案例调优
 
+### 过滤数据
 前端上传的数据日期格式是对的，但是值不对，比如 0024-01-01 00:00:00，这种数据由于没有对应的分区表，导致 Routine Load 导入任务暂停。
 
 可以通过修改 Routine Load 导入任务，从指定的 Kafka Topic 分区和偏移开始消费数据，但是这样定位脏数据的位置比较麻烦。
@@ -97,3 +98,15 @@ https://doris.apache.org/zh-CN/docs/sql-manual/sql-statements/data-modification/
 
 
 导入任务报错 TOO_MANY_TASKS，参考官方公众号“2.0.9和2.1.3之前都存在已知的bug导致TOO_MANY_TASKS的问题”。实际使用下来 2.0.12 也存在这个问题，解决方案是升级至 2.0.15 或者 2.1.8，最终 2.0.12 直接升级到 2.1.8 解决报错的问题。
+
+### 修改 RoutineLoad 子任务最大运行时间
+默认 60 秒，为了提升数据入库频率，增加到 10 秒。
+```
+pause routine load for iot_data.hk_anpr;
+
+ALTER ROUTINE LOAD FOR iot_data.hk_anpr PROPERTIES(
+    "max_batch_interval" = "10"
+)
+
+resume routine load for iot_data.hk_anpr;
+```

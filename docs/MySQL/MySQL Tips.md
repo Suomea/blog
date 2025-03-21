@@ -117,3 +117,4 @@ REVOKE ALL PRIVILEGES ON mydb.* FROM 'username'@'%';
 ```
 FLUSH PRIVILEGES;
 ```
+

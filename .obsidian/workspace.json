@@ -13,44 +13,27 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Java/MyBatis 快速入门.md",
+                "file": "docs/Java/Java Tips.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "MyBatis 快速入门"
+              "title": "Java Tips"
             }
           },
           {
             "id": "471471b0ee8cd611",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "docs/Java/MyBatis 反射工具箱.md",
-                "mode": "source",
-                "source": false
+                "file": "docs/LocalFile/Picture/20250116235550.png"
               },
-              "icon": "lucide-file",
-              "title": "MyBatis 反射工具箱"
-            }
-          },
-          {
-            "id": "651ddb47fb2d340c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Java/反射和动态代理.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "反射和动态代理"
+              "icon": "lucide-image",
+              "title": "20250116235550"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -73,7 +56,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "文件列表"
+              "title": "Files"
             }
           },
           {
@@ -107,8 +90,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "d1db8229203a9e0b",
@@ -170,13 +152,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Java/反射和动态代理.md",
+                "file": "docs/Java/Java Tips.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "反射和动态代理 的大纲"
+              "title": "Outline of Java Tips"
             }
           }
         ],
@@ -184,49 +166,56 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false,
-      "vscode-editor:新建代码文件": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "vscode-editor:Create Code File": false
     }
   },
-  "active": "651ddb47fb2d340c",
+  "active": "3f2894de142cae47",
   "lastOpenFiles": [
+    "docs/Doris/Doris 接入 Kafka 的数据.md",
+    "docs/Doris/Doris 接入 MySQL 的数据.md",
+    "docs/Java/Java Tips.md",
+    "docs/MySQL/MySQL Tips.md",
+    "docs/MySQL/MySQL 备份.md",
+    "mkdocs.yml",
+    "docs/MySQL/MySQL 主从.md",
+    "docs/MySQL/MySQL 变量.md",
+    "docs/Linux/磁盘分区.md",
+    "docs/Linux/正则表达式.md",
+    "docs/Flink/Flink 快速开始.md",
+    "docs/Flink/Flink Tips.md",
+    "().md",
+    "docs/Linux/Docker Tips.md",
+    "docs/Docker/安装 Docker.md",
+    "docs/Java/MyBatis 快速入门.md",
+    "docs/LocalFile/Picture/20250116235550.png",
+    "docs/LocalFile/Picture/PastedImage20240226202646.png",
+    "docs/LocalFile/Picture/PastedImage20240226202900.png",
+    "docs/LocalFile/Picture/Pastedimage20240423194147.png",
+    "docs/LocalFile/Picture/Pastedimage20240423194526.png",
+    "docs/LocalFile/Picture/PastedImage20240226202811.png",
+    "docs/LocalFile/Picture/20250117001016.png",
+    "docs/LocalFile/Picture/20250117000239.png",
+    "docs/LocalFile/Picture/20250117000101.png",
     "docs/Java/MyBatis 反射工具箱.md",
     "docs/Java/反射和动态代理.md",
-    "docs/Java/MyBatis 快速入门.md",
     "docs/Java/Java 并发.md",
-    "mkdocs.yml",
-    "docs/Java/Java Tips.md",
     "docs/Java/NIO Tips.md",
-    "docs/Doris/Doris 接入 Kafka 的数据.md",
     "docs/Doris/Doris Tips.md",
-    "docs/Doris/Doris 接入 MySQL 的数据.md",
     "docs/Redis/Redis 安装.md",
     "docs/Doris/Doris 用户角色权限.md",
     "docs/English/Would 和 Want.md",
     "docs/English/Last, the last, the latest.md",
-    "docs/Flink/快速开始.md",
-    "docs/Flink/未命名.md",
     "docs/Algorithms/求解算数表达式的值.md",
-    "docs/Algorithms/数据结构：图.md",
-    "docs/Algorithms/字符串匹配算法.md",
-    "docs/Java/给视频和图片添加水印.md",
-    "docs/Java/String.intern().md",
-    "docs/index.md",
-    "docs/MySQL/MySQL 安装.md",
-    "docs/Kafka/Kafka 快速开始.md",
-    "docs/Kafka/Kafka 常用命令.md",
-    "docs/Kafka/Kafka 集群搭建.md",
-    "docs/Kafka/Kafka 保证消息不丢失.md",
     "docs/stylesheets/extra.css",
     "overrides/partials/footer.html",
     "overrides/partials/comments.html",
@@ -234,17 +223,8 @@
     "docs/AI",
     "未命名",
     "docs/LocalFile/Picture/详细分分片示例.png",
-    "docs/LocalFile/Picture/用户数据报的格式.png",
-    "docs/LocalFile/Picture/Pasted image 20250116235550.png",
-    "docs/LocalFile/Picture/Pasted image 20250117001041.png",
-    "docs/LocalFile/Picture/Pasted image 20250117001133.png",
-    "docs/LocalFile/Picture/Pasted image 20250117001016.png",
-    "docs/LocalFile/Picture/Pasted image 20250117000803.png",
-    "docs/LocalFile/Picture/Pasted image 20250117000239.png",
-    "docs/LocalFile/Picture/Pasted image 20250117000101.png",
     "docs/Flink",
     "docs/Prometheus",
-    "docs/LocalFile/Picture/ReentrantReadWriteLock类图.svg",
     "docs/PG"
   ]
 }

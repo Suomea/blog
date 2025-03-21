@@ -29,10 +29,10 @@ nav:
   - 数据库:
     - "MySQL":
       - MySQL/MySQL Tips.md
-      - MySQL/MySQL 系统和状态变量.md
+      - MySQL/MySQL 变量.md
       - MySQL/MySQL 安装.md
       - MySQL/MySQL 备份.md
-      - MySQL/MySQL 配置主从.md
+      - MySQL/MySQL 主从.md
     - "Redis":
         - Redis/Redis 安装.md
         - Redis/Redis 数据结构.md
@@ -70,9 +70,10 @@ nav:
     - Linux/PT.md
     - Linux/Shell 脚本.md
     - Linux/VIM.md
-
     - Linux/时间.md
     - Linux/运维监控.md
+    - "Docker":
+      - Linux/Docker Tips.md
 
   - 计算机网络:
       - Network/Network Tips.md
@@ -109,6 +110,9 @@ nav:
     - "Kafka":
       - Kafka/Kafka 快速开始.md
       - Kafka/Kafka 常用命令.md
+    - "Flink":
+      - Flink/Flink Tips.md
+      - Flink/Flink 快速开始.md
   - 文章:
       - Arts/满江红-岳飞.md
       - Arts/侠客行-李白.md

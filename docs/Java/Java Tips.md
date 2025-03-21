@@ -119,3 +119,111 @@ boolean isPizzaFantastic() {
 403 Forbidden 表示客户端没有访问内容的权限，也就是说它是未经授权的，因此服务器拒绝提供请求的资源。
 
 403 表示服务器知道客户端的身份，而 401 服务器不知道客户端的身份。
+
+## 配置允许跨域
+Spring Boot 后端配置处理：
+```java
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**") // 允许所有路径
+                .allowedOriginPatterns("*") // 允许所有来源
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // 允许的 HTTP 方法
+                .allowedHeaders("*") // 允许所有请求头
+                .allowCredentials(true) // 允许携带凭证（如 cookies）
+                .maxAge(3600); // 预检请求的缓存时间（秒）
+    }
+}
+```
+
+如果有 Filter 拦截请求需要在 Filter 中放行：
+```java
+// 如果是 OPTIONS 请求，直接放行  
+if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {  
+    filterChain.doFilter(servletRequest, servletResponse);  
+    return;  
+}
+```
+
+## MybatisPlus 配置 SQL 输出到控制台
+```properties
+# myabtis  
+mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
+```
+
+
+## Spring Boot RestTemplate 跳过证书校验
+```java
+@Bean  
+@Primary  
+RestTemplate restTemplate() {  
+    return new RestTemplate();  
+}  
+  
+@Bean  
+public RestTemplate unTrustedRestTemplate() throws NoSuchAlgorithmException, KeyManagementException {  
+    SSLContext sslContext = SSLContext.getInstance("TLS");  
+    sslContext.init(null, new TrustManager[]{new X509TrustManager() {  
+        @Override  
+        public void checkClientTrusted(X509Certificate[] chain, String authType) {  
+        }  
+  
+        @Override  
+        public void checkServerTrusted(X509Certificate[] chain, String authType) {  
+        }  
+  
+        @Override  
+        public X509Certificate[] getAcceptedIssuers() {  
+            return new X509Certificate[0];  
+        }  
+    }}, new java.security.SecureRandom());  
+  
+    // 创建自定义的 RequestFactory    
+    SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory() {  
+        @Override  
+        protected void prepareConnection(HttpURLConnection connection, String httpMethod) throws IOException {  
+            super.prepareConnection(connection, httpMethod);  
+  
+            if (connection instanceof javax.net.ssl.HttpsURLConnection) {  
+                // 跳过证书校验  
+                HttpsURLConnection httpsConnection = (HttpsURLConnection) connection;  
+                httpsConnection.setHostnameVerifier((hostname, session) -> true);  
+                httpsConnection.setSSLSocketFactory(sslContext.getSocketFactory());  
+            }  
+        }  
+    };  
+  
+    return new RestTemplate(requestFactory);  
+}
+```
+
+## Java 日期时间
+```java
+// 时间截取
+LocalDateTime now = LocalDateTime.now();
+// 2025-03-21 21:42:31.062
+System.out.println(now.format(dtf));
+// 获取当前秒的起始时间 2025-03-21 21:42:31.000
+System.out.println(now.truncatedTo(ChronoUnit.SECONDS).format(dtf));
+// 获取当前分钟的起始时间 2025-03-21 21:42:00.000
+System.out.println(now.truncatedTo(ChronoUnit.MINUTES).format(dtf));
+// 获取当前小时的起始时间 2025-03-21 21:00:00.000
+System.out.println(now.truncatedTo(ChronoUnit.HOURS).format(dtf));
+// 获取当天中午的起始时间 2025-03-21 12:00:00.000
+System.out.println(now.truncatedTo(ChronoUnit.HALF_DAYS).format(dtf));
+// 获取当天的起始时间 2025-03-21 00:00:00.000
+System.out.println(now.truncatedTo(ChronoUnit.DAYS).format(dtf));
+// 获取当月第一天的起始时间 2025-03-01 00:00:00.000
+System.out.println(now
+        .with(TemporalAdjusters.firstDayOfMonth())
+        .truncatedTo(ChronoUnit.DAYS)
+        .format(dtf)
+);
+// 获取当年第一天的起始时间 2025-01-01 00:00:00.000
+System.out.println(now
+        .with(TemporalAdjusters.firstDayOfYear())
+        .truncatedTo(ChronoUnit.DAYS)
+        .format(dtf)
+);
+```
