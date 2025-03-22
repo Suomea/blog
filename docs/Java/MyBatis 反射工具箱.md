@@ -58,7 +58,7 @@ Reflector reflector = new Reflector(TestEntity.class);
 ```
 
 查找默认的构造函数🍕：
-```
+```java
   // 查找默认的构造函数，如果存在参数列表为 0 的就赋值给 defaultConstructor
   // 否则 defaultConstructor 为 null
   private void addDefaultConstructor(Class<?> clazz) {
@@ -77,7 +77,7 @@ Reflector reflector = new Reflector(TestEntity.class);
     // 缓存方法签名和 Method 对象
     Map<String, Method> uniqueMethods = new HashMap<>();
     Class<?> currentClass = clazz;
-    // 由于语法规定，一个类只能继承一个类，所以这里循环向上便利直到 Object
+    // 由于语法规定，一个类只能继承一个类，所以这里循环向上遍历直到 Object
     while (currentClass != null && currentClass != Object.class) {
       // getDeclaredMethods 获取当前类中定义的所有方法
       addUniqueMethods(uniqueMethods, currentClass.getDeclaredMethods());
@@ -91,7 +91,7 @@ Reflector reflector = new Reflector(TestEntity.class);
         addUniqueMethods(uniqueMethods, anInterface.getMethods());
       }
 
-	  // 向上便利父类
+	  // 向上遍历父类
       currentClass = currentClass.getSuperclass();
     }
 
@@ -120,6 +120,7 @@ Reflector reflector = new Reflector(TestEntity.class);
   private String getSignature(Method method) {
     StringBuilder sb = new StringBuilder();
     Class<?> returnType = method.getReturnType();
+    // Class.getName() 不会包含泛型信息
     sb.append(returnType.getName()).append('#');
     sb.append(method.getName());
     Class<?>[] parameters = method.getParameterTypes();
@@ -133,7 +134,8 @@ Reflector reflector = new Reflector(TestEntity.class);
 处理 getter 方法🍟：
 ```java
   private void addGetMethods(Method[] methods) {
-    // 缓存重载的 getter 方法
+    // 缓存属性对应的方法，key 为属性名，value 为方法列表
+    // 使用列表缓存方法，是因为考虑到属性名称相同的方法（isA 和 getA）
     Map<String, List<Method>> conflictingGetters = new HashMap<>();
     Arrays.stream(methods)
     // 保留 getXXX 或者 isXXX 并且参数列表为空的 getter 方法
@@ -151,9 +153,10 @@ Reflector reflector = new Reflector(TestEntity.class);
       String propName = entry.getKey();
       boolean isAmbiguous = false;
       for (Method candidate : entry.getValue()) {
+        // 大部分情况下并不会存在 isA 和 getA 方法同时存在的情况
         if (winner == null) {
           winner = candidate;
-          continue;
+          continue; 
         }
         Class<?> winnerType = winner.getReturnType();
         // 候选方法
@@ -198,9 +201,33 @@ Reflector reflector = new Reflector(TestEntity.class);
     // 缓存属性和 getter 的返回类型
     getTypes.put(name, typeToClass(returnType));
   }
+
+  public static Type resolveReturnType(Method method, Type srcType) {
+    Type returnType = method.getGenericReturnType();
+    Class<?> declaringClass = method.getDeclaringClass();
+    return resolveType(returnType, srcType, declaringClass);
+  }
+
+  private static Type resolveType(Type type, Type srcType, Class<?> declaringClass) {
+    if (type instanceof TypeVariable) {
+      return resolveTypeVar((TypeVariable<?>) type, srcType, declaringClass);
+    } 
+    else if (type instanceof ParameterizedType) {
+      return resolveParameterizedType((ParameterizedType) type, srcType, declaringClass);
+    } 
+    else if (type instanceof GenericArrayType) {
+      return resolveGenericArrayType((GenericArrayType) type, srcType, declaringClass);
+    } 
+    else if (type instanceof WildcardType) {
+      return resolveWildcardType((WildcardType) type, srcType, declaringClass);
+    } 
+    else {
+      return type;
+    }
+  }
 ```
 
-`MethodInvoker` 类的源码：
+如果存在属性相同但是返回类型不同的情况，会构造一个 `AmbiguousMethodInvoker` 否则是 `MethodInvoker`：
 ```java
 public interface Invoker {  
   Object invoke(Object target, Object[] args) throws IllegalAccessException, InvocationTargetException;  
@@ -244,6 +271,20 @@ public class MethodInvoker implements Invoker {
     return type;
   }
 }
+
+public class AmbiguousMethodInvoker extends MethodInvoker {
+  private final String exceptionMessage;
+
+  public AmbiguousMethodInvoker(Method method, String exceptionMessage) {
+    super(method);
+    this.exceptionMessage = exceptionMessage;
+  }
+
+  @Override
+  public Object invoke(Object target, Object[] args) throws IllegalAccessException, InvocationTargetException {
+    throw new ReflectionException(exceptionMessage);
+  }
+}
 ```
 
 `ReflectorFactory` 工厂接口，只有一个实现类 `DefaultReflectorFactory`：
@@ -279,4 +320,85 @@ public class DefaultReflectorFactory implements ReflectorFactory {
     }  
 }
 
+```
+
+ObjectFatory 接口主要定义了两个创建对象的方法：
+```java
+  <T> T create(Class<T> type);
+  <T> T create(Class<T> type, List<Class<?>> constructorArgTypes, List<Object> constructorArgs);
+```
+
+DefaultObjectFactory 是该接口的唯一实现类：
+```java
+public class DefaultObjectFactory implements ObjectFactory, Serializable {
+
+  private static final long serialVersionUID = -8855120656740914948L;
+
+  @Override
+  public <T> T create(Class<T> type) {
+    return create(type, null, null);
+  }
+
+  @SuppressWarnings("unchecked")
+  @Override
+  public <T> T create(Class<T> type, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    Class<?> classToCreate = resolveInterface(type);
+    // we know types are assignable
+    return (T) instantiateClass(classToCreate, constructorArgTypes, constructorArgs);
+  }
+
+  private <T> T instantiateClass(Class<T> type, List<Class<?>> constructorArgTypes, List<Object> constructorArgs) {
+    try {
+      Constructor<T> constructor;
+      if (constructorArgTypes == null || constructorArgs == null) {
+        // 如果没有参数列表，直接调用默认的构造函数生成对象
+        constructor = type.getDeclaredConstructor();
+        try {
+          return constructor.newInstance();
+        } catch (IllegalAccessException e) {
+          if (Reflector.canControlMemberAccessible()) {
+            constructor.setAccessible(true);
+            return constructor.newInstance();
+          }
+          throw e;
+        }
+      }
+      // 如果传递了参数类型列表，则查找对应的构造函数生成对象
+      constructor = type.getDeclaredConstructor(constructorArgTypes.toArray(new Class[0]));
+      try {
+        return constructor.newInstance(constructorArgs.toArray(new Object[0]));
+      } catch (IllegalAccessException e) {
+        if (Reflector.canControlMemberAccessible()) {
+          constructor.setAccessible(true);
+          return constructor.newInstance(constructorArgs.toArray(new Object[0]));
+        }
+        throw e;
+      }
+    } catch (Exception e) {
+      String argTypes = Optional.ofNullable(constructorArgTypes).orElseGet(Collections::emptyList).stream()
+          .map(Class::getSimpleName).collect(Collectors.joining(","));
+      String argValues = Optional.ofNullable(constructorArgs).orElseGet(Collections::emptyList).stream()
+          .map(String::valueOf).collect(Collectors.joining(","));
+      throw new ReflectionException("Error instantiating " + type + " with invalid types (" + argTypes + ") or values ("
+          + argValues + "). Cause: " + e, e);
+    }
+  }
+
+  // 如果传递了这些接口类型，则处理一下使用默认的实现类
+  protected Class<?> resolveInterface(Class<?> type) {
+    Class<?> classToCreate;
+    if (type == List.class || type == Collection.class || type == Iterable.class) {
+      classToCreate = ArrayList.class;
+    } else if (type == Map.class) {
+      classToCreate = HashMap.class;
+    } else if (type == SortedSet.class) { // issue #510 Collections Support
+      classToCreate = TreeSet.class;
+    } else if (type == Set.class) {
+      classToCreate = HashSet.class;
+    } else {
+      classToCreate = type;
+    }
+    return classToCreate;
+  }
+}
 ```

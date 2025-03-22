@@ -199,6 +199,7 @@ public RestTemplate unTrustedRestTemplate() throws NoSuchAlgorithmException, Key
 ```
 
 ## Java 日期时间
+获取指定的时间：
 ```java
 // 时间截取
 LocalDateTime now = LocalDateTime.now();
@@ -226,4 +227,13 @@ System.out.println(now
         .truncatedTo(ChronoUnit.DAYS)
         .format(dtf)
 );
+```
+
+获取两个 LocalDateTime 之间的间隔：
+```java
+Duration duration = Duration.between(startTime, endTime);
+duration.toDays();
+duration.toHours();
+duration.toMinutes();
+duration.getSeconds();
 ```

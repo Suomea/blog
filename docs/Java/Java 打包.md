@@ -13,7 +13,7 @@
 
 ```
 
-MANIFEST.MF 文件，Class-Path 如果有多个依赖需要手动指定每一个，不能使用通配符，多个使用空格隔开。注意最后一行是空行。
+MANIFEST.MF 文件示例：
 ```
 Manifest-Version: 1.0
 Main-Class: com.otto.Main
@@ -21,7 +21,7 @@ Class-Path: lib/commons-lang3-3.17.0.jar
 Created-By: 21.0.5 (Eclipse Adoptium)
 
 ```
-需要注意的是 Class-Path 指定的话会讲指定的依赖打进 jar 包，如果不指定的话也是可以的，但是要在运行时指定 -cp。
+`Class-Path` 如果有多个依赖需要手动指定每一个，不能使用通配符，多个使用空格隔开。**注意最后一行是空行。** 需要注意的是 `Class-Path` 指定的指定的依赖会打进 jar 包，如果不指定的话也是可以的，但是要在运行时指定 -cp。
 
 Main.java 文件
 ```java

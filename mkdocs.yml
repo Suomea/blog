@@ -98,7 +98,6 @@ nav:
   - 爪哇:
     - Java/Java Tips.md
     - Java/Java 并发.md
-    - Java/重复提交.md
     - Java/反射和动态代理.md
     - "JVM":
       - Java/JVM 内存空间划分.md
@@ -106,6 +105,7 @@ nav:
       - Java/JVM 命令行工具.md
     - "MyBatis":
       - Java/MyBatis 快速入门.md
+      - Java/MyBatis 反射工具箱.md
   - 大数据:
     - "Kafka":
       - Kafka/Kafka 快速开始.md
