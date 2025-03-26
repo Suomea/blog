@@ -190,13 +190,15 @@ Job has been submitted with JobID d4c29ebd42a91596e36619d7e679cef1
 bin/stop-cluster.sh
 ```
 
-## 并行度的概念
+YARN 模式运行
 
+```
+export HADOOP_HOME=/usr/local/hadoop-3.4.1
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
-可以在代码 env 设置并行度，可以在算子后面紧跟设置某个算子的并行度，也可以在 Web 或者命令行设置并行度。优先级是代码算子 > 代码 env > 客户端设置 > 配置文件的默认并行度。
-
-整个任务的并行度以并行度最高的算子的并行度作为任务的并行度。
-
+export HADOOP_CLASSPATH=`hadoop_classpath`
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+```
 
 
 

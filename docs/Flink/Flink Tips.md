@@ -1,14 +1,13 @@
-## Hadoop
-### HDFS
-`NameNode` 存储文件的元数据，记录文件属性以及文件块所在的 `DataNode` 信息。  
-`DataNode` 具体存储数据及校验和。  
-`SecondaryNameNode` `NameNode` 的备份节点。  
-### YARN
-`ResourceManager` 管理所有集群的资源。处理客户端的请求，监控 `NodeManager`，启动监控 `ApplicationMaster`。  
-`NodeManager` 管理单个节点的资源。处理来自 `ResourceManager` 的命令，处理来自 `ApplicationMaster` 的命令。  
-`ApplicationMaster` 负责管理单个运行任务。    
-`Container` 任务运行的容器。  
-
 ## Flink
 `JobManager` 对作业进行调度，分发给 `TaskManager`。  
-`TaskManager` 指定任务。
+`TaskManager` 执行任务。
+
+## 会话模式
+Session 会话模式需要先启动一个 Flink 集群，然后客户端向集群提交作业。集群是一直运行的，资源总量也是固定的。客户端提交的多个任务会竞争集群中的资源。
+这种模式适合单个规模小、执行时间短的大量作业。
+
+## 单作业模式
+Pre-Job 单作业模式为每个提交的作业启动一个单独的集群，作业完成之后，集群就会关闭，所有的资源释放。
+Flink 本身无法直接这样运行，需要借助资源管理框架如 YARN、Kubernetes 来启动单作业模式。
+
+## 应用模式
