@@ -1,6 +1,6 @@
 {
   "accentColor": "#5cf5c7",
-  "textFontFamily": "FangSong",
+  "textFontFamily": "Consolas,FangSong",
   "interfaceFontFamily": "Consolas",
   "monospaceFontFamily": "Consolas",
   "baseFontSize": 16,

@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Flink/Hadoop 快速开始.md",
+                "file": "docs/MyBatis/MyBatis 日志模块.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Hadoop 快速开始"
+              "title": "MyBatis 日志模块"
             }
           }
         ],
@@ -73,7 +73,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "文件列表"
+              "title": "Files"
             }
           },
           {
@@ -169,13 +169,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Flink/Hadoop 快速开始.md",
+                "file": "docs/MyBatis/MyBatis 日志模块.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Hadoop 快速开始 的大纲"
+              "title": "Outline of MyBatis 日志模块"
             }
           }
         ],
@@ -183,34 +183,41 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false,
-      "vscode-editor:新建代码文件": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "vscode-editor:Create Code File": false
     }
   },
   "active": "651ddb47fb2d340c",
   "lastOpenFiles": [
+    "docs/MyBatis/MyBatis 类型转换.md",
+    "docs/MyBatis/MyBatis 日志模块.md",
+    "mkdocs.yml",
+    "docs/MyBatis/MyBatis 反射工具箱.md",
+    "docs/MyBatis",
+    "docs/MyBatis/MyBatis 快速入门.md",
+    "docs/Java/GeoJSON 和 WKT.md",
+    "docs/Java/虚拟机类加载机制.md",
+    "docs/Java/给视频和图片添加水印.md",
+    "docs/Java/反射和动态代理.md",
+    "docs/Hadoop/Hadoop 快速开始.md",
+    "docs/Hadoop/Hadoop Tips.md",
+    "docs/Hadoop",
     "docs/Flink/Flink 快速开始.md",
     "docs/Flink/Flink Tips.md",
-    "docs/Flink/Hadoop 快速开始.md",
     "docs/Linux/Linux 账号群组.md",
     "docs/Linux/PT.md",
     "docs/Linux/tar.md",
     "docs/Linux/Shell 脚本.md",
     "docs/Linux/ArcLinux 安装.md",
-    "docs/Java/GeoJSON 和 WKT.md",
-    "docs/Java/MyBatis 反射工具箱.md",
-    "docs/Java/MyBatis 快速入门.md",
-    "docs/Java/反射和动态代理.md",
     "docs/MySQL/MySQL 变量.md",
     "docs/MySQL/MySQL 主从.md",
     "docs/LocalFile/Picture/20250117001133.png",
@@ -222,17 +229,11 @@
     "docs/LocalFile/Picture/20250116235550.png",
     "docs/Linux/Docker Tips.md",
     "docs/Java/Java 并发.md",
-    "mkdocs.yml",
     "docs/Java/Java Tips.md",
     "docs/Java/NIO Tips.md",
     "docs/Doris/Doris 接入 Kafka 的数据.md",
     "docs/Doris/Doris Tips.md",
     "docs/Doris/Doris 接入 MySQL 的数据.md",
-    "docs/Redis/Redis 安装.md",
-    "docs/Doris/Doris 用户角色权限.md",
-    "docs/English/Would 和 Want.md",
-    "docs/English/Last, the last, the latest.md",
-    "docs/Flink/快速开始.md",
     "docs/stylesheets/extra.css",
     "overrides/partials/footer.html",
     "overrides/partials/comments.html",
@@ -242,8 +243,6 @@
     "docs/LocalFile/Picture/详细分分片示例.png",
     "docs/LocalFile/Picture/用户数据报的格式.png",
     "docs/LocalFile/Picture/Pasted image 20250116235550.png",
-    "docs/Flink",
-    "docs/Prometheus",
-    "docs/PG"
+    "docs/Flink"
   ]
 }

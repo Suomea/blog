@@ -106,3 +106,11 @@ cat /proc/cpuinfo
 # cat /proc/170260/status | grep VmRSS
 VmRSS:     29016 kB  
 ```
+
+## Debian 镜像安装包
+```
+debian-12.10.0-amd64-DVD-1.iso 4G
+debian-12.10.0-amd64-netinst.iso 633M
+```
+
+DVD 的安装包包含了大量的软件和工具包，安装的时候不需要联网。netinst 只包含基本的安装程序和核心组件，安装额外的组件需要联网。
