@@ -63,10 +63,10 @@ nav:
     - Linux/Linux 账号群组.md
     - Linux/ls.md
     - "Nginx":
-      - Linux/Nginx Tips.md
-      - Linux/Nginx 编译安装.md
-      - Linux/Nginx 配置 Basic Auth.md
-      - Linux/Nginx 使用自签名证书.md
+      - Nginx/Nginx Tips.md
+      - Nginx/Nginx 编译安装.md
+      - Nginx/Nginx 配置 Basic Auth.md
+      - Nginx/Nginx 使用自签名证书.md
     - Linux/PT.md
     - Linux/Shell 脚本.md
     - Linux/VIM.md

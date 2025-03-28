@@ -1,17 +1,12 @@
 ## 单节点安装 Hadoop
-JDK OpenJDK8U-jdk_x64_linux_hotspot_8u442b06.tar.gz
-
-Hadoop [hadoop-3.4.1.tar.gz](https://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/common/stable/hadoop-3.4.1.tar.gz)
-
-ssh 需要保证服务器的 ssh 服务是启动的。
-
-环境变量配置
+准备文件
 ```
-$ cat /etc/profile.d/hadoop.sh 
-export HADOOP_HOME=/usr/local/hadoop-3.4.1
-export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
-export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+OpenJDK11U-jdk_x64_linux_hotspot_11.0.26_4.tar.gz
+hadoop-3.4.1.tar.gz
+```
 
+安装 JDK，环境变量配置：
+```
 $ cat /etc/profile.d/java.sh 
 export JAVA_HOME=/usr/local/jdk-11.0.26+4
 export PATH=$PATH:$JAVA_HOME/bin
@@ -20,9 +15,7 @@ export PATH=$PATH:$JAVA_HOME/bin
 创建 hadoop 用户
 ```
 useradd -m -s /bin/bash hadoop
-
-# 授权 Hadoop 目录
-chown -R hadoop:hadoop /usr/local/hadoop-3.4.1
+passwd hadoop
 ```
 
 接下来使用 hadoop 用户进行操作
@@ -39,6 +32,20 @@ chmod 0600 ~/.ssh/authorized_keys
 ssh localhost
 ```
 
+安装 Hadoop 配置环境变量（切换为 root 用户配置）：
+```
+# cat /etc/profile.d/hadoop.sh 
+export HADOOP_HOME=/home/hadoop/hadoop-3.4.1
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+```
+
+创建 Hadoop 数据存储目录：
+```
+/home/hadoop/hadoop-3.4.1/hadoop-files
+/home/hadoop/hadoop-3.4.1/hadoop-files/namenode
+/home/hadoop/hadoop-3.4.1/hadoop-files/datanode
+```
 
 进入到 Hadoop 目录，编辑配置文件：
 etc/hadoop/core-site.xml，配置 HDFS 的默认访问文件地址。
@@ -47,10 +54,6 @@ etc/hadoop/core-site.xml，配置 HDFS 的默认访问文件地址。
     <property>
         <name>fs.defaultFS</name>
         <value>hdfs://192.168.199.134:9000</value>  <!-- 使用服务器IP -->
-    </property>
-    <property>
-        <name>hadoop.tmp.dir</name>
-	<value>/usr/local/hadoop-3.4.1/hadoop-files/tmp</value>
     </property>
 </configuration>
 ```
@@ -64,24 +67,40 @@ etc/hadoop/hdfs-site.xml，配置文件快的副本数。
     </property>
     <property>
         <name>dfs.namenode.name.dir</name>
-        <value>file:///usr/local/hadoop-3.4.1/hadoop-files/namenode</value>
+        <value>file:///home/hadoop/hadoop-3.4.1/hadoop-files/namenode</value>
     </property>
     <property>
         <name>dfs.datanode.data.dir</name>
-		<value>file:///usr/local/hadoop-3.4.1/hadoop-files/datanode</value>
+		<value>file:///home/hadoop/hadoop-3.4.1/hadoop-files/datanode</value>
     </property>
 </configuration>
 ```
 
+etc/hadoop/hadoop-env.sh，配置 JAVA_HOME 环境变量：
+```
+export JAVA_HOME=/usr/local/jdk-11.0.26+4
+```
 
 格式化文件系统
 ```shell
-bin/hdfs namenode -format
+hdfs namenode -format
 ```
 
 启动 NameNode 和 DataNode
 ```
-sbin/start-dfs.sh
+start-dfs.sh
+```
+
+测试 HDFS 功能：
+```
+$ hdfs dfs -ls /
+$ hdfs dfs -mkdir /test
+$ hdfs dfs -ls /
+Found 1 items
+drwxr-xr-x   - hadoop supergroup          0 2025-03-28 18:56 /test
+$ hdfs dfs -put test.txt /test
+$ hdfs dfs -cat /test/test.txt
+hello hadoop
 ```
 
 访问地址：http://192.168.199.134:9870/
@@ -113,7 +132,7 @@ etc/hadoop/yarn-site.xml
 
 启动 YARN
 ```shell
-sbin/start-yarn.sh
+start-yarn.sh
 ```
 
 访问地址：http://192.168.199.134:8088/cluster

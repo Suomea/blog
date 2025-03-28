@@ -3,7 +3,6 @@
 ```shell
 apt install gcc make
 ```
-
 ### 安装必要的支持库
 pcre 提供 http rewrite 支持
 ```shell
@@ -13,10 +12,8 @@ apt install  libpcre3-dev zlib1g-dev libssl-dev libgd-dev
 ### 下载 
 ```shell
 wget https://nginx.org/download/nginx-1.22.1.tar.gz
-
 tar -zxvf nginx-1.22.1.tar.gz -C /usr/local/src
 ```
-
 ### 编译安装
 完整的编译参数参考：http://nginx.org/en/docs/configure.html
 ```shell
@@ -33,8 +30,6 @@ cd /usr/local/srv/nginx-1.22.1
 
 make && make install 
 ```
-
---with-http_ssl_module                              # 启用ssl支持
 ### 启动命令
 ```shell
 cd /usr/local/nginx
@@ -55,7 +50,7 @@ cd /usr/local/nginx
 ./sbin/nginx -v
 ```
 
-### 配置为服务
+### 配置服务
 编辑配置文件 `/etc/systemd/system/nginx.service`：
 ```text
 [Unit]
@@ -76,6 +71,7 @@ PrivateTmp=true
 [Install]
 WantedBy=multi-user.target
 ```
+配置为服务的话，需要在服务文件中指定 `LimitNOFILE=65535`，Nginx 配置文件中指定的 `worker_rlimit_nofile 65535;` 会不生效。
 
 配置服务开机启动：
 ```shell
