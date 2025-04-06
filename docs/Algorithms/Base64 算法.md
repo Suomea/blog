@@ -92,10 +92,14 @@ public class Test {
 ```
 
 ## Linux base64 命令
-
-需要注意的是 echo 输出会默认增加换行字符，使用 -n 选项取消换行符。   
-	-n     do not output the trailing newline
+base64 编码：
 ```shell
 echo -n yes | base64
 eWVz
+```
+
+base64 解码：
+```shell
+echo -n eWVz | base64 -d
+yes
 ```
