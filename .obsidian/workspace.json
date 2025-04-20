@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Algorithms/Base64 算法.md",
+                "file": "docs/Linux/Linux Tips.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Base64 算法"
+              "title": "Linux Tips"
             }
           }
         ],
@@ -199,6 +199,9 @@
   },
   "active": "651ddb47fb2d340c",
   "lastOpenFiles": [
+    "docs/Linux/Linux 安装 NFS.md",
+    "docs/Linux/Linux 文件系统.md",
+    "docs/Algorithms/Base64 算法.md",
     "docs/Algorithms/求解算数表达式的值.md",
     "docs/Java/Java Tips.md",
     "docs/K8S/安装 Nginx Ingress.md",
@@ -222,9 +225,6 @@
     "docs/ES/操作.md",
     "docs/English/Would 和 Want.md",
     "docs/English/Last, the last, the latest.md",
-    "docs/Doris/Doris Tips.md",
-    "docs/Doris/Doris 接入 MySQL 的数据.md",
-    "docs/DM/达梦备份.md",
     "mkdocs.yml",
     "docs/MyBatis",
     "docs/Hadoop",

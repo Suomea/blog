@@ -84,6 +84,18 @@ lscpu
 cat /proc/cpuinfo
 ```
 
+## 查看 CPU 温度
+直接查看 CPU 温度
+```
+# cat /sys/class/thermal/thermal_zone0/temp 
+27800
+# cat /sys/class/thermal/thermal_zone1/temp 
+20000
+# cat /sys/class/thermal/thermal_zone2/temp 
+51000
+# cat /sys/class/thermal/thermal_zone3/temp 
+44000
+```
 ## 查看进程占用的内存
 
 使用 ps 命令，查看指定进程的内存占用，rss Resident Set Size 表示占用物理内存大小，不包括 Swap，单位 KB。
@@ -107,6 +119,16 @@ cat /proc/cpuinfo
 VmRSS:     29016 kB  
 ```
 
+## 查看 Intel 核显占用情况
+安装必要的工具包
+```
+apt install intel_gpu_tools
+```
+
+查看占用情况
+```
+intel_gpu_top
+```
 ## Debian 镜像安装包
 ```
 debian-12.10.0-amd64-DVD-1.iso 4G
