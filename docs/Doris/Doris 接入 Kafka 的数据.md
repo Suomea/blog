@@ -37,7 +37,7 @@ FROM KAFKA (
     "kafka_broker_list" = "172.31.8.164:9092,172.31.8.165:9092,172.31.8.166:9092",
     "kafka_topic" = "quickstart-events",
     "property.group.id" = "xxxxx",
-    "property.kafka_default_offsets" = "OFFSET_BEGINNING",
+    "property.kafka_default_offsets" = "OFFSET_END",
     "property.security.protocol" = "SASL_PLAINTEXT",
     "property.sasl.mechanism" = "PLAIN",
     "property.sasl.username" = "xxxx",

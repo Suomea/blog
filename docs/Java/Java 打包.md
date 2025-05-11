@@ -1,56 +1,74 @@
+
 ## Java 打包
 目录树
 ```
 ├── META-INF
 │   └── MANIFEST.MF
 ├── lib
-│   └── fastjson2-2.0.57.jar
+│   └── commons-lang3-3.17.0.jar
 └── src
     └── com
-        └── jacky
+        └── otto
             └── Main.java
+
 ```
 
 MANIFEST.MF 文件示例：
 ```
-Main-Class: com.jacky.Main  
-Class-Path: lib/fastjosn2-2.0.57.jar
+Manifest-Version: 1.0
+Main-Class: com.otto.Main
+Class-Path: lib/commons-lang3-3.17.0.jar
+Created-By: 21.0.5 (Eclipse Adoptium)
 
 ```
-`Class-Path` 如果有多个依赖需要手动指定每一个，不能使用通配符，多个使用空格隔开。**注意最后一行是空行。** 
-
-Class-Path 是指定 java -jar 时的 classpath，相对于 jar 文件的目录而言的路径。注意，是 jar 包外部的路径。
+`Class-Path` 如果有多个依赖需要手动指定每一个，不能使用通配符，多个使用空格隔开。**注意最后一行是空行。** 需要注意的是 `Class-Path` 指定的指定的依赖会打进 jar 包，如果不指定的话也是可以的，但是要在运行时指定 -cp。
 
 Main.java 文件
 ```java
-package com.jacky;  
-  
-import com.alibaba.fastjson2.JSONObject;  
-  
-public class Main {  
-    public static void main(String[] args) {  
-        JSONObject jsonObject = new JSONObject();  
-        jsonObject.put("name", "jacky");  
-  
-        System.out.println(jsonObject.toJSONString());  
-    }  
+package com.otto;
+
+import org.apache.commons.lang3.StringUtils;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(StringUtils.equals("jacky", "suomea"));
+    }
 }
 ```
 
-编译
+编译，-classpath 可以使用 -cp 缩写，能够使用通配符匹配文件。
 ```
-javac -cp lib/* -encoding UTF-8 -d bin src/com/jacky/Main.java
+javac -classpath .:lib/*.jar -d classes src/com/otto/Main.java
+java -cp "classes;lib\*" Main
 ```
+**`-d classes`**：将编译后的 `.class` 文件输出到 classes 目录，按照包名生成对应的目录结构。
 
 执行
 ```
-java -cp lib/*;bin com.jacky.Main
+java -classpath .:lib/commons-lang3-3.17.0.jar com.otto.Main
 ```
 
 打包
 ```
-jar -cfm my.jar META-INF/MANIFEST.MF -C bin com -C . lib
+ jar cvfm my-app.jar META-INF/MANIFEST.MF -C . com lib/
 ```
+- **`cvfm`**：
+	- `c`：创建 JAR 文件。
+    - `v`：显示详细信息。
+    - `f`：指定输出文件名。
+    - `m`：指定使用的清单文件。
+- **`-C .`**：切换到当前目录，包含 `com` 和 `lib/`。
+
+检查 jar 包
+```
+jar tf my-app.jar
+```
+
+执行
+```
+java -jar my-app.jar
+```
+
 ## Spring Boot 打包
 Spring Boot 配置打包，如果项目继承了 spring-boot-starter-parent，无需额外配置 repackage，简化 pom.xml。
 ```xml
