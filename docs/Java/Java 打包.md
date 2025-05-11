@@ -1,74 +1,82 @@
+## jar
+`jar` 命令是 Java 提供的，用于创建、更新、查看和提取 JAR 文件。
 
+创建 JAR 文件
+```
+jar cvfm my.jar META-INF/MANIFEST.MF -C classes . -C resources .
+
+c: 创建新的 JAR 文件。
+v: 在标准输出中生成详细输出。
+f: 指定 JAR 文件的名称。
+m: 指定 MANIFEST.MF 文件，该文件包含了 JAR 文件的一些元数据。
+-C: 切换到指定的目录，[.] 表示将该目录中的所有文件添加到 JAR 中。
+```
+
+查看 JAR 文件
+```
+jar tf my.jar
+
+t: 列出 JAR 文件中的内容。
+```
+
+提取 JAR 文件
+```
+jar xf my.jar
+
+x: 从 JAR 文件中提取文件。
+```
+
+更新 JAR 文件
+```
+jar uf my.jar META-INF/MANIFEST.MF
+jar uf my.jar -C classes .
+
+u: 添加文件到 JAR，如果文件已经存，则更新。
+```
 ## Java 打包
 目录树
 ```
+.
+├── lib
+│   ├── logback-classic-1.5.18.jar
+│   ├── logback-core-1.5.18.jar
+│   └── slf4j-api-2.0.17.jar
 ├── META-INF
 │   └── MANIFEST.MF
-├── lib
-│   └── commons-lang3-3.17.0.jar
+├── resources
+│   └── logback.xml
 └── src
-    └── com
-        └── otto
-            └── Main.java
 
+    └── com
+
+        └── jacky
+
+            └── Main.java
 ```
 
 MANIFEST.MF 文件示例：
 ```
-Manifest-Version: 1.0
-Main-Class: com.otto.Main
-Class-Path: lib/commons-lang3-3.17.0.jar
-Created-By: 21.0.5 (Eclipse Adoptium)
+Main-Class: com.jacky.Main  
+Class-Path: lib/logback-classic-1.5.18.jar lib/logback-core-1.5.18.jar lib/slf4j-api-2.0.17.jar
 
 ```
-`Class-Path` 如果有多个依赖需要手动指定每一个，不能使用通配符，多个使用空格隔开。**注意最后一行是空行。** 需要注意的是 `Class-Path` 指定的指定的依赖会打进 jar 包，如果不指定的话也是可以的，但是要在运行时指定 -cp。
+`Class-Path` 如果有多个依赖需要手动指定每一个，不能使用通配符，多个使用空格隔开。**注意最后一行是空行。** 
+`Class-Path` 指定的类路径，项目目录是 jar 包所在的目录。
 
-Main.java 文件
-```java
-package com.otto;
-
-import org.apache.commons.lang3.StringUtils;
-
-public class Main {
-    public static void main(String[] args) {
-        System.out.println(StringUtils.equals("jacky", "suomea"));
-    }
-}
+编译
 ```
-
-编译，-classpath 可以使用 -cp 缩写，能够使用通配符匹配文件。
-```
-javac -classpath .:lib/*.jar -d classes src/com/otto/Main.java
-java -cp "classes;lib\*" Main
-```
-**`-d classes`**：将编译后的 `.class` 文件输出到 classes 目录，按照包名生成对应的目录结构。
-
-执行
-```
-java -classpath .:lib/commons-lang3-3.17.0.jar com.otto.Main
+javac -cp "lib/*" -d classes -encoding UTF-8 src/com/jacky/*.java
 ```
 
 打包
 ```
- jar cvfm my-app.jar META-INF/MANIFEST.MF -C . com lib/
-```
-- **`cvfm`**：
-	- `c`：创建 JAR 文件。
-    - `v`：显示详细信息。
-    - `f`：指定输出文件名。
-    - `m`：指定使用的清单文件。
-- **`-C .`**：切换到当前目录，包含 `com` 和 `lib/`。
-
-检查 jar 包
-```
-jar tf my-app.jar
+jar cvfm my.jar META-INF/MANIFEST.MF -C classes/ . -C resources/ .
 ```
 
 执行
 ```
-java -jar my-app.jar
+java -jar my.jar
 ```
-
 ## Spring Boot 打包
 Spring Boot 配置打包，如果项目继承了 spring-boot-starter-parent，无需额外配置 repackage，简化 pom.xml。
 ```xml

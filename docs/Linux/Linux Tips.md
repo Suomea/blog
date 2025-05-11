@@ -136,3 +136,58 @@ debian-12.10.0-amd64-netinst.iso 633M
 ```
 
 DVD 的安装包包含了大量的软件和工具包，安装的时候不需要联网。netinst 只包含基本的安装程序和核心组件，安装额外的组件需要联网。
+
+## ls
+### 文件的时间：
+
+- mtime，modification time 当文件的内容变更时，就会更新这个时间。
+- ctime，status time 当文件的状态改变时就会更新这个时间。权限和属性改变时会更新这个时间。
+- atime，access time 当文件的内容被读取时，更新这个时间。(根据内核参数配置，这个时间不一定被更新)
+
+ls -l 展示的时间就是 mtime
+
+### 常用的选项
+
+`-t` sort by modification time, newest first
+
+`-S` sort by file size, largest first
+
+`-r` reverse order while sorting
+
+`-h` with -l and/or -s, print human readable sizes (e.g., 1K 234M 2G)
+
+`--time-style` with -l, show times using style STYLE: full-iso, long-iso, iso, locale, or +FORMAT; FORMAT is interpreted like in 'date'
+
+可以编辑 `~/.bashrc` 设置别名。
+```shell
+alias ll='ls -l --time-stype=long-iso'
+```
+
+
+
+## tar
+用法
+```
+tar [选项] [归档文件名] [文件或目录列表]
+```
+
+tar 用于创建、查看和解包归档文件（archive files），归档文件通常以 .tar 为扩展名，可以将多个文件和目录打包成一个文件，便于传输或备份。
+
+tar 本身并不压缩文件，但可以与其他压缩工具结合使用，生成压缩的归档文件 tar.gz、tar.bz2、tar.xz 等。
+
+-c 创建归档文件。
+-x 解包归档文件。
+
+-z 使用 gzip 压缩或解压缩（tar.gz 或 tgz）。
+-j 使用 bzip2 压缩或解压缩（tar.bz2）。
+-J 使用 xz 压缩或解压缩 （tar.xz）。
+
+-f 指定生成或者处理的归档文件名称。
+
+-v 打印正在处理的文件。
+-C 指定解压缩处理后的目录。
+
+示例
+```
+tar -Jxvf mysql-8.4.4-linux-glibc2.28-x86_64.tar.xz -C /usr/local/
+```
