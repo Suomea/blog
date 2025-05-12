@@ -107,6 +107,14 @@ Executed_Gtid_Set:
 1 row in set (0.00 sec)
 ```
 
+删除 binlog 文件：
+```sql
+-- 删除指定日志文件之前的所有 binlog
+PURGE BINARY LOGS TO 'mysql-bin.000010';
+
+-- 删除指定时间点之前的所有 binlog
+PURGE BINARY LOGS BEFORE '2023-01-01 00:00:00';
+```
 ### 配置从库
 修改配置文件需要重启数据库。编辑配置文件 **/etc/mysql/mysql.conf.d/mysqld.cnf**：
 ```cnf
