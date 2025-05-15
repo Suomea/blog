@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Java/Java 打包.md",
+                "file": "docs/Spring/Spring Boot 日期时间序列化.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Java 打包"
+              "title": "Spring Boot 日期时间序列化"
             }
           }
         ],
@@ -213,6 +213,12 @@
   },
   "active": "b18920ca02202e1f",
   "lastOpenFiles": [
+    "docs/Java/反射和动态代理.md",
+    "docs/Java/给视频和图片添加水印.md",
+    "docs/Java/Java 打包.md",
+    "docs/Spring/Spring Boot 日期时间序列化.md",
+    "docs/Spring/资源加载策略.md",
+    "docs/Spring/Spring Tips.md",
     "docs/Linux/Linux Bash.md",
     "docs/Linux/查找文件.md",
     "docs/Linux/磁盘分区.md",
@@ -233,12 +239,6 @@
     "docs/Java/JVM 命令行工具.md",
     "docs/Java/JVM 内存空间划分.md",
     "docs/Java/GeoJSON 和 WKT.md",
-    "docs/Java/虚拟机类加载机制.md",
-    "docs/Java/给视频和图片添加水印.md",
-    "docs/Java/反射和动态代理.md",
-    "docs/Hadoop/Hadoop 快速开始.md",
-    "docs/Flink/Flink Tips.md",
-    "docs/Flink/Flink 快速开始.md",
     "mkdocs.yml",
     "docs/MyBatis",
     "docs/Hadoop",

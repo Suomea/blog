@@ -46,11 +46,8 @@ u: 添加文件到 JAR，如果文件已经存，则更新。
 ├── resources
 │   └── logback.xml
 └── src
-
     └── com
-
         └── jacky
-
             └── Main.java
 ```
 
@@ -63,18 +60,16 @@ Class-Path: lib/logback-classic-1.5.18.jar lib/logback-core-1.5.18.jar lib/slf4j
 `Class-Path` 如果有多个依赖需要手动指定每一个，不能使用通配符，多个使用空格隔开。**注意最后一行是空行。** 
 `Class-Path` 指定的类路径，项目目录是 jar 包所在的目录。
 
-编译
+编译和执行
+```
+javac -cp "lib/*" -d classes src/com/jacky/Main.java
+java -cp "lib/*:classes" com.jacky.App
+```
+
+编译、打包和执行
 ```
 javac -cp "lib/*" -d classes -encoding UTF-8 src/com/jacky/*.java
-```
-
-打包
-```
 jar cvfm my.jar META-INF/MANIFEST.MF -C classes/ . -C resources/ .
-```
-
-执行
-```
 java -jar my.jar
 ```
 ## Spring Boot 打包
