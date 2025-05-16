@@ -183,13 +183,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Java/Java 打包.md",
+                "file": "docs/Spring/Spring Boot 日期时间序列化.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Java 打包"
+              "title": "Outline of Spring Boot 日期时间序列化"
             }
           }
         ],
@@ -197,8 +197,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -213,10 +212,12 @@
   },
   "active": "b18920ca02202e1f",
   "lastOpenFiles": [
+    "docs/MyBatis/MyBatis 快速入门.md",
+    "docs/Spring/Spring Boot 日期时间序列化.md",
+    "docs/Java/RestTemplate.md",
     "docs/Java/反射和动态代理.md",
     "docs/Java/给视频和图片添加水印.md",
     "docs/Java/Java 打包.md",
-    "docs/Spring/Spring Boot 日期时间序列化.md",
     "docs/Spring/资源加载策略.md",
     "docs/Spring/Spring Tips.md",
     "docs/Linux/Linux Bash.md",
@@ -237,8 +238,6 @@
     "docs/Linux/ls.md",
     "docs/Linux/OpenLDAP.md",
     "docs/Java/JVM 命令行工具.md",
-    "docs/Java/JVM 内存空间划分.md",
-    "docs/Java/GeoJSON 和 WKT.md",
     "mkdocs.yml",
     "docs/MyBatis",
     "docs/Hadoop",
