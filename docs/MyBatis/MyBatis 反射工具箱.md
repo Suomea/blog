@@ -665,7 +665,7 @@ hasGetter(String) hasSetter(String) 方法，判断是否存在对应的属性�
 ```
 
 ## ObjectWrapper
-```
+```java
 public interface ObjectWrapper {
   // 如果封装的是普通的 Bean 对象，则调用相应属性的 getter 方法
   // 如果封装的是集合类，则获取指定 key 或下标对应的 value 值
