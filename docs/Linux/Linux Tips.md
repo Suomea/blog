@@ -191,3 +191,14 @@ tar 本身并不压缩文件，但可以与其他压缩工具结合使用，生�
 ```
 tar -Jxvf mysql-8.4.4-linux-glibc2.28-x86_64.tar.xz -C /usr/local/
 ```
+
+## 查看硬盘温度
+安装工具
+```
+apt install smartmontools
+```
+
+查看温度
+```
+smartctl -a /dev/sda | grep Temperature
+```
