@@ -53,25 +53,20 @@ nav:
     - Linux/正则表达式.md
     - Linux/查找文件.md
     - Linux/ArcLinux 安装.md
-    - Linux/curl.md
     - Linux/Debian 软件安装.md
-    - Linux/Git.md
     - Linux/iptables.md
     - Linux/磁盘分区.md
     - Linux/Linux 定时任务.md
     - Linux/Linux 文件系统.md
     - Linux/Linux 账号群组.md
-    - Linux/ls.md
     - "Nginx":
       - Nginx/Nginx Tips.md
       - Nginx/Nginx 编译安装.md
       - Nginx/Nginx 配置 Basic Auth.md
       - Nginx/Nginx 使用自签名证书.md
     - Linux/PT.md
-    - Linux/Shell 脚本.md
     - Linux/VIM.md
     - Linux/时间.md
-    - Linux/运维监控.md
     - "Docker":
       - Linux/Docker Tips.md
 
@@ -116,10 +111,13 @@ nav:
     - "Hadoop":
       - Hadoop/Hadoop Tips.md
       - Hadoop/Hadoop 快速开始.md
-  - 文章:
-      - Arts/满江红-岳飞.md
-      - Arts/侠客行-李白.md
-      - Arts/大观楼长联-孙髯.md
+  # - 英语:
+  #     - English/Last, the last, the latest.md
+  #     - English/Would 和 Want.md
+#   - 文章:
+#       - Arts/满江红-岳飞.md
+#       - Arts/侠客行-李白.md
+#       - Arts/大观楼长联-孙髯.md
 
   # - 记录:
   #     - Reading/Timeline.md

@@ -1,12 +1,12 @@
 记录 Linux 安装和配置的相关技巧，主要基于 Debian 进行操作。
 
 ## 配置静态 IP
-### 备份网卡配置文件
+备份网卡配置文件
 ```text
 cp /etc/network/interfaces /etc/network/interfaces.bak
 ```
 
-### 编辑配置文件
+编辑配置文件
 ```text
 # The primary network interface
 auto eth0
@@ -21,7 +21,7 @@ netmask 255.255.255.0
 gateway 192.168.31.1
 ```
 
-### 重启网络
+重启网络
 ```text
 systemctl restart networking
 ```
@@ -43,28 +43,31 @@ chmod: 改变文件的权限
 
 ## 配置 SSH 免密登录
 假设从 Win 免密登录到 Linux。
-### Win 生成密钥要对
+
+Win 生成密钥要对
 ```shell
 ssh-keygen -t rsa
 ```
 
-### 配置
-1. 复制 Win 电脑的公钥，内容位于 ~/.ssh/id_rsa.pub 文件。  
-2. 新建 Linux ~/.ssh/authorized_keys 文件，将 Win 的公钥内容粘贴进来。  
-3. 设置 authorized_keys 文件的权限，只能自己读写：`chmod 0600 ~/.ssh/auhtorized_keys`
+复制 Win 电脑的公钥，内容位于 ~/.ssh/id_rsa.pub 文件。  
 
-## 超时自动退出
+新建 Linux ~/.ssh/authorized_keys 文件，将 Win 的公钥内容粘贴进来。  
+
+设置 authorized_keys 文件的权限，只能自己读写：`chmod 0600 ~/.ssh/auhtorized_keys`
+
+## 设置会话超时自动退出
 
 可以在 /etc/profile 文件设置变量 $TMOUT，单位为秒。
 
-## 查询机器上次启动时间
+## 系统信息查询
+### 查询机器上次启动时间
 
 ```
 who -b
 ```
 
 
-## 查看操作系统信息
+### 查看操作系统信息
 
 ```
 cat /etc/os-release
@@ -74,7 +77,7 @@ cat /etc/os-release
 ```
 ls-release -a
 ```
-## 查看 CPU 信息
+### 查看 CPU 信息
 ```
 lscpu
 ```
@@ -84,7 +87,7 @@ lscpu
 cat /proc/cpuinfo
 ```
 
-## 查看 CPU 温度
+### 查看 CPU 温度
 直接查看 CPU 温度
 ```
 # cat /sys/class/thermal/thermal_zone0/temp 
@@ -96,7 +99,7 @@ cat /proc/cpuinfo
 # cat /sys/class/thermal/thermal_zone3/temp 
 44000
 ```
-## 查看进程占用的内存
+### 查看进程占用的内存
 
 使用 ps 命令，查看指定进程的内存占用，rss Resident Set Size 表示占用物理内存大小，不包括 Swap，单位 KB。
 ```
@@ -119,7 +122,7 @@ cat /proc/cpuinfo
 VmRSS:     29016 kB  
 ```
 
-## 查看 Intel 核显占用情况
+### 查看 Intel 核显占用情况
 安装必要的工具包
 ```
 apt install intel_gpu_tools
@@ -138,42 +141,36 @@ debian-12.10.0-amd64-netinst.iso 633M
 DVD 的安装包包含了大量的软件和工具包，安装的时候不需要联网。netinst 只包含基本的安装程序和核心组件，安装额外的组件需要联网。
 
 ## ls
-### 文件的时间：
+常用的选项
+```
+-t sort by modification time, newest first
 
-- mtime，modification time 当文件的内容变更时，就会更新这个时间。
-- ctime，status time 当文件的状态改变时就会更新这个时间。权限和属性改变时会更新这个时间。
-- atime，access time 当文件的内容被读取时，更新这个时间。(根据内核参数配置，这个时间不一定被更新)
+-S sort by file size, largest first
 
-ls -l 展示的时间就是 mtime
+-r reverse order while sorting
 
-### 常用的选项
+-h with -l and/or -s, print human readable sizes (e.g., 1K 234M 2G)
 
-`-t` sort by modification time, newest first
-
-`-S` sort by file size, largest first
-
-`-r` reverse order while sorting
-
-`-h` with -l and/or -s, print human readable sizes (e.g., 1K 234M 2G)
-
-`--time-style` with -l, show times using style STYLE: full-iso, long-iso, iso, locale, or +FORMAT; FORMAT is interpreted like in 'date'
+--time-style with -l, show times using style STYLE: full-iso, long-iso, iso, locale, or +FORMAT; FORMAT is interpreted like in 'date'
+```
 
 可以编辑 `~/.bashrc` 设置别名。
 ```shell
 alias ll='ls -l --time-stype=long-iso'
 ```
 
-
-
+文件的时间：
+```
+- mtime，modification time 当文件的内容变更时，就会更新这个时间。
+- ctime，status time 当文件的状态改变时就会更新这个时间。权限和属性改变时会更新这个时间。
+- atime，access time 当文件的内容被读取时，更新这个时间。(根据内核参数配置，这个时间不一定被更新)
+```
+ls -l 展示的时间就是 mtime
 ## tar
-用法
+tar 用于创建、查看和解包归档文件（archive files），归档文件通常以 .tar 为扩展名，可以将多个文件和目录打包成一个文件，便于传输或备份。  
+tar 本身并不压缩文件，但可以与其他压缩工具结合使用，生成压缩的归档文件 tar.gz、tar.bz2、tar.xz 等。用法
 ```
 tar [选项] [归档文件名] [文件或目录列表]
-```
-
-tar 用于创建、查看和解包归档文件（archive files），归档文件通常以 .tar 为扩展名，可以将多个文件和目录打包成一个文件，便于传输或备份。
-
-tar 本身并不压缩文件，但可以与其他压缩工具结合使用，生成压缩的归档文件 tar.gz、tar.bz2、tar.xz 等。
 
 -c 创建归档文件。
 -x 解包归档文件。
@@ -186,6 +183,7 @@ tar 本身并不压缩文件，但可以与其他压缩工具结合使用，生�
 
 -v 打印正在处理的文件。
 -C 指定解压缩处理后的目录。
+```
 
 示例
 ```

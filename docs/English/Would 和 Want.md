@@ -11,7 +11,7 @@ Would 和 Want 都可以表示愿望或者意图。
 - Do you want to come with us?
 
 如果我有时间，我会去。
-I would go if ihad time.
+I would go if i had time.
 
 我想去公园。
 I want go to the park.
