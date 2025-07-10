@@ -15,16 +15,9 @@ CREATE TABLE user_info(
     user_id BIGINT NOT NULL COMMENT "用户 ID",
     name VARCHAR(20) COMMENT "用户姓名",
     born_time datetime COMMENT "出生日期"
-)UNIQUE KEY(user_id)
+)
+UNIQUE KEY(user_id)
 DISTRIBUTED BY HASH(user_id) BUCKETS 1;
-
-
-CREATE TABLE IF NOT EXISTS user_info  
-(  
-	name varchar(20) comment '姓名',
-	age int comment '年龄',
-	birth_date date comment '出生日期'
-)DISTRIBUTED BY HASH(age) BUCKETS 3;
 ```
 
 ### 创建导入作业
@@ -100,7 +93,7 @@ https://doris.apache.org/zh-CN/docs/sql-manual/sql-statements/data-modification/
 导入任务报错 TOO_MANY_TASKS，参考官方公众号“2.0.9和2.1.3之前都存在已知的bug导致TOO_MANY_TASKS的问题”。实际使用下来 2.0.12 也存在这个问题，解决方案是升级至 2.0.15 或者 2.1.8，最终 2.0.12 直接升级到 2.1.8 解决报错的问题。
 
 ### 修改 RoutineLoad 子任务最大运行时间
-默认 60 秒，为了提升数据入库频率，增加到 10 秒。
+默认 60 秒，为了提升数据入库频率，修改为 10 秒。
 ```
 pause routine load for iot_data.hk_anpr;
 
