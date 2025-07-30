@@ -112,7 +112,9 @@ nav:
       - Hadoop/Hadoop Tips.md
       - Hadoop/Hadoop 快速开始.md
   - YOLO:
+    - yolo/yolo tips.md
     - yolo/环境搭建.md
+    - yolo/yolo 命令.md
   # - 英语:
   #     - English/Last, the last, the latest.md
   #     - English/Would 和 Want.md
