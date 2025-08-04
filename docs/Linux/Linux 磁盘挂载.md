@@ -1,21 +1,23 @@
 
 ## 列出所有块设备及其挂载点 
-`lsblk` 命令默认输出字段解释：
+`lsblk` 列出所有块设备及其挂载点，命令输出：
 ```
-	- NAME：就是装置的文件名！会省略 /dev 等前导目录！
-	
-	- MAJ:MIN：其实核心认识的装置都是透过这两个代码来熟悉的！分别是主要：次要装置代码！
-	
-	- RM：是否为可卸除装置 (removable device)，如光盘、USB 磁盘等等
-	
-	- SIZE：当然就是容量啰！
-	
-	- RO：是否为只读装置的意思
-	
-	- TYPE：是磁盘 (disk)、分区槽 (partition) 还是只读存储器 (rom) 等输出
-	
-	- MOUTPOINT：就是前一章谈到的挂载点！
+NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda            8:0    0   3.6T  0 disk 
+└─sda1         8:1    0   3.6T  0 part /data/disk2
+sdb            8:16   0   3.6T  0 disk 
+├─sdb1         8:17   0    16M  0 part 
+└─sdb2         8:18   0   3.6T  0 part /data/disk1
 ```
+命令默认输出字段解释：  
+
+- NAME：就是装置的文件名，会省略 /dev 等前导目录！
+- MAJ:MIN：其实核心认识的装置都是通过这两个代码来熟悉的！分别是`主要:次要`装置代码！
+- RM：是否为可卸除装置 (removable device)，如光盘、USB 磁盘等等
+- SIZE：容量。
+- RO：是否为只读装置的意思
+- TYPE：是磁盘 (disk)、分区槽 (partition) 还是只读存储器 (rom) 等输出	
+- MOUTPOINT：挂载点路径。
 
 ## 块设备的 UUID 和文件系统类型
 执行示例：
@@ -150,7 +152,7 @@ UUID="f4f72136-4edf-4abd-9fdd-83d49727f827" /srv/nfs/data40 ext4 defaults 0 0
 LVM 分区扩容
 ```
 # gdisk /dev/vda
-GPT fdisk (gdisk) version 1.0.4
+GPT fdisk (gdisk)   version 1.0.4
 
 Partition table scan:
   MBR: protective
