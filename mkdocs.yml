@@ -51,11 +51,10 @@ nav:
   - Linux:
     - Linux/Linux Tips.md
     - Linux/正则表达式.md
+    - Linux/磁盘挂载.md
     - Linux/查找文件.md
-    - Linux/ArcLinux 安装.md
     - Linux/Debian 软件安装.md
     - Linux/iptables.md
-    - Linux/磁盘分区.md
     - Linux/Linux 定时任务.md
     - Linux/Linux 文件系统.md
     - Linux/Linux 账号群组.md
