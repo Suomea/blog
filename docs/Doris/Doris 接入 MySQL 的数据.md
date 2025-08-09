@@ -74,15 +74,7 @@ PARTITION BY RANGE(`time`)() DISTRIBUTED BY HASH(`time`) BUCKETS 8 PROPERTIES (
   "dynamic_partition.time_zone"="Asia/Shanghai"
 );
 
--- 将查询的数据 geojson 展示路径
-SELECT CONCAT(
-    '{"type": "LineString", "coordinates": [',
-    GROUP_CONCAT(
-        CONCAT('[', lon, ',', lat, ']') order by time 
-    ),
-    ']}'
-) AS geojson
-FROM za_gps_data where  license = 'xxxxx' and time >= '2024-07-09 00:00:00'  ;
+
 ```
 
 ```sql
