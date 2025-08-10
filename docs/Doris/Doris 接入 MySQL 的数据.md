@@ -46,41 +46,6 @@ CREATE TABLE `thermo_hygro_meter` (
 UNIQUE KEY (`device_id`, `detect_time`)   
 DISTRIBUTED BY HASH(`detect_time`) BUCKETS 1;  
 ```
-
-另一张不相干的表，用来演示动态分区表的创建：
-```sql
-CREATE TABLE vehicle_gps_data (
-  license varchar(255) comment '车牌',
-  `time` datetime comment '时间',
-  color varchar(100) comment '车牌颜色',
-  lon decimal(15, 12) comment '经度',
-  lat decimal(15, 12) comment '纬度',
-  speed float comment '速度',
-  altitude int comment '海拔',
-  direction int comment '方向角',
-  acc int comment '加速度',
-  create_time datetime not null default current_timestamp comment '创建时间'
-)
-UNIQUE KEY (`license`, `time`)  -- 这里最好调整一下 time 和 license 的顺序，一般查询都会带上时间但是不一定会带上车牌号
-PARTITION BY RANGE(`time`)() DISTRIBUTED BY HASH(`time`) BUCKETS 8 PROPERTIES (
- "replication_num" = "1",
-  "dynamic_partition.enable" = "true",
-  "dynamic_partition.time_unit" = "MONTH",
-  "dynamic_partition.end" = "10",
-  "dynamic_partition.prefix" = "p",
-  "dynamic_partition.buckets" = "8",
-  "dynamic_partition.create_history_partition" = "true",
-  "dynamic_partition.history_partition_num" = "8",
-  "dynamic_partition.time_zone"="Asia/Shanghai"
-);
-
-
-```
-
-```sql
--- 查询分区信息
-show partitions from vehicle_gps_data;
-```
 ## INSERT INTO SELECT
 参考文档  
 1. https://doris.apache.org/zh-CN/docs/2.0/lakehouse/database/jdbc  

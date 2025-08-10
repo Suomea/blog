@@ -8,7 +8,7 @@ Mac 下载安装包，一路确认，默认安装目录：/opt/miniconda3
 
 创建 ultralytics 环境
 ```
-conda create -n ultralytics pythin=3.12
+conda create -n ultralytics python=3.12
 ```
 
 查看环境列表

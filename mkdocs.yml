@@ -42,6 +42,7 @@ nav:
         - DM/达梦备份.md
     - "Doris":
         - Doris/Doris Tips.md
+        - Doris/Doris 动态分区.md
         - Doris/Doris 接入 Kafka 的数据.md
         - Doris/Doris 接入 MySQL 的数据.md
   - K8S:
@@ -87,8 +88,6 @@ nav:
       - Algorithms/求解算数表达式的值.md
       - Algorithms/Base64 算法.md
       - Algorithms/数据结构：图.md
-#  - Architecture:
-#      - Architecture/设备信息.md
   - Java:
     - Java/Java Tips.md
     - Java/Java 并发.md
@@ -114,22 +113,10 @@ nav:
       - Hadoop/Hadoop Tips.md
       - Hadoop/Hadoop 快速开始.md
   - YOLO:
-    - yolo/yolo tips.md
-    - yolo/环境搭建.md
-    - yolo/yolo 命令.md
-  # - 英语:
-  #     - English/Last, the last, the latest.md
-  #     - English/Would 和 Want.md
-#   - 文章:
-#       - Arts/满江红-岳飞.md
-#       - Arts/侠客行-李白.md
-#       - Arts/大观楼长联-孙髯.md
+    - yolo/YOLO Tips.md
+    - yolo/YOLO 环境搭建.md
+    - yolo/YOLO 数据集构建与训练.md
 
-  # - 记录:
-  #     - Reading/Timeline.md
-  #     - Reading/2022.md
-  #     - Reading/2021.md
-  #     - Reading/2023.md
 
 extra_css:
   - stylesheets/extra.css
