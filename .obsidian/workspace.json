@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/yolo/YOLO 数据集构建与训练.md",
+                "file": "docs/Doris/Doris 接入 MySQL 的数据.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "YOLO 数据集构建与训练"
+              "title": "Doris 接入 MySQL 的数据"
             }
           },
           {
@@ -168,13 +168,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/yolo/YOLO 数据集构建与训练.md",
+                "file": "docs/Doris/Doris 接入 MySQL 的数据.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of YOLO 数据集构建与训练"
+              "title": "Outline of Doris 接入 MySQL 的数据"
             }
           }
         ],
@@ -197,9 +197,10 @@
   },
   "active": "471471b0ee8cd611",
   "lastOpenFiles": [
-    "docs/yolo/YOLO Tips.md",
+    "docs/Doris/Doris 动态分区.md",
     "docs/yolo/YOLO 环境搭建.md",
     "docs/yolo/YOLO 数据集构建与训练.md",
+    "docs/yolo/YOLO Tips.md",
     "docs/index.md",
     "mkdocs.yml",
     "截屏2025-08-10 02.50.04.png",
@@ -208,7 +209,6 @@
     "docs/Python/第 8 章：输入和输出.md",
     "docs/Python/第 4 章：流程控制.md",
     "docs/Python/第 6 章：字符串.md",
-    "docs/Doris/Doris 动态分区.md",
     "docs/Doris/Doris Tips.md",
     "docs/Doris/Doris 接入 MySQL 的数据.md",
     "docs/Doris/Doris 接入 Kafka 的数据.md",

@@ -87,13 +87,14 @@ insert into thermo_hygro_meter select * from mysql.iot_data.thermo_hygro_meter;
 insert into thermo_hygro_meter(device_id, detect_time, temperature, humidity, create_time)
 select device_id, detect_time, temperature, humidity, create_time from mysql.iot_data.thermo_hygro_meter;
 ```
+!!!note
+	创建完 mysql 数据源之后，mysql 的元数据信息（如表的字段列表）会被 Doris 缓存下来。如果 MySQL 源更新了字段信息，会导致在 Doris 中查询（`select *` 或者 `select new_field_name`）出错。[提问链接](https://ask.selectdb.com/questions/D1ff1/jdbc-catalog-geng-xin-yuan-shu-ju-biao-zi-duan-wen-ti) 解决方案是刷新 Catalog 数据源的元数据信息，[参考链接](https://doris.apache.org/zh-CN/docs/dev/sql-manual/sql-statements/Utility-Statements/REFRESH/?_highlight=refresh)：
+    ```
+    REFRESH CATALOG catalog_name;  
+    REFRESH DATABASE [catalog_name.]database_name;  
+    REFRESH TABLE [catalog_name.][database_name.]table_name;
+    ```
 
-有一个问题，创建完 mysql 数据源之后，mysql 的元数据信息如表的字段列表貌似会被 Doris 缓存下来，如果 MySQL 更新了字段会导致在 Doris 中查询（`select *` 或者 `select new_field_name`）出错。[提问链接](https://ask.selectdb.com/questions/D1ff1/jdbc-catalog-geng-xin-yuan-shu-ju-biao-zi-duan-wen-ti) 解决方案是刷新 Catalog 数据源的元数据信息，[参考链接](https://doris.apache.org/zh-CN/docs/dev/sql-manual/sql-statements/Utility-Statements/REFRESH/?_highlight=refresh)：
-```
-REFRESH CATALOG catalog_name;  
-REFRESH DATABASE [catalog_name.]database_name;  
-REFRESH TABLE [catalog_name.][database_name.]table_name;
-```
 
 测试大量数据导入的性能。
 

@@ -21,6 +21,11 @@ conda env list
 conda activate ultralytics
 ```
 
+删除 labelimg 环境及环境中所有的包
+```
+conda remove -n labelimg --all
+```
+
 **安装 PyTorch**
 ```
 pip3 install torch torchvision torchaudio
