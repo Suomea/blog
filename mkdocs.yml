@@ -62,6 +62,7 @@ nav:
     - "Nginx":
       - Nginx/Nginx Tips.md
       - Nginx/Nginx 编译安装.md
+      - Nginx/Nginx 日志.md
       - Nginx/Nginx 配置 Basic Auth.md
       - Nginx/Nginx 使用自签名证书.md
     - Linux/PT.md
