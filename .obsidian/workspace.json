@@ -22,6 +22,18 @@
             }
           },
           {
+            "id": "3174ec370dbefe86",
+            "type": "leaf",
+            "state": {
+              "type": "vscode-editor",
+              "state": {
+                "file": "mkdocs.yml"
+              },
+              "icon": "lucide-file",
+              "title": "mkdocs"
+            }
+          },
+          {
             "id": "651ddb47fb2d340c",
             "type": "leaf",
             "state": {
@@ -49,7 +61,8 @@
               "title": "YOLO 数据集构建与训练"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -168,13 +181,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Nginx/Nginx 日志.md",
+                "file": "mkdocs.yml",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Nginx 日志"
+              "title": "Outline of mkdocs"
             }
           }
         ],
@@ -196,11 +209,11 @@
       "vscode-editor:Create Code File": false
     }
   },
-  "active": "471471b0ee8cd611",
+  "active": "a46d90ea512d36f8",
   "lastOpenFiles": [
+    "docs/Nginx/Nginx 日志.md",
     "mkdocs.yml",
     "docs/index.md",
-    "docs/Nginx/Nginx 日志.md",
     "docs/Doris/Doris 接入 MySQL 的数据.md",
     "docs/Doris/Doris 动态分区.md",
     "docs/yolo/YOLO 环境搭建.md",

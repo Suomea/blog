@@ -126,10 +126,116 @@ goaccess logs/access.log \
 - 日期格式 `%d/%b/%Y` 对应 `[25/Aug/2025:23:00:00 +0800]` 的日期部分。  
 - 时间格式 `%T` 对应 `23:00:00`。
 
-## 日志归集存储分析
-**Doris 存储**
+## Doris 存储分析
 如果并发不是很高，可以使用 logstash/filebeat 进行采集日志，然后 Stream Load 导入到 Doris。  
-如果并发很高，那么 logstash/filebeat 直接推送到 Kafka，然后 Routine Load 导入到 Doris。
+如果并发很高，那么 logstash/filebeat 直接推送到 Kafka，然后 Routine Load 导入到 Doris。  
 
-**Loki 存储**
-可以使用 promtail 进行采集并推送到 Loki 进行存储，Grafana 集成 Loki 进行可视化分析。
+Doris 针对 Beats 有官方的 Output 插件，能够将数据通过 Http Stream Load 输出到 Drois 中。插件支持 Filebeat。
+
+Nginx 配置日志存储：
+```
+log_format json escape=json
+               '{"time":"$time_iso8601",'
+               '"remote_addr":"$remote_addr",'
+               '"remote_user":"$remote_user",'
+               '"request":"$request",'
+               '"scheme":"$scheme",'
+               '"request_method":"$request_method",'
+               '"uri":"$uri",'
+               '"status":$status,'
+               '"body_bytes_sent":$body_bytes_sent,'
+               '"request_time":$request_time,'
+               '"http_referer":"$http_referer",'
+               '"http_host":"$http_host",'
+               '"http_user_agent":"$http_user_agent",'
+               '"http_token":"$http_token",'
+               '"http_type":"$http_type",'
+               '"upstream_response_time":"$upstream_response_time",'
+               '"service_name":"$service_name",'
+               '"upstream_addr":"$upstream_addr"}';
+access_log /usr/local/nginx/logs/json_access.log json;
+```
+
+Doris 建表
+```sql
+CREATE TABLE `nginx_log` (
+  `time` datetime NULL,
+  `remote_addr` varchar(50) NULL,
+  `uri` varchar(3000) NULL,
+  `remote_user` varchar(100) NULL,
+  `request` varchar(3000) NULL,
+  `scheme` varchar(20) NULL,
+  `request_method` varchar(20) NULL,
+  `status` int NULL,
+  `body_bytes_sent` bigint NULL,
+  `request_time` float NULL,
+  `http_referer` varchar(500) NULL,
+  `http_user_agent` varchar(500) NULL,
+  `http_type` varchar(50) NULL,
+  `http_token` varchar(500) NULL,
+  `upstream_response_time` varchar(50) NULL,
+  `service_name` varchar(100) NULL,
+  `upstream_addr` varchar(100) NULL,
+  `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=OLAP
+DUPLICATE KEY(`time`, `remote_addr`)
+PARTITION BY RANGE(`time`)()
+DISTRIBUTED BY RANDOM BUCKETS 10
+PROPERTIES (
+"replication_allocation" = "tag.location.default: 1",
+"dynamic_partition.enable" = "true",
+"dynamic_partition.time_unit" = "YEAR",
+"dynamic_partition.time_zone" = "Asia/Shanghai",
+"dynamic_partition.start" = "-2147483648",
+"dynamic_partition.end" = "10",
+"dynamic_partition.prefix" = "p",
+"dynamic_partition.replication_allocation" = "tag.location.default: 1",
+"dynamic_partition.buckets" = "8",
+"dynamic_partition.create_history_partition" = "true",
+"dynamic_partition.history_partition_num" = "2",
+"dynamic_partition.hot_partition_num" = "0"
+);
+```
+
+下载 Doris 官方的 Beats：https://doris.apache.org/zh-CN/docs/3.0/ecosystem/beats
+
+Filebeat 配置文件：
+```
+# input 
+# 逐行读取，每一行就是一个事件
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /usr/local/nginx/logs/json_access.log
+
+# queue and batch
+queue.mem:
+  ## 内存最多缓存 100 万条事件
+  events: 1000000
+  ## 每次至少凑够 10 万条事件才会推送 Doris
+  flush.min_events: 100000
+  ## 如果 10 秒内没有凑够 10 万条，也会强制推送 Doris
+  flush.timeout: 10s
+
+# output
+output.doris:
+  fenodes: [ "http://fe_host:8030" ]
+  user: "root"
+  password: "xxxx"
+  database: "log_db"
+  table: "nginx_log"
+  # output string format
+  ## 直接把原始文件每一行的 message 原样输出，由于 headers 指定了 format: "json"，Stream Load 会自动解析 JSON 字段写入对应的 Doris 表的字段。
+  codec_format_string: '%{[message]}'
+  headers:
+    format: "json"
+    read_json_by_line: "true"
+    ## 同一批次的数据写入到一个 tablet 里面去
+    load_to_single_tablet: "true"
+```
+
+Filebeat 启动：
+```shell
+ ./filebeat-doris-2.0.0 -c nginx-log.yml
+```
