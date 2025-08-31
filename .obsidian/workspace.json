@@ -25,12 +25,14 @@
             "id": "3174ec370dbefe86",
             "type": "leaf",
             "state": {
-              "type": "vscode-editor",
+              "type": "markdown",
               "state": {
-                "file": "mkdocs.yml"
+                "file": "docs/Nginx/Nginx Tips.md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "mkdocs"
+              "title": "Nginx Tips"
             }
           },
           {
@@ -181,13 +183,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "mkdocs.yml",
+                "file": "docs/Nginx/Nginx Tips.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of mkdocs"
+              "title": "Outline of Nginx Tips"
             }
           }
         ],
@@ -209,13 +211,24 @@
       "vscode-editor:Create Code File": false
     }
   },
-  "active": "a46d90ea512d36f8",
+  "active": "3174ec370dbefe86",
   "lastOpenFiles": [
+    "docs/Nginx/Nginx 配置 Basic Auth.md",
     "docs/Nginx/Nginx 日志.md",
+    "docs/Linux/VIM.md",
+    "docs/English/Would 和 Want.md",
+    "docs/English/Last, the last, the latest.md",
+    "docs/Doris/Doris 接入 MySQL 的数据.md",
+    "docs/Doris/Doris 接入 Kafka 的数据.md",
+    "docs/Doris/Doris 动态分区.md",
+    "docs/DM/达梦备份.md",
+    "docs/DM/达梦安装.md",
+    "docs/DM/达梦 Tips.md",
+    "docs/Arts/桃花庵歌-唐寅.md",
+    "docs/Arts/满江红-岳飞.md",
+    "docs/Arts/大观楼长联-孙髯.md",
     "mkdocs.yml",
     "docs/index.md",
-    "docs/Doris/Doris 接入 MySQL 的数据.md",
-    "docs/Doris/Doris 动态分区.md",
     "docs/yolo/YOLO 环境搭建.md",
     "docs/yolo/YOLO 数据集构建与训练.md",
     "docs/yolo/YOLO Tips.md",
@@ -226,20 +239,10 @@
     "docs/Python/第 4 章：流程控制.md",
     "docs/Python/第 6 章：字符串.md",
     "docs/Doris/Doris Tips.md",
-    "docs/Doris/Doris 接入 Kafka 的数据.md",
     "docs/Spring/日期时间序列化.md",
     "docs/Spring/Spring Tips.md",
     "docs/Linux/账号群组.md",
     "docs/Linux/磁盘挂载.md",
-    "docs/Linux/查找文件.md",
-    "docs/Linux/监控硬盘温度数据.md",
-    "docs/Linux/正则表达式.md",
-    "docs/Linux/Linux 定时任务.md",
-    "docs/Linux/时间.md",
-    "docs/Kafka/Kafka 配置.md",
-    "docs/Kafka/Kafka 快速开始.md",
-    "docs/Kafka/Kafka 常用命令.md",
-    "docs/Linux/Debian 挂载 ntfs 文件系统.md",
     "docs/yolo",
     "docs/MyBatis",
     "docs/Hadoop",
