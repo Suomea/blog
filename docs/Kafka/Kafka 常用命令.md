@@ -26,6 +26,11 @@ bin/kafka-topics.sh --bootstrap-server localhost:9092 \
  
 ## 消费消息
 
+查看消费者组的消费情况
+```
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group GOUP_NAME --describe 
+```
+
 控制台消费者
 ```
 bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <topic_name>
