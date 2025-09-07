@@ -96,6 +96,8 @@ boolean isPizzaFantastic() {
 
 ## 文本文件转码
 将目录下的所有以 `.cue` 结尾的文件，从 `GBK` 转到 `UTF-8`。
+
+Java 版本：
 ```java
     private static final String DIR = "";
 
@@ -113,6 +115,38 @@ boolean isPizzaFantastic() {
     }
 ```
 
+Python 版本：
+```python
+import os
+
+for root, dirs, files in os.walk(""):
+    for file in files:
+        if file.endswith(".cue"):
+            current_path = os.path.join(root, file)
+            try:
+                # 使用 GBK 编码尝试读取
+                with open(current_path, "r", encoding="GBK") as f:
+                    content = f.read()
+                    print(f"Content from {current_path}:\n{content}\n{'=' * 50}\n")
+
+                    # 将内容保存为 UTF-8 编码
+                with open(current_path, "w", encoding="UTF-8") as f:
+                    f.write(content)
+                print(f"Successfully converted {current_path} from GBK to UTF-8.")
+            except UnicodeDecodeError:
+                print(f"Failed to decode {current_path} with GBK encoding. Trying GB18030...\n")
+                try:
+                    with open(current_path, "r", encoding="GB18030") as f:
+                        content = f.read()
+                        print(f"Content from {current_path}:\n{content}\n{'=' * 50}\n")
+
+                    # 将内容保存为 UTF-8 编码
+                    with open(current_path, "w", encoding="UTF-8") as f:
+                        f.write(content)
+                    print(f"Successfully converted {current_path} from GB18030 to UTF-8.")
+                except UnicodeDecodeError:
+                    print(f"Failed to decode {current_path} with GB18030 encoding.\n")
+```
 ## HTTP 401 和 403 的区别
 401 Unauthorized 表示客户端需要进行身份认证才能获取请求的响应。
 

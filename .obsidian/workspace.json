@@ -36,6 +36,20 @@
             }
           },
           {
+            "id": "d038e917d7ab1764",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/Java/Java Tips.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Java Tips"
+            }
+          },
+          {
             "id": "651ddb47fb2d340c",
             "type": "leaf",
             "state": {
@@ -64,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -183,13 +197,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Nginx/Nginx Tips.md",
+                "file": "docs/Java/Java Tips.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Nginx Tips"
+              "title": "Outline of Java Tips"
             }
           }
         ],
@@ -211,8 +225,17 @@
       "vscode-editor:Create Code File": false
     }
   },
-  "active": "3174ec370dbefe86",
+  "active": "d038e917d7ab1764",
   "lastOpenFiles": [
+    "docs/Python/学习资料.md",
+    "docs/Python/第 2 章：算术、字符串与变量.md",
+    "docs/yolo/YOLO 环境搭建.md",
+    "docs/yolo/YOLO 数据集构建与训练.md",
+    "docs/MySQL/MySQL 索引.md",
+    "docs/MySQL/MySQL 安装.md",
+    "docs/MySQL/MySQL 备份.md",
+    "docs/MySQL/MySQL 变量.md",
+    "docs/MySQL/MySQL 主从.md",
     "docs/Nginx/Nginx 配置 Basic Auth.md",
     "docs/Nginx/Nginx 日志.md",
     "docs/Linux/VIM.md",
@@ -229,20 +252,11 @@
     "docs/Arts/大观楼长联-孙髯.md",
     "mkdocs.yml",
     "docs/index.md",
-    "docs/yolo/YOLO 环境搭建.md",
-    "docs/yolo/YOLO 数据集构建与训练.md",
     "docs/yolo/YOLO Tips.md",
     "截屏2025-08-10 02.50.04.png",
     "截屏2025-08-10 02.48.40.png",
     "截屏2025-08-10 02.46.16.png",
     "docs/Python/第 8 章：输入和输出.md",
-    "docs/Python/第 4 章：流程控制.md",
-    "docs/Python/第 6 章：字符串.md",
-    "docs/Doris/Doris Tips.md",
-    "docs/Spring/日期时间序列化.md",
-    "docs/Spring/Spring Tips.md",
-    "docs/Linux/账号群组.md",
-    "docs/Linux/磁盘挂载.md",
     "docs/yolo",
     "docs/MyBatis",
     "docs/Hadoop",
