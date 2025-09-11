@@ -48,12 +48,6 @@ select * from v$license
 ## 用户、模式、表空间
 表空间是一个逻辑概念，由一个或者多个物理数据库文件组成。数据库中所有的对象都存储在表空间对应的数据文件中。
 
-查询表空间：
-```sql
-SELECT * FROM V$TABLESPACE; 
-SELECT * FROM DBA_DATA_FILES;
-```
-
 默认的表空间：
 - SYSTEM，存储数据字典、系统元数据。
 - MAIN，用户默认的表空间。
@@ -74,3 +68,29 @@ SELECT * FROM DBA_DATA_FILES;
 模式只是一个存粹的逻辑概念，没有存储属性，不关联表空间。但是模式是权限管理的核心单元。
 
 如果用户对模式中的表有读写权限，但是对模式中的表所属的表空间没有配额，那么不影响用户对模式中已经存在表进行读写。
+
+查询表空间：
+```sql
+SELECT * FROM V$TABLESPACE; 
+SELECT * FROM DBA_DATA_FILES;
+```
+
+创建表空间，设置初始大小 128M，设置自动扩展，每次 100M，上限 10240M：
+```sql
+create tablespace "TEST" datafile '/data/dmdata/DAMENG/TEST.DBF' size 128 autoextend on next 100 maxsize 10240;
+```
+
+更新表空间，设置自动扩展，每次 100M，上限 10240M：
+```sql
+alter tablespace "TEST" datafile '/data/dmdata/DAMENG/TEST.DBF' autoextend on next 100 maxsize 10240;
+```
+
+创建用户，并赋予角色：
+```sql
+create user "TEST" identified by "Dameng@123" hash with SHA512 salt 
+encrypt by "123456" 
+default tablespace "TEST" 
+default index tablespace "TEST"; 
+
+grant "PUBLIC","SOI","DBA","RESOURCE" to "TEST";
+```
