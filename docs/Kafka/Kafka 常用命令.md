@@ -17,15 +17,22 @@ topic 操作选项
 --config <key=val> 更新系统默认设置
 ```
 
-创建 Topic。
+创建 Topic：
 ```shell
 bin/kafka-topics.sh --bootstrap-server localhost:9092 \
 	--create \
 	--topic quickstart-events [--partitions num] [--replication-factor num] --command-config admin-jaas
 ```
- 
-## 消费消息
 
+查看 Topic 的分区 offset 信息：
+```
+bin/kafka-run-class kafka.tools.GetOffsetShell ----bootstrap-server localhost:9092 \
+ --topic <TOPIC> \
+ --time -1
+ 
+# time -1 表示获取最新的 offset 信息
+```
+## 消费消息
 查看消费者组的消费情况
 ```
 bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group GOUP_NAME --describe 
