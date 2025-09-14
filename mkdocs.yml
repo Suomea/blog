@@ -100,6 +100,7 @@ nav:
     - "MyBatis":
       - MyBatis/MyBatis 快速入门.md
       - MyBatis/MyBatis 反射工具箱.md
+      - MyBatis/MyBatis 日志模块.md
     - "Spring":
       - Spring/Spring Tips.md
       - Spring/日期时间序列化.md

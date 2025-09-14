@@ -158,6 +158,10 @@ public class MyBatisTest {
 > SqlSession 的实例不是线程安全的，因此是不能被共享的，所以它的最佳的作用域是请求或方法作用域。SqlSession 的关闭很重要，为了确保关闭可以使用 AutoCloseable 进行关闭。
 >
 > 示例代码中参数如果有多个占位符参数的话，可以使用 Map 传递参数，使用占位符名称作为键，实际的参数作为值。
+>
+> 示例代码只是查询操作，所以不需要进行 commit 或者 rollback 操作。如果进行数据修改，需要手动 commit 并且捕获异常，在异常处理代码块中进行 rollback。 
+> 
+> 也可以在获取 SqlSession 的时候设置自动提交 sqlSessionFactory.openSession(true)，那么每个 sql 都会当成一个事务并自动提交，因此也不需要进行手动回滚。如果你有一连串的操作需要事务执行，那么还是手动提交和处理回滚逻辑比较好。
 
 ### 使用 Mapper 代理开发
 配置 Maven 打包代码包里面的 xml 文件。
