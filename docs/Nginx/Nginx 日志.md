@@ -130,7 +130,7 @@ goaccess logs/access.log \
 如果并发不是很高，可以使用 logstash/filebeat 进行采集日志，然后 Stream Load 导入到 Doris。  
 如果并发很高，那么 logstash/filebeat 直接推送到 Kafka，然后 Routine Load 导入到 Doris。  
 
-Doris 针对 Beats 有官方的 Output 插件，能够将数据通过 Http Stream Load 输出到 Drois 中。插件支持 Filebeat。
+Doris 针对 Beats/Logstash 有官方的 Output 插件，能够将数据通过 Http Stream Load 输出到 Drois 中。插件支持 Filebeat。
 
 Nginx 配置日志存储：
 ```
@@ -238,4 +238,118 @@ output.doris:
 Filebeat 启动：
 ```shell
  ./filebeat-doris-2.0.0 -c nginx-log.yml
+```
+
+## 实战案例
+Nginx 配置
+```
+    log_format j_format escape=json
+               '{"time":"$time_iso8601",'
+               '"remote_addr":"$remote_addr",'
+               '"remote_user":"$remote_user",'
+               '"request":"$request",'
+               '"scheme":"$scheme",'
+               '"request_method":"$request_method",'
+               '"uri":"$uri",'
+               '"status":$status,'
+               '"body_bytes_sent":$body_bytes_sent,'
+               '"request_time":$request_time,'
+               '"http_referer":"$http_referer",'
+               '"http_host":"$http_host",'
+               '"http_user_agent":"$http_user_agent",'
+               '"upstream_response_time":"$upstream_response_time",'
+               '"service_name":"$service_name",'
+               '"upstream_addr":"$upstream_addr"}';
+
+    access_log  logs/access.json j_format;
+```
+
+Filebeat 采集日志，输出到 LogStash，采用 ssl 进行认证。
+
+生成 CA 私钥和证书：
+```shell
+openssl genrsa -out ca.key 4096
+
+openssl req -new -x509 -key ca.key -sha256 -days 3650 -out ca.crt \
+  -subj "/C=CN/ST=Shanghai/L=Shanghai"
+```
+
+生成 Logstash 的私钥和证书：
+```shell
+openssl req -new -newkey rsa:2048 -nodes -keyout logstash.key -out logstash.csr \
+  -subj "/C=CN/ST=Shanghai/L=Shanghai/OU=Logstash"
+
+openssl x509 -req -in logstash.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
+  -out logstash.crt -days 3650 -sha256 \
+  -extfile <(printf "basicConstraints=CA:FALSE\nkeyUsage=digitalSignature,keyEncipherment\nextendedKeyUsage=serverAuth\nsubjectAltName=DNS:localhost,IP:127.0.0.1,IP:192.168.31.157")
+```
+注意，服务端证书 SAN 需要指定 ip 地址或者 dns，否则客户端在进行证书校验的时候可能不过。filebeat 也可以配置跳过证书校验。
+
+
+生成 Filebeat 的私钥和证书：
+```shell
+openssl req -new -newkey rsa:2048 -nodes -keyout filebeat.key -out filebeat.csr \
+  -subj "/C=CN/ST=Shanghai/L=Shanghai/OU=Filebeat"
+
+openssl x509 -req -in filebeat.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
+  -out filebeat.crt -days 3650 -sha256 \
+  -extfile <(printf "basicConstraints=CA:FALSE\nkeyUsage=digitalSignature,keyEncipherment\nextendedKeyUsage=clientAuth")
+```
+
+logstash 配置文件
+```
+input {
+  beats {
+    port => 5044
+    ssl_enabled => true
+    ssl_certificate => "/home/jacky/logstash.crt"       # Logstash 服务端证书
+    ssl_key => "/home/jacky/logstash.key"   # Logstash 私钥
+    ssl_certificate_authorities => ["/home/jacky/ca.crt"]   # 用于验证 Filebeat 客户端证书
+    ssl_client_authentication => "required"                  # 强制验证客户端证书
+  }
+}
+
+filter {
+}
+
+output {
+  http {
+    url => "http://192.168.31.86:8080/filebeat/receive"  # 目标接口
+    http_method => "post"
+    format => "json"
+    headers => {
+      "Content-Type" => "application/json"
+    }
+    # 可选：超时和重试设置
+    # content_type => "application/json"
+    # http_proxy => "http://proxy.example.com:8080"
+  }
+}
+```
+
+filebeat 配置文件：
+```
+filebeat.inputs:
+  - type: filestream
+    enabled: true
+    paths:
+      - /usr/local/nginx/logs/access.json
+
+output.logstash:
+  # Logstash 地址
+  hosts: ["localhost:5044"]
+
+  # 启用 SSL/TLS
+  ssl.enabled: true
+
+  # CA 证书，用于验证 Logstash 服务端证书
+  ssl.certificate_authorities: ["/home/jacky/ca.crt"]
+
+  # 客户端证书和私钥，用于双向认证
+  ssl.certificate: "/home/jacky/filebeat.crt"
+  ssl.key: "/home/jacky/filebeat.key"
+
+  # 可选：跳过验证（不推荐）
+  ssl.verification_mode: none
+
 ```
