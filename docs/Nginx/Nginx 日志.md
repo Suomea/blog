@@ -28,8 +28,10 @@ log_format main
 log_format json escape=json
   '{"time":"$time_local",'
    '"remote_addr":"$remote_addr",'
-   '"remote_user":"$remote_user",'
-   '"request":"$request",'
+   '"request_method":"$request_method",'
+   '"uri":"$uri",'
+   '"args":"$args",'
+   '"server_protocol":"$server_protocol",'
    '"status":$status,'
    '"body_bytes_sent":$body_bytes_sent,'
    '"request_time":$request_time,'
@@ -45,6 +47,8 @@ log_format json escape=json
 	如果请求头是 A-b，那么 Nginx 会将请求头映射到变量 $http_a_b。  
 	
 	如果 log_format 定义中取了 service_name 变量输出，但是 service_name 并不是 Nginx 的内置变量。那么就要在使用 log_format 的域或者上层域中，定义 service_name 变量。
+	
+	$reuqest 这个变量，如果监听的是 http 用 https 请求，或者反过来，都会导致日志出现乱码。这样可能会导致一些 JSON 解析框架出错。所以建议使用 $uri + $args 替换 $request 变量。
 
 ## 访问日志
 access_log 默认记录所有的请求，语法：
