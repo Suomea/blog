@@ -72,7 +72,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "文件列表"
             }
           },
           {
@@ -174,7 +174,7 @@
                 "searchQuery": "shell"
               },
               "icon": "lucide-list",
-              "title": "Outline of Nginx 日志"
+              "title": "Nginx 日志 的大纲"
             }
           }
         ],
@@ -186,20 +186,21 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "bases:Create new base": false,
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "vscode-editor:Create Code File": false
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:创建新数据库": false,
+      "vscode-editor:新建代码文件": false
     }
   },
   "active": "471471b0ee8cd611",
   "lastOpenFiles": [
-    "docs/Linux/账号群组.md",
+    "docs/Linux/curl.md",
     "docs/Nginx/Nginx 日志.md",
+    "docs/Linux/账号群组.md",
     "docs/Nginx/Nginx 编译安装.md",
     "docs/Nginx/Nginx 使用自签名证书.md",
     "docs/Network/SSL.md",
@@ -226,7 +227,6 @@
     "docs/yolo/YOLO 环境搭建.md",
     "docs/yolo/YOLO 数据集构建与训练.md",
     "docs/MySQL/MySQL 索引.md",
-    "docs/MySQL/MySQL 安装.md",
     "截屏2025-08-10 02.50.04.png",
     "截屏2025-08-10 02.48.40.png",
     "截屏2025-08-10 02.46.16.png",
