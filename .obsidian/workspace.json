@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Nginx/Nginx 日志.md",
+                "file": "docs/Linux/Bash.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Nginx 日志"
+              "title": "Bash"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Linux/Linux 安装 NFS.md",
+                "file": "docs/Nginx/Nginx 日志.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Linux 安装 NFS"
+              "title": "Nginx 日志"
             }
           },
           {
@@ -49,7 +49,8 @@
               "title": "YOLO 数据集构建与训练"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -72,7 +73,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "文件列表"
+              "title": "Files"
             }
           },
           {
@@ -171,10 +172,10 @@
                 "file": "docs/Nginx/Nginx 日志.md",
                 "followCursor": false,
                 "showSearch": true,
-                "searchQuery": "shell"
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Nginx 日志 的大纲"
+              "title": "Outline of Nginx 日志"
             }
           }
         ],
@@ -186,47 +187,47 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false,
-      "bases:创建新数据库": false,
-      "vscode-editor:新建代码文件": false
+      "bases:Create new base": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "vscode-editor:Create Code File": false
     }
   },
-  "active": "471471b0ee8cd611",
+  "active": "651ddb47fb2d340c",
   "lastOpenFiles": [
     "docs/Linux/curl.md",
-    "docs/Nginx/Nginx 日志.md",
-    "docs/Linux/账号群组.md",
-    "docs/Nginx/Nginx 编译安装.md",
-    "docs/Nginx/Nginx 使用自签名证书.md",
-    "docs/Network/SSL.md",
+    "docs/Spring/日志.md",
     "docs/Linux/Linux 虚拟机.md",
-    "docs/Kafka/Kafka 常用命令.md",
-    "docs/Kafka/Kafka 快速开始.md",
-    "docs/Kafka/Kafka 配置.md",
-    "Untitled.base",
-    "docs/Nginx/Nginx Tips.md",
-    "Untitled.canvas",
-    "docs/MyBatis/MyBatis 快速入门.md",
-    "docs/MyBatis/MyBatis 类型转换.md",
-    "mkdocs.yml",
-    "docs/index.md",
-    "docs/MyBatis/MyBatis 日志模块.md",
-    "docs/Linux/Docker Tips.md",
-    "docs/Python/第 7 章：数据结构.md",
-    "docs/Python/第 2 章：算术、字符串与变量.md",
-    "docs/Nginx/Nginx 配置 Basic Auth.md",
-    "docs/Java/Java Tips.md",
+    "docs/Linux/Linux 文件系统.md",
+    "docs/Linux/Linux 定时任务.md",
+    "docs/Linux/Linux 安装 NFS.md",
+    "docs/Linux/Linux Bash.md",
+    "docs/Linux/Debian 软件安装.md",
+    "docs/Java/Java 打包.md",
     "docs/Spring/日期时间序列化.md",
+    "docs/Spring/资源加载策略.md",
+    "docs/Spring/Spring Tips.md",
+    "docs/Nginx/Nginx 日志.md",
+    "docs/Linux/PT.md",
+    "docs/Linux/监控硬盘温度数据.md",
+    "docs/Linux/软件安装.md",
+    "mkdocs.yml",
+    "docs/Linux/Linux Tips.md",
+    "docs/Linux/Bash.md",
+    "docs/Linux/虚拟机.md",
+    "docs/Linux/文件系统.md",
+    "docs/Linux/定时任务.md",
+    "docs/Linux/安装 NFS.md",
+    "docs/Linux/VIM.md",
     "docs/Linux/LVM.md",
-    "docs/Python/学习资料.md",
-    "docs/yolo/YOLO 环境搭建.md",
-    "docs/yolo/YOLO 数据集构建与训练.md",
-    "docs/MySQL/MySQL 索引.md",
+    "docs/PG/PG 清理 WAL 日志.md",
+    "docs/Linux/账号群组.md",
+    "Untitled.base",
+    "Untitled.canvas",
     "截屏2025-08-10 02.50.04.png",
     "截屏2025-08-10 02.48.40.png",
     "截屏2025-08-10 02.46.16.png",

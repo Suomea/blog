@@ -25,7 +25,7 @@ log_format main
            '"$http_referer" "$http_user_agent" "$http_token" '
            '$upstream_response_time $upstream_addr';
            
-log_format json escape=json
+log_format j_format escape=json
   '{"time":"$time_local",'
    '"remote_addr":"$remote_addr",'
    '"request_method":"$request_method",'
@@ -247,25 +247,24 @@ Filebeat 启动：
 ## 实战案例
 Nginx 配置
 ```
-    log_format j_format escape=json
-               '{"time":"$time_iso8601",'
-               '"remote_addr":"$remote_addr",'
-               '"remote_user":"$remote_user",'
-               '"request":"$request",'
-               '"scheme":"$scheme",'
-               '"request_method":"$request_method",'
-               '"uri":"$uri",'
-               '"status":$status,'
-               '"body_bytes_sent":$body_bytes_sent,'
-               '"request_time":$request_time,'
-               '"http_referer":"$http_referer",'
-               '"http_host":"$http_host",'
-               '"http_user_agent":"$http_user_agent",'
-               '"upstream_response_time":"$upstream_response_time",'
-               '"service_name":"$service_name",'
-               '"upstream_addr":"$upstream_addr"}';
+log_format j_format escape=json  
+  '{"time":"$time_local",'  
+   '"remote_addr":"$remote_addr",'  
+   '"request_method":"$request_method",'  
+   '"uri":"$uri",'  
+   '"args":"$args",'  
+   '"server_protocol":"$server_protocol",'  
+   '"status":$status,'  
+   '"body_bytes_sent":$body_bytes_sent,'  
+   '"request_time":$request_time,'  
+   '"http_referer":"$http_referer",'  
+   '"http_user_agent":"$http_user_agent",'  
+   '"http_token":"$http_token",'  
+   '"upstream_response_time":"$upstream_response_time",'  
+   '"service_name":"$service_name",'  
+   '"upstream_addr":"$upstream_addr"}';
 
-    access_log  logs/access.json j_format;
+access_log  logs/access.json j_format;
 ```
 
 Filebeat 采集日志，输出到 LogStash，采用 ssl 进行认证。
@@ -314,21 +313,28 @@ input {
 }
 
 filter {
+
 }
 
 output {
   http {
     url => "http://192.168.31.86:8080/filebeat/receive"  # 目标接口
     http_method => "post"
-    format => "json"
+    format => "message"
     headers => {
       "Content-Type" => "application/json"
     }
     # 可选：超时和重试设置
     # content_type => "application/json"
     # http_proxy => "http://proxy.example.com:8080"
+    message => "%{message}"
   }
 }
+```
+
+启动 logstash
+```
+bin/logstash -f config/logstash.conf
 ```
 
 filebeat 配置文件：
@@ -354,6 +360,53 @@ output.logstash:
   ssl.key: "/home/jacky/filebeat.key"
 
   # 可选：跳过验证（不推荐）
-  ssl.verification_mode: none
+  # ssl.verification_mode: none
 
 ```
+
+启动 filebeat -e 输出日志到控制台，方便调试。
+```
+./filebeat -e -c filebeat.yml
+```
+
+这样的话接口接收到的是
+```json
+{  
+  "message": "{\"time\":\"21/Sep/2025:01:04:42 +0800\",\"remote_addr\":\"192.168.31.106\",\"request_method\":\"GET\",\"uri\":\"/java/\",\"args\":\"\",\"server_protocol\":\"HTTP/1.1\",\"status\":200,\"body_bytes_sent\":1568,\"request_time\":0.000,\"http_referer\":\"http://192.168.31.157/\",\"http_user_agent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\",\"http_token\":\"\",\"upstream_response_time\":\"\",\"service_name\":\"file_browsing\",\"upstream_addr\":\"\"}",  
+  "@version": "1",  
+  "event": {  
+    "original": "{\"time\":\"21/Sep/2025:01:04:42 +0800\",\"remote_addr\":\"192.168.31.106\",\"request_method\":\"GET\",\"uri\":\"/java/\",\"args\":\"\",\"server_protocol\":\"HTTP/1.1\",\"status\":200,\"body_bytes_sent\":1568,\"request_time\":0.000,\"http_referer\":\"http://192.168.31.157/\",\"http_user_agent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\",\"http_token\":\"\",\"upstream_response_time\":\"\",\"service_name\":\"file_browsing\",\"upstream_addr\":\"\"}"  
+  },  
+  "@timestamp": "2025-09-20T17:04:45.262Z",  
+  "host": {  
+    "name": "jacky-nas"  
+  },  
+  "ecs": {  
+    "version": "8.0.0"  
+  },  
+  "input": {  
+    "type": "filestream"  
+  },  
+  "tags": [  
+    "beats_input_codec_plain_applied"  
+  ],  
+  "log": {  
+    "file": {  
+      "path": "/usr/local/nginx/logs/access.json",  
+      "fingerprint": "a96eb0fee132c80efd94cfb5f71ead81dbf51057db76fd4a581d721176887f51",  
+      "inode": "3806033",  
+      "device_id": "66306"  
+    },  
+    "offset": 6487  
+  },  
+  "agent": {  
+    "name": "jacky-nas",  
+    "ephemeral_id": "817715c8-fa1d-4f5e-996b-38b17b8d38f6",  
+    "version": "9.1.4",  
+    "id": "8f77aedc-a68b-4906-aefc-0b58f6e2a4fb",  
+    "type": "filebeat"  
+  }  
+}
+```
+filebeat 添加了很多自己的字段进去。
+
