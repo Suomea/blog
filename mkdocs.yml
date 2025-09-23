@@ -58,17 +58,12 @@ nav:
       - Linux/磁盘挂载.md
       - Linux/定时任务.md
       - Linux/iptables.md
-      - Linux/Linux 定时任务.md
-      - Linux/Linux 文件系统.md
     - "Nginx":
       - Nginx/Nginx Tips.md
       - Nginx/Nginx 编译安装.md
       - Nginx/Nginx 日志.md
       - Nginx/Nginx 配置 Basic Auth.md
       - Nginx/Nginx 使用自签名证书.md
-    - Linux/PT.md
-    - Linux/VIM.md
-    - Linux/时间.md
     - "Docker":
       - Linux/Docker Tips.md
 

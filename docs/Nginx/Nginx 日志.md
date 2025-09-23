@@ -1,4 +1,5 @@
-## 日志格式
+## Nginx 日志
+### 日志格式定义
 log_format 定义日志的格式，**必须在 http 域中定义**：
 ```
 log_format name [escape=default|json|none] string;
@@ -50,7 +51,7 @@ log_format j_format escape=json
 	
 	$reuqest 这个变量，如果监听的是 http 用 https 请求，或者反过来，都会导致日志出现乱码。这样可能会导致一些 JSON 解析框架出错。所以建议使用 $uri + $args 替换 $request 变量。
 
-## 访问日志
+### 访问日志输出
 access_log 默认记录所有的请求，语法：
 ```
 access_log path [format [buffer=size] [gzip[=level_]] [flush=time] [if=condition]];  
@@ -76,106 +77,53 @@ access_log 可以在 http、server、location 块进行设置，如果同时设�
 
 access_log 可以配置多个，写入不同的文件，使用不同的 log_format。
 
-## goaccess 分析
-goaccess 是一个本地的 Nginx 日志分析工具，能够快速的分析日志并且生成报告。
-### 按天切割日志
-编辑文件 /etc/logrotate.d/nginx-access
-```
-/usr/local/nginx/logs/access.log {
-    daily                  # 按天切分日志
-    missingok              # 文件不存在不报错
-    rotate 180             # 日志保留天数
-    notifempty             # 空文件不切分
-    create 0640 nobody root  # 新日志文件权限和属主
-    sharedscripts
-    postrotate
-        # 切分后通知 Nginx 重新打开日志文件
-        [ -f /usr/local/nginx/logs/nginx.pid ] && kill -USR1 `cat /usr/local/nginx/logs/nginx.pid`
-    endscript
-}
-```
-
-logrotate 本身只是一个工具，依靠 cron 定时任务来进行定时执行。所以要确保 crond 服务是启动的。
-
-配置好之后强制切分一次，验证配置是否生效
-```
-logrotate -f /etc/logrotate.d/nginx-access
-```
-
-### 生成分析报告
-
-生成分析报告，假设日志格式是上文定义的 main log_format：
-```
-goaccess logs/access.log \
-    --log-format='%h - %e [%d:%t %^] "%r" %s %b %T "%R" "%u" "%^" %^ %^' \
-    --date-format=%d/%b/%Y \
-    --time-format=%T
-```
-
-解释：  
-- %h → $remote_addr  
-- %e → $remote_user  
-- %d → 日（来自 $time_local）  
-- %t → 时间（来自 $time_local）  
-- %r → $request  
-- %s → $status  
-- %b → $body_bytes_sent  
-- %T → $request_time  
-- %R → $http_referer  
-- %u → $http_user_agent  
-- %^ → 忽略字段（比如 $http_token，$upstream_response_time，$upstream_addr）
-
-注意：  
-- GoAccess 默认不解析自定义 Header（`$http_token`）和 `$upstream_*` 字段，需要用 `%^` 占位。  
-- 日期格式 `%d/%b/%Y` 对应 `[25/Aug/2025:23:00:00 +0800]` 的日期部分。  
-- 时间格式 `%T` 对应 `23:00:00`。
-
-## Doris 存储分析
+## 存储分析
 如果并发不是很高，可以使用 logstash/filebeat 进行采集日志，然后 Stream Load 导入到 Doris。  
 如果并发很高，那么 logstash/filebeat 直接推送到 Kafka，然后 Routine Load 导入到 Doris。  
 
-Doris 针对 Beats/Logstash 有官方的 Output 插件，能够将数据通过 Http Stream Load 输出到 Drois 中。插件支持 Filebeat。
+Doris 针对 Beats/Logstash 有官方的 Output 插件，能够直接将数据通过 Http Stream Load 输出到 Drois 中。
+
+### Nginx 日志配置
 
 Nginx 配置日志存储：
 ```
-log_format json escape=json
-               '{"time":"$time_iso8601",'
-               '"remote_addr":"$remote_addr",'
-               '"remote_user":"$remote_user",'
-               '"request":"$request",'
-               '"scheme":"$scheme",'
-               '"request_method":"$request_method",'
-               '"uri":"$uri",'
-               '"status":$status,'
-               '"body_bytes_sent":$body_bytes_sent,'
-               '"request_time":$request_time,'
-               '"http_referer":"$http_referer",'
-               '"http_host":"$http_host",'
-               '"http_user_agent":"$http_user_agent",'
-               '"http_token":"$http_token",'
-               '"http_type":"$http_type",'
-               '"upstream_response_time":"$upstream_response_time",'
-               '"service_name":"$service_name",'
-               '"upstream_addr":"$upstream_addr"}';
-access_log /usr/local/nginx/logs/json_access.log json;
+log_format j_format escape=json  
+  '{"time":"$time_local",'  
+   '"remote_addr":"$remote_addr",'  
+   '"scheme":"$scheme",'  
+   '"status":$status,'  
+   '"request_method":"$request_method",'  
+   '"uri":"$uri",'  
+   '"args":"$args",'  
+   '"server_protocol":"$server_protocol",'  
+   '"body_bytes_sent":$body_bytes_sent,'  
+   '"request_time":$request_time,'  
+   '"http_referer":"$http_referer",'  
+   '"http_user_agent":"$http_user_agent",'  
+   '"http_token":"$http_token",'  
+   '"upstream_response_time":"$upstream_response_time",'  
+   '"service_name":"$service_name",'  
+   '"upstream_addr":"$upstream_addr"}';
+
+access_log  logs/access.json j_format;
 ```
 
+### Doris 建表
 Doris 建表
 ```sql
 CREATE TABLE `nginx_log` (
   `time` datetime NULL,
   `remote_addr` varchar(50) NULL,
-  `uri` varchar(3000) NULL,
-  `remote_user` varchar(100) NULL,
-  `request` varchar(3000) NULL,
   `scheme` varchar(20) NULL,
-  `request_method` varchar(20) NULL,
   `status` int NULL,
+  `remote_method` varchar(50) NULL,
+  `uri` varchar(3000) NULL,
+  `args` varchar(3000) NULL,
+  `server_protocol` varchar(50) NULL,
   `body_bytes_sent` bigint NULL,
   `request_time` float NULL,
   `http_referer` varchar(500) NULL,
   `http_user_agent` varchar(500) NULL,
-  `http_type` varchar(50) NULL,
   `http_token` varchar(500) NULL,
   `upstream_response_time` varchar(50) NULL,
   `service_name` varchar(100) NULL,
@@ -201,6 +149,9 @@ PROPERTIES (
 );
 ```
 
+注意，`DISTRIBUTED BY RANDOM BUCKETS 10` 能够在导入数据的时候配置将同一批数据存入同一个分桶。
+
+### Filebeat 直接导入到 Doris
 下载 Doris 官方的 Beats：https://doris.apache.org/zh-CN/docs/3.0/ecosystem/beats
 
 Filebeat 配置文件：
@@ -244,28 +195,7 @@ Filebeat 启动：
  ./filebeat-doris-2.0.0 -c nginx-log.yml
 ```
 
-## 实战案例
-Nginx 配置
-```
-log_format j_format escape=json  
-  '{"time":"$time_local",'  
-   '"remote_addr":"$remote_addr",'  
-   '"request_method":"$request_method",'  
-   '"uri":"$uri",'  
-   '"args":"$args",'  
-   '"server_protocol":"$server_protocol",'  
-   '"status":$status,'  
-   '"body_bytes_sent":$body_bytes_sent,'  
-   '"request_time":$request_time,'  
-   '"http_referer":"$http_referer",'  
-   '"http_user_agent":"$http_user_agent",'  
-   '"http_token":"$http_token",'  
-   '"upstream_response_time":"$upstream_response_time",'  
-   '"service_name":"$service_name",'  
-   '"upstream_addr":"$upstream_addr"}';
-
-access_log  logs/access.json j_format;
-```
+### Filebeat 导入到 Logstash 再导入 Doris
 
 Filebeat 采集日志，输出到 LogStash，采用 ssl 进行认证。
 
@@ -368,45 +298,4 @@ output.logstash:
 ```
 ./filebeat -e -c filebeat.yml
 ```
-
-这样的话接口接收到的是
-```json
-{  
-  "message": "{\"time\":\"21/Sep/2025:01:04:42 +0800\",\"remote_addr\":\"192.168.31.106\",\"request_method\":\"GET\",\"uri\":\"/java/\",\"args\":\"\",\"server_protocol\":\"HTTP/1.1\",\"status\":200,\"body_bytes_sent\":1568,\"request_time\":0.000,\"http_referer\":\"http://192.168.31.157/\",\"http_user_agent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\",\"http_token\":\"\",\"upstream_response_time\":\"\",\"service_name\":\"file_browsing\",\"upstream_addr\":\"\"}",  
-  "@version": "1",  
-  "event": {  
-    "original": "{\"time\":\"21/Sep/2025:01:04:42 +0800\",\"remote_addr\":\"192.168.31.106\",\"request_method\":\"GET\",\"uri\":\"/java/\",\"args\":\"\",\"server_protocol\":\"HTTP/1.1\",\"status\":200,\"body_bytes_sent\":1568,\"request_time\":0.000,\"http_referer\":\"http://192.168.31.157/\",\"http_user_agent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36\",\"http_token\":\"\",\"upstream_response_time\":\"\",\"service_name\":\"file_browsing\",\"upstream_addr\":\"\"}"  
-  },  
-  "@timestamp": "2025-09-20T17:04:45.262Z",  
-  "host": {  
-    "name": "jacky-nas"  
-  },  
-  "ecs": {  
-    "version": "8.0.0"  
-  },  
-  "input": {  
-    "type": "filestream"  
-  },  
-  "tags": [  
-    "beats_input_codec_plain_applied"  
-  ],  
-  "log": {  
-    "file": {  
-      "path": "/usr/local/nginx/logs/access.json",  
-      "fingerprint": "a96eb0fee132c80efd94cfb5f71ead81dbf51057db76fd4a581d721176887f51",  
-      "inode": "3806033",  
-      "device_id": "66306"  
-    },  
-    "offset": 6487  
-  },  
-  "agent": {  
-    "name": "jacky-nas",  
-    "ephemeral_id": "817715c8-fa1d-4f5e-996b-38b17b8d38f6",  
-    "version": "9.1.4",  
-    "id": "8f77aedc-a68b-4906-aefc-0b58f6e2a4fb",  
-    "type": "filebeat"  
-  }  
-}
-```
-filebeat 添加了很多自己的字段进去。
 
