@@ -99,3 +99,9 @@ root 将 location 匹配的部分直接拼接在 root 指定的目录后面。
 alias 将 location 匹配的部分删掉，然后将剩余的部分拼接在 alias 指定的目录后面。alias 一般使用时，location 匹配路径和 alias 指定的目录最后都要带上字符 “/”。 
 
 如果是正则匹配，可以使用 $ 符号加上数字，来获取匹配组进行拼接。
+
+## Nginx 定义变量
+
+```
+set $my_var "value";
+```

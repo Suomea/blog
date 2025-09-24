@@ -72,7 +72,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "文件列表"
+              "title": "Files"
             }
           },
           {
@@ -171,10 +171,10 @@
                 "file": "docs/Nginx/Nginx 日志.md",
                 "followCursor": false,
                 "showSearch": true,
-                "searchQuery": "shell"
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Nginx 日志 的大纲"
+              "title": "Outline of Nginx 日志"
             }
           }
         ],
@@ -186,20 +186,23 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false,
-      "bases:创建新数据库": false,
-      "vscode-editor:新建代码文件": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "vscode-editor:Create Code File": false
     }
   },
   "active": "471471b0ee8cd611",
   "lastOpenFiles": [
-    "docs/Nginx/Nginx 编译安装.md",
+    "docs/Java/Java 打包.md",
+    "docs/Nginx/Nginx Tips.md",
+    "docs/Linux/VIM.md",
     "docs/Nginx/Nginx 日志.md",
+    "docs/Nginx/Nginx 编译安装.md",
     "docs/Spring/日志.md",
     "docs/Linux/软件安装.md",
     "docs/Linux/虚拟机.md",
@@ -217,7 +220,6 @@
     "docs/Kafka/Kafka 快速开始.md",
     "docs/Kafka/Kafka 配置.md",
     "Untitled.base",
-    "docs/Nginx/Nginx Tips.md",
     "Untitled.canvas",
     "docs/MyBatis/MyBatis 快速入门.md",
     "docs/MyBatis/MyBatis 类型转换.md",
@@ -225,8 +227,6 @@
     "docs/index.md",
     "docs/Linux/Docker Tips.md",
     "docs/Python/第 7 章：数据结构.md",
-    "docs/Python/第 2 章：算术、字符串与变量.md",
-    "docs/Nginx/Nginx 配置 Basic Auth.md",
     "截屏2025-08-10 02.50.04.png",
     "截屏2025-08-10 02.48.40.png",
     "截屏2025-08-10 02.46.16.png",

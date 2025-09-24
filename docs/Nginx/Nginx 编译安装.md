@@ -20,10 +20,12 @@ tar -zxvf nginx-1.22.1.tar.gz -C /usr/local/src
 cd /usr/local/srv/nginx-1.22.1
 
 ./configure --prefix=/usr/local/nginx \
+--user=www-data --group=www-data \
 --with-stream \
 --with-stream_ssl_module \
 --with-http_ssl_module
 
+ 指定 worker 进程的默认用户/组，当然可以在配置文件配置的优先级更高
  实现 TCP 和 UDP 流量的转发和负载，实现四层代理
  实现 TCP/UDP 流量的加密
  实现 HTTPS 协议的支持

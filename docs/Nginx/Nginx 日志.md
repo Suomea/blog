@@ -243,12 +243,30 @@ input {
 }
 
 filter {
+    json {
+        source => "message"
+        target => "parsed_json"
+    }
 
+    aggregate {
+        task_id => "%{host}"
+        code => "
+            map['events'] ||= []
+            map['events'] << event.get('parsed_json')
+            event.cancel()
+        "
+        push_previous_map_as_event => true
+        timeout => 5
+    }
+
+    ruby {
+        code => 'event.set("message", event.get("events").to_json)'  # 把 events 序列化成 JSON
+    }
 }
 
 output {
   http {
-    url => "http://192.168.31.86:8080/filebeat/receive"  # 目标接口
+    url => "http://192.168.31.86:8080/request/log"  # 目标接口
     http_method => "post"
     format => "message"
     headers => {
@@ -260,6 +278,7 @@ output {
     message => "%{message}"
   }
 }
+
 ```
 
 启动 logstash
