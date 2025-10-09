@@ -58,6 +58,7 @@ nav:
       - Linux/磁盘挂载.md
       - Linux/定时任务.md
       - Linux/iptables.md
+      - Linux/smb.md
     - "Nginx":
       - Nginx/Nginx Tips.md
       - Nginx/Nginx 编译安装.md
