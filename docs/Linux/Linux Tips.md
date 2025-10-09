@@ -200,3 +200,19 @@ apt install smartmontools
 ```
 smartctl -a /dev/sda | grep Temperature
 ```
+
+## base64
+查看用法
+```
+man base64
+```
+
+编码
+```
+echo -n hello | base64
+```
+
+解码
+```
+echo -n aGVsbG8= | base64 -d
+```

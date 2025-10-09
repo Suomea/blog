@@ -1,51 +1,46 @@
 查看规则，默认查看 filter 表
 
+```
 iptables -L -n -v --line-number
+```
 
 删除规则
 
+```
 iptables -D INPUT [num]
+```
 
 插入规则，插入到第五行，只接受建立连接的 tcp 包且端口号为 18094
 
+```
 iptables -I INPUT 5 -m state --state NEW  -p tcp  --dport 18094  -j ACCEPT
+```
 
 使用 -A 为追加到最后一行
 
+```
 iptables -A INPUT -m state --state NEW  -p tcp  --dport 18094  -j ACCEPT
+```
 
-如果只接受 NEW(建立连接的包)则最好在第一条规则配置接受：已经建立连接的包或者和当前主机发出的包有联系的包
-
-ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED
-
+实例分析
+```
 # iptables -L -n -v --line-numbers
-
 Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
-
 num   pkts bytes target     prot opt in     out     source               destination
-
 1      31M 5337M ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED
-
 2        7   484 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0
-
 3    1339K   80M ACCEPT     all  --  lo     *       0.0.0.0/0            0.0.0.0/0
-
 4       73  4072 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           state NEW tcp dpt:22
-
 · · ·
-
 13   2864K 1098M REJECT     all  --  *      *       0.0.0.0/0            0.0.0.0/0           reject-with icmp-host-prohibited
 
 Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
-
 num   pkts bytes target     prot opt in     out     source               destination
-
 1        0     0 REJECT     all  --  *      *       0.0.0.0/0            0.0.0.0/0           reject-with icmp-host-prohibited
 
 Chain OUTPUT (policy ACCEPT 383K packets, 89M bytes)
-
 num   pkts bytes target     prot opt in     out     source               destination
-
+```
 分析一下上述配置的信息
 
 1. 默认展示的是 filter 表的链，包含三条链：INPUT、OUTPUT、FORWARD
