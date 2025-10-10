@@ -5,19 +5,16 @@ apt update
 apt install redis-server
 ```
 
-
 查看状态。
 ```
 systemctl enable redis-server --now
 systemctl status redis-server
 ```
 
-
 编辑配置文件 `/etc/redis/reids.conf`，设置密码。然后执行 `systemctl restart redis-server` 命令重启 `redis-server` 使修改生效。
 ```
 requirepass <password>
 ```
-
 
 连接测试。
 ```
@@ -32,10 +29,10 @@ OK
 "jacky"
 ```
 
-编辑配置文件 `/etc/redis/reids.conf`，配置允许远程连接，关闭保护模式（为了方便测试，不设置密码）。
+编辑配置文件 `/etc/redis/reids.conf`，配置允许远程连接。
 ```
 bind 0.0.0.0 -::1
-protected-mode no
+# 表示监听所有的 IPv4 地址，不监听 IPv6 的本地回环地址
 ```
 
 ## Windows
