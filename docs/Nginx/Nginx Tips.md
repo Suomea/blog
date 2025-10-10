@@ -69,13 +69,7 @@ location ~ ^/test {
 
 ## Nginx 接口转发 `location` 和 `proxy_pass`
 
-### 如果 `proxy_pass` 不包含 `path`
-```
-✅ http://localhost:8080 
-❌ http://localhost:8080/
-❌ http://localhost:8080/api
-```
-那么 `location` 匹配到的 `path` 会追加到 `proxy_pass` 的 `schema`、`host` 和 `port` 后面。
+如果 `proxy_pass` 不包含 `path`，那么 `location` 匹配到的 `path` 会追加到 `proxy_pass` 的 `port` 后面。
 
 假设前缀匹配的配置如下：
 ```
@@ -84,8 +78,10 @@ location /test1 {
 }
 ```
 请求 `path` `/test1/abc` 将被转发到：`http://localhost:8080/test1/abc`。
-### 如果 `proxy_pass` 包含 `path`
-即使 `path` 仅仅只是一个 `/`，那么转发规则就变成：将匹配的 `path` 删除 `location` 匹配的部分，然后将得到的字符串拼接到 `proxy_pass` 后面。
+
+如果 `proxy_pass` 包含 `path`，即使 `path` 仅仅只是一个 `/`，那么转发规则就变成：将匹配的 `path` 删除 `location` 匹配的部分，然后将得到的字符串拼接到 `proxy_pass` 后面。
+
+假设前缀匹配的配置如下：
 ```
 location /test1 {
 	proxy_pass http://localhost:8080/;
@@ -104,4 +100,20 @@ alias 将 location 匹配的部分删掉，然后将剩余的部分拼接在 ali
 
 ```
 set $my_var "value";
+```
+
+## Nginx 配置文件浏览
+```
+        location /movie {
+            return 301 /movie/;
+        }
+
+        location /movie/ {
+            alias /data/disk1/qBittorent/;
+            autoindex on; # 访问目录的时候自动生成目录下的文件列表
+            autoindex_exact_size off; # 显示可读文件大小（KB/MB/GB）
+            
+            add_header Content-Disposition inline; # http 响应头浏览器尝试直接打开文件
+        }
+
 ```

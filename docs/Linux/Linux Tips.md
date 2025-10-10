@@ -216,3 +216,15 @@ echo -n hello | base64
 ```
 echo -n aGVsbG8= | base64 -d
 ```
+
+## Unix Socket 和 TCP/IP Socket
+Unix Socket 叫做本地套接字，使用文件系统路径作为通信端点，只能在同一台机器上使用。地址类型为 AF_UNIX。
+
+不经过 TCP/IP 直接内核进行通信，系统调用少延迟低。安全性依赖文件权限。
+
+进程 A 打开 socket 文件发送数据，内存在内存中把数据传给同一机器上的进程 B。
+
+TCP/IP Socket 叫做网络套接字，可以在同一台机器或者跨机器通信，使用 IP 加上端口号作为通信端点。地址类型为 AF_INET/AF_INET6。
+
+使用 TCP 或者 UDP，经过内核网络栈，需要网络协议开销，性能略低于 Unix Socket。
+
