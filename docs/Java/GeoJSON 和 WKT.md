@@ -29,12 +29,12 @@ POLYGON ((-64.8 32.3, -65.5 18.3, -80.3 25.2, -64.8 32.3))
 对比可以发现，WKT 只包含 GeoJSON `geometry` 属性部分的信息，两者可以互相转换。
 GeoJSON 和 WKT 都支持的几何类型：
 
-|**几何类型**|​**GeoJSON**|​**WKT**|
-|---|---|---|
-|点|`Point`|`POINT`|
-|线|`LineString`|`LINESTRING`|
-|面|`Polygon`|`POLYGON`|
-|多点|`MultiPoint`|`MULTIPOINT`|
-|多线|`MultiLineString`|`MULTILINESTRING`|
-|多面|`MultiPolygon`|`MULTIPOLYGON`|
-|几何集合|`GeometryCollection`|`GEOMETRYCOLLECTION`|
+| **几何类型** | ​**GeoJSON**         | ​**WKT**             |
+| -------- | -------------------- | -------------------- |
+| 点        | `Point`              | `POINT`              |
+| 线        | `LineString`         | `LINESTRING`         |
+| 面        | `Polygon`            | `POLYGON`            |
+| 多点       | `MultiPoint`         | `MULTIPOINT`         |
+| 多线       | `MultiLineString`    | `MULTILINESTRING`    |
+| 多面       | `MultiPolygon`       | `MULTIPOLYGON`       |
+| 几何集合     | `GeometryCollection` | `GEOMETRYCOLLECTION` |

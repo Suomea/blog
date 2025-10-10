@@ -88,7 +88,7 @@ Doris 针对 Beats/Logstash 有官方的 Output 插件，能够直接将数据�
 Nginx 配置日志存储：
 ```
 log_format j_format escape=json  
-  '{"time":"$time_local",'  
+  '{"time":"$time_iso8601",'  
    '"remote_addr":"$remote_addr",'  
    '"scheme":"$scheme",'  
    '"status":$status,'  

@@ -29,11 +29,12 @@ b092ef563276   bridge    bridge    local
 e8eb78a7d5ff   host      host      local
 e1290a9d96db   none      null      local
 ```
-- host 使用是宿主机的网络。  
-- bridge 容器使用独立的 network namespace，并连接到 docker0 虚拟网卡。默认。  
-- none 容器有独立的 network namespace，但是不进行任何网络设置。
 
-docker compose up 会默认创建一个 beidge 网络，名称是目录名称加上 `_default`。
+- `host` 使用是宿主机的网络。  
+- `bridge` 容器使用独立的 network namespace，并连接到 `docker0` 虚拟网卡。默认。  
+- `none` 容器有独立的 network namespace，但是不进行任何网络设置。
+
+docker compose up 会默认创建一个 bridge 网络，名称是目录名称加上 `_default`。
 
 docker compose restart container_name 只会重启某个容器，不会重新加载修改的 yml 配置文件。
 

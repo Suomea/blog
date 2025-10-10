@@ -94,3 +94,31 @@ default index tablespace "TEST";
 
 grant "PUBLIC","SOI","DBA","RESOURCE" to "TEST";
 ```
+
+## 达梦排序 NULL 值处理
+达梦使用 order by 字段排序的时候，将字段值为 null 的数据永远排在最后。使用 nulls last|first。
+```sql
+select * from user order by age desc nulls last;
+```
+
+使用 case when 进行处理，首先将 null 设置为 1，非 null 设置为 0 正序排列，这样就将 null 值排在最后了，然后再按字段值排序。
+```sql
+select * from user order by CASE WHEN age IS NULL THEN 1 ELSE 0 END, age desc
+```
+
+可以在 dm.ini 中进行配置 ORDER_BY_NULLS_FLAG 参数，默认值为 0。来控制 NULL 值排序位置，但是注意该参数无法将 NULL 值始终在最后面返回。
+
+- 0 表示 NULL 值始终在最前面返回；
+- 1 表示 ASC 升序排序时 NULL 值在最后返回，DESC 降序排序时 NULL 值在最前面返回，在参数等于 1 的情况下，NULL 值的返回与 ORACLE 保持一致；
+- 2 表示 ASC 升序排序时 NULL 值在最前面返回，DESC 降序排序时 NULL 值在最后返回，在参数等于 2 的情况下，NULL 值的返回与 MYSQL 保持一致；
+- 3 表示在取值为 1 的基础上，将空串置于 NULL 值和非空值之间
+```sql
+SELECT * FROM V$PARAMETER WHERE name = 'ORDER_BY_NULLS_FLAG';
+
+ALTER SYSTEM SET 'ORDER_BY_NULLS_FLAG' = 2;
+```
+
+
+
+
+
