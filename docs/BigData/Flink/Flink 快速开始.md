@@ -164,20 +164,20 @@ public class WordCountFromSocket {
 ```
 
 Tips 依赖配置为 provided 之后 idea 运行会提示找不到类，点击下图左下角的 Edit configuration templates，勾选 `Add dependencies with "provided" scope to classpath` 即可在本地运行。
-![](../LocalFile/Picture/20250116235550.png)
+![](../../LocalFile/Picture/20250116235550.png)
 
 登录 Flink Web，进入提交作业界面，点解 Add New，选择 jar 包。
-![](../LocalFile/Picture/20250117000101.png)
+![](../../LocalFile/Picture/20250117000101.png)
 
 点击上传的 jar 包，编辑填入入口类，然后点击 Submit 会立即执行入口类代码。可以多次 Submit 不同的入口类。
-![](../LocalFile/Picture/20250117000239.png)
+![](../../LocalFile/Picture/20250117000239.png)
 
 在 Jobs 界面可以看到提交的作业，以及运行状态，运行在哪个 TaskManager 上。在作业详情界面的左上角可以 Cancel Job。
-![](../LocalFile/Picture/20250117000803.png)
-![](../LocalFile/Picture/20250117001041.png)
+![](../../LocalFile/Picture/20250117000803.png)
+![](../../LocalFile/Picture/20250117001041.png)
 
 进入到具体的 TaskManager 之后，可以在 Stdout 看到输出。
-![](../LocalFile/Picture/20250117001133.png)
+![](../../LocalFile/Picture/20250117001133.png)
 
 也可以使用命令行提交作业，`-d` 表示分离模式运行。
 ```

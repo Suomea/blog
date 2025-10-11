@@ -28,89 +28,90 @@ markdown_extensions:
 nav:
   - 数据库:
     - "MySQL":
-      - MySQL/MySQL Tips.md
-      - MySQL/MySQL 变量.md
-      - MySQL/MySQL 安装.md
-      - MySQL/MySQL 备份.md
-      - MySQL/MySQL 主从.md
+      - DataBase/MySQL/MySQL Tips.md
+      - DataBase/MySQL/MySQL 变量.md
+      - DataBase/MySQL/MySQL 安装.md
+      - DataBase/MySQL/MySQL 备份.md
+      - DataBase/MySQL/MySQL 主从.md
     - "Redis":
-        - Redis/Redis 安装.md
-        - Redis/Redis 数据结构.md
+        - DataBase/Redis/Redis 安装.md
+        - DataBase/Redis/Redis 数据结构.md
     - "达梦":
-        - DM/达梦 Tips.md
-        - DM/达梦安装.md
-        - DM/达梦备份.md
+        - DataBase/DM/达梦 Tips.md
+        - DataBase/DM/达梦安装.md
+        - DataBase/DM/达梦备份.md
     - "Doris":
-        - Doris/Doris Tips.md
-        - Doris/Doris 动态分区.md
-        - Doris/Doris 接入 Kafka 的数据.md
-        - Doris/Doris 接入 MySQL 的数据.md
-  - K8S:
-      - K8S/安装 Kubernetes 集群.md
-      - K8S/安装 Kuboard 集群管理界面.md
-      - K8S/安装 Nginx Ingress.md
-  - 服务器:
-    - "Linux":
-      - Linux/Linux Tips.md
-      - Linux/VIM.md
-      - Linux/软件安装.md
-      - Linux/文件系统.md
-      - Linux/磁盘挂载.md
-      - Linux/定时任务.md
-      - Linux/iptables.md
-      - Linux/smb.md
-    - "Nginx":
-      - Nginx/Nginx Tips.md
-      - Nginx/Nginx 编译安装.md
-      - Nginx/Nginx 日志.md
-      - Nginx/Nginx 配置 Basic Auth.md
-      - Nginx/Nginx 使用自签名证书.md
-    - "Docker":
-      - Docker/Docker Tips.md
-
-  - 计算机网络:
-      - Network/Network Tips.md
-      - Network/网络层：IP.md
-      - Network/网络层：ICMP.md
-      - Network/运输层：UDP.md
-      - Network/运输层：TCP.md
-  - 操作系统:
-      - OS/OS Tips.md
-      - OS/进程.md
-      - OS/线程.md
-      - OS/并发控制.md
-      - OS/汇编——介绍.md
-      - OS/汇编——环境搭建.md
-      - OS/C.md
-  - 数据结构和算法:
-      - Algorithms/求解算数表达式的值.md
-      - Algorithms/Base64 算法.md
-      - Algorithms/数据结构：图.md
+        - DataBase/Doris/Doris Tips.md
+        - DataBase/Doris/Doris 动态分区.md
+        - DataBase/Doris/Doris 接入 Kafka 的数据.md
+        - DataBase/Doris/Doris 接入 MySQL 的数据.md
   - Java:
-    - Java/Java Tips.md
-    - Java/Java 并发.md
-    - Java/反射和动态代理.md
-    - "JVM":
-      - Java/JVM 内存空间划分.md
-      - Java/String.intern().md
-      - Java/JVM 命令行工具.md
-    - "MyBatis":
-      - MyBatis/MyBatis 快速入门.md
-      - MyBatis/MyBatis 反射工具箱.md
-      - MyBatis/MyBatis 日志模块.md
-    - "Spring":
-      - Spring/Spring Tips.md
-      - Spring/日期时间序列化.md
+      - Java/Java Tips.md
+      - Java/Java 并发.md
+      - Java/反射和动态代理.md
+      - "JVM":
+          - Java/JVM 内存空间划分.md
+          - Java/String.intern().md
+          - Java/JVM 命令行工具.md
+      - "MyBatis":
+          - MyBatis/MyBatis 快速入门.md
+          - MyBatis/MyBatis 反射工具箱.md
+          - MyBatis/MyBatis 日志模块.md
+      - "Spring":
+          - Spring/Spring Tips.md
+          - Spring/日期时间序列化.md
+  - 运维:
+    - "Linux":
+      - Operations/Linux/Linux Tips.md
+      - Operations/Linux/VIM.md
+      - Operations/Linux/软件安装.md
+      - Operations/Linux/文件系统.md
+      - Operations/Linux/磁盘挂载.md
+      - Operations/Linux/定时任务.md
+      - Operations/Linux/iptables.md
+      - Operations/Linux/smb.md
+    - "Nginx":
+      - Operations/Nginx/Nginx Tips.md
+      - Operations/Nginx/Nginx 编译安装.md
+      - Operations/Nginx/Nginx 日志.md
+      - Operations/Nginx/Nginx 配置 Basic Auth.md
+      - Operations/Nginx/Nginx 使用自签名证书.md
+    - "Docker":
+      - Operations/Docker/Docker Tips.md
+    - K8S:
+      - Operations/K8S/安装 Kubernetes 集群.md
+      - Operations/K8S/安装 Kuboard 集群管理界面.md
+      - Operations/K8S/安装 Nginx Ingress.md
+  - 三座大山:
+    - 计算机网络:
+        - ThreeMountains/Network/Network Tips.md
+        - ThreeMountains/Network/网络层：IP.md
+        - ThreeMountains/Network/网络层：ICMP.md
+        - ThreeMountains/Network/运输层：UDP.md
+        - ThreeMountains/Network/运输层：TCP.md
+    - 操作系统:
+        - ThreeMountains/OS/OS Tips.md
+        - ThreeMountains/OS/进程.md
+        - ThreeMountains/OS/线程.md
+        - ThreeMountains/OS/并发控制.md
+        - ThreeMountains/OS/汇编——介绍.md
+        - ThreeMountains/OS/汇编——环境搭建.md
+        - ThreeMountains/OS/C.md
+    - 数据结构和算法:
+        - ThreeMountains/Algorithms/求解算数表达式的值.md
+        - ThreeMountains/Algorithms/Base64 算法.md
+        - ThreeMountains/Algorithms/数据结构：图.md
+
   - 大数据:
     - "Kafka":
-      - Kafka/Kafka 快速开始.md
-      - Kafka/Kafka 常用命令.md
+      - BigData/Kafka/Kafka 快速开始.md
+      - BigData/Kafka/Kafka 常用命令.md
     - "Flink":
-      - Flink/Flink Tips.md
-      - Flink/Flink 快速开始.md
+      - BigData/Flink/Flink Tips.md
+      - BigData/Flink/Flink 快速开始.md
     - "Hadoop":
-      - Hadoop/Hadoop Tips.md
-      - Hadoop/Hadoop 快速开始.md
+      - BigData/Hadoop/Hadoop Tips.md
+      - BigData/Hadoop/Hadoop 快速开始.md
   - YOLO:
     - yolo/YOLO Tips.md
     - yolo/YOLO 环境搭建.md

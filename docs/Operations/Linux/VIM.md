@@ -1,6 +1,6 @@
 
 ## 配置
-编辑配置文件 `vim ~/.vimrc`。
+编辑配置文件，全局：/etc/vim/vimrc，个人：~/.vimrc。
 ```
 set nu 
 syntax on 
@@ -11,6 +11,9 @@ set expandtab
 set autoindent 
 set noswapfile
 ```
+
+## 快速操作
+展示行号：`set nu`
 
 取消行号：`set nonu`
 
@@ -71,15 +74,6 @@ echo 有个 -n 选项能够控制不输出换行符。
 ```
 :set bin noeol
 :wq
-```
-
-## 行号展示
-```
-# 设置展示行号
-:set nu
-
-# 取消展示行号
-:set nonu
 ```
 
 ## 在多行行首插入字符

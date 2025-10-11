@@ -22,7 +22,7 @@ hello world!
 
 GCC 编译器驱动程序读取源程序文件 `hello.c`，并把它翻译成一个可执行目标文件 `hello`。这个翻译过程可分为四个阶段，如下图所示。
 执行这四个阶段的程序（预处理器、编译器、汇编器和链接器）一起构成了编译系统（compilation system）。
-![](../LocalFile/Picture/OSTips.png)
+![](../../LocalFile/Picture/OSTips.png)
 
 ### 预处理阶段
 预处理器 cpp 根据以字符 `#` 开头的命令，修改原始的 C 程序。比如 `hello.c` 中的第一行的 `#include <stdio.h>` 告诉预处理器读取系统
