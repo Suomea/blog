@@ -2,17 +2,8 @@
 
 准备 PG
 ```sql
--- 创建数据库
-CREATE DATABASE paperless;
-
-\c paperless
-
--- 创建用户并设置密码
-CREATE USER paperless WITH PASSWORD 'Asu@950820';
-
--- 授予用户对数据库的全部权限
-GRANT ALL PRIVILEGES ON DATABASE paperless TO paperless;
-GRANT ALL PRIVILEGES ON SCHEMA public TO paperless;
+create user paperless with password 'xxxx';
+create database paperless owner paperless;
 
 -- 为 Paperless 的搜索功能启用扩展（重要！） 
 CREATE EXTENSION IF NOT EXISTS pg_trgm; 
