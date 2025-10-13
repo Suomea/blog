@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Operations/Linux/Paperless 安装.md",
+                "file": "docs/Java/Java 连接 Redis.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Paperless 安装"
+              "title": "Java 连接 Redis"
             }
           }
         ]
@@ -140,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Operations/Linux/Paperless 安装.md",
+                "file": "docs/Java/Java 连接 Redis.md",
                 "followCursor": false,
                 "showSearch": true,
-                "searchQuery": "shell"
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Paperless 安装"
+              "title": "Outline of Java 连接 Redis"
             }
           }
         ],
@@ -170,39 +170,39 @@
   },
   "active": "b18920ca02202e1f",
   "lastOpenFiles": [
-    "docs/Operations/Docker/Docker Tips.md",
+    "docs/DataBase/Redis/Redis 数据结构.md",
+    "docs/DataBase/Redis/Redis 分布式锁.md",
+    "docs/DataBase/Redis/Redis 安装.md",
+    "docs/Java/Java 连接 Redis.md",
+    "docs/Java/GeoJSON 和 WKT.md",
+    "docs/Java/Java Tips.md",
+    "docs/Java/Java 并发.md",
+    "docs/Java/Java 打包.md",
+    "docs/Java/JVM 内存空间划分.md",
+    "docs/Java/JVM 命令行工具.md",
+    "docs/Java/RestTemplate.md",
+    "docs/Java/NIO Tips.md",
+    "docs/Java/String.intern().md",
+    "docs/Java/给视频和图片添加水印.md",
+    "docs/Java/反射和动态代理.md",
+    "docs/Java/虚拟机类加载机制.md",
+    "docs/Java/Spring/日期时间序列化.md",
+    "docs/Java/Spring/Spring Tips.md",
+    "docs/Java/Spring/日志.md",
     "docs/Operations/Linux/Paperless 安装.md",
+    "docs/Operations/Linux/PT.md",
+    "docs/DataBase/Redis/Reids Tips.md",
+    "docs/Operations/Docker/Docker Tips.md",
     "docs/DataBase/PG/PG 安装.md",
     "docs/DataBase/PG/PG 清理 WAL 日志.md",
     "docs/Operations/Linux/VIM.md",
-    "docs/English/满江红-岳飞.md",
-    "docs/English/桃花庵歌-唐寅.md",
-    "docs/English/大观楼长联-孙髯.md",
-    "docs/English/侠客行-李白.md",
-    "docs/Reading/Timeline.md",
-    "docs/English/Timeline.md",
-    "docs/Reading/读书.md",
-    "docs/index.md",
-    "docs/BigData/Kafka/Kafka 快速开始.md",
-    "docs/BigData/Kafka/Kafka 配置.md",
-    "docs/BigData/Kafka/Kafka 常用命令.md",
     "docs/BigData/Kafka",
     "mkdocs.yml~",
     "mkdocs.yml",
-    "docs/yolo/YOLO 数据集构建与训练.md",
     "docs/index.md~",
-    "docs/Java/Kafka/Kafka 配置.md",
-    "docs/Java/Kafka/Kafka 快速开始.md",
-    "docs/Java/Kafka/Kafka 常用命令.md",
     "docs/Java/Kafka",
-    "docs/DM/达梦 Tips.md",
-    "docs/DataBase/DM/达梦安装.md",
-    "docs/DataBase/DM/达梦备份.md",
-    "docs/DataBase/DM/达梦 Tips.md",
     "docs/DataBase/DM",
     "docs/Operations/Docker",
-    "docs/Operations/K8S/安装 Nginx Ingress.md",
-    "docs/Operations/K8S/安装 Kuboard 集群管理界面.md",
     "docs/Operations/K8S",
     "docs/Operations/Prometheus",
     "docs/Operations/Linux",

@@ -12,11 +12,7 @@ CREATE EXTENSION IF NOT EXISTS unaccent;
 
 准备目录
 ```
-/data/paperless
-/data/paperless/export
-/data/paperless/consume
-/data/paperless/media
-/data/paperless/data
+mkdir -p /data/paperless/{data,media,export,consumer}
 ```
 
 docker-compose.yml
@@ -33,6 +29,7 @@ services:
       - ./export:/usr/src/paperless/export
       - ./consume:/usr/src/paperless/consume
     environment:
+      PAPERLESS_ENABLE_OCR: false
       PAPERLESS_REDIS: redis://:xxxx@localhost:6379
       PAPERLESS_REDIS_PREFIX: paperless
       PAPERLESS_DBENGINE: postgresql
