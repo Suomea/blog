@@ -20,6 +20,18 @@ docker image save mysql -o mysql.tar
 docker image load -i mysql.tar
 ```
 
+镜像拉取代理配置，虚拟机走宿主机的科学上网。
+```
+# 服务文件 /usr/lib/systemd/system/docker.service 添加环境变量
+[Service]
+Environment="HTTP_PROXY=http://192.168.3.209:7897"
+Environment="HTTPS_PROXY=http://192.168.3.209:7897"
+
+# 重启服务
+systemctl daemon-reload
+systemctl restart docker
+```
+
 ## 网络模式
 `Docker` 安装时默认会创建三个网络，同时在宿主机上创建一个虚拟网卡 `docker0`。
 ```shell
