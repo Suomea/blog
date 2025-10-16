@@ -1,29 +1,48 @@
-查看规则，默认查看 filter 表
-
+查看规则，默认查看 filter 表：
 ```
 iptables -L -n -v --line-number
 ```
 
-删除规则
-
+删除规则：
 ```
 iptables -D INPUT [num]
 ```
 
-插入规则，插入到第五行，只接受建立连接的 tcp 包且端口号为 18094
-
+插入规则，插入到第五行，只接受建立连接的 tcp 包且端口号为 18094：
 ```
 iptables -I INPUT 5 -m state --state NEW  -p tcp  --dport 18094  -j ACCEPT
+iptables -I INPUT 5 -m conntrack --ctstate NEW -p tcp --dport 18094 -j ACCEPT
 ```
 
-使用 -A 为追加到最后一行
-
+使用 -A 为追加到最后一行，两个语句等效，下面一个更推荐：
 ```
 iptables -A INPUT -m state --state NEW  -p tcp  --dport 18094  -j ACCEPT
+iptables -A INPUT -m conntrack --ctstate NEW -p tcp --dport 18094 -j ACCEPT
 ```
 
 实例分析
 ```
+# 1. 允许已建立的连接和相关的流量（放行返回包，比如你访问网站后的响应）
+iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+
+# 或者旧版写法（如果 conntrack 不可用）：
+iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+# 2. 允许 ICMP (Ping) 请求
+iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+
+# 或者允许所有 ICMP（更宽松）：
+iptables -A INPUT -p icmp -j ACCEPT
+
+# 3. 允许本地回环接口 (lo) 的所有流量
+iptables -A INPUT -i lo -j ACCEPT
+
+# 4. 允许新的 TCP 连接访问 SSH（端口 22）
+iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT
+
+# 5. 添加兜底策略
+iptables -A INPUT -j REJECT --reject-with icmp-host-prohibited
+
 # iptables -L -n -v --line-numbers
 Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
 num   pkts bytes target     prot opt in     out     source               destination
@@ -65,10 +84,26 @@ num   pkts bytes target     prot opt in     out     source    
 
 上述有 13 条规则，如果进来的包都不匹配全部的十三条规则的话（上述的案例中不会发生这种情况，因为第13条规则匹配所有的包进行拒绝），那么我们可以设置默认的策略进行兜底。
 
+```
 iptables -P INPUT DROP
 
 iptables -P OUTPUT ACCEPT
 
 iptables -P FORWARD ACCEPT
+```
+
+
+安装服务
+```
+apt install iptables-persistent
+```
+
+手动保存、恢复规则
+```
+netfilter-persistent save
+iptables-restore < /etc/iptables/rules.v4
+```
+
+ `iptables-persistent` 它会在每次系统启动时 ​**​自动恢复你之前保存的规则​**​，无需手动操作。但是保存需要手动保存。
 
 参考连接：[鸟哥的 Linux 私房菜 -- Linux 防火墙与 NAT 服务器 (vbird.org)](http://cn.linux.vbird.org/linux_server/0250simple_firewall_3.php)

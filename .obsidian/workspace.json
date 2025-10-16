@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Java/Java 连接 Redis.md",
+                "file": "docs/Operations/Linux/虚拟机.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Java 连接 Redis"
+              "title": "虚拟机"
             }
           }
         ]
@@ -44,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "文件列表"
             }
           },
           {
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "MULTILINESTRING",
+                "query": "grep",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -140,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Java/Java 连接 Redis.md",
+                "file": "docs/Operations/Linux/虚拟机.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Java 连接 Redis"
+              "title": "虚拟机 的大纲"
             }
           }
         ],
@@ -158,22 +158,32 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false,
-      "vscode-editor:Create Code File": false
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:创建新数据库": false,
+      "vscode-editor:新建代码文件": false
     }
   },
   "active": "b18920ca02202e1f",
   "lastOpenFiles": [
+    "docs/Operations/Linux/磁盘挂载.md",
+    "docs/Operations/Linux/虚拟机.md",
+    "docs/Operations/Linux/文件系统.md",
+    "docs/Operations/Linux/iptables.md",
+    "docs/Operations/Linux/Linux Tips.md",
+    "docs/DataBase/MySQL/MySQL 备份.md",
+    "docs/DataBase/MySQL/MySQL 安装.md",
+    "docs/Operations/Linux/查找文件.md",
+    "docs/Operations/Linux/正则表达式.md",
+    "docs/Operations/Linux/Openvas.md",
+    "docs/Java/Java 连接 Redis.md",
     "docs/DataBase/Redis/Redis 数据结构.md",
     "docs/DataBase/Redis/Redis 分布式锁.md",
     "docs/DataBase/Redis/Redis 安装.md",
-    "docs/Java/Java 连接 Redis.md",
     "docs/Java/GeoJSON 和 WKT.md",
     "docs/Java/Java Tips.md",
     "docs/Java/Java 并发.md",
@@ -186,16 +196,6 @@
     "docs/Java/给视频和图片添加水印.md",
     "docs/Java/反射和动态代理.md",
     "docs/Java/虚拟机类加载机制.md",
-    "docs/Java/Spring/日期时间序列化.md",
-    "docs/Java/Spring/Spring Tips.md",
-    "docs/Java/Spring/日志.md",
-    "docs/Operations/Linux/Paperless 安装.md",
-    "docs/Operations/Linux/PT.md",
-    "docs/DataBase/Redis/Reids Tips.md",
-    "docs/Operations/Docker/Docker Tips.md",
-    "docs/DataBase/PG/PG 安装.md",
-    "docs/DataBase/PG/PG 清理 WAL 日志.md",
-    "docs/Operations/Linux/VIM.md",
     "docs/BigData/Kafka",
     "mkdocs.yml~",
     "mkdocs.yml",
