@@ -22,9 +22,9 @@ public static void main(String[] args) {
             .setPassword("xxxx");  
     
     // 设置 key String 序列化，value JSON 序列化
-	config.setCodec(new CompositeCodec(StringCodec.INSTANCE,   
-        new JsonJacksonCodec(),  
-        new JsonJacksonCodec()));
+	config.setCodec(new CompositeCodec(StringCodec.INSTANCE, 
+            StringCodec.INSTANCE,  
+            new JsonJacksonCodec()));
   
     // 创建客户端
     RedissonClient redissonClient = Redisson.create(config);  
