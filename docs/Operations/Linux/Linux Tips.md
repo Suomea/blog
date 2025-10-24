@@ -228,3 +228,27 @@ TCP/IP Socket 叫做网络套接字，可以在同一台机器或者跨机器通
 
 使用 TCP 或者 UDP，经过内核网络栈，需要网络协议开销，性能略低于 Unix Socket。
 
+## 查看认证成功或者失败的日志
+查看当前活跃的回话
+```
+who
+```
+
+查看我是谁
+```
+whoami
+```
+
+查看登录成功的日志 last，日志保存在 /var/log/wtmp；查看登录失败的日志 lastb，日志保存在 /var/log/btmp。
+```
+last | lastb
+-n 显示最近几次的日志
+-s YYYY-MM-DD/"YYYY-MM-DD hh:mm:ss" 展示指定日期/日期时间到当前时间的日志
+```
+
+如果启用了审计进程
+```
+ausearch -m USER_LOGIN
+```
+
+
