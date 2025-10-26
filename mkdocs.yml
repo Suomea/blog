@@ -63,6 +63,7 @@ nav:
   - 运维:
     - "Linux":
       - Operations/Linux/Linux Tips.md
+      - Operations/Linux/系统加固.md 
       - Operations/Linux/VIM.md
       - Operations/Linux/软件安装.md
       - Operations/Linux/文件系统.md
