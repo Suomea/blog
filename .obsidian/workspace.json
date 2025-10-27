@@ -59,7 +59,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "文件列表"
             }
           },
           {
@@ -68,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "auditd",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -76,7 +76,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Search"
+              "title": "搜索"
             }
           },
           {
@@ -161,7 +161,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of fail2ban"
+              "title": "fail2ban 的大纲"
             }
           }
         ],
@@ -173,28 +173,37 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false,
-      "vscode-editor:Create Code File": false
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:创建新数据库": false,
+      "vscode-editor:新建代码文件": false
     }
   },
   "active": "c13ae49dc4ac3413",
   "lastOpenFiles": [
     "docs/Operations/Linux/系统加固.md",
     "docs/Operations/Linux/fail2ban.md",
-    "docs/Operations/Security/服务器三级等保.md",
-    "docs/Operations/Linux/Linux Tips.md",
-    "mkdocs.yml",
-    "docs/Operations/Linux/审计进程.md",
-    "docs/Operations/Security/关于安全.md",
-    "docs/Java/Java 连接 Redis.md",
     "docs/DataBase/DM/达梦 Tips.md",
+    "docs/DataBase/DM/达梦备份.md",
+    "docs/DataBase/DM/达梦安装.md",
+    "docs/Java/MyBatis/MyBatis 日志模块.md",
+    "docs/Java/MyBatis/MyBatis 快速入门.md",
+    "docs/Java/MyBatis/MyBatis 反射工具箱.md",
+    "docs/DataBase/Doris/Doris Tips.md",
+    "docs/DataBase/Doris/Doris 接入 MySQL 的数据.md",
+    "docs/DataBase/Doris/Doris 接入 Kafka 的数据.md",
+    "docs/DataBase/Doris/Doris 动态分区.md",
+    "mkdocs.yml",
+    "docs/DataBase/MySQL/MySQL Tips.md",
+    "docs/Java/Java Tips.md",
+    "docs/Java/Java 连接 Redis.md",
+    "docs/Operations/Security/服务器三级等保.md",
     "docs/Operations/Nginx/Nginx 日志.md",
+    "docs/Operations/Security/关于安全.md",
     "docs/Operations/Linux/VIM.md",
     "docs/Operations/未命名.md",
     "docs/Operations/Security",
@@ -202,17 +211,8 @@
     "docs/Operations/Nginx/Nginx 使用自签名证书.md",
     "docs/BigData/Hadoop/Hadoop 快速开始.md",
     "docs/Operations/Linux/虚拟机.md",
+    "docs/Operations/Linux/审计进程.md",
     "docs/Operations/Linux/iptables.md",
-    "docs/Operations/Linux/磁盘挂载.md",
-    "docs/Operations/Linux/文件系统.md",
-    "docs/DataBase/MySQL/MySQL 备份.md",
-    "docs/DataBase/MySQL/MySQL 安装.md",
-    "docs/Operations/Linux/查找文件.md",
-    "docs/Operations/Linux/正则表达式.md",
-    "docs/Operations/Linux/Openvas.md",
-    "docs/DataBase/Redis/Redis 数据结构.md",
-    "docs/DataBase/Redis/Redis 分布式锁.md",
-    "docs/DataBase/Redis/Redis 安装.md",
     "docs/BigData/Kafka",
     "mkdocs.yml~",
     "docs/index.md~",
