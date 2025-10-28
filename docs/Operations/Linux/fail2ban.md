@@ -1,3 +1,4 @@
+## fail2ban
 ssh 登录失败锁定
 https://zhuanlan.zhihu.com/p/597751230
 
@@ -46,3 +47,16 @@ journalmatch = _SYSTEMD_UNIT=sshd.service  # 只监控 sshd 服务的日志
 **监禁判定** 根据 `jail.conf`、`jail.local`或 `jail.d/*.conf`中的参数（如 `maxretry=3`）判断是否封禁 IP。若达到阈值，执行 `action.d/`中定义的动作。
 
 **执行封禁** 动作脚本（如 `iptables.conf`）添加防火墙规则，禁止 IP 访问指定端口。可选通知操作（如 `sendmail.conf`发送告警邮件）。
+
+## SSH 配置
+查看监禁的所有配置：
+```
+fail2ban-client get sshd all
+```
+
+查看监禁状态：
+```
+fail2ban-client status sshd
+```
+
+## Nginx 配置
