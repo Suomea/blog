@@ -60,9 +60,12 @@ ignoreip = 127.0.0.1/8 192.168.1.0/24
 systemctl restart fail2ban
 ```
 
-解禁某个 jail 的 IP
+解封操作：
 ```
-fail2ban-client set <JAIL名称> unban --all
+# 清空并重置 jail
+fail2ban-client restart <JAIL名称> 
+
+# 解封某个 ip
 fail2ban-client set <JAIL名称> unbanip 192.168.1.100
 ```
 
@@ -121,15 +124,23 @@ access_log  logs/access.json j_format;
 1. 配置如果同一个 IP 10 分钟内有 20 个 404 请求，就封禁 12 小时。
 2. 配置如果同一个 IP 10 分钟内有 20 个 /login 接口调用，就封禁 12 个小时。
 
-规则匹配配置：
+规则匹配配置，需要注意时间时间和文件修改时间，如果没有指定时间的话，默认使用文件修改时间来做处理：
 ```
 # /etc/fail2ban/filter.d/nginx-404.conf
 [Definition]
 failregex = ^{"time":".*?","remote_addr":"<HOST>",.*?"status":404,.*?}$
 
+# 时间戳配置
+datestart = ^{"time":"
+datepattern = ^"%%Y-%%m-%%dT%%H:%%M:%%S%%z"
+
 # /etc/fail2ban/filter.d/nginx-login.conf
 [Definition]
 failregex = ^{"time":".*?","remote_addr":"<HOST>",.*?"uri":"/login",.*?}$
+
+# 时间戳配置
+datestart = ^{"time":"
+datepattern = ^"%%Y-%%m-%%dT%%H:%%M:%%S%%z"
 ```
 
 监禁配置：
@@ -140,7 +151,7 @@ enabled = true
 # 这里端口号默认 80,443 如果想要全部封禁直接 port=all
 port = http,https
 filter = nginx-404
-logpath = /var/log/nginx/access.json
+logpath = /usr/local/nginx/logs/access.json
 maxretry = 20
 findtime = 600
 bantime = 3600
@@ -149,10 +160,32 @@ bantime = 3600
 enabled = true
 port = http,https
 filter = nginx-login
-logpath = /var/log/nginx/access.json
+logpath = /usr/local/nginx/logs/access.json
 maxretry = 20
 findtime = 600
 bantime = 3600
 ```
 
-需要注意时间时间和文件修改时间，如果没有指定时间的话，默认使用文件修改时间来做处理。
+测试配置：
+```
+# 配置文件是否正确
+fail2ban-client --test
+
+# 配置是否能正确匹配
+fail2ban-regex /usr/local/nginx/logs/access.json /etc/fail2ban/filter.d/nginx-404.conf 
+fail2ban-regex /usr/local/nginx/logs/access.json /etc/fail2ban/filter.d/nginx-login.conf 
+
+# fail2ban 测试输出匹配的行
+tail -n 1000 /usr/local/nginx/logs/access.json > /tmp/test.log
+fail2ban-regex /tmp/test.log /etc/fail2ban/filter.d/nginx-404.conf --print-all-matched
+
+# grep 测试输出匹配的行
+tail -n 2000 /usr/local/nginx/logs/access.json | grep --color=always -E '^{"time":".*?","remote_addr":".*",.*?"status":404,.*?}$'
+```
+
+
+加载配置：
+```
+fail2ban-client reload
+fail2ban-client status
+```
