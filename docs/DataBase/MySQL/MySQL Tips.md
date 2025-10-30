@@ -5,46 +5,17 @@ tags:
 ---
 ### `count` 函数的注意事项
 
-表结构定义如下：
-```sql
-create table test_tb
-(
-    id           int primary key auto_increment,
-    auto_level   int null comment '自动分级',
-    manual_level int null comment '手动分级'
-);
-```
+`count(*)` 会统计所有行；`count(expr)` 函数只会统计 `expr` 非 NULL 的行。
 
-只要查询出一共有多少条数据，再查询出手动分级和自动分级不一致的数据即可。  
+`count(a != b)` 如果 a 和 b 其中一个为 NULL 或两个都为 NULL，表达式 `a != b` 就为 NULL；否则表达式的值就是 TRUE/FALSE，非 NULL。
 
-错误的 SQL：
-```sql
-select count(*)                          as totalCount,
-       count(manual_level != auto_level) as diffCount
-from test_tb;
-```
-
-错误的原因在于 `manual_level != auto_level` 是逻辑表达式，无论表达式返回的结果是 `True` 或者 `False` 都会被 `count()` 函数统计进去。
-!!! note "如果表达式两边至少一方为 NULL，那么表达式的结果就是 NLL，count 函数不会统计 NULL。"
-
-正确的 SQL：
-```sql
-select count(*)                                                      as totalCount,
-       sum(case when (manual_level != auto_level) then 1 else 0 end) as diffCount
-from test_db;
-```
+`sum(case when (a != b) then 1 else 0 end)` 用来统计 a 和 b 都不为 NULL 且 a 和 b 不相等的数量。
 
 ### `find_in_set` 函数的用法
 
-用法 `find_in_set(find_str, field_name)`
+用法 `find_in_set(find_str, field_name)`，`find_str` 为要查找的字符串，`field_name` 为字段名，需要以英文的逗号分隔。
 
-`find_str` 为要查找的字符串。
-
-`field_name` 为字段名，需要以英文的逗号分隔。
-
-示例，例如 `user` 表的 `tag` 字段值为 `学生,成年人,男,中国人`。
-
-查询 SQL：
+示例查询 SQL：
 ```sql
 select * from user where find_in_set('中国人', tag);
 ```
