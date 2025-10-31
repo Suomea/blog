@@ -3,7 +3,7 @@ comments: true
 tags:
   - MySQL
 ---
-### `count` 函数的注意事项
+### count 函数的注意事项
 
 `count(*)` 会统计所有行；`count(expr)` 函数只会统计 `expr` 非 NULL 的行。
 
@@ -11,7 +11,7 @@ tags:
 
 `sum(case when (a != b) then 1 else 0 end)` 用来统计 a 和 b 都不为 NULL 且 a 和 b 不相等的数量。
 
-### `find_in_set` 函数的用法
+### find_in_set 函数的用法
 
 用法 `find_in_set(find_str, field_name)`，`find_str` 为要查找的字符串，`field_name` 为字段名，需要以英文的逗号分隔。
 
@@ -26,66 +26,52 @@ Wrappers.<User>lambdaQuery()
 	.apply("find_in_set({0}, tag)", "中国人");
 ```
 
-### `root` 用户忘记密码
+### root 用户忘记密码
 
-停止 MySQL 服务，编辑配置文件增加选项 `skip-grant-tables` 启动 MySQL 服务。 
+编辑配置文件增加选项 `skip-grant-tables`，然后重启 MySQL 服务。 
 
-直接进入 MySQL，命令 `mysql`。
+直接输入 mysql 命令登录数据库，清除 root 用户的身份认证信息：
 ```sql
 update mysql.user set authentication_string = null where user = 'root';
 flush privileges;
 exit;
 ```
 
-再次进入 MySQL，命令  `mysql -u root `。
+再次输入命令  `mysql -u root ` 进入 MySQL 更新 root 用户密码：
 ```
 alter user root@localhost identified  by 'new_password';
 flush privileges;
 exit;
 ```
 
-去掉增加的配置，重启 MySQL 服务，完成。
+去掉增加的配置，重启 MySQL 服务，完成。[参考 Stackoverflow 链接](https://stackoverflow.com/questions/50691977/how-to-reset-the-root-password-in-mysql-8-0-11)
 
-参考：https://stackoverflow.com/questions/50691977/how-to-reset-the-root-password-in-mysql-8-0-11
+### 错误修复 Too many connections
 
-### 错误修复 `Too many connections`
+调整 max_connections 系统变量，重启数据库。[参考官方文档](https://dev.mysql.com/doc/refman/8.3/en/server-system-variables.html#sysvar_max_connections)
 
-调整 max_connections 系统变量，重启数据库。  
-
-参考：https://dev.mysql.com/doc/refman/8.3/en/server-system-variables.html#sysvar_max_connections
-
-### 用户操作
-查询所有的用户
-```
+### 用户和权限操作
+用户操作：
+```sql
+-- 查看和创建用户
 select user, host from mysql.user;
-```
-
-创建新的用户
-```
 create user 'test'@'%' identified by 'xxxx';
 ```
 
-查询用户权限
-```
+权限操作
+```sql
+-- 查看用户权限
 show grants for username;
-```
 
-赋予用户查询数据库的权限
-```
+-- 赋予和撤销库的读取权限
 GRANT SELECT ON mydb.* TO 'username'@'%';
--- 撤销
 REVOKE SELECT ON mydb.* TO 'username'@'%';
-```
 
-赋予用户数据库的全部权限
-```
+-- 赋予和撤销库的所有权限
 GRANT ALL PRIVILEGES ON mydb.* TO 'username'@'%';
--- 撤销
 REVOKE ALL PRIVILEGES ON mydb.* FROM 'username'@'%';
-```
 
-确保权限立即生效
-```
+-- 刷新权限信息
 FLUSH PRIVILEGES;
 ```
 

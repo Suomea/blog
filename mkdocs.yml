@@ -5,12 +5,13 @@ theme:
   palette: 
     primary: custom
   font:
-    text: STSong
+    text: Source Han Sans
     code: Consolas
   name: material
   custom_dir: overrides
   features:
     - navigation.tabs
+    - navigation.sections
     - navigation.top
     - content.code.copy
     - content.code.select
