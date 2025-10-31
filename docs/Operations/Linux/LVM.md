@@ -2,8 +2,15 @@
 ## LVM 介绍
 
 磁盘
+查看磁盘的分区类型
+```
+parted /dev/sda print
+```
 
 分区
+```
+fdisk /dev/sda
+```
 
 PV
 实际的分区，但是要调整类型为 8E00（LVM 的识别码），然后使用 pvcreate 命令将分区转换为 LVM 最底层的实体卷。
