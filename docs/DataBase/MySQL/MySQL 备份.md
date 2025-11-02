@@ -5,52 +5,34 @@ tags:
   - 备份
 ---
 ## 备份的要求
+对于大数据来说物理备份是必须的：逻辑备份太慢并且受到资源限制，从逻辑备份中恢复数据需要很长时间。对于较小的数据库，逻辑备份可以很好的胜任。
 
-1. 在生产实践中，对于大数据来说，物理备份是必须的：逻辑备份太慢并且受到资源限制，从逻辑备份中恢复数据需要很长时间。对于较小的数据库，逻辑备份可以很好的胜任。
-2. 保留多个备份集。
-3. 定期从逻辑备份（或者物理备份）中抽取数据进行恢复测试。
-4. 备份文件不要和 `MySQL` 服务器数据文件放在同一个磁盘、服务器、机房、城市。（一般软测的要求是 30km 外的另一个机房）
+遵循 3-2-1 原则。至少 3 分数据副本，通常是一份原始数据和两份备份数据；至少 1 个异地备份，严格的要求是至少 30km 以外的另一个城市；2 可以简单理解为存储在两块不同的设备上。
+
+定期从备份中抽取数据进行恢复测试，确保备份流程没有问题，以及能够在发生故障时能被成功恢复。
 
 ## mysqldump 逻辑备份
 
 ### mysqldump 命令
-
+命令用法：
 ```shell
 mysqldump --source-data=2 --single-transaction -h localhost -u root -p --all-databases | gzip > test.sql.gz
+
+--source-data=2：导出二进制日志文件名称和位置信息，并且在导出文件中以注释的形式展示。
+--single-transaction：导出过程在一个事务中。
+--all-databases：导出全部数据库，会包含系统库。也可以使用 --databases tb1 tb2 指定导出数据库的名称。
 ```
 
-`--source-data=2`：导出二进制日志文件名称和位置信息，并且在导出文件中以注释的形式展示。
-
-`--single-transaction`：导出过程在一个事务中。
-
-`--all-databases`：导出全部数据库，会包含系统库。也可以使用 --databases tb1 tb2 指定导出数据库的名称。
-
-
-导出一个数据库的数据。
-```
-mysqldump -u <user> -p <dbname> > dbname.sql
-```
-
-导出多个数据库的数据。
-```
-mysqldump -u <user> -p --databases db1 db2 db3 > db.sql
-```
-
-导出所有数据库的数据。
-```
-mysqldump -u <user> -p --all-databases > alldb.sql
-```
-
-导出指定表的数据。
+导出指定表的数据：
 ```
 mysqldump -u <user> -p <dbname> <tablename1> <tablename2> > tablename.sql
 ```
 
-在数据中执行指定的 SQL 文件。
+在数据库执行指定的 SQL 文件：
 ```
 mysql -u <user> -p <db> < a.sql
 ```
-### 创建连接凭证配置文件
+### 连接凭证文件
 MySQL 连接凭证单独放在文件一个文件中，置于 /data/database/db_name 目录下，文件名为 `.bak.cnf`，内容如下：
 ```text
 [client]
@@ -62,7 +44,6 @@ password=pwd
 ```shell
 chmod 600 .bak.cnf
 ```
-
 ### 备份脚本文件
 脚本文件放置在 /data/database/db_name 目录下，文件名为 bak.sh，内容如下：
 ```shell
@@ -75,7 +56,6 @@ backup_dir=/data/database/db_name
 cre_file=/data/database/db_name/.bak.cnf
 dd=`date +%Y-%m-%d-%H-%M-%S`
 database_name=db_name
-
 
 if [ ! -d $backup_dir ];
 then
@@ -105,7 +85,7 @@ fi
 
 ## XtraBackup 物理备份
 ### 备份准备工作
-APT 安装。
+备份软件安装：
 ```shell
 wget https://repo.percona.com/apt/percona-release_latest.$(lsb_release -sc)_all.deb 
 dpkg -i percona-release_latest.bookworm_all.deb 
@@ -113,7 +93,7 @@ apt update
 apt install percona-xtrabackup-80
 ```
 
-创建备份账号并授权。
+创建备份账号并授权：
 ```mysql
 CREATE USER 'bkpuser'@'localhost' IDENTIFIED BY '123456'; 
 GRANT BACKUP_ADMIN, PROCESS, RELOAD, LOCK TABLES, REPLICATION CLIENT ON *.* TO 'bkpuser'@'localhost'; 
@@ -122,37 +102,40 @@ GRANT SELECT ON performance_schema.keyring_component_status TO bkpuser@'localhos
 GRANT SELECT ON performance_schema.replication_group_members TO bkpuser@'localhost'; 
 FLUSH PRIVILEGES;
 ```
-
 ### 本地直接全量物理备份
-
-备份命令。备份的文件不是同一时刻状态一致的，因为备份程序运行需要时间并且运行过程中源文件可能会发生变化。192.168.31.13 服务器上执行。
+备份命令：
 ```shell
 xtrabackup --user=bkpuser --password=123456 \
 	--backup \
 	--target-dir=/data/bkps/
+
+--backup 选项创建备份。
+--target-dir 选项指定备份存放的目录。
+--compress 选项开启压缩备份，能大量减少备份文件占用磁盘空间大小，默认使用 zstd 算法。
+--compress-threads 指定并行压缩的线程数量。
 ```
-`--backup` 选项创建备份。
-`--target-dir` 选项指定备份存放的目录。
-`--compress` 选项开启压缩备份，能大量减少备份文件占用磁盘空间大小，默认使用 zstd 算法。`--compress-threads` 指定并行压缩的线程数量。关于压缩参考：[创建压缩备份](https://docs.percona.com/percona-xtrabackup/innovation-release/create-compressed-backup.html)
+
+备份的文件不是同一时刻状态一致的，因为备份程序运行需要时间并且运行过程中源文件可能会发生变化。
 
 如果创建备份的时候使用了 `--compress` 选项，那么在进行 prepare 之前需要先进行 decomprss。
 ```
 xtrabackup --decompress --target-dir=/data/bkps/
-```
-`--remove-original` 解压缩默认不会删除压缩文件，添加该选项删除原始压缩文件。
 
-所以对于备份还原来说，需要先 prepare 备份文件，使数据达到 a single instant in time。192.168.31.13 服务器上执行（还原可以在任何服务器上执行，前提是安装 XtraBackup）。
+--remove-original 解压缩默认不会删除压缩文件，添加该选项删除原始压缩文件。
+```
+
+所以对于备份还原来说，需要先 prepare 备份文件，使数据达到 a single instant in time。（还原可以在任何服务器上执行，前提是安装 XtraBackup）。
 ```shell
 xtrabackup --prepare --target-dir=/data/bkps
 ```
 
-恢复之前先停止 Docker mysql，并删除 mysql 的数据文件。192.168.31.14 服务器上执行。
+恢复之前先停止 Docker mysql，并删除 mysql 的数据文件。
 ```shell
 docker stop mysql
 rm -rf mysql-data/*
 ```
 
-同步文件到 Docker mysql 数据目录，一般情况下文件的恢复需要注意 Linux 文件属性问题。192.168.31.13 服务器上执行。
+同步文件到 Docker mysql 数据目录，一般情况下文件的恢复需要注意 Linux 文件属性问题。
 ```shell
 rsync -avrP /data/bkps/ root@192.168.31.14:/root/mysql-data/
 ```

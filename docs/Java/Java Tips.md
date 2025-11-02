@@ -6,8 +6,10 @@
 APP_NAME=<jar_file>
 APP_JVM_OPTS=<jvm_options>
 
+SPRING_PROFILES_ACTIVE=<env>
+
 usage() {
-    echo "Usage: sh service.sh [start|stop|restart|status]"
+    echo "Usage: sh run.sh [start|stop|restart|status]"
     exit 1
 }
 
@@ -25,7 +27,7 @@ start() {
 	if [ $? -eq "0" ]; then
 		echo "${APP_NAME} is already running, pid=${pid}"
 	else 
-		nohup java $APP_JVM_OPTS -jar $APP_NAME --spring.profiles.active=stage >/dev/null 2>&1 &
+		nohup java $APP_JVM_OPTS -jar $APP_NAME --spring.profiles.active=${SPRING_PROFILES_ACTIVE} >/dev/null 2>&1 &
 	fi
 }
 
