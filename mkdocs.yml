@@ -5,7 +5,7 @@ theme:
   palette: 
     primary: custom
   font:
-    text: Source Han Sans
+    text: STSong
     code: Consolas
   name: material
   custom_dir: overrides
