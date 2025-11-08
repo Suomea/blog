@@ -74,4 +74,19 @@ REVOKE ALL PRIVILEGES ON mydb.* FROM 'username'@'%';
 -- 刷新权限信息
 FLUSH PRIVILEGES;
 ```
+### 查看占用空间
+查看库和表的占用空间：
+```sql
+-- 查看每个库占用空间大小
+select sum(DATA_LENGTH / 1024 / 1024 / 1024) as data, 'GB', TABLE_SCHEMA 
+from information_schema.TABLES 
+where TABLE_SCHEMA not in ('mysql', 'sys', 'performance_schema', 'information_schema') 
+group by TABLE_SCHEMA order by data;
+
+-- 查看库中每个表占用空间大小
+select sum(DATA_LENGTH / 1024 / 1024 ) as data, 'MB', TABLE_SCHEMA, TABLE_NAME 
+from information_schema.TABLES 
+where TABLE_SCHEMA not in ('mysql', 'sys', 'performance_schema', 'information_schema') and TABLE_SCHEMA = 'xxxxx' 
+group by TABLE_SCHEMA, TABLE_NAME order by TABLE_SCHEMA, data desc ;
+```
 

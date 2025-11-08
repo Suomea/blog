@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Operations/Linux/虚拟机.md",
+                "file": "docs/DataBase/MySQL/MySQL 安装.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "虚拟机"
+              "title": "MySQL 安装"
             }
           }
         ],
@@ -155,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Operations/Linux/虚拟机.md",
+                "file": "docs/DataBase/MySQL/MySQL 安装.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "虚拟机 的大纲"
+              "title": "MySQL 安装 的大纲"
             }
           }
         ],
@@ -185,20 +185,20 @@
   },
   "active": "c13ae49dc4ac3413",
   "lastOpenFiles": [
+    "docs/DataBase/MySQL/MySQL 变量.md",
+    "docs/DataBase/MySQL/MySQL 备份.md",
+    "docs/DataBase/MySQL/MySQL Tips.md",
+    "docs/Operations/Linux/虚拟机.md",
     "docs/Operations/Linux/系统加固.md",
     "docs/Operations/Linux/fail2ban.md",
-    "docs/Operations/Linux/虚拟机.md",
     "docs/Operations/Linux/VIM.md",
     "docs/Operations/Linux/LVM.md",
     "docs/Operations/Linux/磁盘挂载.md",
     "docs/Operations/Linux/iptables.md",
-    "docs/DataBase/MySQL/MySQL 备份.md",
-    "docs/DataBase/MySQL/MySQL 变量.md",
     "mkdocs.yml",
     "docs/Java/Java Tips.md",
     "docs/DataBase/MySQL/MySQL 索引.md",
     "docs/DataBase/MySQL/MySQL 安装.md",
-    "docs/DataBase/MySQL/MySQL Tips.md",
     "docs/Operations/Nginx/Nginx 日志.md",
     "docs/Operations/Nginx/Nginx 编译安装.md",
     "docs/DataBase/Redis/Redis 安装.md",
