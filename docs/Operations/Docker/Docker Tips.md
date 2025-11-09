@@ -46,8 +46,18 @@ e1290a9d96db   none      null      local
 - `bridge` 容器使用独立的 network namespace，并连接到 `docker0` 虚拟网卡。默认。  
 - `none` 容器有独立的 network namespace，但是不进行任何网络设置。
 
+## docker compose
 docker compose up 会默认创建一个 bridge 网络，名称是目录名称加上 `_default`。
 
 docker compose restart container_name 只会重启某个容器，不会重新加载修改的 yml 配置文件。
 
 如果多个容器位于同一个网络下面，一个容器一个使用另一个容器的名称来访问连接。`curl c_name:80`。
+
+停止服务
+```
+# 停止服务，但是不会删除
+docker compose stop
+
+# 停止服务，会删除容器和卷
+docker compose down -v
+```

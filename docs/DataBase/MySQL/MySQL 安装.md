@@ -205,6 +205,7 @@ show variables like 'default_password_lifetime';
 ```
 
 总结：
+
 1. 系统变量 `default_password_lifetime` 全局设置用户的密码过期策略，通过 `password_last_changed` 和当前时间来判断用户密码是否过期。
-2. 通过语句 `ALTER USER PASSWORD EXPIRE` 针对单个用户设置密码过期策略，通过 `password_lifetime` 和当前时间来判断用户密码是否过期。优先级高于系统变量。
+2. 语句 `ALTER USER PASSWORD EXPIRE` 针对单个用户设置密码过期策略，通过 `password_lifetime` 和当前时间来判断用户密码是否过期。优先级高于系统变量。
 

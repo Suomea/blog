@@ -26,20 +26,6 @@ apt show postgresql-18
 apt install postgresql-18
 ```
 
-PG 相关的文件路径：
-
-| 文件 / 目录                                   | 说明                                                                                                                                                             |
-| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/usr/lib/postgresql/18/bin/`             | PostgreSQL 18 所有可执行文件，如 `postgres`, `psql`, `pg_ctl`, `pg_dump` 等                                                                                              |
-| `/usr/bin/psql`                           | 客户端 `psql`，通常是指向版本目录下的软链接                                                                                                                                      |
-| `/usr/bin/pg_dump`, `/usr/bin/pg_restore` | 数据导出/导入工具                                                                                                                                                      |
-| `/etc/postgresql/18/main/`                | 主配置目录（版本 18 的默认实例）                                                                                                                                             |
-| `/etc/postgresql/18/main/postgresql.conf` | 主配置文件                                                                                                                                                          |
-| `/etc/postgresql/18/main/pg_hba.conf`     | 用户认证/访问控制                                                                                                                                                      |
-| `/etc/postgresql/18/main/pg_ident.conf`   | 系统用户映射 PostgreSQL 用户                                                                                                                                           |
-| `/etc/postgresql-common/`                 | 通用脚本和配置                                                                                                                                                        |
-| `/var/log/postgresql/`                    | PostgreSQL 日志                                                                                                                                                  |
-| /var/lib/postgresql/18/main               | 数据库实例目录，目录里包含：<br>base/       # 每个数据库的实际数据文件<br>global/     # 系统表空间<br>pg_wal/     # 事务日志<br>pg_tblspc/  # 表空间链接<br>pg_stat/    # 统计信息<br>PG_VERSION  # 数据库版本号 |
 PG 相关的进程：
 ```
 postgres 1900217       1  0 00:00 ?        00:00:00 /usr/lib/postgresql/18/bin/postgres -D /var/lib/postgresql/18/main -c config_file=/etc/postgresql/18/main/postgresql.conf
@@ -129,4 +115,27 @@ host    all             all        192.168.31.0/24       scram-sha-256
 systemctl restart postgresql
 ```
 
+配置密码复杂度校验配置：
+```
+编辑配置文件 /etc/postgresql/18/main/postgresql.conf
+shared_preload_libraries = 'passwordcheck'              # (change requires restart)
+
+重启服务
+systemctl restart postgresql
+
+确认 passwordcheck 扩展已加载
+SHOW shared_preload_libraries;
+
+默认长度最小为 8，需要同时包含字母和非字母，密码不能包含用户名
+
+```
+
+配置密码过期时间：
+```sql
+-- 查看用户列表，其中包含过期时间字段
+SELECT * FROM pg_catalog.pg_user;
+
+-- 设置密码过期时间
+ALTER ROLE myuser VALID UNTIL '2025-02-08';
+```
 

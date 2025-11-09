@@ -34,6 +34,8 @@ nav:
       - DataBase/MySQL/MySQL 安装.md
       - DataBase/MySQL/MySQL 备份.md
       - DataBase/MySQL/MySQL 主从.md
+    - "PG":
+        - DataBase/PG/PG 安装.md
     - "Redis":
         - DataBase/Redis/Redis 安装.md
         - DataBase/Redis/Redis 数据结构.md
@@ -55,12 +57,12 @@ nav:
           - Java/String.intern().md
           - Java/JVM 命令行工具.md
       - "MyBatis":
-          - MyBatis/MyBatis 快速入门.md
-          - MyBatis/MyBatis 反射工具箱.md
-          - MyBatis/MyBatis 日志模块.md
+          - Java/MyBatis/MyBatis 快速入门.md
+          - Java/MyBatis/MyBatis 反射工具箱.md
+          - Java/MyBatis/MyBatis 日志模块.md
       - "Spring":
-          - Spring/Spring Tips.md
-          - Spring/日期时间序列化.md
+          - Java/Spring/Spring Tips.md
+          - Java/Spring/日期时间序列化.md
   - 运维:
     - "Linux":
       - Operations/Linux/Linux Tips.md
