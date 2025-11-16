@@ -36,8 +36,8 @@ server {
         listen       80 ssl;
         server_name  localhost;
 
-		ssl_certificate ./mainssl/client.crt;
-		ssl_certificate_key ./mainssl/client.key;
+		ssl_certificate ./ssl/client.crt;
+		ssl_certificate_key ./ssl/client.key;
         #charset koi8-r;
 
         #access_log  logs/host.access.log  main;
