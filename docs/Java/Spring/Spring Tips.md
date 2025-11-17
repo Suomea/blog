@@ -17,3 +17,8 @@ eureka:
     register-with-eureka: false  # 不注册自身  
     fetch-registry: true         # 仍然获取注册表信息
 ```
+
+## Spring Boot 全局 deubg 日志
+```yml
+debug: true
+```
