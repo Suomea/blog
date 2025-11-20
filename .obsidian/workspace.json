@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Java/Spring/Spring Boot.md",
+                "file": "docs/Java/Spring/参数校验.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Spring Boot"
+              "title": "参数校验"
             }
           },
           {
@@ -169,13 +169,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Java/Spring/Spring Boot.md",
+                "file": "docs/Java/Spring/参数校验.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Spring Boot"
+              "title": "Outline of 参数校验"
             }
           }
         ],
@@ -199,8 +199,10 @@
   },
   "active": "c13ae49dc4ac3413",
   "lastOpenFiles": [
+    "docs/Java/Spring/文件上传.md",
     "docs/Java/Spring/Spring Tips.md",
-    "docs/Java/Spring/Spring Boot.md",
+    "docs/Java/Spring/参数校验.md",
+    "docs/Operations/Nginx/Nginx Tips.md",
     "docs/Operations/Linux/vaultwarden 安装配置.md",
     "docs/Operations/Nginx/Nginx 日志.md",
     "docs/Operations/Nginx/Nginx 使用自签名证书.md",
@@ -224,8 +226,6 @@
     "docs/Operations/Linux/iptables.md",
     "mkdocs.yml",
     "docs/Java/Java Tips.md",
-    "docs/DataBase/MySQL/MySQL 索引.md",
-    "docs/Operations/Nginx/Nginx 编译安装.md",
     "docs/Operations/Security",
     "docs/BigData/Kafka",
     "mkdocs.yml~",
