@@ -85,12 +85,15 @@ FROM KAFKA (
     "property.sasl.password" = "xxxx");
 ```
 
-参考：
-https://doris.apache.org/zh-CN/docs/2.0/sql-manual/sql-reference/Data-Manipulation-Statements/Load/ALTER-ROUTINE-LOAD。
-https://doris.apache.org/zh-CN/docs/sql-manual/sql-statements/data-modification/load-and-export/ALTER-ROUTINE-LOAD
-
-
-导入任务报错 TOO_MANY_TASKS，参考官方公众号“2.0.9和2.1.3之前都存在已知的bug导致TOO_MANY_TASKS的问题”。实际使用下来 2.0.12 也存在这个问题，解决方案是升级至 2.0.15 或者 2.1.8，最终 2.0.12 直接升级到 2.1.8 解决报错的问题。
+上面的情况是有数据，但是数据不在分区里面。还有一种脏数据是必填字段为空，这时使用 where 就过滤不掉，因为 Doris 会在 where 子句之前进质量检查。所以需要使用 columns_mapping 进行处理。
+```sql
+CREATE ROUTINE LOAD yunlu_iot_data.tunnel_rectangular_info ON tunnel_rectangular_info
+COLUMNS(
+dev_id = IFNULL(dev_id, 'unknown')
+),
+WHERE dev_id != 'unknown'
+FROM KAFKA (
+```
 
 ### 修改 RoutineLoad 子任务最大运行时间
 默认 60 秒，为了提升数据入库频率，修改为 10 秒。

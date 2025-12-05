@@ -6,27 +6,27 @@
 
 ​**​💽 数据库​**​
 
-MySQL（常用）、Redis（常用）、Doris（数据分析与物联网存储）、DM（国产关系型数据库）、PostgreSQL（开源场景常用）。
+MySQL、Redis、Doris、DM、PostgreSQL。
 
 ​**​☕ Java 技术栈​**​
 
-Java（主力语言）、Spring（核心框架）、MyBatis（常用持久层库）。
+Java、Spring、MyBatis。
 
 ​**​🛠 运维相关​​**
 
-Linux（主要使用 Debian）、Nginx（网关与代理）、Docker（容器化方案）、Prometheus + Grafana（监控可视化）、K8s（容器编排）。
+Linux、Nginx、Docker、K8s。
 
 ​**​⛰ 三座大山​**​
 
-操作系统（第一座）、计算机网络（第二座）、数据结构与算法（第三座）。
+操作系统、计算机网络、数据结构与算法。
 
 ​**​📊 大数据生态​**​
 
-Kafka（常用消息队列）、Hadoop（工作中接触）、Flink（流处理相关）。
+Kafka、Hadoop、Flink。
 
 ​**​🧠 计算机视觉​**​
 
-YOLO（目标检测与图像分割模型），工作相关，持续学习。
+YOLO，工作相关，持续学习。
 
-如果您有任何问题或建议，欢迎交流讨论！ Email：suomea@qq.com 
+如果您有任何问题或建议，欢迎交流讨论！ 邮箱：suomea@qq.com 
 

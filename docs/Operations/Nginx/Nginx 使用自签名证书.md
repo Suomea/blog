@@ -30,6 +30,28 @@ openssl x509 -req -days 365 -in client.csr -signkey client.key -out client.crt
 mv client.key client.crt /usr/local/nginx/conf/mainssl/
 ```
 
+## 创建自签 CA 证书
+创建 CA 的私钥和证书：
+```shell
+openssl genrsa -out ca.key 4096
+
+openssl req -new -x509 -key ca.key -sha256 -days 3650 -out ca.crt \
+  -subj "/C=CN/ST=Shanghai/L=Shanghai"
+```
+
+使用 CA 的证书签发网站的证书：
+```shell
+openssl req -new -newkey rsa:2048 -nodes -keyout nginx.key -out nginx.csr \
+  -subj "/C=CN/ST=Shanghai/L=Shanghai/OU=Logstash"
+  
+openssl x509 -req -in nginx.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
+  -out nginx.crt -days 3650 -sha256 \
+  -extfile <(printf "basicConstraints=CA:FALSE\nkeyUsage=digitalSignature,keyEncipherment\nextendedKeyUsage=serverAuth\nsubjectAltName=DNS:localhost,IP:127.0.0.1,IP:xxxxxxxx")
+```
+
+在 Chrome 浏览器中导入 CA 的证书，然后访问网站即可。需要注意的是，网站的 `subjectAltName` 字段要包含访问网站的域名或者 IP。
+
+## Nginx 配置
 配置 Nginx
 ```
 server {
