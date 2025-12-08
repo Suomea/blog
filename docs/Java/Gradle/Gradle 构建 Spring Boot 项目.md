@@ -34,7 +34,7 @@ dependencies {
 
 tasks.bootJar {  
 	// 设置打包的 jar 包名称
-    archiveBaseName.set("gradle-demo.jar")  
+    archiveBaseName.set("gradle-demo")  
 	// 设置打 jar 包的时候先执行单元测试
     dependsOn(tasks.test)  
 }
@@ -46,5 +46,21 @@ gradlew tasks     # 列出所有的可用任务
 gradlew build     # 构建项目
 gradlew run       # 运行应用程序
 gradlew test      # 运行测试
+```
+
+建议使用 `gradlew bootRun` 运行项目。
+
+命令行传递参数
+```
+./gradlew bootRun --args="--spring.application.name='my app' --server.port=8090"
+```
+
+或者 `bootRun` 任务进行配置，编辑配置文件 `build.gradle.kts`：
+```kotlin
+tasks.bootRun {  
+    args = listOf(  
+        "--server.port=8090"  
+    )  
+}
 ```
 
