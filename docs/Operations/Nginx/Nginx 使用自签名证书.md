@@ -34,32 +34,38 @@ mv client.key client.crt /usr/local/nginx/conf/mainssl/
 创建 CA 的私钥和证书：
 ```shell
 openssl genrsa -out ca.key 4096
-
+  
 openssl req -new -x509 -key ca.key -sha256 -days 3650 -out ca.crt \
-  -subj "/C=CN/ST=Shanghai/L=Shanghai"
+  -subj "/C=CN/ST=Shanghai/L=Shanghai/O=OTTO Inc./OU=IT Department/CN=ca.otto.com"
 ```
 
 使用 CA 的证书签发网站的证书：
 ```shell
-openssl req -new -newkey rsa:2048 -nodes -keyout nginx.key -out nginx.csr \
-  -subj "/C=CN/ST=Shanghai/L=Shanghai/OU=Logstash"
+# 需要输入密码
+openssl req -new -newkey rsa:2048 -keyout nginx.key -out nginx.csr \
+  -subj "/C=CN/ST=Shanghai/L=Shanghai/OU=OTTO"
   
-openssl x509 -req -in nginx.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
-  -out nginx.crt -days 3650 -sha256 \
-  -extfile <(printf "basicConstraints=CA:FALSE\nkeyUsage=digitalSignature,keyEncipherment\nextendedKeyUsage=serverAuth\nsubjectAltName=DNS:localhost,IP:127.0.0.1,IP:xxxxxxxx")
+openssl x509 -req -in nginx.csr -CA ca.crt -CAkey ca.key -out nginx.crt -days 3650 -sha256 \
+  -extfile <(printf "basicConstraints=CA:FALSE\nkeyUsage=digitalSignature,keyEncipherment\nextendedKeyUsage=serverAuth\nsubjectAltName=DNS:localhost,DNS:localhost,IP:127.0.0.1,IP:172.29.222.43")
 ```
 
-在 Chrome 浏览器中导入 CA 的证书，然后访问网站即可。需要注意的是，网站的 `subjectAltName` 字段要包含访问网站的域名或者 IP。
+这样签发的网站私钥需要输入密码，即网站的私钥被密码保护。
+
+在 Chrome 浏览器中导入 CA 的证书，然后访问网站即可。需要注意的是，网站的证书 `subjectAltName` 字段要包含访问网站的域名或者 IP。
+
+Chrome "设置"-"隐私与安全"-"安全"-"管理证书"。
 
 ## Nginx 配置
-配置 Nginx
+配置 Nginx：
 ```
 server {
         listen       80 ssl;
         server_name  localhost;
 
-		ssl_certificate ./ssl/client.crt;
-		ssl_certificate_key ./ssl/client.key;
+        ssl_certificate /etc/nginx/ssl/nginx.crt;
+        ssl_certificate_key /etc/nginx/ssl/nginx.key;
+        ssl_password_file /etc/nginx/ssl/.passwords;
+		
         #charset koi8-r;
 
         #access_log  logs/host.access.log  main;
@@ -71,5 +77,6 @@ server {
 }
 ```
 
+文件 `/etc/nginx/ssl/.passwords` 的内容为签发网站私钥时输入的密码，每个密码一行，Nginx 会逐个尝试。
 
 参考连接：[如何用 OpenSSL 创建自签名证书](https://support.azure.cn/docs/azure-operations-guide/application-gateway/aog-application-gateway-howto-create-self-signed-cert-via-openssl.html)

@@ -1,5 +1,5 @@
 
-```
+```shell
 gradle init --type java-application --dsl kotlin --test-framework junit-jupiter --package com.jacky.gradle --project-name gradle-demo --no-split-project --java-version 21
 ```
 --no-split-project
@@ -27,6 +27,14 @@ plugins {
 	alias(libs.plugins.spring.dependency.management)  
 }
 
+//或者直接配置 plugins
+
+plugins {  
+    id("java")  
+    id("org.springframework.boot").version("4.0.0")  
+    id("io.spring.dependency-management").version("1.1.7")  
+}
+
 dependencies {  
     // 引入 spring-boot-starter-web 依赖
     implementation("org.springframework.boot:spring-boot-starter-web")  
@@ -35,6 +43,8 @@ dependencies {
 tasks.bootJar {  
 	// 设置打包的 jar 包名称
     archiveBaseName.set("gradle-demo")  
+	// 设置打包的 jar 包不带版本号
+    archiveVersion.set("")   // 关键
 	// 设置打 jar 包的时候先执行单元测试
     dependsOn(tasks.test)  
 }
@@ -46,6 +56,7 @@ gradlew tasks     # 列出所有的可用任务
 gradlew build     # 构建项目
 gradlew run       # 运行应用程序
 gradlew test      # 运行测试
+gradlew bootJar   # 构建 jar 包
 ```
 
 建议使用 `gradlew bootRun` 运行项目。

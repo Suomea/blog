@@ -6,7 +6,7 @@ apt install gcc make
 ### 安装必要的支持库
 pcre 提供 http rewrite 支持
 ```shell
-apt install  libpcre3-dev zlib1g-dev libssl-dev libgd-dev
+apt install  libpcre2-dev zlib1g-dev libssl-dev libgd-dev
 ```
 ## 安装 Nginx
 ### 下载 
@@ -25,7 +25,7 @@ cd /usr/local/srv/nginx-1.22.1
 --with-stream_ssl_module \
 --with-http_ssl_module
 
- 指定 worker 进程的默认用户/组，当然可以在配置文件配置的优先级更高
+ 指定 worker 进程的默认用户/组，当然在配置文件配置的优先级更高
  实现 TCP 和 UDP 流量的转发和负载，实现四层代理
  实现 TCP/UDP 流量的加密
  实现 HTTPS 协议的支持

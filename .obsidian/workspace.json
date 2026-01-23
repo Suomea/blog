@@ -4,39 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "01cc4a5b82eeb3b3",
+        "id": "db55fe4a96740410",
         "type": "tabs",
         "children": [
           {
-            "id": "b18920ca02202e1f",
+            "id": "4d460797f1479caf",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Operations/Security/服务器三级等保.md",
+                "file": "docs/DataBase/DM/达梦 Tips.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "服务器三级等保"
-            }
-          },
-          {
-            "id": "5cc347483920f6c5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Java/Spring/参数校验.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "参数校验"
+              "title": "达梦 Tips"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -59,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "文件列表"
             }
           },
           {
@@ -68,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "ctrl",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -89,7 +74,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -155,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Java/Spring/参数校验.md",
+                "file": "docs/DataBase/DM/达梦 Tips.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 参数校验"
+              "title": "达梦 Tips 的大纲"
             }
           }
         ],
@@ -173,54 +159,54 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false,
-      "vscode-editor:Create Code File": false
+      "bases:新建数据库": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "vscode-editor:新建代码文件": false
     }
   },
-  "active": "5cc347483920f6c5",
+  "active": "c3e1cd9fa3752c91",
   "lastOpenFiles": [
-    "docs/Java/String.intern().md",
-    "docs/Java/JVM 内存空间划分.md",
-    "docs/Java/JVM 命令行工具.md",
-    "docs/Java/Java Tips.md",
-    "docs/Java/Java 连接 Redis.md",
-    "docs/Java/Java 打包.md",
-    "docs/Java/Java 并发.md",
-    "docs/Java/GeoJSON 和 WKT.md",
-    "docs/Java/给视频和图片添加水印.md",
-    "docs/Java/反射和动态代理.md",
+    "mkdocs.yml~",
+    "docs/assets/fonts/STSONG.TTF",
+    "docs/stylesheets/extra.css~",
+    "docs/assets/fonts/simsun.ttc",
+    "docs/assets/fonts/REFSAN.TTF",
+    "docs/assets/fonts",
+    "docs/assets",
+    "docs/Java/Spring/Spring Boot 指标监控.md",
+    "docs/Operations/Prometheus/运维监控.md",
     "docs/Java/Gradle/Gradle 构建 Spring Boot 项目.md",
     "docs/Java/Gradle/Gradle Tips.md",
     "docs/Java/Spring/参数校验.md",
-    "docs/Java/Spring/日期时间序列化.md",
-    "docs/Java/Spring/文件上传.md",
     "docs/Java/Spring/资源加载策略.md",
+    "docs/Java/Spring/Spring Boot 优雅停机.md",
     "docs/Java/Spring/RestTemplate.md",
+    "docs/Java/Spring/日期时间序列化.md",
+    "docs/Java/Java 日志.md",
+    "docs/Operations/Prometheus/探索 PromQL.md",
+    "docs/Operations/Nginx/Nginx 使用自签名证书.md",
+    "docs/Operations/Nginx/Nginx 日志.md",
+    "docs/Operations/Nginx/Nginx Tips.md",
+    "docs/Operations/Nginx/Nginx 配置 Basic Auth.md",
+    "docs/Operations/Nginx/Nginx 编译安装.md",
     "docs/Java/Spring/Spring Tips.md",
-    "docs/Java/Gradle.md",
     "docs/DataBase/DM/达梦 Tips.md",
-    "docs/Java/Gradle",
-    "docs/DataBase/MySQL/MySQL Tips.md",
-    "docs/DataBase/Doris/Doris 接入 Kafka 的数据.md",
-    "docs/yolo/YOLO 环境搭建.md",
+    "docs/Java/GeoJSON 和 WKT.md",
+    "docs/Operations/Linux/VIM.md",
     "docs/Operations/Linux/Linux Tips.md",
     "docs/Operations/Linux/系统加固.md",
-    "docs/DataBase/DM/达梦安装.md",
-    "docs/BigData/Minio",
+    "docs/Operations/Linux/文件系统.md",
+    "docs/Operations/Linux/虚拟机.md",
+    "docs/Operations/Docker/Docker Tips.md",
     "mkdocs.yml",
-    "docs/Operations/Security",
-    "docs/BigData/Kafka",
-    "mkdocs.yml~",
-    "docs/index.md~",
-    "docs/Java/Kafka",
-    "docs/DataBase/DM",
-    "docs/Operations/Docker",
+    "docs/Java/Java 日志.md~",
+    "docs/Java/Gradle",
+    "docs/BigData/Minio",
     "Untitled.canvas",
     "截屏2025-08-10 02.50.04.png",
     "截屏2025-08-10 02.48.40.png",

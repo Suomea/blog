@@ -130,12 +130,21 @@ SELECT * FROM USER_COL_COMMENTS;
 
 ## 删除备份数据
 ```sql
-REMOVE BACKUPSETS WITH BACKUPDIR '/data/backup/dm' UNTIL TIME '2025-11-01 12:00:00'
+./bin/dmrman
+> REMOVE BACKUPSETS WITH BACKUPDIR '/data/backup/dm' UNTIL TIME '2026-01-15 12:00:00'
 ```
 
-归档处理
+## 删除归档日志
 https://eco.dameng.com/community/post/20221117164710H0521BIY0PYUDLYQ0K
+查看归档模式
+```
+select arch_mode from v$database;
+```
 
+删除一周之前的归档日志
+```
+Select SF_ARCHIVELOG_DELETE_BEFORE_TIME(sysdate-7);
+```
 ## 更新密码
 ```sql
 ALTER USER SYSDBA IDENTIFIED BY "xxxxx";

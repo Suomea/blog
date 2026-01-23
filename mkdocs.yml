@@ -49,9 +49,13 @@ nav:
         - DataBase/Doris/Doris 接入 Kafka 的数据.md
         - DataBase/Doris/Doris 接入 MySQL 的数据.md
   - Java:
-      - Java/Java Tips.md
-      - Java/Java 并发.md
-      - Java/反射和动态代理.md
+      - "Java": 
+        - Java/Java Tips.md
+        - Java/Java 打包.md
+        - Java/Java 日志.md
+        - Java/Java 并发.md
+        - Java/反射和动态代理.md
+        - Java/服务发现机制.md
       - "JVM":
           - Java/JVM 内存空间划分.md
           - Java/String.intern().md

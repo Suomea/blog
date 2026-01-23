@@ -1,8 +1,9 @@
 {
   "accentColor": "#5cf5c7",
-  "textFontFamily": "STSong",
-  "interfaceFontFamily": "STSong",
+  "textFontFamily": "MS Reference Sans Serif",
+  "interfaceFontFamily": "MS Reference Sans Serif",
   "monospaceFontFamily": "Consolas",
-  "baseFontSize": 16,
-  "baseFontSizeAction": true
+  "baseFontSize": 15,
+  "baseFontSizeAction": true,
+  "nativeMenus": false
 }
