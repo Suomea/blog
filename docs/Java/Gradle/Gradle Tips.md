@@ -46,3 +46,75 @@ org.gradle.caching=true
 compileOnly("org.projectlombok:lombok")
 annotation processor pathannotationProcessor("org.projectlombok:lombok")
 ```
+
+## Gradle 不同类型的项目结构
+初始化项目，**basic**
+```shell
+gradle init --type basic --dsl kotlin --project-name basic --java-version 21
+```
+
+项目结构
+```
+├── build.gradle.kts
+├── gradle
+│   ├── libs.versions.toml
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── gradle.properties
+├── gradlew
+├── gradlew.bat
+└── settings.gradle.kts
+```
+
+初始化项目，**java-library**
+```shell
+gradle init --type java-library --dsl kotlin --project-name java-lib --package com.jacky.lib --java-version 21
+```
+
+项目结构，在 basic 的基础上多出
+```
+├── lib
+│   ├── build.gradle.kts
+│   └── src
+│       ├── main
+│       │   ├── java
+│       │   │   └── com
+│       │   │       └── jacky
+│       │   │           └── lib
+│       │   │               └── Library.java
+│       │   └── resources
+│       └── test
+│           ├── java
+│           │   └── com
+│           │       └── jacky
+│           │           └── lib
+│           │               └── LibraryTest.java
+│           └── resources
+```
+
+初始化项目，**java-application**
+```shell
+gradle init --type java-application --dsl kotlin --project-name java-app --package com.jacky.app --java-version 21
+```
+
+项目结构，在 basic 的基础上多出
+```
+├── app
+│   ├── build.gradle.kts
+│   └── src
+│       ├── main
+│       │   ├── java
+│       │   │   └── com
+│       │   │       └── jacky
+│       │   │           └── app
+│       │   │               └── App.java
+│       │   └── resources
+│       └── test
+│           ├── java
+│           │   └── com
+│           │       └── jacky
+│           │           └── app
+│           │               └── AppTest.java
+│           └── resources
+```
