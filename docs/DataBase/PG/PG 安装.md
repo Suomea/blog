@@ -137,5 +137,8 @@ SELECT * FROM pg_catalog.pg_user;
 
 -- 设置密码过期时间
 ALTER ROLE myuser VALID UNTIL '2025-02-08';
+
+-- 设置密码用不过气
+ALTER ROLE myuser VALID UNTIL 'infinity';
 ```
 
