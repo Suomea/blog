@@ -279,3 +279,19 @@ systemctl list-unit-files --type=service --state=enabled
 8. 安装配置 VIM。
 9. 配置固定IP。
 10. 安装配置防火墙。
+
+## 测试目的端口是否监听
+使用 telnet
+```
+telnet localhost 8080
+```
+
+使用 nc
+```
+nc -vz localhost 8080
+```
+
+使用 nc 还可以测试端口范文
+```
+nc -vz localhost 8080-8089
+```

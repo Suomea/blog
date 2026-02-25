@@ -131,7 +131,7 @@ SELECT * FROM USER_COL_COMMENTS;
 ## 删除备份数据
 ```sql
 ./bin/dmrman
-> REMOVE BACKUPSETS WITH BACKUPDIR '/data/backup/dm' UNTIL TIME '2026-01-15 12:00:00'
+> REMOVE BACKUPSETS WITH BACKUPDIR '/data/backup/dm' UNTIL TIME '2026-01-24 12:00:00'
 ```
 
 ## 删除归档日志

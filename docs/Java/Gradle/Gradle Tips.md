@@ -43,8 +43,8 @@ org.gradle.caching=true
 
 ## 配置 lombok 依赖
 ```kotlin
-compileOnly("org.projectlombok:lombok")
-annotation processor pathannotationProcessor("org.projectlombok:lombok")
+compileOnly("org.projectlombok:lombok")  
+annotationProcessor("org.projectlombok:lombok")
 ```
 
 ## Gradle 不同类型的项目结构
