@@ -27,30 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Java/Spring/Spring Tips.md",
+                "file": "docs/Operations/Nginx/Nginx 使用自签名证书.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Spring Tips"
-            }
-          },
-          {
-            "id": "09d337de0c661d94",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Java/Spring/RestTemplate.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "RestTemplate"
+              "title": "Nginx 使用自签名证书"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -73,7 +59,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "文件列表"
+              "title": "Files"
             }
           },
           {
@@ -169,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Java/Spring/RestTemplate.md",
+                "file": "docs/Operations/Nginx/Nginx 使用自签名证书.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "RestTemplate 的大纲"
+              "title": "Outline of Nginx 使用自签名证书"
             }
           }
         ],
@@ -183,36 +169,37 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 301.5
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
-      "command-palette:打开命令面板": false,
-      "bases:新建数据库": false,
-      "vscode-editor:新建代码文件": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "vscode-editor:Create Code File": false
     }
   },
-  "active": "09d337de0c661d94",
+  "active": "f7fd3639962d57e5",
   "lastOpenFiles": [
-    "docs/DataBase/DM/达梦 Tips.md",
-    "docs/Operations/Nginx/Nginx 使用自签名证书.md",
-    "docs/Operations/Nginx/Nginx Tips.md",
     "docs/Operations/Nginx/Nginx 日志.md",
+    "docs/Operations/Nginx/Nginx 使用自签名证书.md",
     "docs/Operations/Nginx/Nginx 配置 Basic Auth.md",
+    "docs/Operations/Linux/smb.md",
+    "docs/Operations/Linux/vaultwarden 安装配置.md",
+    "docs/Java/Spring/Spring Tips.md",
     "docs/Java/Gradle/Gradle Tips.md",
     "docs/Java/MyBatis/MyBatis 快速入门.md",
     "docs/Java/MyBatis/MyBatis 日志模块.md",
-    "docs/Java/Spring/Spring Tips.md",
     "docs/Java/Spring/Spring Boot 指标监控.md",
     "docs/Java/Spring/日志.md",
     "docs/Java/Gradle/Gradle 构建 Spring Boot 项目.md",
     "docs/Operations/Linux/Linux Tips.md",
     "docs/Operations/Linux/VIM.md",
+    "docs/DataBase/DM/达梦 Tips.md",
     "docs/DataBase/DM/达梦安装.md",
     "docs/DataBase/MySQL/MySQL 安装.md",
     "docs/DataBase/MySQL/MySQL Tips.md",
@@ -232,7 +219,6 @@
     "docs/Java/Spring/资源加载策略.md",
     "docs/Java/Spring/Spring Boot 优雅停机.md",
     "docs/Java/Spring/RestTemplate.md",
-    "docs/Java/Spring/日期时间序列化.md",
     "mkdocs.yml",
     "docs/Java/Java 日志.md~",
     "Untitled.canvas",
