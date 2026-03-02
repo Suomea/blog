@@ -51,10 +51,18 @@ openssl x509 -req -in nginx.csr -CA ca.crt -CAkey ca.key -out nginx.crt -days 36
 
 这样签发的网站私钥需要输入密码，即网站的私钥被密码保护。
 
+subj 用来描述证书的主体身份；ext 信息证书的扩展字段，用于定义证书的用途、约束、信任链信息以及可绑定的域名/IP。
+
 在 Chrome 浏览器中导入 CA 的证书，然后访问网站即可。需要注意的是，网站的证书 `subjectAltName` 字段要包含访问网站的域名或者 IP。
 
 Chrome "设置"-"隐私与安全"-"安全"-"管理证书"。
 
+下面是 AI 给出的根证书，中间证书，服务器证书生成命令，待验证。
+```
+1. 生成 root 私钥
+   openssl genrsa -out root-ca.key 4096
+   
+```
 ## Nginx 配置
 配置 Nginx：
 ```
