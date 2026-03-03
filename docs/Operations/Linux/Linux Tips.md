@@ -190,11 +190,15 @@ tar [选项] [归档文件名] [文件或目录列表]
 -C 指定解压缩处理后的目录。
 ```
 
-示例
+解压缩 mysql 安装包示例：
 ```
 tar -Jxvf mysql-8.4.4-linux-glibc2.28-x86_64.tar.xz -C /usr/local/
 ```
 
+打包并且压缩文件夹示例：
+```
+tar -czvf certs.tar.gz certs/
+```
 ## 查看硬盘温度
 安装工具
 ```

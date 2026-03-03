@@ -1,23 +1,23 @@
 ## 准备环境
-### 安装编译环境
+安装编译环境
 ```shell
 apt install gcc make
 ```
-### 安装必要的支持库
-pcre 提供 http rewrite 支持
+
+安装依赖的库
 ```shell
 apt install  libpcre2-dev zlib1g-dev libssl-dev libgd-dev
 ```
 ## 安装 Nginx
-### 下载 
+下载解压缩
 ```shell
 wget https://nginx.org/download/nginx-1.22.1.tar.gz
 tar -zxvf nginx-1.22.1.tar.gz -C /usr/local/src
 ```
-### 编译安装
-完整的编译参数参考：http://nginx.org/en/docs/configure.html
+
+编译安装完
 ```shell
-cd /usr/local/srv/nginx-1.22.1
+cd /usr/local/src/nginx-1.22.1
 
 ./configure --prefix=/usr/local/nginx \
 --user=www-data --group=www-data \
@@ -32,17 +32,17 @@ cd /usr/local/srv/nginx-1.22.1
 
 make && make install 
 ```
-### 启动命令
+Tips：整的编译参数参考：http://nginx.org/en/docs/configure.html
+## 运行 Nginx
+命令直接启动
 ```shell
-cd /usr/local/nginx
-
 # 启动
 ./sbin/nginx 
 
 # 验证配置文件是否正确
 ./sbin/nginx -t
 
-# 重启
+# 重新加载配置
 ./sbin/nginx -s reload
 
 # 停止 nginx
@@ -52,9 +52,9 @@ cd /usr/local/nginx
 ./sbin/nginx -v
 ```
 
-### 配置服务
-编辑配置文件 `/etc/systemd/system/nginx.service`：
+配置 Systemd 服务
 ```text
+# /etc/systemd/system/nginx.service
 [Unit]
 Description=nginx - high performance web server
 Documentation=http://nginx.org/en/docs/
@@ -73,23 +73,17 @@ PrivateTmp=true
 [Install]
 WantedBy=multi-user.target
 ```
-配置为服务的话，需要在服务文件中指定 `LimitNOFILE=65535`，Nginx 配置文件中指定的 `worker_rlimit_nofile 65535;` 会不生效。
+配置为服务的话，此时在 Nginx 配置文件中指定的 `worker_rlimit_nofile 65535;` 会不生效，需要在服务文件中指定 `LimitNOFILE=65535`。
 
 配置服务开机启动：
 ```shell
 systemctl daemon-reload
 
 # 配置开机启动
-systemctl enable nginx 
-
-# 启动
-systemctl start nginx
+systemctl enable nginx  --now
 
 # 修改配置后重新加载
 systemctl reload nginx
-
-# 查看状态
-systemctl status nginx
 ```
 
 ## 解释

@@ -83,9 +83,12 @@ server {
 
 参考连接：[如何用 OpenSSL 创建自签名证书](https://support.azure.cn/docs/azure-operations-guide/application-gateway/aog-application-gateway-howto-create-self-signed-cert-via-openssl.html)
 
+
+## 自建 CA 签名证书
+### 根 CA
 创建目录
 ```
-mkdir -p ~/certs/{root, intermediate, server}
+mkdir -p ~/certs/{root,intermediate,server}
 ```
 
 生成根证书私钥：
@@ -104,6 +107,7 @@ openssl x509 -in rootCA.crt -text -noout
 ```
 根证书不需要指定 ext 信息，默认 `CA:TRUE` 表示是信任链顶端的证书。
 
+### 中间 CA
 生成中间证书私钥：
 ```
 openssl genrsa -aes256 -out intermediateCA.key 4096
@@ -125,6 +129,7 @@ openssl x509 -req -in intermediateCA.csr -CA ../root/rootCA.crt -CAkey ../root/r
 openssl x509 -in intermediateCA.crt -text -noout
 ```
 
+### 网站服务端证书
 生成网站证书的私钥
 ```
 openssl genrsa -aes256 -out server.key 2048
@@ -142,6 +147,7 @@ cat > server.ext << EOF
 authorityKeyIdentifier=keyid,issuer
 basicConstraints=CA:FALSE
 keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth
 subjectAltName = @alt_names
 
 [alt_names]

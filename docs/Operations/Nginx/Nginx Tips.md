@@ -23,7 +23,6 @@ scheme:[//authority]path[?query][#fragment]
 server_tokens off;
 ```
 
-
 ## Nginx 配置允许上传的文件大小
 ```
 server {
@@ -97,7 +96,6 @@ alias 将 location 匹配的部分删掉，然后将剩余的部分拼接在 ali
 如果是正则匹配，可以使用 $ 符号加上数字，来获取匹配组进行拼接。
 
 ## Nginx 定义变量
-
 ```
 set $my_var "value";
 ```
@@ -117,3 +115,42 @@ set $my_var "value";
         }
 
 ```
+
+## Nginx 配置网站 Basic Auth
+### 什么是 Basic Auth
+1. 客户端访问受保护的资源
+2. 服务端响应 401，并附带响应头 `WWW-Authenticate: Basic realm="..."`。
+3. 客户端弹出对话框提示用户输入用户名密码，之后客户端用户名和密码使用冒号拼接并进行 Base64 编码，生成一个凭证字符串。
+4. 客户端在后续请求的 Authorization 请求头中携带凭证字符串：`Authorization: Basic 凭证字符串`。
+5. 服务端解码验证凭据，验证通过返回请求的资源。
+### Nginx 配置
+使用 openssl 获取加密密码 openssl passwd -5 your-password，比如密码 123456：
+```
+# 使用 SHA-256 哈希，输出的格式为 $<id>$<salt>$<hash>，-6 表示使用 SHA-512 算法
+# openssl passwd -5 '123456'
+$5$jZFBH2tXARpLGmik$YDeK49P73WVVYzfjhWVZG7ZjHXyc7g0MVaWCZXHc0U9
+```
+
+新增配置文件 conf/.htpasswd：
+```
+usera:$5$jZFBH2tXARpLGmik$YDeK49P73WVVYzfjhWVZG7ZjHXyc7g0MVaWCZXHc0U9
+userb:$5$jZFBH2tXARpLGmik$YDeK49P73WVVYzfjhWVZG7ZjHXyc7g0MVaWCZXHc0U9
+```
+
+配置 Basic Auth：
+```
+    server {
+        listen       80; 
+        server_name  localhost;
+
+        auth_basic "Restricted Access";           # 设置提示信息
+        auth_basic_user_file ./.htpasswd; # 指定认证文件路径
+
+        location / { 
+            root   html;
+            index  index.html index.htm;
+        }
+    }
+```
+
+配置文件生效之后，浏览器访问主机的 80 端口，使用 usera/123456 和 userb/123456 都能进行访问。
