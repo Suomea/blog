@@ -272,6 +272,11 @@ systemctl list-units --type=service --all
 systemctl list-unit-files --type=service --state=enabled
 ```
 
+查看服务日志
+```
+journalctl -u ssh -f
+```
+
 ## 操作系统安全加固操作
 1. 密码复杂度设置。
 2. 登录失败锁定。
