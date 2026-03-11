@@ -131,7 +131,7 @@ SELECT * FROM USER_COL_COMMENTS;
 ## 删除备份数据
 ```sql
 ./bin/dmrman
-> REMOVE BACKUPSETS WITH BACKUPDIR '/data/backup/dm' UNTIL TIME '2026-01-24 12:00:00'
+> REMOVE BACKUPSETS WITH BACKUPDIR '/data/backup/dm' UNTIL TIME '2026-03-06 12:00:00'
 ```
 
 ## 删除归档日志
@@ -143,7 +143,7 @@ select arch_mode from v$database;
 
 删除一周之前的归档日志
 ```
-Select SF_ARCHIVELOG_DELETE_BEFORE_TIME(sysdate-7);
+Select SF_ARCHIVELOG_DELETE_BEFORE_TIME(sysdate-3);
 ```
 ## 更新密码
 ```sql

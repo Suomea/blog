@@ -290,17 +290,22 @@ journalctl -u ssh -f
 10. 安装配置防火墙。
 
 ## 测试目的端口是否监听
-使用 telnet
+目的服务器端口开启持续监听
+```
+nc -lk 8080
+```
+
+主机使用 telnet 测试
 ```
 telnet localhost 8080
 ```
 
-使用 nc
+主机使用 nc 测试
 ```
 nc -vz localhost 8080
 ```
 
-使用 nc 还可以测试端口范文
+主机使用 nc 还可以测试端口范围
 ```
 nc -vz localhost 8080-8089
 ```
