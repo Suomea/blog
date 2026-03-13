@@ -27,12 +27,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Operations/Linux/时间.md",
+                "file": "docs/Operations/Linux/防火墙.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "时间"
+              "title": "防火墙"
+            }
+          },
+          {
+            "id": "928312a7688c6adb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/DataBase/MySQL/MySQL 安装.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "MySQL 安装"
             }
           },
           {
@@ -103,8 +117,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -170,13 +183,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Operations/Linux/时间.md",
+                "file": "docs/Operations/Linux/防火墙.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "时间 的大纲"
+              "title": "防火墙 的大纲"
             }
           }
         ],
@@ -200,32 +213,32 @@
   },
   "active": "f7fd3639962d57e5",
   "lastOpenFiles": [
-    "docs/Operations/Linux/防火墙.md",
+    "docs/Operations/Linux/vaultwarden 安装配置.md",
     "docs/Operations/Linux/Linux Tips.md",
+    "docs/Operations/Nginx/Nginx 使用自签名证书.md",
+    "docs/Operations/Nginx/Nginx 编译安装.md",
+    "docs/DataBase/MySQL/MySQL Tips.md",
+    "docs/DataBase/MySQL/MySQL 安装.md",
+    "docs/Operations/Linux/防火墙.md",
+    "docs/Operations/Linux/软件安装.md",
+    "docs/DataBase/PG/PG 安装.md",
+    "docs/DataBase/DM/达梦 Tips.md",
+    "docs/Operations/Linux/时间.md",
     "docs/Operations/Linux/系统加固.md",
     "docs/Operations/Linux/文件系统.md",
     "docs/Operations/Linux/服务器初始化.md",
     "docs/Operations/Linux/LVM.md",
     "docs/Operations/Linux/fail2ban.md",
-    "docs/DataBase/MySQL/MySQL Tips.md",
-    "docs/DataBase/DM/达梦 Tips.md",
     "docs/Java/MyBatis/MyBatis 快速入门.md",
     "docs/Java/MyBatis/MyBatis 反射工具箱.md",
-    "docs/Operations/Linux/软件安装.md",
     "docs/English/Last, the last, the latest.md",
     "docs/English/Daily life sentences.md",
     "docs/DataBase/Doris/Doris Tips.md",
     "docs/DataBase/DM/达梦安装.md",
     "docs/DataBase/DM/达梦备份.md",
     "docs/DataBase/MySQL/MySQL 备份.md",
-    "docs/Operations/Nginx/Nginx 使用自签名证书.md",
     "docs/Operations/Nginx/Nginx 日志.md",
     "docs/Operations/Nginx/Nginx Tips.md",
-    "docs/Operations/Nginx/Nginx 配置网站 Basic Auth.md",
-    "docs/Operations/Nginx/Nginx 编译安装.md",
-    "docs/Operations/Linux/smb.md",
-    "docs/Operations/Linux/vaultwarden 安装配置.md",
-    "docs/Java/Spring/Spring Tips.md",
     "overrides/partials/footer.html",
     "mkdocs.yml~",
     "docs/assets/fonts/STSONG.TTF",

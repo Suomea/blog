@@ -3,7 +3,7 @@ comments: true
 tags:
   - MySQL
 ---
-### count 函数的注意事项
+‘### count 函数的注意事项
 
 `count(*)` 会统计所有行；`count(expr)` 函数只会统计 `expr` 非 NULL 的行。
 
