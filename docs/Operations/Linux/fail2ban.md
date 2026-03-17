@@ -8,7 +8,7 @@ apt install fail2ban
 按照下面的顺序加载配置，后者覆盖前者：
 
 1. `jail.conf` 基础默认配置。
-2. `jail.loca`l 用户自定义配置。
+2. `jail.loca` 用户自定义配置。
 3. `jail.d/*.conf` 更细粒度的配置。
 
 **日志监控** fail2ban 根据 `paths-*.conf`确定日志路径（如 `/var/log/auth.log`）。通过 `inotify`或 `polling`实时监听日志变化，会记录文件的 inode 和偏移量。也可以通过 logpath 指定日志路径。

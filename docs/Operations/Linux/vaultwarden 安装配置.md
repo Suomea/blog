@@ -56,8 +56,6 @@ $ chmod +x docker-image-extract
 $ ./docker-image-extract vaultwarden/server:latest-alpine
 ```
 
-二进制服务运行
-
 创建用户
 ```
 groupadd vaultwarden 
@@ -66,10 +64,16 @@ useradd -r -g vaultwarden -s /bin/false vaultwarden
 
 环境变量
 ```
+SMTP_HOST=smtp.qq.com  
+SMTP_FROM=xxxx@qq.com  
+SMTP_PORT=587  
+SMTP_SECURITY=starttls  
+SMTP_USERNAME=xxxx@qq.com  
+SMTP_PASSWORD=xxxx
+
+# 如果数据库密码中有 @ 字符，需要使用 %40 替换
 DATABASE_URL=mysql://vaultwarden:xxxxxx@localhost:3306/vaultwarden
 SIGNUPS_ALLOWED=true
-
-# 如果密码中有 @ 字符，需要使用 %40 替换
 ```
 
 服务文件
@@ -109,3 +113,29 @@ WantedBy=multi-user.target
 备份
 
 安全
+登陆错误过滤规则
+过滤配置
+```
+# path_f2b/filter.d/vaultwarden.local
+
+[INCLUDES]
+before = common.conf
+
+[Definition]
+failregex = ^.*?Username or password is incorrect\. Try again\. IP: <ADDR>\. Username:.*$
+ignoreregex =
+```
+
+封禁配置
+```
+[vaultwarden]  
+enabled = true  
+port = 7443  
+filter = vaultwarden  
+backend = systemd  
+journalmatch = systemd_unit=vaultwarden.service  
+maxretry = 3  
+bantime = 14400  
+findtime = 14400  
+action = nftables[name=vaultwarden, port=7443, protocol=tcp]
+```

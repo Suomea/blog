@@ -4,67 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "db55fe4a96740410",
+        "id": "0811c2bf0d7c9f34",
         "type": "tabs",
         "children": [
           {
-            "id": "4d460797f1479caf",
+            "id": "754b197d39243395",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Java/Gradle/Gradle 构建 Spring Boot 项目.md",
+                "file": "docs/Operations/Linux/vaultwarden 安装配置.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Gradle 构建 Spring Boot 项目"
-            }
-          },
-          {
-            "id": "f7fd3639962d57e5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Operations/Linux/防火墙.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "防火墙"
-            }
-          },
-          {
-            "id": "928312a7688c6adb",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/DataBase/MySQL/MySQL 安装.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "MySQL 安装"
-            }
-          },
-          {
-            "id": "e7d64f55f6a74ee7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/Operations/Nginx/Nginx 日志.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Nginx 日志"
+              "title": "vaultwarden 安装配置"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -183,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Operations/Linux/防火墙.md",
+                "file": "docs/Operations/Linux/vaultwarden 安装配置.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "防火墙 的大纲"
+              "title": "vaultwarden 安装配置 的大纲"
             }
           }
         ],
@@ -211,24 +168,26 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "f7fd3639962d57e5",
+  "active": "754b197d39243395",
   "lastOpenFiles": [
+    "docs/Operations/Linux/fail2ban.md",
     "docs/Operations/Linux/vaultwarden 安装配置.md",
+    "docs/Java/Gradle/Gradle 构建 Spring Boot 项目.md",
+    "docs/Operations/Nginx/Nginx 日志.md",
+    "docs/DataBase/MySQL/MySQL 安装.md",
+    "docs/DataBase/DM/达梦 Tips.md",
+    "docs/DataBase/MySQL/MySQL Tips.md",
+    "docs/Operations/Linux/防火墙.md",
     "docs/Operations/Linux/Linux Tips.md",
     "docs/Operations/Nginx/Nginx 使用自签名证书.md",
     "docs/Operations/Nginx/Nginx 编译安装.md",
-    "docs/DataBase/MySQL/MySQL Tips.md",
-    "docs/DataBase/MySQL/MySQL 安装.md",
-    "docs/Operations/Linux/防火墙.md",
     "docs/Operations/Linux/软件安装.md",
     "docs/DataBase/PG/PG 安装.md",
-    "docs/DataBase/DM/达梦 Tips.md",
     "docs/Operations/Linux/时间.md",
     "docs/Operations/Linux/系统加固.md",
     "docs/Operations/Linux/文件系统.md",
     "docs/Operations/Linux/服务器初始化.md",
     "docs/Operations/Linux/LVM.md",
-    "docs/Operations/Linux/fail2ban.md",
     "docs/Java/MyBatis/MyBatis 快速入门.md",
     "docs/Java/MyBatis/MyBatis 反射工具箱.md",
     "docs/English/Last, the last, the latest.md",
@@ -237,8 +196,6 @@
     "docs/DataBase/DM/达梦安装.md",
     "docs/DataBase/DM/达梦备份.md",
     "docs/DataBase/MySQL/MySQL 备份.md",
-    "docs/Operations/Nginx/Nginx 日志.md",
-    "docs/Operations/Nginx/Nginx Tips.md",
     "overrides/partials/footer.html",
     "mkdocs.yml~",
     "docs/assets/fonts/STSONG.TTF",
