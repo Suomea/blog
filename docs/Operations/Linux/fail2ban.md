@@ -29,6 +29,10 @@ journalmatch = _SYSTEMD_UNIT=sshd.service  # 只监控 sshd 服务的日志
 
 **执行封禁** 动作脚本（如 `iptables.conf`）添加防火墙规则，禁止 IP 访问指定端口。可选通知操作（如 `sendmail.conf`发送告警邮件）。
 
+验证监禁的动作
+```
+fail2ban-client get vaultwarden action
+```
 ## 配置解封
 
 白名单配置，将可信 IP 加入 `ignoreip`，避免被封禁。

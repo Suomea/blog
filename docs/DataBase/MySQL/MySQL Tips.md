@@ -26,6 +26,14 @@ Wrappers.<User>lambdaQuery()
 	.apply("find_in_set({0}, tag)", "中国人");
 ```
 
+
+## update join 的用法
+```
+UPDATE 主表
+LEFT JOIN 从表 ON 主表.关联字段 = 从表.关联字段
+SET 主表.字段 = 从表.字段或其他值, 主表.字段2 = 从表.字段2
+WHERE 条件;
+```
 ### root 用户忘记密码
 
 编辑配置文件增加选项 `skip-grant-tables`，然后重启 MySQL 服务。 

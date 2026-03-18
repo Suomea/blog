@@ -137,5 +137,5 @@ journalmatch = systemd_unit=vaultwarden.service
 maxretry = 3  
 bantime = 14400  
 findtime = 14400  
-action = nftables[name=vaultwarden, port=7443, protocol=tcp]
+action = nftables[name=vaultwarden, type=allports]
 ```
