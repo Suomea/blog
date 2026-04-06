@@ -1,4 +1,111 @@
 MyBatis 官网：https://mybatis.org/mybatis-3/zh_CN/index.html
+## 搭建项目
+使用 Gradle 搭建基础项目
+```shell
+# 构建 Gradle 项目
+gradle init --type basic --dsl kotlin --project-name mbs --java-version 21
+```
+
+配置文件
+```kotlin
+// build.gradle.kts
+plugins {  
+    id("application")  
+}  
+  
+repositories {  
+    // Use Maven Central for resolving dependencies.  
+    mavenCentral()  
+}  
+  
+dependencies {  
+  
+}  
+  
+application {  
+    mainClass.value("com.jacky.mbs.App")  
+}
+```
+
+主文件
+```java
+// src/main/java/com/jacky/mbs/App.java
+package com.jacky.mbs;  
+  
+public class App {  
+    public static void main(String[] args) {  
+        System.out.println("hello world!");  
+    }  
+}
+```
+
+运行
+```
+gradle run
+```
+
+### 环境处理
+依赖
+```kotlin  
+compileOnly("org.projectlombok:lombok:1.18.42")  
+annotationProcessor("org.projectlombok:lombok:1.18.42")  
+  
+implementation("org.slf4j:slf4j-api:2.0.17")  
+implementation("ch.qos.logback:logback-classic:1.5.32")  
+  
+implementation("org.postgresql:postgresql:42.7.10")  
+implementation("com.mysql:mysql-connector-j:8.4.0")  
+implementation("org.mybatis:mybatis:3.5.19")
+```
+
+日志配置文件
+```xml
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} : %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
+```
+
+配置文件
+```
+# app.properties 放在 resource 目录下
+mysql.host=  
+mysql.port=  
+mysql.username=  
+mysql.password=  
+  
+pg.host=xxx  
+pg.port=  
+pg.username=  
+pg.password=
+```
+
+读取配置文件的代码
+```java
+@Slf4j  
+public class App {  
+  
+    static Properties prop = new Properties();  
+    static {  
+        try {  
+            prop.load(App.class.getResourceAsStream("/app.properties"));  
+        } catch (IOException e) {  
+            throw new RuntimeException(e);  
+        }  
+    }  
+  
+    public static void main(String[] args) {  
+        log.info("pg.host: {}", prop.get("pg.host"));  
+    }  
+}
+```
 
 ## 准备数据
 DDL
@@ -270,3 +377,5 @@ public class MyBatisTest {
     }
 }
 ```
+
+MyBatis xml 文件 namespace + id 如何和 java mapper 接口进行绑定的？
